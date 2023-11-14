@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-}
 
 @layer base {
   button {
@@ -35,5 +33,11 @@
 @layer components {
   .ant-pro-top-nav-header {
     @apply bg-teal-4;
+  }
+
+  .bigger-outline {
+    .anticon {
+      @apply text-lg;
+    }
   }
 }

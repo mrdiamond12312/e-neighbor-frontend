@@ -9,12 +9,24 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
-  font-family: Montserrat;
+  font-family: 'Montserrat', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  p {
+    margin: 0;
+    word-wrap: break-word;
+    @apply font-sans;
+  }
+}
+
+.ant-layout {
+  @apply font-sans;
 }
 
 .ant-pro-top-nav-header {
-  @apply bg-teal-4 text-neutral-1 font-sans h-14;
+  @apply flex bg-teal-4 text-neutral-1 font-sans h-14 justify-center;
   .ant-pro-top-nav-header-main {
+    @apply max-w-7xl w-full p-0;
     .ant-pro-top-nav-header-main-left {
       .ant-pro-top-nav-header-logo {
         h1 {
@@ -42,5 +54,14 @@ body,
         }
       }
     }
+  }
+}
+
+.ant-pro-page-container {
+  .ant-page-header {
+    @apply hidden;
+  }
+  .ant-pro-page-container-children-container {
+    @apply p-0;
   }
 }
