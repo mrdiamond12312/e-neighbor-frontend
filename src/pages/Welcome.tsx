@@ -43,15 +43,9 @@ const InfoCard: React.FC<{
           style={{
             width: 48,
             height: 48,
-            lineHeight: '22px',
-            backgroundSize: '100%',
-            textAlign: 'center',
-            padding: '8px 16px 16px 12px',
-            color: '#FFF',
-            fontWeight: 'bold',
-            backgroundImage:
-              "url('https://gw.alipayobjects.com/zos/bmw-prod/daaf8d50-8e6d-4251-905d-676a24ddfa12.svg')",
           }}
+
+          className='bg-teal-1'
         >
           {index}
         </div>

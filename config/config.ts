@@ -148,6 +148,8 @@ export default defineConfig({
       projectName: 'swagger',
     },
   ],
+  reactQuery: {},
+
   mfsu: {
     strategy: 'normal',
   },
