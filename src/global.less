@@ -13,5 +13,34 @@ body,
 }
 
 .ant-pro-top-nav-header {
-  @apply bg-teal-4;
+  @apply bg-teal-4 text-neutral-1 font-sans h-14;
+  .ant-pro-top-nav-header-main {
+    .ant-pro-top-nav-header-main-left {
+      .ant-pro-top-nav-header-logo {
+        h1 {
+          @apply text-heading-4;
+        }
+      }
+    }
+    .ant-pro-top-nav-header-menu {
+      @apply pl-8;
+      .ant-menu {
+        @apply gap-2;
+        .ant-menu-item {
+          @apply h-8;
+
+          &:hover {
+            @apply text-neutral-1;
+          }
+
+          .ant-menu-title-content {
+            @apply h-full;
+            .ant-pro-base-menu-horizontal-item-title {
+              @apply h-full font-sans text-body-2-semibold;
+            }
+          }
+        }
+      }
+    }
+  }
 }

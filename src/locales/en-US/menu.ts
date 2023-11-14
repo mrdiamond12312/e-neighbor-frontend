@@ -1,4 +1,5 @@
 export default {
+  'menu.nav.Home': 'Landing Page',
   'menu.welcome': 'Welcome',
   'menu.more-blocks': 'More Blocks',
   'menu.home': 'Home',
