@@ -17,4 +17,8 @@ declare module 'mockjs';
 declare module 'react-fittext';
 declare module 'bizcharts-plugin-slider';
 
+declare type TComponentsProps = {
+  children?: React.ReactNode;
+};
+
 declare const REACT_APP_ENV: 'test' | 'dev' | 'pre' | false;

@@ -3,10 +3,6 @@ import { PageContainer } from '@ant-design/pro-components';
 import { Outlet, useIntl } from '@umijs/max';
 import React from 'react';
 
-export type TComponentsProps = {
-  children?: React.ReactNode;
-};
-
 const ContactInfo: React.FC<TComponentsProps> = ({ children }) => {
   const { formatMessage } = useIntl();
 

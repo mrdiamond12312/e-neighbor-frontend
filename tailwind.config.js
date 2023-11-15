@@ -7,6 +7,20 @@ module.exports = {
         sans: ['Montserrat', 'ui-sans-serif'],
         serif: ['ui-serif'],
       },
+      keyframes: {
+        fade: {
+          '0%': {
+            transform: 'translate(-100%, -150%) skew(45deg)',
+          },
+          '50%': { transform: 'translate(-50%, -50%) skew(45deg)' },
+          '100%': {
+            transform: 'translate(0%, 50%) skew(45deg)',
+          },
+        },
+      },
+      animation: {
+        fade: 'fade 1s infinite',
+      },
       colors: {
         transparent: 'transparent',
         current: 'currentColor',

@@ -39,6 +39,11 @@ export default [
     component: './Home',
   },
   {
+    name: 'nav.Home',
+    path: '/store',
+    component: './Home',
+  },
+  {
     path: '/',
     redirect: '/home',
   },

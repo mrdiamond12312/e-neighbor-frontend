@@ -24,7 +24,8 @@ body,
 }
 
 .ant-pro-top-nav-header {
-  @apply flex bg-teal-4 text-neutral-1 font-sans h-14 justify-center;
+  @apply flex bg-teal-4 text-neutral-1 font-sans h-14 justify-center px-4;
+  @apply sticky top-0;
   .ant-pro-top-nav-header-main {
     @apply max-w-7xl w-full p-0;
     .ant-pro-top-nav-header-main-left {
@@ -37,22 +38,81 @@ body,
     .ant-pro-top-nav-header-menu {
       @apply pl-8;
       .ant-menu {
-        @apply gap-2;
         .ant-menu-item {
-          @apply h-8;
+          @apply h-14 bg-transparent;
 
           &:hover {
-            @apply text-neutral-1;
-          }
+            @apply text-neutral-1 bg-transparent;
 
+            &:after {
+              transform: translate(-50%, -50%) skew(45deg);
+              opacity: 1;
+            }
+          }
+          &:after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-100%, -150%) skew(45deg);
+            opacity: 0;
+            transition: all 0.5s ease-in;
+          }
           .ant-menu-title-content {
-            @apply h-full;
+            @apply h-full z-10 relative;
             .ant-pro-base-menu-horizontal-item-title {
               @apply h-full font-sans text-body-2-semibold;
             }
           }
         }
+
+        .ant-menu-item-selected {
+          @apply bg-transparent;
+          &:after {
+            @apply -z-0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%) skew(45deg);
+            opacity: 1;
+            transition: width 2s ease-in-out;
+          }
+        }
       }
+    }
+    .ant-pro-global-header-right-content {
+      @apply z-10;
+    }
+  }
+  &:after {
+    @apply -z-0;
+    position: absolute;
+    // bottom: -20px;
+    right: 0;
+    width: 125px;
+    height: 0;
+    border-top: 56px solid theme('colors.teal-2');
+    border-left: 56px solid transparent;
+    content: '';
+  }
+  &:before {
+    @apply -z-0;
+    position: absolute;
+    // bottom: -20px;
+    left: 120px;
+    width: 28px;
+    height: 56px;
+    background: theme('colors.teal-2');
+    transform: skew(45deg);
+    content: '';
+    @media (max-width: 1280px) {
+      right: 120px;
+      left: unset;
     }
   }
 }
