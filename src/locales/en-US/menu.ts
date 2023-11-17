@@ -1,9 +1,11 @@
 export default {
+  'menu.nav.AboutUs': 'About Us',
   'menu.nav.Home': 'Landing Page',
   'menu.linkin': 'Keep in touch:',
 
   'menu.welcome': 'Welcome',
   'menu.more-blocks': 'More Blocks',
+
   'menu.home': 'Home',
   'menu.admin': 'Admin',
   'menu.admin.sub-page': 'Sub-Page',

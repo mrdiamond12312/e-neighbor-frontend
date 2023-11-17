@@ -57,9 +57,6 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
     };
   });
   const { initialState, setInitialState } = useModel('@@initialState');
-
-  console.log(initialState, 1);
-
   const onMenuClick = useCallback(
     (event: MenuInfo) => {
       const { key } = event;
