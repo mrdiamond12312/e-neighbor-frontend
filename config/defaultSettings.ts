@@ -31,6 +31,10 @@ const Settings: ProLayoutProps & {
       colorBgMenuItemSelected: 'rgba(255, 255, 255, 0.3)',
       colorBgMenuItemHover: 'rgba(255, 255, 255, 0.1)',
     },
+    pageContainer: {
+      paddingBlockPageContainerContent: 0,
+      paddingInlinePageContainerContent: 12,
+    },
   },
 };
 

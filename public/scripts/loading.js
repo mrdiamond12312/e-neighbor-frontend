@@ -139,7 +139,7 @@
         }
 
         .sprite {
-          background: url(sprite/loading.png);
+          background: url(sprite/loading.webp);
           background-size: 100% 3000%;
           background-position: 0 0;
           width: 21.2rem;
@@ -194,6 +194,16 @@
         height: 100%;
         min-height: 362px;
       ">
+        <div class="page-loading-warp">
+          <div class="ant-spin ant-spin-lg ant-spin-spinning">
+            <span class="ant-spin-dot ant-spin-dot-spin">
+              <i class="ant-spin-dot-item"></i>
+              <i class="ant-spin-dot-item"></i>
+              <i class="ant-spin-dot-item"></i>
+              <i class="ant-spin-dot-item"></i>
+            </span>
+          </div>
+        </div>
         <div class="sprite"></div>
       </div>
     `;
