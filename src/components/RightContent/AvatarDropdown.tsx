@@ -8,6 +8,7 @@ import type { MenuInfo } from 'rc-menu/lib/interface';
 import React, { useCallback } from 'react';
 import { flushSync } from 'react-dom';
 import HeaderDropdown from '../HeaderDropdown';
+import Login from '@/components/RightContent/Login';
 
 export type GlobalHeaderRightProps = {
   menu?: boolean;
@@ -20,7 +21,7 @@ export const AvatarName: React.FC = () => {
   return <span className="anticon">{currentUser?.name}</span>;
 };
 
-export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, children }) => {
+export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, children }) => {
   /**
    * 退出登录，并且将当前的 url 保存
    */
@@ -57,6 +58,8 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
   });
   const { initialState, setInitialState } = useModel('@@initialState');
 
+  console.log(initialState, 1);
+
   const onMenuClick = useCallback(
     (event: MenuInfo) => {
       const { key } = event;
@@ -91,7 +94,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
   const { currentUser } = initialState;
 
   if (!currentUser || !currentUser.name) {
-    return loading;
+    return <Login />;
   }
 
   const menuItems = [
