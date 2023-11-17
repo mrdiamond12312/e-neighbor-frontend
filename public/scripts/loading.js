@@ -138,6 +138,20 @@
           height: 14px;
         }
 
+        .sprite {
+          background: url(sprite/loading.png);
+          background-size: 100% 3000%;
+          background-position: 0 0;
+          width: 21.2rem;
+          height: 6rem;
+          animation: frameAnimation .5s steps(30) infinite forwards;
+
+        }
+        @keyframes frameAnimation {
+          0% { background-position: 0 0; }
+          100% { background-position:  0 -3000%; }
+        }
+
         @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
           .ant-spin-blur {
             background: #fff;
@@ -180,22 +194,7 @@
         height: 100%;
         min-height: 362px;
       ">
-        <div class="page-loading-warp">
-          <div class="ant-spin ant-spin-lg ant-spin-spinning">
-            <span class="ant-spin-dot ant-spin-dot-spin">
-              <i class="ant-spin-dot-item"></i>
-              <i class="ant-spin-dot-item"></i>
-              <i class="ant-spin-dot-item"></i>
-              <i class="ant-spin-dot-item"></i>
-            </span>
-          </div>
-        </div>
-        <div class="loading-title">
-          正在加载资源
-        </div>
-        <div class="loading-sub-title">
-          初次加载资源可能需要较多时间 请耐心等待
-        </div>
+        <div class="sprite"></div>
       </div>
     `;
   }

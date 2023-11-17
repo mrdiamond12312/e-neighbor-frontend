@@ -14,7 +14,7 @@ export type GlobalHeaderRightProps = {
   children?: React.ReactNode;
 };
 
-export const AvatarName = () => {
+export const AvatarName: React.FC = () => {
   const { initialState } = useModel('@@initialState');
   const { currentUser } = initialState || {};
   return <span className="anticon">{currentUser?.name}</span>;
