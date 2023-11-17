@@ -3,6 +3,8 @@
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+@menu-height: 56px;
+
 html,
 body,
 #root {
@@ -45,18 +47,17 @@ body,
             @apply text-neutral-1 bg-transparent;
 
             &:after {
-              transform: translate(-50%, -50%) skew(45deg);
+              transform: skew(45deg);
               opacity: 1;
             }
           }
           &:after {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            left: 0;
             width: 100%;
             height: 56px;
             background: rgba(255, 255, 255, 0.1);
-            transform: translate(-100%, -150%) skew(45deg);
+            transform: translate(calc(-1 * @menu-height), calc(-1 * @menu-height)) skew(45deg);
             opacity: 0;
             transition: all 0.5s ease-in;
           }
@@ -73,14 +74,13 @@ body,
           &:after {
             @apply -z-0;
             position: absolute;
-            top: 50%;
-            left: 50%;
+            left: 0;
             width: 100%;
             height: 56px;
             background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%) skew(45deg);
+            transform: skew(45deg);
             opacity: 1;
-            transition: width 2s ease-in-out;
+            transition: all 2s ease-in-out;
           }
         }
       }
@@ -113,6 +113,85 @@ body,
     @media (max-width: 1280px) {
       right: 120px;
       left: unset;
+    }
+  }
+}
+
+.menu-item {
+  @apply h-14 w-9 bg-transparent;
+
+  &:hover {
+    @apply text-neutral-1 bg-transparent;
+
+    &:after {
+      transform: skew(45deg);
+      opacity: 1;
+    }
+  }
+  &:after {
+    @apply z-0;
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(calc(-1 * @menu-height), calc(-1 * @menu-height)) skew(45deg);
+    opacity: 0;
+    transition: all 0.5s ease-in;
+    content: '';
+  }
+}
+.ant-pro-global-header-header-actions-avatar {
+  display: unset;
+  height: full;
+
+  div {
+    height: 100%;
+
+    &:hover {
+      @apply bg-transparent;
+    }
+  }
+}
+
+.ant-dropdown-trigger {
+  @apply relative h-full;
+  &:hover {
+    @apply text-neutral-1 bg-transparent;
+
+    &:after {
+      transform: skew(45deg);
+      opacity: 1;
+    }
+  }
+  &:after {
+    @apply z-0;
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 110%;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(calc(-1 * @menu-height), calc(-1 * @menu-height)) skew(45deg);
+    opacity: 0;
+    transition: all 0.5s ease-in;
+    content: '';
+  }
+}
+
+.ant-dropdown {
+  .ant-dropdown-menu {
+    @apply font-sans;
+    .ant-dropdown-menu-item {
+    }
+    .ant-dropdown-menu-item-selected {
+      color: theme('colors.neutral-1');
+      background-color: theme('colors.teal-1');
+
+      &:hover {
+        background-color: theme('colors.teal-2');
+      }
     }
   }
 }
