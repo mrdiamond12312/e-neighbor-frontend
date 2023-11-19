@@ -15,7 +15,7 @@ const Settings: ProLayoutProps & {
   colorWeak: false,
   title: 'E-Neighbor',
   pwa: true,
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: '/favicon.ico',
   iconfontUrl: '',
   layout: 'top',
   token: {
@@ -34,6 +34,7 @@ const Settings: ProLayoutProps & {
     pageContainer: {
       paddingBlockPageContainerContent: 0,
       paddingInlinePageContainerContent: 12,
+      colorBgPageContainer: '#F5F6FA',
     },
   },
 };

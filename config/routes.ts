@@ -12,23 +12,11 @@
  */
 export default [
   {
-    path: '/user',
-    layout: false,
+    path: '/user/*',
     routes: [
       {
         name: 'login',
-        path: '/user/login',
-        component: './User/Login',
-      },
-    ],
-  },
-  {
-    path: '/user',
-    layout: false,
-    routes: [
-      {
-        name: 'login',
-        path: '/user/login',
+        path: 'login',
         component: './User/Login',
       },
     ],

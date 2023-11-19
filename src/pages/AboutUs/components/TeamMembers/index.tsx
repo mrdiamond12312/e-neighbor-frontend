@@ -15,7 +15,7 @@ const TeamMembers: React.FC = () => {
       expertise: 'FrontEnd',
       job: 'Developer',
       acronym: 'DIAMOND',
-      image: '/team-members/hoangkimcuong.webp',
+      image: 'https://ik.imagekit.io/AliaV14/hoangkimcuong.png?updatedAt=1700404768821',
     },
     {
       id: 2,

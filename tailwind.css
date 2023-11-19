@@ -87,10 +87,10 @@
 
   .arrow-btn-left {
     border: 2px solid black;
-    border-radius: 9999px 0 0 9999px;
-    @apply pr-0 h-10 bg-neutral-1;
 
     border-right: 0;
+    border-radius: 9999px 0 0 9999px;
+    @apply pr-0 h-10 bg-neutral-1;
 
     &:not(:disabled):not(.ant-btn-disabled):hover {
       color: black;
@@ -99,31 +99,31 @@
     }
     &:after {
       @apply p-0 m-0 bg-neutral-1;
-      content: "";
       position: absolute;
       top: -2px;
       right: 0px;
+      display: block;
       width: 40px;
       height: 38px;
       border-top: 2px solid black;
       border-right: 2px solid black;
       transform: translate(50%, 0) skewX(-45deg);
+      content: '';
 
       clip-path: polygon(0% 0, 100% 0, 100% 100%, 80% 100%);
-      display:block;
     }
 
-    >span {
+    > span {
       display: block;
     }
   }
 
   .arrow-btn-right {
     border: 2px solid black;
-    border-radius:  0 9999px 9999px 0;
-    @apply pl-0 h-10 bg-neutral-1;
 
     border-left: 0;
+    border-radius: 0 9999px 9999px 0;
+    @apply pl-0 h-10 bg-neutral-1;
 
     &:not(:disabled):not(.ant-btn-disabled):hover {
       color: black;
@@ -132,20 +132,20 @@
     }
     &:before {
       @apply p-0 m-0 bg-neutral-1 z-[1];
-      content: "";
       position: absolute;
       top: 0px;
       left: 0px;
+      display: block;
       width: 40px;
       height: 38px;
       border-bottom: 2px solid black;
       border-left: 2px solid black;
       transform: translate(-50%, 0) skewX(-45deg);
+      content: '';
       clip-path: polygon(0 0, 10% 0, 100% 100%, 0 100%);
-      display:block;
     }
 
-    >span {
+    > span {
       display: block;
     }
   }
@@ -159,6 +159,101 @@
     &:not(:disabled):not(.ant-btn-disabled):hover {
       color: black;
       border: 2px solid black;
+    }
+  }
+
+  /* BUTTON */
+  .btn-medium {
+    @apply font-sans;
+  }
+
+  .btn-large {
+    @apply h-12 font-sans text-body-1-medium;
+  }
+
+  .btn-default {
+    @apply border-teal-4 text-teal-4;
+    transition: all 1s ease-out;
+    &:not(:disabled):not(.ant-btn-disabled):hover {
+      @apply border-teal-6 text-teal-6;
+      box-shadow: 2px 3px theme('colors.teal-6');
+    }
+  }
+
+  .btn-primary {
+    @apply bg-teal-4 text-neutral-1;
+    &:not(:disabled):not(.ant-btn-disabled):hover {
+      @apply bg-teal-6 text-neutral-1;
+      box-shadow: 2px 3px theme('colors.teal-1');
+    }
+  }
+
+
+  /* FORM */
+  .custom-ant-form {
+    @apply w-full;
+    @apply font-sans;
+
+    .ant-form-item {
+      @apply mb-0 pb-4;
+
+      .ant-form-item-row {
+        .ant-form-item-label {
+          @apply font-sans;
+
+          .ant-form-item-required {
+            &:before {
+              content: unset;
+            }
+
+            &:after {
+              @apply font-sans text-body-1-medium visible pl-1 m-0;
+              color: theme('colors.teal-4');
+              font-family: SimSun, sans;
+              content: '*';
+            }
+          }
+          > label {
+            @apply text-body-1-medium;
+          }
+        }
+
+        .ant-form-item-control {
+          .ant-form-item-control-input-content {
+            @apply text-body-2-regular;
+            .ant-input {
+              @apply rounded-[4px] h-12 !bg-transparent align-baseline;
+
+              &:focus {
+                @apply border-teal-5;
+              }
+
+              &:focus-within {
+                @apply border-teal-5;
+              }
+
+              &:hover {
+                @apply border-teal-3;
+              }
+            }
+            .ant-input-affix-wrapper-lg {
+              @apply rounded-[4px] py-0;
+
+              &:focus-within {
+                @apply border-teal-5;
+              }
+
+              &:focus {
+                @apply border-teal-5;
+              }
+
+              &:hover {
+                @apply border-teal-3;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
