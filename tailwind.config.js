@@ -1,6 +1,6 @@
 module.exports = {
   content: ['./src/pages/**/*.tsx', './src/components/**/*.tsx', './src/layouts/**/*.tsx'],
-
+  safelist: ['animate-flicker', 'animate-bounce', 'animate-ping', 'animate-pulse'],
   theme: {
     extend: {
       fontFamily: {
@@ -17,9 +17,18 @@ module.exports = {
             transform: 'translate(0%, 50%) skew(45deg)',
           },
         },
+        flicker: {
+          '0%, 100%': {
+            transform: 'rotate(-45deg) translate(0, 0)',
+          },
+          '50%': {
+            transform: 'rotate(-45deg) translate(4px, 4px)',
+          },
+        },
       },
       animation: {
         fade: 'fade 1s infinite',
+        flicker: 'flicker 1s ease-in-out infinite',
       },
       colors: {
         transparent: 'transparent',

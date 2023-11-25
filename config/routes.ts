@@ -27,9 +27,9 @@ export default [
     component: './Home',
   },
   {
-    name: 'nav.Home',
+    name: 'nav.Store',
     path: '/store',
-    component: './Home',
+    component: './Store',
   },
   {
     name: 'nav.AboutUs',
