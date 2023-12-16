@@ -12,4 +12,6 @@ export default {
 
   'login.form.alternative.header': 'HOẶC',
   'login.alternative.GOOGLE': 'Đăng nhập bằng tài khoản Google',
+
+  'login.submit.failed': 'Sai thông tin tài khoản!',
 };
