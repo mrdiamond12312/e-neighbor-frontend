@@ -13,5 +13,6 @@ export default {
   'login.form.alternative.header': 'OR',
   'login.alternative.GOOGLE': 'Sign in with Google authentication',
 
+  'login.submit.success': 'Login Successful!',
   'login.submit.failed': 'Wrong Credentials',
 };
