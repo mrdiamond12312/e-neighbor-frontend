@@ -4,6 +4,7 @@ import login from '@/locales/en-US/login';
 
 export default {
   'nav.Home': 'Landing Page',
+  'nav.Store': 'Rental',
   'nav.AboutUs': 'AboutUs',
   ...aboutUs,
   ...menu,

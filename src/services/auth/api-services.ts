@@ -12,5 +12,7 @@ export const login = async (body: TLoginFormFields) => {
 export const getCurrentAuthInfo = async () => {
   return request<TMetaWrapper<API.TAuthProfile>>(API_ENDPOINTS.PROFILE, {
     method: 'GET',
+    timeout: 15000,
+    timeoutMessage: 'Connection Timeout!',
   });
 };

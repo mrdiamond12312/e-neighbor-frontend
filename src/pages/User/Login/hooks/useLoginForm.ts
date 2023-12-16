@@ -70,7 +70,7 @@ export const useLoginForm = () => {
               defaultMessage: 'Server down!',
             }),
           });
-        } else if (error.statusCode === 404 || error.statusCode === 403)
+        } else if (error.statusCode === 404 || error.statusCode === 403 || error.statusCode === 401)
           notification.error({
             message: formatMessage({
               id: 'login.submit.failed',
