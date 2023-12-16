@@ -41,3 +41,6 @@ screenshot
 .eslintcache
 
 build
+
+# env
+.env.local
