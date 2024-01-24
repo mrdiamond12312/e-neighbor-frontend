@@ -1,9 +1,10 @@
 import Button from '@/components/Button';
+import { PATH_REGISTER } from '@/const/path';
 import LoginForm from '@/pages/User/Login/component/LoginForm';
 import { useLoginForm } from '@/pages/User/Login/hooks/useLoginForm';
 import { GoogleOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
-import { useIntl } from '@umijs/max';
+import { Link, useIntl } from '@umijs/max';
 import { Col, Divider, Row } from 'antd';
 import React from 'react';
 
@@ -55,6 +56,20 @@ const Login: React.FC = () => {
                 defaultMessage: 'Sign in with Google',
               })}
             </Button>
+            <Divider>
+              {formatMessage({
+                id: 'login.form.alternative.no.account',
+                defaultMessage: 'NOT REGISTER YET?',
+              })}
+            </Divider>
+            <Link to={PATH_REGISTER} className="w-full">
+              <Button btnSize="large" type="default" className="w-full">
+                {formatMessage({
+                  id: 'login.alternative.register',
+                  defaultMessage: 'Sign Up',
+                })}
+              </Button>
+            </Link>
           </Col>
         </Row>
 

@@ -17,7 +17,6 @@ const LoginForm: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
           id: 'login.form.userName.label',
           defaultMessage: 'Username',
         })}
-        rules={[{ message: 'Please input patient name!' }]}
       >
         <InputText
           placeholder="abcxyz"
