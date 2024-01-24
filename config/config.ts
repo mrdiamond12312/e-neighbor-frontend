@@ -137,7 +137,7 @@ export default defineConfig({
     // Or, using an object with additional attributes
     // You can have multiple link elements in the array
     {
-      rel: 'preload',
+      rel: 'prefetch',
       as: 'image',
       href: '/sprite/loading.webp',
     },
