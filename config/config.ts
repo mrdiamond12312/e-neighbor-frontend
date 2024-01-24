@@ -136,6 +136,11 @@ export default defineConfig({
     // Preload CSS file
     // Or, using an object with additional attributes
     // You can have multiple link elements in the array
+    {
+      rel: 'preload',
+      as: 'image',
+      href: '/sprite/loading.webp',
+    },
   ],
   //================ pro 插件配置 =================
   presets: ['umi-presets-pro'],
