@@ -132,21 +132,15 @@ export default defineConfig({
     // 解决首次加载时白屏的问题
     { src: '/scripts/loading.js', async: true },
   ],
-  copy: [
-    { from: 'src/global.less', to: 'global.less' },
-    // Add other copy configurations as needed
-  ],
   links: [
     // Preload CSS file
-
     // Or, using an object with additional attributes
-    {
-      rel: 'stylesheet',
-      href: 'src/global.less',
-      as: 'style', // Optional, specifies the type of the resource
-    },
-
     // You can have multiple link elements in the array
+    {
+      rel: 'preload',
+      as: 'image',
+      href: '/sprite/loading.webp',
+    },
   ],
   //================ pro 插件配置 =================
   presets: ['umi-presets-pro'],

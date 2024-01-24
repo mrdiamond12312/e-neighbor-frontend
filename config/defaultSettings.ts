@@ -23,7 +23,7 @@ const Settings: ProLayoutProps & {
     //https://procomponents.ant.design/components/layout#%E9%80%9A%E8%BF%87-token-%E4%BF%AE%E6%94%B9%E6%A0%B7%E5%BC%8F
 
     header: {
-      colorBgHeader: 'rgba(0, 164, 153, 1)',
+      colorBgHeader: '#286E6C',
       colorTextRightActionsItem: '#fff',
       colorHeaderTitle: '#fff',
       colorTextMenu: '#fff',
@@ -33,7 +33,7 @@ const Settings: ProLayoutProps & {
     },
     pageContainer: {
       paddingBlockPageContainerContent: 0,
-      paddingInlinePageContainerContent: 12,
+      paddingInlinePageContainerContent: 0,
       colorBgPageContainer: '#F5F6FA',
     },
   },

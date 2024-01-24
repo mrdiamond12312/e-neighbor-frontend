@@ -90,8 +90,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
 
   const { currentUser } = initialState;
 
-  if (!currentUser || !currentUser.fullName) {
-    console.log(currentUser);
+  if (!currentUser) {
     return <Login />;
   }
 

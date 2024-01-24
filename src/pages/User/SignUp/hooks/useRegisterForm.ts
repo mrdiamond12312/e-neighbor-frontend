@@ -1,48 +1,52 @@
-import { LOGIN_FORM_KEY } from '@/const/login-form';
 import { PATH_ROOT } from '@/const/path';
-import useLoginResolver from '@/pages/User/Login/hooks/useLoginResolver';
-import { useServiceLogin } from '@/services/auth/services';
+import { useServiceRegister } from '@/services/auth/services';
 import { useIntl } from '@umijs/max';
 import { notification } from 'antd';
 import { useForm } from 'react-hook-form';
 
-export type TLoginFormFields = {
-  [LOGIN_FORM_KEY.userName]: string;
-  [LOGIN_FORM_KEY.password]: string;
+import { REGISTER_FORM_KEY } from '@/const/register-form';
+import useRegisterResolver from '@/pages/User/SignUp/hooks/useRegisterResolver';
+
+export type TRegisterFormFields = {
+  [REGISTER_FORM_KEY.userName]: string;
+  [REGISTER_FORM_KEY.password]: string;
+  [REGISTER_FORM_KEY.passwordConfirm]: string;
+  [REGISTER_FORM_KEY.fullName]: string;
+  [REGISTER_FORM_KEY.email]: string;
 };
 
-export const useLoginForm = () => {
+export const useRegisterForm = () => {
   const { formatMessage } = useIntl();
-  const { FormSchema } = useLoginResolver();
+  const { FormSchema } = useRegisterResolver();
   const {
     control,
     formState: { errors, dirtyFields, isValid, isDirty },
     getValues,
     trigger,
     handleSubmit,
-  } = useForm<TLoginFormFields>({
+  } = useForm<TRegisterFormFields>({
     defaultValues: {},
     resolver: FormSchema ?? null,
     mode: 'onTouched',
   });
 
-  const { mutate, isLoading } = useServiceLogin();
+  const { mutate, isLoading } = useServiceRegister();
 
-  const onSubmit = (body: TLoginFormFields) => {
+  const onSubmit = (body: TRegisterFormFields) => {
     mutate(body, {
       onSuccess: async (data) => {
-        if (data?.meta?.statusCode === 200) {
-          const defaultLoginSuccessMessage = formatMessage({
-            id: 'login.submit.success',
-            defaultMessage: 'Đăng nhập thành công!',
+        if (data?.meta?.statusCode === 201) {
+          const defaultRegisterSuccessMessage = formatMessage({
+            id: 'register.submit.success',
+            defaultMessage: 'Register Successfully!',
           });
 
           notification.success({
-            message: defaultLoginSuccessMessage,
+            message: defaultRegisterSuccessMessage,
             duration: 0.5,
             onClose: () => {
               const urlParams = new URL(window.location.href).searchParams;
-              window.location.href = urlParams.get('redirect') ?? PATH_ROOT;
+              window.location.href = urlParams.get('redirect') || PATH_ROOT;
             },
           });
         }
@@ -56,11 +60,11 @@ export const useLoginForm = () => {
               defaultMessage: 'Server down!',
             }),
           });
-        } else if (error.statusCode === 404 || error.statusCode === 403 || error.statusCode === 401)
+        } else if (error.statusCode === 400)
           notification.error({
             message: formatMessage({
-              id: 'login.submit.failed',
-              defaultMessage: 'Wrong Credential!',
+              id: 'register.submit.failed',
+              defaultMessage: "Credentials've Already Been Taken!",
             }),
           });
       },

@@ -1,6 +1,7 @@
 import menu from '@/locales/en-US/menu';
 import aboutUs from '@/locales/en-US/aboutUs';
 import login from '@/locales/en-US/login';
+import register from '@/locales/en-US/register';
 
 export default {
   'nav.Home': 'Landing Page',
@@ -9,4 +10,5 @@ export default {
   ...aboutUs,
   ...menu,
   ...login,
+  ...register,
 };

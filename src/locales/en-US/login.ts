@@ -15,4 +15,7 @@ export default {
 
   'login.submit.success': 'Login Successful!',
   'login.submit.failed': 'Wrong Credentials',
+
+  'login.form.alternative.no.account': 'NOT REGISTERED YET?!',
+  'login.alternative.register': 'Register!',
 };

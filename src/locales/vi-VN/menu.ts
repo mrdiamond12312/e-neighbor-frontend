@@ -5,4 +5,5 @@ export default {
   'menu.linkin': 'Theo dõi chúng tôi:',
   'menu.reminder': 'Kết nối người thuê và người cho thuê!',
   'menu.login': 'Đăng nhập',
+  'menu.signUp': 'Đăng ký',
 };

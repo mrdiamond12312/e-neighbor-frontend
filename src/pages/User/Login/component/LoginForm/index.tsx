@@ -1,3 +1,4 @@
+import Button from '@/components/Button';
 import InputText from '@/components/Input';
 import HiddenInput from '@/components/Input/HiddenInput';
 import { LOGIN_FORM_KEY } from '@/const/login-form';
@@ -6,7 +7,11 @@ import { Form } from 'antd';
 const { Item } = Form;
 import React from 'react';
 
-const LoginForm: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
+export type TLoginForm = Partial<TPropsFormInput> & {
+  isLoading: boolean;
+};
+
+const LoginForm: React.FC<TLoginForm> = ({ control, errors, onSubmit, isLoading }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
 
@@ -17,7 +22,6 @@ const LoginForm: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
           id: 'login.form.userName.label',
           defaultMessage: 'Username',
         })}
-        rules={[{ message: 'Please input patient name!' }]}
       >
         <InputText
           placeholder="abcxyz"
@@ -44,6 +48,20 @@ const LoginForm: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
           size="large"
         />
       </Item>
+      <Button
+        onClick={onSubmit}
+        btnSize="large"
+        type="primary"
+        className="w-full"
+        loading={isLoading}
+        htmlType="submit"
+        onSubmit={onSubmit}
+      >
+        {formatMessage({
+          id: 'login.form.submit',
+          defaultMessage: 'Sign In',
+        })}
+      </Button>
     </Form>
   );
 };

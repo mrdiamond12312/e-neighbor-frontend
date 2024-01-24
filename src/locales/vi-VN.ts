@@ -1,6 +1,7 @@
 import menu from '@/locales/vi-VN/menu';
 import aboutUs from '@/locales/vi-VN/aboutUs';
 import login from '@/locales/vi-VN/login';
+import register from '@/locales/vi-VN/register';
 
 export default {
   'nav.Home': 'Landing Page',
@@ -9,4 +10,5 @@ export default {
   ...menu,
   ...aboutUs,
   ...login,
+  ...register,
 };

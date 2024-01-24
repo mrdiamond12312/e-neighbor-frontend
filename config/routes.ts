@@ -17,7 +17,14 @@ export default [
       {
         name: 'login',
         path: 'login',
+        access: 'isGuest',
         component: './User/Login',
+      },
+      {
+        name: 'signUp',
+        path: 'sign-up',
+        access: 'isGuest',
+        component: './User/SignUp',
       },
     ],
   },

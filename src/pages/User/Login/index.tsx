@@ -1,9 +1,10 @@
 import Button from '@/components/Button';
+import { PATH_REGISTER } from '@/const/path';
 import LoginForm from '@/pages/User/Login/component/LoginForm';
 import { useLoginForm } from '@/pages/User/Login/hooks/useLoginForm';
 import { GoogleOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
-import { useIntl } from '@umijs/max';
+import { Link, useIntl } from '@umijs/max';
 import { Col, Divider, Row } from 'antd';
 import React from 'react';
 
@@ -30,19 +31,13 @@ const Login: React.FC = () => {
             </p>
           </Col>
           <Col span={24} lg={12} className="flex flex-col justify-center items-center !px-12">
-            <LoginForm control={control} error={errors} />
-            <Button
-              onClick={handleSubmit(onSubmit)}
-              btnSize="large"
-              type="primary"
-              className="w-full"
-              loading={isLoading}
-            >
-              {formatMessage({
-                id: 'login.form.submit',
-                defaultMessage: 'Sign In',
-              })}
-            </Button>
+            <LoginForm
+              control={control}
+              error={errors}
+              onSubmit={handleSubmit(onSubmit)}
+              isLoading={isLoading}
+            />
+
             <Divider>
               {formatMessage({
                 id: 'login.form.alternative.header',
@@ -55,6 +50,20 @@ const Login: React.FC = () => {
                 defaultMessage: 'Sign in with Google',
               })}
             </Button>
+            <Divider>
+              {formatMessage({
+                id: 'login.form.alternative.no.account',
+                defaultMessage: 'NOT REGISTER YET?',
+              })}
+            </Divider>
+            <Link to={PATH_REGISTER} className="w-full">
+              <Button btnSize="large" type="default" className="w-full">
+                {formatMessage({
+                  id: 'login.alternative.register',
+                  defaultMessage: 'Sign Up',
+                })}
+              </Button>
+            </Link>
           </Col>
         </Row>
 

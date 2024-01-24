@@ -6,7 +6,7 @@ type TValidateError = {
 };
 
 const ValidateError: React.FC<TValidateError> = ({ error }) => {
-  return <p className="text-red-500">{error?.message}</p>;
+  return <p className="px-3 pt-2 text-red-500">{error?.message}</p>;
 };
 
 export default ValidateError;
