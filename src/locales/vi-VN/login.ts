@@ -15,4 +15,7 @@ export default {
 
   'login.submit.success': 'Đăng nhập thành công!',
   'login.submit.failed': 'Sai thông tin tài khoản!',
+
+  'login.form.alternative.no.account': 'BẠN CHƯA CÓ TÀI KHOẢN?!',
+  'login.alternative.register': 'ĐĂNG KÝ NHANH',
 };
