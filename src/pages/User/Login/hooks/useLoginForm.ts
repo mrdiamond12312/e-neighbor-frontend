@@ -1,12 +1,10 @@
 import { LOGIN_FORM_KEY } from '@/const/login-form';
 import { PATH_ROOT } from '@/const/path';
 import useLoginResolver from '@/pages/User/Login/hooks/useLoginResolver';
-import { useSeviceLogin } from '@/services/auth/services';
-import { useIntl, useModel } from '@umijs/max';
+import { useServiceLogin } from '@/services/auth/services';
+import { useIntl } from '@umijs/max';
 import { notification } from 'antd';
 import { useForm } from 'react-hook-form';
-
-import { flushSync } from 'react-dom';
 
 export type TLoginFormFields = {
   [LOGIN_FORM_KEY.userName]: string;
@@ -16,7 +14,6 @@ export type TLoginFormFields = {
 export const useLoginForm = () => {
   const { formatMessage } = useIntl();
   const { FormSchema } = useLoginResolver();
-  const { initialState, setInitialState } = useModel('@@initialState');
   const {
     control,
     formState: { errors, dirtyFields, isValid, isDirty },
@@ -29,19 +26,7 @@ export const useLoginForm = () => {
     mode: 'onTouched',
   });
 
-  const { mutate, isLoading } = useSeviceLogin();
-
-  const fetchUserInfo = async () => {
-    const userInfo = await initialState?.fetchAuthInfo?.();
-    if (userInfo) {
-      flushSync(() => {
-        setInitialState((intState) => ({
-          ...intState,
-          currentUser: userInfo,
-        }));
-      });
-    }
-  };
+  const { mutate, isLoading } = useServiceLogin();
 
   const onSubmit = (body: TLoginFormFields) => {
     mutate(body, {
@@ -54,11 +39,12 @@ export const useLoginForm = () => {
 
           notification.success({
             message: defaultLoginSuccessMessage,
+            duration: 0.5,
+            onClose: () => {
+              const urlParams = new URL(window.location.href).searchParams;
+              window.location.href = urlParams.get('redirect') ?? PATH_ROOT;
+            },
           });
-
-          await fetchUserInfo();
-          const urlParams = new URL(window.location.href).searchParams;
-          window.location.href = urlParams.get('redirect') || PATH_ROOT;
         }
       },
 

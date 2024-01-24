@@ -1,3 +1,4 @@
+import Button from '@/components/Button';
 import InputText from '@/components/Input';
 import HiddenInput from '@/components/Input/HiddenInput';
 import { REGISTER_FORM_KEY } from '@/const/register-form';
@@ -6,7 +7,11 @@ import { Form } from 'antd';
 const { Item } = Form;
 import React from 'react';
 
-const RegisterForm: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
+export type TRegisterForm = Partial<TPropsFormInput> & {
+  isLoading: boolean;
+};
+
+const RegisterForm: React.FC<TRegisterForm> = ({ control, errors, onSubmit, isLoading }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
 
@@ -29,7 +34,7 @@ const RegisterForm: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) =
       </Item>
       <Item
         label={formatMessage({
-          id: 'register.form.fullname.label',
+          id: 'register.form.fullName.label',
           defaultMessage: 'Fullname',
         })}
         required
@@ -91,6 +96,20 @@ const RegisterForm: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) =
           size="large"
         />
       </Item>
+      <Button
+        onClick={onSubmit}
+        htmlType="submit"
+        onSubmit={onSubmit}
+        btnSize="large"
+        type="primary"
+        className="w-full"
+        loading={isLoading}
+      >
+        {formatMessage({
+          id: 'register.form.submit',
+          defaultMessage: 'Sign Up',
+        })}
+      </Button>
     </Form>
   );
 };

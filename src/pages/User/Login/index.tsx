@@ -31,19 +31,13 @@ const Login: React.FC = () => {
             </p>
           </Col>
           <Col span={24} lg={12} className="flex flex-col justify-center items-center !px-12">
-            <LoginForm control={control} error={errors} />
-            <Button
-              onClick={handleSubmit(onSubmit)}
-              btnSize="large"
-              type="primary"
-              className="w-full"
-              loading={isLoading}
-            >
-              {formatMessage({
-                id: 'login.form.submit',
-                defaultMessage: 'Sign In',
-              })}
-            </Button>
+            <LoginForm
+              control={control}
+              error={errors}
+              onSubmit={handleSubmit(onSubmit)}
+              isLoading={isLoading}
+            />
+
             <Divider>
               {formatMessage({
                 id: 'login.form.alternative.header',

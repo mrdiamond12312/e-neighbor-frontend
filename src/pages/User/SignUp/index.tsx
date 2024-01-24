@@ -1,4 +1,3 @@
-import Button from '@/components/Button';
 import RegisterForm from '@/pages/User/SignUp/component/RegisterForm';
 import { useRegisterForm } from '@/pages/User/SignUp/hooks/useRegisterForm';
 
@@ -16,13 +15,13 @@ const SignUp: React.FC = () => {
       <article className="h-full bg-neutral-1 py-12 rounded-lg">
         <Row gutter={12}>
           <Col span={24} lg={12} className="flex flex-col justify-center items-center ">
-            <h1 className="text-heading-1 font-sans">
+            <h1 className="text-heading-1 font-sans px-4">
               {formatMessage({
                 id: 'register.header',
                 defaultMessage: 'Sign Up',
               })}
             </h1>
-            <p className="text-heading-5 font-sans">
+            <p className="text-heading-5 font-sans px-4 text-center whitespace-pre">
               {formatMessage({
                 id: 'register.message',
                 defaultMessage: "Newcomer? Let's Sign up!",
@@ -30,19 +29,12 @@ const SignUp: React.FC = () => {
             </p>
           </Col>
           <Col span={24} lg={12} className="flex flex-col justify-center items-center !px-12">
-            <RegisterForm control={control} error={errors} />
-            <Button
-              onClick={handleSubmit(onSubmit)}
-              btnSize="large"
-              type="primary"
-              className="w-full"
-              loading={isLoading}
-            >
-              {formatMessage({
-                id: 'register.form.submit',
-                defaultMessage: 'Sign Up',
-              })}
-            </Button>
+            <RegisterForm
+              control={control}
+              error={errors}
+              onSubmit={handleSubmit(onSubmit)}
+              isLoading={isLoading}
+            />
           </Col>
         </Row>
       </article>

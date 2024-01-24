@@ -5,7 +5,7 @@ declare namespace API {
     LESSOR = 'lessor',
   }
 
-  type TLoginResponse = {
+  type TAuthResponse = {
     accessToken: string;
   };
 

@@ -53,6 +53,7 @@ declare type TPropsFormInput = {
   disabled?: boolean;
   rows?: number;
   form?: FormInstance<any>;
+  onSubmit?: any;
 };
 
 declare type TRadio = {

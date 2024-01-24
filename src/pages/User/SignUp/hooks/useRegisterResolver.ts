@@ -36,7 +36,7 @@ const useRegisterResolver = () => {
       )
       .required(
         formatMessage({
-          id: 'register.form.password.null',
+          id: 'register.form.passwordConfirm.null',
           defaultMessage: 'Please confirm your password',
         }),
       ),
@@ -44,7 +44,7 @@ const useRegisterResolver = () => {
       .string()
       .email(
         formatMessage({
-          id: 'register.form.email.valid',
+          id: 'register.form.email.invalid',
           defaultMessage: 'Not a valid email!',
         }),
       )
