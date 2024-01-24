@@ -37,7 +37,7 @@
         }
 
         .sprite {
-          background: url(/sprite/sprite.svgz);
+          background: url(/sprite/loading.webp);
           background-size: 100% 3000%;
           background-position: 0 0;
           width: 21.2rem;
