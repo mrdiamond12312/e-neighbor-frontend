@@ -6,14 +6,14 @@ on:
 
 jobs:
   building:
-    runs-on: ubunntu-22.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
+          cache: "npm"
 
       - name: Installing dependencies
         run: |
@@ -43,8 +43,8 @@ jobs:
       - name: Download built workspace
         uses: actions/download-artifact@v3
         with:
-          name: .next
-          path: .next
+          name: dist
+          path: dist
 
       - name: Run Storybook Test Suites
         run: |
