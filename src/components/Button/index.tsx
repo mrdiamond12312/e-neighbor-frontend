@@ -3,12 +3,12 @@ import { Button as AntdButton } from 'antd';
 import classNames from 'classnames';
 import { ButtonProps } from 'antd/lib';
 
-type TButtonProps = ButtonProps & {
+export interface IButtonProps extends ButtonProps {
   children: ReactNode;
   btnSize?: 'medium' | 'large';
-};
+}
 
-const Button: React.FC<TButtonProps> = ({ children, btnSize, className, type, ...restProps }) => {
+const Button: React.FC<IButtonProps> = ({ children, btnSize, className, type, ...restProps }) => {
   const classNamePropose = classNames(
     'btn-medium',
     { 'btn-medium': btnSize === 'medium' },
