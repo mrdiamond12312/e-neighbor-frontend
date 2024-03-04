@@ -40,12 +40,18 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - name: Download built workspace
-        uses: actions/download-artifact@v3
-        with:
-          name: dist
-          path: dist
+      - name: Install dependencies
+        run: npm install
 
-      - name: Run Storybook Test Suites
+      - name: Install Playwright
+        run: npx playwright install --with-deps
+
+      - name: Build Storybook
+        run: yarn build-storybook --quiet
+
+      - name: Serve Storybook and run tests
         run: |
-          npm run test-storybook
+          npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+            "npx http-server storybook-static --port 6006 --silent" \
+            "npx wait-on tcp:6006 && npm test-storybook"
+
