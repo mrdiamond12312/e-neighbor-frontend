@@ -84,8 +84,7 @@ npm run storybook
 
 ## Run Testcase
 
-This process will run all testcase which is embedded in each stories automatically (for CI purposes) in headless mode
-Notice: You may need to install Chrominium through its given command during the process
+This process will run all testcase which is embedded in each stories automatically (for CI purposes) in headless mode Notice: You may need to install Chrominium through its given command during the process
 
 ```bash
 npm run test-storybook
