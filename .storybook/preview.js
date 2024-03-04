@@ -3,7 +3,6 @@ import { Preview } from '@storybook/your-framework';
 import { withConsole } from '@storybook/addon-console';
 
 import '@storybook/addon-console';
-import '!style-loader!css-loader!postcss-loader!tailwindcss/tailwind.css';
 import '../src/global.less';
 import '../tailwind.css';
 
