@@ -1,10 +1,10 @@
 # E-Neighbor
 
-This project is a webapp, helps with seekers and holders, who finds themselves in need of renting or leasing their properties, which is furnitures and vehicles.
+A Web App connecting renters and owners of furniture and vehicles.
 
 # Ant Design Pro
 
-This project Front End WebApp is built on Ant Design Pro - UmiJS Framework
+This project Front End Web App is built based on Ant Design Pro - UmiJS Framework.
 
 # How to Run
 
