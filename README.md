@@ -69,3 +69,24 @@ npm test
 ## More
 
 You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).
+
+# Storybook
+
+This project is using Storybook for component testing and unit testing
+
+## Run Storybook
+
+This process helps with linting code through Storybook EsLint, also provides developers with an interacting UI to showcase the component / widgets
+
+```bash
+npm run storybook
+```
+
+## Run Testcase
+
+This process will run all testcase which is embedded in each stories automatically (for CI purposes) in headless mode
+Notice: You may need to install Chrominium through its given command during the process
+
+```bash
+npm run test-storybook
+```
