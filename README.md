@@ -1,6 +1,12 @@
+# E-Neighbor
+
+This project is a webapp, helps with seekers and holders, who finds themselves in need of renting or leasing their properties, which is furnitures and vehicles.
+
 # Ant Design Pro
 
-This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+This project Front End WebApp is built on Ant Design Pro - UmiJS Framework
+
+# How to Run
 
 ## Environment Prepare
 
@@ -24,8 +30,16 @@ Scripts provided in `package.json`. It's safe to modify or add additional script
 
 ### Start project
 
+Running with Mock APIs
+
 ```bash
-npm start
+npm run start
+```
+
+Running while turn off the Mock APIs
+
+```bash
+npm run dev
 ```
 
 ### Build project
