@@ -101,6 +101,7 @@
     "@umijs/lint": "^4.0.83",
     "@umijs/max": "^4.0.83",
     "autoprefixer": "^10.4.16",
+    "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.50.0",
     "eslint-plugin-import": "^2.29.0",
