@@ -327,7 +327,6 @@
     @apply rounded-md font-sans;
 
     .ant-menu-submenu {
-
       @apply pb-1 bg-white;
 
       .ant-menu-sub.ant-menu-inline {
@@ -351,24 +350,23 @@
         }
         &:before {
           @apply animate-flicker;
-          border: solid theme(colors.teal-4);
-          border-width: 0 1px 1px 0;
-          display: inline-block;
-          padding: 4px;
-          content: '';
-          transform: rotate(-45deg) translateX(0);
 
           position: absolute;
           left: 12px;
+          display: inline-block;
+          padding: 4px;
+          border: solid theme(colors.teal-4);
+          border-width: 0 1px 1px 0;
+          transform: rotate(-45deg) translateX(0);
           opacity: 0;
           transition: all 0.5s ease-out;
+          content: '';
         }
         @apply my-0 transition-all;
       }
     }
 
     .ant-menu-submenu-selected {
-
       .ant-menu-submenu-title {
         @apply text-teal-6 font-bold;
       }
@@ -403,16 +401,48 @@
     .ant-card-body {
       @apply pt-0;
     }
-
   }
 
   /* RATE */
   .custom-star {
     .ant-rate-star {
-
     }
     .ant-rate-star-full {
       @apply animate-pulse;
+    }
+  }
+
+  /* INPUT */
+
+  .ant-input-affix-wrapper-lg {
+    @apply rounded-[4px] py-0 gap-2;
+
+    &:focus-within {
+      @apply border-teal-5;
+    }
+
+    &:focus {
+      @apply border-teal-5;
+    }
+
+    &:hover {
+      @apply border-teal-3;
+    }
+
+    .ant-input {
+      @apply rounded-[4px] h-12 !bg-transparent align-baseline;
+
+      &:focus {
+        @apply border-teal-5;
+      }
+
+      &:focus-within {
+        @apply border-teal-5;
+      }
+
+      &:hover {
+        @apply border-teal-3;
+      }
     }
   }
 }

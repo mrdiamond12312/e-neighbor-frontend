@@ -1,4 +1,4 @@
-export enum PRICING_FILTER {
+export enum STORE_FILTER {
   min = 'priceMin',
   max = 'priceMax',
 }
