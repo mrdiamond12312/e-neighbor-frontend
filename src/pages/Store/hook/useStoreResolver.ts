@@ -1,12 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useIntl } from '@umijs/max';
-import { PRICING_FILTER } from '@/const/store.filter';
+import { STORE_FILTER } from '@/const/store.filter';
 
 const usePricingResolver = () => {
   const { formatMessage } = useIntl();
   const LoginValidationSchema = yup.object().shape({
-    [PRICING_FILTER.min]: yup
+    [STORE_FILTER.min]: yup
       .number()
       .typeError(
         formatMessage({ id: 'common.type.number.error', defaultMessage: 'Must be a number!' }),
@@ -20,7 +20,7 @@ const usePricingResolver = () => {
       )
       .nullable()
       .transform((value, original) => (original === '' ? null : value)),
-    [PRICING_FILTER.max]: yup
+    [STORE_FILTER.max]: yup
       .number()
       .typeError(
         formatMessage({ id: 'common.type.number.error', defaultMessage: 'Must be a number!' }),
@@ -33,7 +33,7 @@ const usePricingResolver = () => {
         }),
       )
       .moreThan(
-        yup.ref(PRICING_FILTER.min),
+        yup.ref(STORE_FILTER.min),
         formatMessage({
           id: 'store.pricing.max.condition.thanMin',
           defaultMessage: 'Max Price must larger than Min',

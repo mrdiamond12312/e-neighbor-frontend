@@ -1,3 +1,4 @@
+import FadeIn from '@/components/AnimationKit/FadeIn';
 import { useIntl } from '@umijs/max';
 import { Menu } from 'antd';
 import React from 'react';
@@ -41,15 +42,17 @@ const Locations: React.FC<TLocationsProps> = ({ setLocations }) => {
     },
   ];
   return (
-    <Menu
-      onSelect={({ selectedKeys }) => setLocations(selectedKeys)}
-      disabledOverflow={true}
-      openKeys={['location']}
-      className="category-menu"
-      mode="inline"
-      multiple
-      items={items}
-    />
+    <FadeIn direction="left" className="w-full" index={2}>
+      <Menu
+        onSelect={({ selectedKeys }) => setLocations(selectedKeys)}
+        disabledOverflow={true}
+        openKeys={['location']}
+        className="category-menu"
+        mode="inline"
+        multiple
+        items={items}
+      />
+    </FadeIn>
   );
 };
 

@@ -14,7 +14,7 @@ const loggingClick = () => {
 // Storybook Declarations
 // General Information of Components (which components, name, and props)
 const meta: Meta<typeof Button> = {
-  title: 'Button',
+  title: 'Component/Button',
   component: Button,
   parameters: {
     layout: 'centered',

@@ -1,14 +1,14 @@
-import { PRICING_FILTER } from '@/const/store.filter';
-import usePricingResolver from '@/pages/Store/hook/usePricingResolver';
+import { STORE_FILTER } from '@/const/store.filter';
+import usePricingResolver from '@/pages/Store/hook/useStoreResolver';
 
 import { useForm } from 'react-hook-form';
 
-export type TPricingFields = {
-  [PRICING_FILTER.min]?: number | null;
-  [PRICING_FILTER.max]?: number | null;
+export type TStoreFields = {
+  [STORE_FILTER.min]?: number | null;
+  [STORE_FILTER.max]?: number | null;
 };
 
-export const usePricingFilter = () => {
+export const useStoreFilter = () => {
   const { FormSchema } = usePricingResolver();
   const {
     control,
@@ -16,7 +16,7 @@ export const usePricingFilter = () => {
     getValues,
     trigger,
     handleSubmit,
-  } = useForm<TPricingFields>({
+  } = useForm<TStoreFields>({
     defaultValues: {},
     resolver: FormSchema ?? null,
     mode: 'onTouched',

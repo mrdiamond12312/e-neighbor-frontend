@@ -1,12 +1,14 @@
+import FadeIn from '@/components/AnimationKit/FadeIn';
 import { useIntl } from '@umijs/max';
 import { Menu } from 'antd';
 import React from 'react';
 
 export type TCategoriesProps = {
-  setCategory: React.Dispatch<React.SetStateAction<string[]>>;
+  setCategory: React.Dispatch<React.SetStateAction<string>>;
+  selectedKeys: string[];
 };
 
-const Categories: React.FC<TCategoriesProps> = ({ setCategory }) => {
+const Categories: React.FC<TCategoriesProps> = ({ setCategory, selectedKeys }) => {
   const { formatMessage } = useIntl();
   const items = [
     {
@@ -18,33 +20,35 @@ const Categories: React.FC<TCategoriesProps> = ({ setCategory }) => {
       children: [
         {
           label: formatMessage({
-            id: 'store.category.transportation',
-            defaultMessage: 'Transportations',
+            id: 'store.category.vehicles',
+            defaultMessage: 'Vehicles',
           }),
-          key: 'category-transportation',
+          key: 'vehicles',
         },
         {
           label: formatMessage({
-            id: 'store.category.utilities',
-            defaultMessage: 'Household Utilities',
+            id: 'store.category.furniture',
+            defaultMessage: 'Furnitures',
           }),
-          key: 'category-utilities',
+          key: 'furnitures',
         },
       ],
     },
   ];
   return (
-    <Menu
-      onSelect={({ selectedKeys }) => setCategory(selectedKeys)}
-      disabledOverflow={true}
-      openKeys={['category']}
-      className="category-menu"
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['sub1']}
-      mode="inline"
-      multiple
-      items={items}
-    />
+    <FadeIn direction="left" className="w-full" index={1}>
+      <Menu
+        onSelect={({ selectedKeys }) => setCategory(selectedKeys.join(''))}
+        disabledOverflow={true}
+        openKeys={['category']}
+        className="category-menu"
+        defaultSelectedKeys={['1']}
+        defaultOpenKeys={['sub1']}
+        mode="inline"
+        items={items}
+        selectedKeys={selectedKeys}
+      />
+    </FadeIn>
   );
 };
 
