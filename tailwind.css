@@ -448,6 +448,7 @@
 
   /* Property Care (For Store and Property) */
   .property-card {
+    transition: all 0.5s ease-in-out;
     &:hover {
       .card-information-container {
         @apply h-full rounded-[28px] bg-teal-1;
@@ -491,7 +492,7 @@
               @apply block;
             }
 
-            .card-tag  {
+            .card-tag {
               @apply text-neutral-1;
             }
 

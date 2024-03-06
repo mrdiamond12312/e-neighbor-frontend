@@ -8,7 +8,7 @@ module.exports = {
         serif: ['ui-serif'],
       },
       backgroundImage: {
-        favicon: "url('/public/favicon-with-name.png')",
+        favicon: "url('https://ik.imagekit.io/AliaV14/favicon-with-name.png')",
       },
       keyframes: {
         fade: {
