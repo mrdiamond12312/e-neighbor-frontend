@@ -15,7 +15,7 @@ const Settings: ProLayoutProps & {
   colorWeak: false,
   title: 'E-Neighbor',
   pwa: true,
-  logo: '/favicon.ico',
+  logo: '/favicon.png',
   iconfontUrl: '',
   layout: 'top',
   token: {

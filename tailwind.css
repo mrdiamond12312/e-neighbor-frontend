@@ -445,4 +445,63 @@
       }
     }
   }
+
+  /* Property Care (For Store and Property) */
+  .property-card {
+    transition: all 0.5s ease-in-out;
+    &:hover {
+      .card-information-container {
+        @apply h-full rounded-[28px] bg-teal-1;
+
+        transform: rotate(-11deg) translateX(-24px) translateY(56px) scale(1.5);
+        transition: all 0.5s ease-out;
+
+        .card-information {
+          height: calc(100% - 200px);
+          transform: rotate(11deg) scale(calc(2 / 3)) translateX(42px) translateY(-64px);
+
+          transition: all 0.5s ease-out;
+          .card-title-section {
+            transition: all 0.5s ease-out;
+            .avatar {
+              @apply block opacity-100;
+              transform: translateY(-50%);
+              transition: all 0.5s ease-out;
+            }
+            .title {
+              @apply bg-teal-1;
+              width: calc(100% - 76px);
+              transition: all 0.5s ease-out;
+
+              h2 {
+                @apply text-neutral-1;
+              }
+
+              button {
+                @apply block opacity-100;
+
+                transition: all 0.25s ease-out;
+              }
+            }
+          }
+
+          .card-price {
+            transition: all 0.5 ease-out;
+
+            .card-rating {
+              @apply block;
+            }
+
+            .card-tag {
+              @apply text-neutral-1;
+            }
+
+            .card-price {
+              @apply text-neutral-1;
+            }
+          }
+        }
+      }
+    }
+  }
 }

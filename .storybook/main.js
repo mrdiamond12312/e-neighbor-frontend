@@ -1,8 +1,11 @@
 /** @type { import('@storybook/react-webpack5').StorybookConfig } */
 const path = require('path');
 
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+
 const config = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  staticDirs: ['../public'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -46,17 +49,28 @@ const config = {
   docs: {
     autodocs: 'tag',
   },
+  // webpackFinal: async (config) => {
+  //   config.module.rules.push({
+  //     test: /tailwind\.min\.css/,
+  //     loader: 'postcss',
+  //     options: {
+  //       postcssOptions: {
+  //         ident: 'postcss',
+  //         plugins: [require('tailwindcss'), require('autoprefixer')],
+  //       },
+  //     },
+  //   });
+  //   return config;
+  // },
   webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /tailwind\.min\.css/,
-      loader: 'postcss',
-      options: {
-        postcssOptions: {
-          ident: 'postcss',
-          plugins: [require('tailwindcss'), require('autoprefixer')],
-        },
-      },
-    });
+    if (config.resolve) {
+      config.resolve.plugins = [
+        ...(config.resolve.plugins || []),
+        new TsconfigPathsPlugin({
+          extensions: config.resolve.extensions,
+        }),
+      ];
+    }
     return config;
   },
 };
