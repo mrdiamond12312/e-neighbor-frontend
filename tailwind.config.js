@@ -7,6 +7,9 @@ module.exports = {
         sans: ['Montserrat', 'ui-sans-serif'],
         serif: ['ui-serif'],
       },
+      backgroundImage: {
+        favicon: "url('/public/favicon-with-name.png')",
+      },
       keyframes: {
         fade: {
           '0%': {
