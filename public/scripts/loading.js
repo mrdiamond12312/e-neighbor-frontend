@@ -33,7 +33,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 26px;
+          padding: 32px;
         }
 
         .sprite {
@@ -43,7 +43,9 @@
           width: 21.2rem;
           height: 6rem;
           animation: frameAnimation .5s steps(30) infinite forwards;
-
+          position: absolute;
+          bottom: 96px;
+          right: 16px;
         }
         @keyframes frameAnimation {
           0% { background-position: 0 0; }
@@ -57,7 +59,10 @@
         align-items: center;
         justify-content: center;
         height: 100%;
-        min-height: 362px;
+        width: 100%;
+        position: relative;
+        max-width: 80rem;
+        margin: auto;
       ">
         <div class="page-loading-warp">
           <div class="ant-spin ant-spin-lg ant-spin-spinning">

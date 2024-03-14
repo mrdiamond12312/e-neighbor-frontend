@@ -18,8 +18,8 @@ const FadeIn: React.FC<IFadeInProps> = ({ children, direction, index, layoutId, 
       custom={{ index, direction }}
       animate="visible"
       initial="hidden"
-      layout
-      layoutId={layoutId}
+      exit="hidden"
+      key={layoutId}
       variants={FADE_IN_VARIANT}
       className={rootClassName}
     >

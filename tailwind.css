@@ -30,6 +30,17 @@
 }
 
 @layer components {
+  /* Sprite Animatin */
+  .sprite {
+    @apply animate-spriteAnimation;
+    background: url('https://ik.imagekit.io/AliaV14/loading.webp?updatedAt=1710413581144');
+    background-size: 100% 3000%;
+    background-position: 0 0;
+    width: 21.2rem;
+    height: 6rem;
+  }
+
+  /* Layout Css*/
   .ant-pro-top-nav-header {
     @apply bg-teal-4;
   }
