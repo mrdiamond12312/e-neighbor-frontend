@@ -28,7 +28,7 @@ export default [
   },
   {
     path: '/lessor/*',
-    wrappers: ['@/wrappers/LessorAuth'],
+    wrappers: ['@/wrappers/LessorAuth', '@/layouts/Lessor'],
     routes: [
       {
         name: 'on-boarding',
