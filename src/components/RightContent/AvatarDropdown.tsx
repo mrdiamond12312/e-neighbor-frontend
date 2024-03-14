@@ -1,14 +1,13 @@
-import { outLogin } from '@/services/ant-design-pro/api';
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { useEmotionCss } from '@ant-design/use-emotion-css';
-import { history, useModel } from '@umijs/max';
+import { useModel } from '@umijs/max';
 import { Spin } from 'antd';
-import { stringify } from 'querystring';
 import type { MenuInfo } from 'rc-menu/lib/interface';
 import React, { useCallback } from 'react';
 import { flushSync } from 'react-dom';
 import HeaderDropdown from '../HeaderDropdown';
 import Login from '@/components/RightContent/Login';
+import { handleLogout } from '@/services/auth/services';
 
 export type GlobalHeaderRightProps = {
   menu?: boolean;
@@ -22,25 +21,6 @@ export const AvatarName: React.FC = () => {
 };
 
 export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, children }) => {
-  /**
-   * 退出登录，并且将当前的 url 保存
-   */
-  const loginOut = async () => {
-    await outLogin();
-    const { search, pathname } = window.location;
-    const urlParams = new URL(window.location.href).searchParams;
-    /** 此方法会跳转到 redirect 参数所在的位置 */
-    const redirect = urlParams.get('redirect');
-    // Note: There may be security issues, please note
-    if (window.location.pathname !== '/user/login' && !redirect) {
-      history.replace({
-        pathname: '/user/login',
-        search: stringify({
-          redirect: pathname + search,
-        }),
-      });
-    }
-  };
   const actionClassName = useEmotionCss(({ token }) => {
     return {
       display: 'flex',
@@ -60,14 +40,16 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
   const onMenuClick = useCallback(
     (event: MenuInfo) => {
       const { key } = event;
-      if (key === 'logout') {
-        flushSync(() => {
-          setInitialState((s) => ({ ...s, currentUser: undefined }));
-        });
-        loginOut();
-        return;
+
+      switch (key) {
+        case 'logout': {
+          flushSync(() => {
+            setInitialState((s) => ({ ...s, currentUser: undefined }));
+          });
+          handleLogout();
+          return;
+        }
       }
-      history.push(`/account/${key}`);
     },
     [setInitialState],
   );
