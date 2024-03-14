@@ -1,6 +1,6 @@
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { useEmotionCss } from '@ant-design/use-emotion-css';
-import { useModel } from '@umijs/max';
+import { useIntl, useModel } from '@umijs/max';
 import { Spin } from 'antd';
 import type { MenuInfo } from 'rc-menu/lib/interface';
 import React, { useCallback } from 'react';
@@ -36,6 +36,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
       },
     };
   });
+  const { formatMessage } = useIntl();
   const { initialState, setInitialState } = useModel('@@initialState');
   const onMenuClick = useCallback(
     (event: MenuInfo) => {
@@ -82,7 +83,10 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
           {
             key: 'center',
             icon: <UserOutlined />,
-            label: '个人中心',
+            label: formatMessage({
+              id: 'menu.avatar.dropdown.userInfo',
+              defaultMessage: 'User Information',
+            }),
           },
           {
             key: 'settings',
@@ -97,7 +101,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
     {
       key: 'logout',
       icon: <LogoutOutlined />,
-      label: '退出登录',
+      label: formatMessage({ id: 'menu.avatar.dropdown.logout', defaultMessage: 'Log out' }),
     },
   ];
 
