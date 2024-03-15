@@ -45,7 +45,6 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
       src: initialState?.currentUser?.avatar,
       title: <AvatarName />,
       render: (_, avatarChildren) => {
-        console.log(avatarChildren);
         return <AvatarDropdown>{avatarChildren ?? ''}</AvatarDropdown>;
       },
     },
