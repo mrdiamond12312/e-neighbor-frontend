@@ -1,7 +1,8 @@
-import Button from '@/components/Button';
 import { history } from '@umijs/max';
 import { Result } from 'antd';
 import React from 'react';
+
+import Button from '@/components/Button';
 
 const NoFoundPage: React.FC = () => (
   <Result

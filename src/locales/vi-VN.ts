@@ -1,6 +1,6 @@
-import menu from '@/locales/vi-VN/menu';
 import aboutUs from '@/locales/vi-VN/aboutUs';
 import login from '@/locales/vi-VN/login';
+import menu from '@/locales/vi-VN/menu';
 import register from '@/locales/vi-VN/register';
 import store from '@/locales/vi-VN/store';
 

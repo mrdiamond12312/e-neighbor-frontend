@@ -1,12 +1,13 @@
+import { useIntl } from '@umijs/max';
+import { Form } from 'antd';
+import React from 'react';
+
 import Button from '@/components/Button';
 import InputText from '@/components/Input';
 import HiddenInput from '@/components/Input/HiddenInput';
 import { REGISTER_FORM_KEY } from '@/const/register-form';
-import { useIntl } from '@umijs/max';
-import { Form } from 'antd';
-const { Item } = Form;
-import React from 'react';
 
+const { Item } = Form;
 export type TRegisterForm = Partial<TPropsFormInput> & {
   isLoading: boolean;
 };

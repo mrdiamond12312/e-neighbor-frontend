@@ -1,9 +1,10 @@
-import FadeIn from '@/components/AnimationKit/FadeIn';
-import { SearchBar } from '@/components/SearchBar';
 import { useIntl } from '@umijs/max';
 import { Image } from 'antd/lib';
 import classNames from 'classnames';
 import React from 'react';
+
+import FadeIn from '@/components/AnimationKit/FadeIn';
+import { SearchBar } from '@/components/SearchBar';
 
 export type TCoverSearchBoxProps = {
   onPressEnter: React.KeyboardEventHandler<HTMLInputElement>;

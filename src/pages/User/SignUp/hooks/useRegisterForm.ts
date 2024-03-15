@@ -1,11 +1,11 @@
-import { PATH_ROOT } from '@/const/path';
-import { useServiceRegister } from '@/services/auth/services';
 import { useIntl } from '@umijs/max';
 import { notification } from 'antd';
 import { useForm } from 'react-hook-form';
 
+import { PATH_ROOT } from '@/const/path';
 import { REGISTER_FORM_KEY } from '@/const/register-form';
 import useRegisterResolver from '@/pages/User/SignUp/hooks/useRegisterResolver';
+import { useServiceRegister } from '@/services/auth/services';
 
 export type TRegisterFormFields = {
   [REGISTER_FORM_KEY.userName]: string;

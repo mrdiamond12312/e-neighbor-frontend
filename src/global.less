@@ -13,6 +13,7 @@ body,
   font-family: 'Montserrat', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
     'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji' !important;
+  span,
   p {
     margin: 0;
     word-wrap: break-word;
@@ -175,8 +176,6 @@ body,
 .ant-dropdown-trigger {
   @apply relative h-full;
   &:hover {
-    @apply text-neutral-1 bg-transparent;
-
     &:after {
       transform: skew(45deg);
       opacity: 1;

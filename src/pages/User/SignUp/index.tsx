@@ -1,10 +1,10 @@
-import RegisterForm from '@/pages/User/SignUp/component/RegisterForm';
-import { useRegisterForm } from '@/pages/User/SignUp/hooks/useRegisterForm';
-
 import { PageContainer } from '@ant-design/pro-components';
 import { useIntl } from '@umijs/max';
 import { Col, Row } from 'antd';
 import React from 'react';
+
+import RegisterForm from '@/pages/User/SignUp/component/RegisterForm';
+import { useRegisterForm } from '@/pages/User/SignUp/hooks/useRegisterForm';
 
 const SignUp: React.FC = () => {
   const { formatMessage } = useIntl();

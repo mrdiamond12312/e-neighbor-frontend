@@ -1,6 +1,7 @@
 import { history } from '@umijs/max';
 import type { ResponseError } from 'umi-request';
 import { extend } from 'umi-request';
+
 import * as Path from '@/const/path';
 
 class HttpError extends Error {

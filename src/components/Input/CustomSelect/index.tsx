@@ -1,7 +1,8 @@
-import ValidateError from '@/components/Input/ValidateError';
 import { Select } from 'antd';
 import React, { Fragment } from 'react';
 import { Controller } from 'react-hook-form';
+
+import ValidateError from '@/components/Input/ValidateError';
 
 const { Option } = Select;
 

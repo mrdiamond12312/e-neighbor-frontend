@@ -1,9 +1,8 @@
-import { SearchBar } from '.';
+import { expect, jest } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { within, userEvent } from '@storybook/testing-library';
 
-import { expect, jest } from '@storybook/jest';
+import { SearchBar } from '.';
 
 // Interactive Function, used for testing
 const searchBoxHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {

@@ -1,12 +1,13 @@
-import Button from '@/components/Button';
-import { PATH_REGISTER } from '@/const/path';
-import LoginForm from '@/pages/User/Login/component/LoginForm';
-import { useLoginForm } from '@/pages/User/Login/hooks/useLoginForm';
 import { GoogleOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
 import { Link, useIntl } from '@umijs/max';
 import { Col, Divider, Row } from 'antd';
 import React from 'react';
+
+import Button from '@/components/Button';
+import { PATH_REGISTER } from '@/const/path';
+import LoginForm from '@/pages/User/Login/component/LoginForm';
+import { useLoginForm } from '@/pages/User/Login/hooks/useLoginForm';
 
 const Login: React.FC = () => {
   const { formatMessage } = useIntl();
