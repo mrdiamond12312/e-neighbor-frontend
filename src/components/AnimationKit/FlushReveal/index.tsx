@@ -1,6 +1,7 @@
-import React from 'react';
-import { AnimationProps, motion } from 'framer-motion';
 import classNames from 'classnames';
+import { AnimationProps, motion } from 'framer-motion';
+import React from 'react';
+
 import { FLUSH_CONTAINER_VARIANT, FLUSH_POINTER_VARIANT } from './helpers/variants';
 
 export interface IFlushRevealProps extends AnimationProps {

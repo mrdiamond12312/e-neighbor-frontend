@@ -1,5 +1,6 @@
-import { PropertyCard } from '.';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import { PropertyCard } from '.';
 
 // import { within, userEvent } from '@storybook/testing-library';
 

@@ -1,7 +1,8 @@
-import FadeIn from '@/components/AnimationKit/FadeIn';
 import { useIntl } from '@umijs/max';
 import { Menu } from 'antd';
 import React from 'react';
+
+import FadeIn from '@/components/AnimationKit/FadeIn';
 
 export type TCategoriesProps = {
   setCategory: React.Dispatch<React.SetStateAction<string>>;

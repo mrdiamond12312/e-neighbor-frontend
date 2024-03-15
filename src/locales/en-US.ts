@@ -1,6 +1,6 @@
-import menu from '@/locales/en-US/menu';
 import aboutUs from '@/locales/en-US/aboutUs';
 import login from '@/locales/en-US/login';
+import menu from '@/locales/en-US/menu';
 import register from '@/locales/en-US/register';
 import store from '@/locales/en-US/store';
 

@@ -1,7 +1,8 @@
-import FadeIn from '@/components/AnimationKit/FadeIn';
 import { PageContainer } from '@ant-design/pro-components';
 import { AnimatePresence } from 'framer-motion';
 import React from 'react';
+
+import FadeIn from '@/components/AnimationKit/FadeIn';
 
 const Loading: React.FC = () => {
   return (

@@ -1,9 +1,8 @@
-import Button from '.';
+import { expect, jest } from '@storybook/jest';
 import type { Meta, StoryObj } from '@storybook/react';
-
 import { within, userEvent } from '@storybook/testing-library';
 
-import { expect, jest } from '@storybook/jest';
+import Button from '.';
 
 // Interactive Function, used for testing
 

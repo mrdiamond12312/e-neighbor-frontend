@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
 import { useIntl } from '@umijs/max';
-import SwipeNavigation from '@/pages/AboutUs/components/SwipeNavigation';
-import FlushReveal from '@/components/AnimationKit/FlushReveal';
+import React, { useState } from 'react';
+
 import FadeIn from '@/components/AnimationKit/FadeIn';
+import FlushReveal from '@/components/AnimationKit/FlushReveal';
+import SwipeNavigation from '@/pages/AboutUs/components/SwipeNavigation';
 
 const TeamMembers: React.FC = () => {
   const { formatMessage } = useIntl();

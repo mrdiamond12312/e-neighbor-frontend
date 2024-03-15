@@ -1,7 +1,7 @@
-import { Input, InputProps } from 'antd/lib';
-import React from 'react';
-import classNames from 'classnames';
 import { SearchOutlined } from '@ant-design/icons';
+import { Input, InputProps } from 'antd/lib';
+import classNames from 'classnames';
+import React from 'react';
 
 // TO DO: extend and add a suggestion search for search box
 // export interface ISearchProps extends InputProps {

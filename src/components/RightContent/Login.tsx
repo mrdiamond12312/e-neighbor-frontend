@@ -1,6 +1,7 @@
-import { PATH_LOGIN } from '@/const/path';
 import { Link, useIntl } from '@umijs/max';
 import React from 'react';
+
+import { PATH_LOGIN } from '@/const/path';
 
 const Login: React.FC = () => {
   const { formatMessage } = useIntl();

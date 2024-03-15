@@ -1,7 +1,7 @@
-import API_ENDPOINTS from '@/services/auth/api-path';
 import { TLoginFormFields } from '@/pages/User/Login/hooks/useLoginForm';
-import request from '@/services/interceptor';
 import { TRegisterFormFields } from '@/pages/User/SignUp/hooks/useRegisterForm';
+import API_ENDPOINTS from '@/services/auth/api-path';
+import request from '@/services/interceptor';
 
 export const login = async (body: TLoginFormFields) => {
   return request<TMetaWrapper<API.TAuthResponse>>(API_ENDPOINTS.LOGIN, {

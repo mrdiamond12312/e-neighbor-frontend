@@ -1,11 +1,13 @@
+import { stringify } from 'querystring';
+
+import { history, useMutation } from '@umijs/max';
+
+import * as Path from '@/const/path';
 import { TLoginFormFields } from '@/pages/User/Login/hooks/useLoginForm';
+import { TRegisterFormFields } from '@/pages/User/SignUp/hooks/useRegisterForm';
+import API_ENDPOINTS from '@/services/auth/api-path';
 import { getCurrentAuthInfo, login, register } from '@/services/auth/api-services';
 import { removeStorageItem, setStorageItem } from '@/utils/local-storage';
-import { history, useMutation } from '@umijs/max';
-import * as Path from '@/const/path';
-import { stringify } from 'querystring';
-import API_ENDPOINTS from '@/services/auth/api-path';
-import { TRegisterFormFields } from '@/pages/User/SignUp/hooks/useRegisterForm';
 
 export const useServiceLogin = () => {
   return useMutation<TMetaWrapper<API.TAuthResponse>, TMeta, TLoginFormFields>(

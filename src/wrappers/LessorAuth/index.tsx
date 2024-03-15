@@ -1,6 +1,7 @@
-import { PATH_LESSOR_ONBOARDING, PATH_LOGIN } from '@/const/path';
 import { Navigate, Outlet, useAccess, useLocation } from '@umijs/max';
 import React from 'react';
+
+import { PATH_LESSOR_ONBOARDING, PATH_LOGIN } from '@/const/path';
 
 const LessorAuth: React.FC = () => {
   const { isGuest, isUser, isLessor } = useAccess();

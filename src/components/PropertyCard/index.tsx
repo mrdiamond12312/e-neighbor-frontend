@@ -1,6 +1,7 @@
-import Button from '@/components/Button';
 import { Rate } from 'antd/lib';
 import React from 'react';
+
+import Button from '@/components/Button';
 
 export interface ICardProps {
   imageSrc: string;
