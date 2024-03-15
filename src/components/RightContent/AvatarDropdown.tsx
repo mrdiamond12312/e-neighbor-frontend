@@ -1,6 +1,6 @@
 import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { useEmotionCss } from '@ant-design/use-emotion-css';
-import { useIntl, useModel } from '@umijs/max';
+import { useIntl, useModel, history, useLocation } from '@umijs/max';
 import { Spin } from 'antd';
 import type { MenuInfo } from 'rc-menu/lib/interface';
 import React, { useCallback } from 'react';
@@ -9,6 +9,7 @@ import { flushSync } from 'react-dom';
 import HeaderDropdown from '../HeaderDropdown';
 
 import Login from '@/components/RightContent/Login';
+import { PATH_LESSOR } from '@/const/path';
 import { handleLogout } from '@/services/auth/services';
 
 export type GlobalHeaderRightProps = {
@@ -40,6 +41,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
   });
   const { formatMessage } = useIntl();
   const { initialState, setInitialState } = useModel('@@initialState');
+  const { pathname } = useLocation();
   const onMenuClick = useCallback(
     (event: MenuInfo) => {
       const { key } = event;
@@ -51,6 +53,12 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
           });
           handleLogout();
           return;
+        }
+
+        case 'lessor': {
+          history.replace({
+            pathname: PATH_LESSOR,
+          });
         }
       }
     },
@@ -83,7 +91,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
     ...(menu
       ? [
           {
-            key: 'center',
+            key: 'personal-information',
             icon: <UserOutlined />,
             label: formatMessage({
               id: 'menu.avatar.dropdown.userInfo',
@@ -94,6 +102,15 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
             key: 'settings',
             icon: <SettingOutlined />,
             label: '个人设置',
+          },
+          {
+            key: 'lessor',
+            icon: <UserOutlined />,
+            label: formatMessage({
+              id: 'menu.avatar.dropdown.lessor.channel',
+              defaultMessage: 'To Lessor Channel',
+            }),
+            disabled: pathname.startsWith(PATH_LESSOR),
           },
           {
             type: 'divider' as const,
