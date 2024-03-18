@@ -12,7 +12,7 @@ const Pricing: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
   return (
-    <FadeIn direction="left" className="w-full" index={4}>
+    <FadeIn direction="left" className="w-full" index={4} keyId='railing-pricing'>
       <Card
         title={formatMessage({
           id: 'store.pricing.title',

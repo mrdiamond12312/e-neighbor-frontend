@@ -51,6 +51,16 @@ export default [
     component: './store',
   },
   {
+    path: '/product/*',
+    routes: [
+      {
+        name: 'detail',
+        path: ':productId/detail/*',
+        component: '@/pages/product/detail',
+      },
+    ],
+  },
+  {
     name: 'nav.AboutUs',
     path: '/about-us',
     component: './about-us',

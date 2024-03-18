@@ -425,7 +425,7 @@
 
   /* INPUT */
 
-  .ant-input-affix-wrapper-lg {
+  .custom-input {
     @apply rounded-[4px] py-0 gap-2;
 
     &:focus-within {
@@ -436,12 +436,12 @@
       @apply border-teal-5;
     }
 
-    &:hover {
+    &:not(.ant-input-affix-wrapper-disabled):hover {
       @apply border-teal-3;
     }
 
-    .ant-input {
-      @apply rounded-[4px] h-12 !bg-transparent align-baseline;
+    >input.ant-input {
+      @apply rounded-[4px] h-12 !bg-transparent text-body-1-medium font-sans text-teal-6;
 
       &:focus {
         @apply border-teal-5;
@@ -457,7 +457,7 @@
     }
   }
 
-  /* Property Care (For Store and Property) */
+  /* Property Card (For Store and Property) */
   .property-card {
     transition: all 0.5s ease-in-out;
     &:hover {

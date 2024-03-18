@@ -37,7 +37,7 @@ const Categories: React.FC<TCategoriesProps> = ({ setCategory, selectedKeys }) =
     },
   ];
   return (
-    <FadeIn direction="left" className="w-full" index={1}>
+    <FadeIn direction="left" className="w-full" index={1} keyId='railing-category'>
       <Menu
         onSelect={({ selectedKeys }) => setCategory(selectedKeys.join(''))}
         disabledOverflow={true}

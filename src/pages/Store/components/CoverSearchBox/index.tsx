@@ -19,12 +19,11 @@ export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({ onPressEnter, c
   });
 
   return (
-    <FadeIn direction="right" className="w-full">
+    <FadeIn direction="right" className="w-full" keyId="store-searchbox">
       <div className="h-96 flex items-center justify-center relative overflow-visible">
         <FadeIn
           direction="right"
-          key={coverImage}
-          layoutId={coverImage}
+          keyId={coverImage}
           className="h-96 overflow-hidden flex items-center justify-center absolute left-0 top-0 w-full"
         >
           <Image
@@ -34,13 +33,17 @@ export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({ onPressEnter, c
           />
         </FadeIn>
         <div className="bg-neutral-1/80 backdrop-blur-sm m-auto p-4 rounded max-w-[70%] flex flex-col items-center justify-center gap-2">
-          <FadeIn direction="right" key={coverImage}>
+          <FadeIn direction="right" keyId={`store.cover.${category}`}>
             <h1 className="m-0 text-heading-1 font-sans text-center">
               {formatMessage({ id: `store.cover.${category}`, defaultMessage: 'Title' })}
             </h1>
           </FadeIn>
 
-          <FadeIn className="w-full max-w-[65%] p-4 flex flex-col gap-4" direction="right">
+          <FadeIn
+            className="w-full max-w-[65%] p-4 flex flex-col gap-4"
+            direction="right"
+            keyId={'store.cover.para'}
+          >
             <span className="text-body-1-regular text-center">
               {formatMessage({
                 id: 'store.cover.para',
