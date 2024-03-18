@@ -1,8 +1,9 @@
 'use client';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import { LOGIN_FORM_KEY } from '@/const/login-form';
 import { useIntl } from '@umijs/max';
+import * as yup from 'yup';
+
+import { LOGIN_FORM_KEY } from '@/const/login-form';
 
 const useLoginResolver = () => {
   const { formatMessage } = useIntl();

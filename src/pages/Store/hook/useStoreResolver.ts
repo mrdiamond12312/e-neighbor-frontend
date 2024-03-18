@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useIntl } from '@umijs/max';
+import * as yup from 'yup';
+
 import { STORE_FILTER } from '@/const/store.filter';
 
 const usePricingResolver = () => {

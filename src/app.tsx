@@ -1,10 +1,13 @@
-import { Question, SelectLang, AvatarDropdown, AvatarName } from '@/components';
 import type { Settings as LayoutSettings } from '@ant-design/pro-components';
 import { SettingDrawer } from '@ant-design/pro-components';
 import type { RunTimeLayoutConfig } from '@umijs/max';
 import { history } from '@umijs/max';
+
 import defaultSettings from '../config/defaultSettings';
+
 import { errorConfig } from './requestErrorConfig';
+
+import { Question, SelectLang, AvatarDropdown, AvatarName } from '@/components';
 import { fetchAuthInfo } from '@/services/auth/services';
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';

@@ -1,5 +1,10 @@
 module.exports = {
-  content: ['./src/pages/**/*.tsx', './src/components/**/*.tsx', './src/layouts/**/*.tsx'],
+  content: [
+    './src/pages/**/*.tsx',
+    './src/components/**/*.tsx',
+    './src/layouts/**/*.tsx',
+    './src/loading.tsx',
+  ],
   safelist: ['animate-flicker', 'animate-bounce', 'animate-ping', 'animate-pulse'],
   theme: {
     extend: {
@@ -28,10 +33,19 @@ module.exports = {
             transform: 'rotate(-45deg) translate(4px, 4px)',
           },
         },
+        frameAnimation: {
+          '0%': {
+            'background-position': '0 0',
+          },
+          '100%': {
+            'background-position': '0 -3000%',
+          },
+        },
       },
       animation: {
         fade: 'fade 1s infinite',
         flicker: 'flicker 1s ease-in-out infinite',
+        spriteAnimation: 'frameAnimation 0.5s steps(30) infinite forwards',
       },
       colors: {
         transparent: 'transparent',

@@ -1,9 +1,10 @@
-import FadeIn from '@/components/AnimationKit/FadeIn';
-import InputText from '@/components/Input';
-import { STORE_FILTER } from '@/const/store.filter';
 import { useIntl } from '@umijs/max';
 import { Card, Form } from 'antd/lib';
 import React from 'react';
+
+import FadeIn from '@/components/AnimationKit/FadeIn';
+import InputText from '@/components/Input';
+import { STORE_FILTER } from '@/const/store.filter';
 
 const { Item } = Form;
 

@@ -30,6 +30,17 @@
 }
 
 @layer components {
+  /* Sprite Animatin */
+  .sprite {
+    @apply animate-spriteAnimation;
+    width: 21.2rem;
+    height: 6rem;
+    background: url('https://ik.imagekit.io/AliaV14/loading.webp?updatedAt=1710413581144');
+    background-position: 0 0;
+    background-size: 100% 3000%;
+  }
+
+  /* Layout Css*/
   .ant-pro-top-nav-header {
     @apply bg-teal-4;
   }
@@ -502,6 +513,58 @@
           }
         }
       }
+    }
+  }
+
+  /* Sidebar Menu */
+  .custom-container-collapsed {
+    transition: width 0.3s cubic-bezier(0.2, 0, 0, 1) 0s;
+    .ant-menu-inline-collapsed {
+      @apply w-14;
+    }
+  }
+  .custom-sidebar {
+    @apply text-teal-7 text-body-2-regular bg-transparent flex-grow;
+    @apply flex flex-col justify-center gap-2;
+    border-inline-end: none !important;
+
+    .anticon {
+      @apply !text-body-1-regular;
+    }
+
+    .ant-menu-item {
+      @apply gap-4 m-0 w-full !h-14 !pl-5 py-2;
+
+      &:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected):hover {
+        @apply text-teal-6;
+      }
+    }
+
+    .ant-menu-item-selected {
+      @apply text-teal-7 bg-teal-100;
+    }
+
+    .ant-menu-submenu-title {
+      @apply gap-4 m-0 w-full !h-14 !pl-5 bg-neutral-1 py-2;
+
+      &:not(.ant-menu-submenu-selected):hover {
+        @apply bg-teal-200;
+      }
+    }
+    .ant-menu-submenu-open {
+      @apply flex flex-col gap-2;
+    }
+    .ant-menu-submenu-selected {
+      .ant-menu-submenu-title {
+        @apply gap-4 m-0 w-full !h-14 !pl-5 bg-neutral-1 py-4 text-teal-7 text-body-2-semibold;
+      }
+    }
+
+    .ant-menu-sub.ant-menu-inline {
+      .ant-menu-item {
+      }
+      @apply !pl-6 gap-2;
+      background: unset !important;
     }
   }
 }

@@ -17,14 +17,26 @@ export default [
       {
         name: 'login',
         path: 'login',
-        access: 'isGuest',
-        component: './User/Login',
+        component: '@/pages/User/Login',
       },
       {
         name: 'signUp',
         path: 'sign-up',
-        access: 'isGuest',
-        component: './User/SignUp',
+        component: '@/pages/User/SignUp',
+      },
+    ],
+  },
+  {
+    path: '/lessor/*',
+    wrappers: ['@/wrappers/LessorAuth', '@/layouts/Lessor'],
+    routes: [
+      {
+        name: 'on-boarding',
+        path: 'on-boarding',
+
+        headerRender: false,
+        menuRender: false,
+        menuHeaderRender: false,
       },
     ],
   },

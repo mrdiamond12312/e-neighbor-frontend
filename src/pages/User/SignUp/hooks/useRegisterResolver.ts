@@ -1,7 +1,8 @@
 'use client';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import { useIntl } from '@umijs/max';
+import * as yup from 'yup';
+
 import { REGISTER_FORM_KEY } from '@/const/register-form';
 
 const useRegisterResolver = () => {

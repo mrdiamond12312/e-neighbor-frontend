@@ -1,7 +1,8 @@
-import React from 'react';
-import { AnimationProps, motion } from 'framer-motion';
-import { FADE_IN_VARIANT } from './helpers/variants';
 import classNames from 'classnames';
+import { AnimationProps, motion } from 'framer-motion';
+import React from 'react';
+
+import { FADE_IN_VARIANT } from './helpers/variants';
 
 export interface IFadeInProps extends AnimationProps {
   children: React.ReactNode;
@@ -18,8 +19,8 @@ const FadeIn: React.FC<IFadeInProps> = ({ children, direction, index, layoutId, 
       custom={{ index, direction }}
       animate="visible"
       initial="hidden"
-      layout
-      layoutId={layoutId}
+      exit="hidden"
+      key={layoutId}
       variants={FADE_IN_VARIANT}
       className={rootClassName}
     >
