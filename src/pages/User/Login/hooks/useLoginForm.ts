@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { LOGIN_FORM_KEY } from '@/const/login-form';
 import { PATH_ROOT } from '@/const/path';
-import useLoginResolver from '@/pages/User/Login/hooks/useLoginResolver';
+import useLoginResolver from '@/pages/user/login/hooks/useLoginResolver';
 import { useServiceLogin } from '@/services/auth/services';
 
 export type TLoginFormFields = {

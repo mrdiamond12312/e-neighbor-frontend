@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import FadeIn from '@/components/AnimationKit/FadeIn';
 import FlushReveal from '@/components/AnimationKit/FlushReveal';
-import SwipeNavigation from '@/pages/AboutUs/components/SwipeNavigation';
+import SwipeNavigation from '@/pages/about-us/components/SwipeNavigation';
 
 const TeamMembers: React.FC = () => {
   const { formatMessage } = useIntl();

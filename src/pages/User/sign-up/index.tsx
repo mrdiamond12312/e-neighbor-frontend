@@ -3,8 +3,8 @@ import { useIntl } from '@umijs/max';
 import { Col, Row } from 'antd';
 import React from 'react';
 
-import RegisterForm from '@/pages/User/SignUp/component/RegisterForm';
-import { useRegisterForm } from '@/pages/User/SignUp/hooks/useRegisterForm';
+import RegisterForm from '@/pages/user/sign-up/component/RegisterForm';
+import { useRegisterForm } from '@/pages/user/sign-up/hooks/useRegisterForm';
 
 const SignUp: React.FC = () => {
   const { formatMessage } = useIntl();

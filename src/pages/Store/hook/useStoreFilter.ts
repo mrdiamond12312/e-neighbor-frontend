@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 
 import { STORE_FILTER } from '@/const/store.filter';
-import usePricingResolver from '@/pages/Store/hook/useStoreResolver';
+import usePricingResolver from '@/pages/store/hook/useStoreResolver';
 
 export type TStoreFields = {
   [STORE_FILTER.min]?: number | null;

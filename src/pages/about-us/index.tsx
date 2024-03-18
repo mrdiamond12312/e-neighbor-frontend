@@ -1,7 +1,7 @@
 import { PageContainer } from '@ant-design/pro-components';
 import React from 'react';
 
-import TeamMembers from '@/pages/AboutUs/components/TeamMembers';
+import TeamMembers from '@/pages/about-us/components/TeamMembers';
 
 const AboutUs = () => {
   return (

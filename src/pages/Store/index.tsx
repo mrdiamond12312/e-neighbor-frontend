@@ -6,11 +6,11 @@ import React, { useState } from 'react';
 import FadeIn from '@/components/AnimationKit/FadeIn';
 import FlushReveal from '@/components/AnimationKit/FlushReveal';
 import { PropertyCard } from '@/components/PropertyCard';
-import Categories from '@/pages/Store/components/Categories';
-import { CoverSearchBox } from '@/pages/Store/components/CoverSearchBox';
-import Locations from '@/pages/Store/components/Location';
-import Pricing from '@/pages/Store/components/Pricing';
-import { useStoreFilter } from '@/pages/Store/hook/useStoreFilter';
+import Categories from '@/pages/store/components/Categories';
+import { CoverSearchBox } from '@/pages/store/components/CoverSearchBox';
+import Locations from '@/pages/store/components/Location';
+import Pricing from '@/pages/store/components/Pricing';
+import { useStoreFilter } from '@/pages/store/hook/useStoreFilter';
 
 const Store: React.FC = () => {
   const [category, setCategory] = useState<string>('furnitures');

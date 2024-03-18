@@ -6,8 +6,8 @@ import React from 'react';
 
 import Button from '@/components/Button';
 import { PATH_REGISTER } from '@/const/path';
-import LoginForm from '@/pages/User/Login/component/LoginForm';
-import { useLoginForm } from '@/pages/User/Login/hooks/useLoginForm';
+import LoginForm from '@/pages/user/login/component/LoginForm';
+import { useLoginForm } from '@/pages/user/login/hooks/useLoginForm';
 
 const Login: React.FC = () => {
   const { formatMessage } = useIntl();
