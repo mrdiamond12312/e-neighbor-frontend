@@ -335,7 +335,7 @@
 
   /* MENU */
   .category-menu {
-    @apply rounded-md font-sans;
+    @apply rounded-md font-sans h-full;
 
     .ant-menu-submenu {
       @apply pb-1 bg-white;
