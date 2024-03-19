@@ -20,19 +20,20 @@ export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({ onPressEnter, c
 
   return (
     <FadeIn direction="right" className="w-full" keyId="store-searchbox">
-      <div className="h-96 flex items-center justify-center relative overflow-visible">
+      <div className="h-72 max-h-96 sm:h-96 flex items-center justify-center relative overflow-visible">
         <FadeIn
           direction="right"
           keyId={coverImage}
-          className="h-96 overflow-hidden flex items-center justify-center absolute left-0 top-0 w-full"
+          className="h-full overflow-hidden flex items-center justify-center xs:overflow-hidden"
+          mode='wait'
         >
           <Image
-            rootClassName="h-96 overflow-hidden flex items-center justify-center absolute left-0 top-0"
+            rootClassName="h-full overflow-hidden flex items-center justify-center "
             src={coverImage}
             preview={false}
           />
         </FadeIn>
-        <div className="bg-neutral-1/80 backdrop-blur-sm m-auto p-4 rounded max-w-[70%] flex flex-col items-center justify-center gap-2">
+        <div className="bg-neutral-1/80 backdrop-blur-sm p-4 rounded w-[65%] flex flex-col items-center justify-center gap-2  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <FadeIn direction="right" keyId={`store.cover.${category}`}>
             <h1 className="m-0 text-heading-1 font-sans text-center">
               {formatMessage({ id: `store.cover.${category}`, defaultMessage: 'Title' })}
@@ -40,11 +41,11 @@ export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({ onPressEnter, c
           </FadeIn>
 
           <FadeIn
-            className="w-full max-w-[65%] p-4 flex flex-col gap-4"
+            className="w-full max-w-[75%] p-4 flex flex-col gap-4"
             direction="right"
             keyId={'store.cover.para'}
           >
-            <span className="text-body-1-regular text-center">
+            <span className="text-body-1-regular text-center line-clamp-3 hidden sm:block">
               {formatMessage({
                 id: 'store.cover.para',
                 defaultMessage:

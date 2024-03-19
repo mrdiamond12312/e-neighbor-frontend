@@ -1,4 +1,4 @@
-import { useIntl } from '@umijs/max';
+import { useIntl, useLocation } from '@umijs/max';
 import { notification } from 'antd';
 import { useForm } from 'react-hook-form';
 
@@ -32,10 +32,12 @@ export const useRegisterForm = () => {
 
   const { mutate, isLoading } = useServiceRegister();
 
+  const location = useLocation();
+  const state = location.state as ILinkPreviousRoute;
+
   const onSubmit = (body: TRegisterFormFields) => {
     mutate(body, {
-      onSuccess: async (data) => {
-        if (data?.meta?.statusCode === 201) {
+      onSuccess: async () => {
           const defaultRegisterSuccessMessage = formatMessage({
             id: 'register.submit.success',
             defaultMessage: 'Register Successfully!',
@@ -45,11 +47,10 @@ export const useRegisterForm = () => {
             message: defaultRegisterSuccessMessage,
             duration: 0.5,
             onClose: () => {
-              const urlParams = new URL(window.location.href).searchParams;
-              window.location.href = urlParams.get('redirect') || PATH_ROOT;
+              window.location.href = state?.from ?? PATH_ROOT;
             },
           });
-        }
+
       },
 
       onError: (error) => {

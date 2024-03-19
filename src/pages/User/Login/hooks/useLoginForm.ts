@@ -1,4 +1,4 @@
-import { useIntl } from '@umijs/max';
+import { useIntl, useLocation } from '@umijs/max';
 import { notification } from 'antd';
 import { useForm } from 'react-hook-form';
 
@@ -29,6 +29,9 @@ export const useLoginForm = () => {
 
   const { mutate, isLoading } = useServiceLogin();
 
+  const location = useLocation();
+  const state = location.state as ILinkPreviousRoute;
+
   const onSubmit = (body: TLoginFormFields) => {
     mutate(body, {
       onSuccess: async (data) => {
@@ -42,8 +45,7 @@ export const useLoginForm = () => {
             message: defaultLoginSuccessMessage,
             duration: 0.5,
             onClose: () => {
-              const urlParams = new URL(window.location.href).searchParams;
-              window.location.href = urlParams.get('redirect') ?? PATH_ROOT;
+              window.location.href = state?.from ?? PATH_ROOT;
             },
           });
         }
@@ -79,5 +81,6 @@ export const useLoginForm = () => {
     handleSubmit,
     onSubmit,
     isLoading,
+    previousLink: state?.from ?? PATH_ROOT,
   };
 };

@@ -11,7 +11,7 @@ import { useLoginForm } from '@/pages/user/login/hooks/useLoginForm';
 
 const Login: React.FC = () => {
   const { formatMessage } = useIntl();
-  const { control, errors, handleSubmit, onSubmit, isLoading } = useLoginForm();
+  const { control, errors, handleSubmit, onSubmit, isLoading, previousLink } = useLoginForm();
 
   return (
     <PageContainer className="w-full max-w-7xl flex m-auto py-8">
@@ -57,7 +57,7 @@ const Login: React.FC = () => {
                 defaultMessage: 'NOT REGISTER YET?',
               })}
             </Divider>
-            <Link to={PATH_REGISTER} className="w-full">
+            <Link to={PATH_REGISTER} state={{from: previousLink}}className="w-full">
               <Button btnSize="large" type="default" className="w-full">
                 {formatMessage({
                   id: 'login.alternative.register',

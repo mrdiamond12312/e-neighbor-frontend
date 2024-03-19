@@ -1,5 +1,3 @@
-import { stringify } from 'querystring';
-
 import { history, useMutation } from '@umijs/max';
 
 import * as Path from '@/const/path';
@@ -38,17 +36,13 @@ export const useServiceRegister = () => {
 export const handleLogout = () => {
   removeStorageItem('accessToken');
 
-  const { search, pathname } = window.location;
-  const urlParams = new URL(window.location.href).searchParams;
-  const redirect = urlParams.get('redirect');
-
-  if (window.location.pathname !== Path.PATH_LOGIN && !redirect) {
-    history.replace({
-      pathname: Path.PATH_LOGIN,
-      search: stringify({
-        redirect: pathname + search,
-      }),
-    });
+  if (window.location.pathname !== Path.PATH_LOGIN) {
+    history.replace(
+      {
+        pathname: Path.PATH_LOGIN,
+      },
+      { from: history.location.pathname },
+    );
   } else history.push(Path.PATH_LOGIN);
 };
 
