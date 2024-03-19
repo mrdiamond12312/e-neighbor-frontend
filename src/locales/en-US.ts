@@ -1,4 +1,6 @@
 import aboutUs from '@/locales/en-US/aboutUs';
+import common from '@/locales/en-US/common';
+import lessor from '@/locales/en-US/lessor';
 import login from '@/locales/en-US/login';
 import menu from '@/locales/en-US/menu';
 import register from '@/locales/en-US/register';
@@ -13,4 +15,6 @@ export default {
   ...login,
   ...register,
   ...store,
+  ...lessor,
+  ...common,
 };

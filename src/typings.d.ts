@@ -34,6 +34,10 @@ declare type TMetaWrapper<T> = {
   };
 };
 
+declare interface ILinkPreviousRoute {
+  from: string;
+}
+
 declare type TPropsFormInput = {
   control?: Control;
   name: string;

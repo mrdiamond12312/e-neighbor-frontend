@@ -17,12 +17,12 @@ export default [
       {
         name: 'login',
         path: 'login',
-        component: '@/pages/User/Login',
+        component: '@/pages/user/login',
       },
       {
         name: 'signUp',
         path: 'sign-up',
-        component: '@/pages/User/SignUp',
+        component: '@/pages/user/sign-up',
       },
     ],
   },
@@ -43,17 +43,27 @@ export default [
   {
     name: 'nav.Home',
     path: '/home',
-    component: './Home',
+    component: './home',
   },
   {
     name: 'nav.Store',
     path: '/store',
-    component: './Store',
+    component: './store',
+  },
+  {
+    path: '/product/*',
+    routes: [
+      {
+        name: 'product-detail',
+        path: ':productId/detail/*',
+        component: '@/pages/product/detail',
+      },
+    ],
   },
   {
     name: 'nav.AboutUs',
     path: '/about-us',
-    component: './AboutUs',
+    component: './about-us',
   },
   {
     path: '/',

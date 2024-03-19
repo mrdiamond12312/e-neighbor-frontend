@@ -9,7 +9,7 @@ import React from 'react';
 // }
 
 export const SearchBar: React.FC<InputProps> = ({ onPressEnter, ...restProps }) => {
-  const className = classNames('ant-input-affix-wrapper-lg', restProps.className);
+  const className = classNames('custom-input', restProps.className);
   return (
     <Input
       onPressEnter={onPressEnter}
