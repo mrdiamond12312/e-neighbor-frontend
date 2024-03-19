@@ -18,4 +18,7 @@ export default {
   'store.cover.para':
     "Indulge in a wide variety of rental options tailored to your unique style. From budget-friendly to luxurious accommodations, you'll find it all here.",
   'store.cover.search.placeholder': 'Search',
+
+  'store.pricing.condition': 'Must be greater than 0',
+  'store.pricing.max.condition.thanMin': 'Max must be greater than Min',
 };

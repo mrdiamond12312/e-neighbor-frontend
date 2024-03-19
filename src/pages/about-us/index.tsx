@@ -3,7 +3,7 @@ import React from 'react';
 
 import TeamMembers from '@/pages/about-us/components/TeamMembers';
 
-const AboutUs = () => {
+const AboutUs: React.FC = () => {
   return (
     <PageContainer className="w-full max-w-7xl m-auto">
       <TeamMembers />

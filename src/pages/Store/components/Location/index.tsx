@@ -43,7 +43,7 @@ const Locations: React.FC<TLocationsProps> = ({ setLocations }) => {
     },
   ];
   return (
-    <FadeIn direction="left" className="w-full" index={2} keyId='railing-location'>
+    <FadeIn direction="left" className="w-full" index={2} keyId="railing-location">
       <Menu
         onSelect={({ selectedKeys }) => setLocations(selectedKeys)}
         disabledOverflow={true}

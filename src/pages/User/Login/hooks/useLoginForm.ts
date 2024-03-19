@@ -32,7 +32,7 @@ export const useLoginForm = () => {
   const onSubmit = (body: TLoginFormFields) => {
     mutate(body, {
       onSuccess: async (data) => {
-        if (data?.meta?.statusCode === 200) {
+        if (data) {
           const defaultLoginSuccessMessage = formatMessage({
             id: 'login.submit.success',
             defaultMessage: 'Đăng nhập thành công!',

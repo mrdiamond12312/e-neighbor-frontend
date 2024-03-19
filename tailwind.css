@@ -440,7 +440,7 @@
       @apply border-teal-3;
     }
 
-    >input.ant-input {
+    > input.ant-input {
       @apply rounded-[4px] h-12 !bg-transparent text-body-1-medium font-sans text-teal-6;
 
       &:focus {

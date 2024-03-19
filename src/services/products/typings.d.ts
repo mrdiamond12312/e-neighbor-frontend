@@ -21,6 +21,8 @@ declare namespace API {
     status: string;
     mortgage: string;
     description: string;
+    category: string;
+    subCategory: string;
     value: number;
     policies: string[];
     images: string[];
@@ -29,7 +31,7 @@ declare namespace API {
     requiredDocuments: string;
     location: string;
     timeUnit: string;
-    category: string[]; // Category type can be further defined if known
+    tags: string[]; // Category type can be further defined if known
     productSurcharges: string[];
     isConfirmed: boolean;
     rejectReason: string[];

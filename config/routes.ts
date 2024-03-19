@@ -54,7 +54,7 @@ export default [
     path: '/product/*',
     routes: [
       {
-        name: 'detail',
+        name: 'product-detail',
         path: ':productId/detail/*',
         component: '@/pages/product/detail',
       },

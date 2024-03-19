@@ -4,7 +4,7 @@ import API_ENDPOINTS from '@/services/products/api-path';
 import { getProductDetails } from '@/services/products/api-services';
 
 export const useProductDetails = (productId?: number | string) =>
-  useQuery<TMetaWrapper<API.IProductDetails>>(
+  useQuery<API.IProductDetails>(
     [API_ENDPOINTS.PRODUCT_DETAILS],
     () => getProductDetails(productId),
     {

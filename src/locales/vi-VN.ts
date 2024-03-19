@@ -1,4 +1,6 @@
 import aboutUs from '@/locales/vi-VN/aboutUs';
+import common from '@/locales/vi-VN/common';
+import lessor from '@/locales/vi-VN/lessor';
 import login from '@/locales/vi-VN/login';
 import menu from '@/locales/vi-VN/menu';
 import register from '@/locales/vi-VN/register';
@@ -13,4 +15,6 @@ export default {
   ...login,
   ...register,
   ...store,
+  ...lessor,
+  ...common,
 };

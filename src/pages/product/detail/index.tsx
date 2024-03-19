@@ -8,6 +8,7 @@ const ProductDetail: React.FC = () => {
   const { productId } = useParams();
 
   const { data, isLoading } = useProductDetails(productId);
+
   console.log(data, isLoading);
 
   return <ContactInfo></ContactInfo>;

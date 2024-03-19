@@ -15,7 +15,7 @@ const usePricingResolver = () => {
       .min(
         0,
         formatMessage({
-          id: 'store.pricing.min.condition',
+          id: 'store.pricing.condition',
           defaultMessage: 'Min Price must larger than 0!',
         }),
       )
@@ -29,7 +29,7 @@ const usePricingResolver = () => {
       .min(
         0,
         formatMessage({
-          id: 'store.pricing.max.condition',
+          id: 'store.pricing.condition',
           defaultMessage: 'Max Price must larger than 0!',
         }),
       )
