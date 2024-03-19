@@ -25,7 +25,7 @@ export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({ onPressEnter, c
           direction="right"
           keyId={coverImage}
           className="h-full overflow-hidden flex items-center justify-center xs:overflow-hidden"
-          mode='wait'
+          mode="wait"
         >
           <Image
             rootClassName="h-full overflow-hidden flex items-center justify-center "

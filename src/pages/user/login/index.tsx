@@ -57,7 +57,7 @@ const Login: React.FC = () => {
                 defaultMessage: 'NOT REGISTER YET?',
               })}
             </Divider>
-            <Link to={PATH_REGISTER} state={{from: previousLink}}className="w-full">
+            <Link to={PATH_REGISTER} state={{ from: previousLink }} className="w-full">
               <Button btnSize="large" type="default" className="w-full">
                 {formatMessage({
                   id: 'login.alternative.register',

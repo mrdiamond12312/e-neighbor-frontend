@@ -38,19 +38,18 @@ export const useRegisterForm = () => {
   const onSubmit = (body: TRegisterFormFields) => {
     mutate(body, {
       onSuccess: async () => {
-          const defaultRegisterSuccessMessage = formatMessage({
-            id: 'register.submit.success',
-            defaultMessage: 'Register Successfully!',
-          });
+        const defaultRegisterSuccessMessage = formatMessage({
+          id: 'register.submit.success',
+          defaultMessage: 'Register Successfully!',
+        });
 
-          notification.success({
-            message: defaultRegisterSuccessMessage,
-            duration: 0.5,
-            onClose: () => {
-              window.location.href = state?.from ?? PATH_ROOT;
-            },
-          });
-
+        notification.success({
+          message: defaultRegisterSuccessMessage,
+          duration: 0.5,
+          onClose: () => {
+            window.location.href = state?.from ?? PATH_ROOT;
+          },
+        });
       },
 
       onError: (error) => {
