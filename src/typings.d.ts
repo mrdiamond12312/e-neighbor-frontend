@@ -38,6 +38,40 @@ declare interface ILinkPreviousRoute {
   from: string;
 }
 
+declare interface IProductsPagination {
+  sortField?: 'created_at' | 'price';
+  order?: 'ASC' | 'DESC';
+  page?: number;
+  take?: number;
+  isConfirmedByAdmin: boolean;
+  kw?: string;
+  categoryId?: number;
+  isVehicle: boolean;
+  lessorId?: number;
+  status?: 'product.status.available' | 'product.status.not.available';
+  offset?: number;
+  rating?: number;
+  minRentalFrequency?: number;
+  maxRentalFrequency?: number;
+  minPrice?: number;
+  maxPrice?: number;
+}
+
+declare interface IPaginationMeta {
+  page: number;
+  take: number;
+  itemCount: number;
+  pageCount: number;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+  offset: number;
+}
+
+declare interface IPaginationResponse<T> {
+  data: T[];
+  meta: IPaginationMeta;
+}
+
 declare type TPropsFormInput = {
   control?: Control;
   name: string;

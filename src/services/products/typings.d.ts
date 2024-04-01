@@ -38,4 +38,17 @@ declare namespace API {
     lessor: IProductLessor; // Lessor type can be further defined if known
     insurance: object; // Insurance type can be further defined if known
   }
+
+  interface IProductCard {
+    id: number | string;
+    name: string;
+    price: number;
+    timeUnit: string;
+    value: number | string;
+    status: string;
+    turnOver: number;
+    rating: number;
+    category: string;
+    lessorId: 0;
+  }
 }

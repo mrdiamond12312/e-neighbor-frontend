@@ -10,3 +10,21 @@ export const getProductDetails = async (productId?: number | string) => {
     timeoutMessage: 'Connection Timeout!',
   });
 };
+
+export const getMostViewedProducts = async (pagination: IProductsPagination) => {
+  return request<IPaginationResponse<API.IProductCard>>(API_ENDPOINTS.PRODUCT_TREND_MOST_VIEWED, {
+    timeout: 15000,
+    params: {
+      ...pagination,
+    },
+  });
+};
+
+export const getMostRatedProducts = async (pagination: IProductsPagination) => {
+  return request<IPaginationResponse<API.IProductCard>>(API_ENDPOINTS.PRODUCT_TREND_MOST_RATED, {
+    timeout: 15000,
+    params: {
+      ...pagination,
+    },
+  });
+};

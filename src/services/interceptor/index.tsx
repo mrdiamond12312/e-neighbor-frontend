@@ -166,7 +166,7 @@ request.interceptors.response.use(
     const data = await response.clone().json();
 
     if (data && data?.result && (data?.result?.data || data?.result?.data !== null) && data?.meta) {
-      console.log(data.result.data);
+      if (data.result.meta) return data.result;
       return data.result.data;
     } else {
       throw new HttpError(response, data.meta);
