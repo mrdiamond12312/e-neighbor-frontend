@@ -29,14 +29,18 @@ export default [
   {
     path: '/lessor/*',
     wrappers: ['@/wrappers/LessorAuth', '@/layouts/Lessor'],
+
+    headerRender: false,
+    menuRender: false,
+    menuHeaderRender: false,
     routes: [
       {
         name: 'on-boarding',
         path: 'on-boarding',
-
-        headerRender: false,
-        menuRender: false,
-        menuHeaderRender: false,
+      },
+      {
+        name: 'dashboard',
+        path: 'dashboard',
       },
     ],
   },

@@ -21,4 +21,10 @@ export default {
 
   'store.pricing.condition': 'Must be greater than 0',
   'store.pricing.max.condition.thanMin': 'Max must be greater than Min',
+
+  // Store Cards
+  'store.products.preview.most.viewed': 'Most Popular Products',
+  'store.products.preview.most.rated': 'Trusted by Customers',
+  'store.preview.card.btn.rent': 'Rent Now',
+  'product.price.time.unit.day': '₫/day',
 };

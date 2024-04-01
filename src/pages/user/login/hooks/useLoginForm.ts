@@ -50,7 +50,6 @@ export const useLoginForm = () => {
           });
         }
       },
-
       onError: (error) => {
         if (error.statusCode === 503) {
           notification.error({

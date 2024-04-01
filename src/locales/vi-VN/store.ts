@@ -21,4 +21,11 @@ export default {
 
   'store.pricing.condition': 'Phải là số lớn hơn 0',
   'store.pricing.max.condition.thanMin': 'Giá tối đa phải cao hơn giá tối thiểu',
+
+  // Store Cards
+
+  'store.products.preview.most.viewed': 'Được xem nhiều',
+  'store.products.preview.most.rated': 'Được tin dùng bởi khách hàng',
+  'store.preview.card.btn.rent': 'Chọn Thuê',
+  'product.price.time.unit.day': '₫/ngày',
 };

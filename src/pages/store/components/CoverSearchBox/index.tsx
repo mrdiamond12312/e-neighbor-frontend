@@ -34,7 +34,12 @@ export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({ onPressEnter, c
           />
         </FadeIn>
         <div className="bg-neutral-1/80 backdrop-blur-sm p-4 rounded w-[65%] flex flex-col items-center justify-center gap-2  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <FadeIn direction="right" keyId={`store.cover.${category}`}>
+          <FadeIn
+            direction="right"
+            className="w-full"
+            keyId={`store.cover.${category}`}
+            mode="wait"
+          >
             <h1 className="m-0 text-heading-1 font-sans text-center">
               {formatMessage({ id: `store.cover.${category}`, defaultMessage: 'Title' })}
             </h1>

@@ -16,8 +16,9 @@ class HttpError extends Error {
   }
 }
 
-const errorHandler = (err: ResponseError) => {
-  const { statusCode, error }: TMeta = err.data;
+const errorHandler = async (err: ResponseError) => {
+  const { statusCode, error }: TMeta = await err.response.json();
+  console.log(statusCode, error);
   if (!err?.response) {
     return Promise.reject({
       meta: {
@@ -55,7 +56,10 @@ const errorHandler = (err: ResponseError) => {
         break;
       case 'SYS_003':
         notification.error({
-          message: translate({ id: 'error.sys.03.message', defaultMessage: 'Service Unavailable' }),
+          message: translate({
+            id: 'error.sys.03.message',
+            defaultMessage: 'Service Unavailable',
+          }),
           description: translate({
             id: 'error.sys.03.description',
             defaultMessage: 'This service is not for use!',
@@ -83,7 +87,10 @@ const errorHandler = (err: ResponseError) => {
         break;
       case 'TOKEN_001':
         notification.error({
-          message: translate({ id: 'error.token.01.message', defaultMessage: 'Session Expired!' }), // Assuming an ID exists
+          message: translate({
+            id: 'error.token.01.message',
+            defaultMessage: 'Session Expired!',
+          }), // Assuming an ID exists
           description: translate({
             id: 'error.token.01.description',
             defaultMessage: 'You will be logged out every 2 hours!',
@@ -98,7 +105,10 @@ const errorHandler = (err: ResponseError) => {
         break;
       case 'BAD_INPUT_001':
         notification.error({
-          message: translate({ id: 'error.badInput.01.message', defaultMessage: 'Invalid Input' }), // Assuming an ID exists
+          message: translate({
+            id: 'error.badInput.01.message',
+            defaultMessage: 'Invalid Input',
+          }), // Assuming an ID exists
           description: translate({
             id: 'error.badInput.01.description',
             defaultMessage: 'Please double-check your forms/inputs',
@@ -118,15 +128,12 @@ const errorHandler = (err: ResponseError) => {
         });
         break;
       default:
-        notification.error({
-          message: translate({ id: 'error.unknown' }), // Default message for unknown errors
-          description: '', // Empty description for default case
-        });
+        break;
     }
     if (statusCode === 401 && window.location.pathname !== Path.PATH_LOGIN) {
       return history.push(Path.PATH_LOGIN);
     }
-    return Promise.reject(err?.data);
+    return Promise.reject({ statusCode, error });
   }
 };
 
@@ -159,7 +166,7 @@ request.interceptors.response.use(
     const data = await response.clone().json();
 
     if (data && data?.result && (data?.result?.data || data?.result?.data !== null) && data?.meta) {
-      console.log(data.result.data);
+      if (data.result.meta) return data.result;
       return data.result.data;
     } else {
       throw new HttpError(response, data.meta);
