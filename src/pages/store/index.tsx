@@ -10,7 +10,6 @@ import Locations from '@/pages/store/components/Location';
 import PopularProducts from '@/pages/store/components/PopularProducts';
 import Pricing from '@/pages/store/components/Pricing';
 import { useStoreFilter } from '@/pages/store/hook/useStoreFilter';
-import { useMostViewedProducts } from '@/services/products/services';
 
 const Store: React.FC = () => {
   const [category, setCategory] = useState<string>('furnitures');
@@ -27,12 +26,7 @@ const Store: React.FC = () => {
     }
   };
 
-  const { data, hasNextPage } = useMostViewedProducts({
-    isVehicle: category === 'vehicles',
-    isConfirmedByAdmin: false,
-  });
-
-  console.log(category, locations, keyword, data, hasNextPage);
+  console.log(category, locations, keyword);
   return (
     <ConfigProvider
       theme={{
