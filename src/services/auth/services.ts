@@ -10,11 +10,10 @@ import { removeStorageItem, setStorageItem } from '@/utils/local-storage';
 export const useServiceLogin = () => {
   return useMutation<API.TAuthResponse, TMeta, TLoginFormFields>(
     [API_ENDPOINTS.LOGIN],
-    (body) => login(body),
+    (body: TLoginFormFields) => login(body),
     {
       onSuccess: (loginResult: API.TAuthResponse) => {
-        const { accessToken } = loginResult;
-        setStorageItem('accessToken', accessToken);
+        setStorageItem('accessToken', loginResult?.accessToken);
       },
     },
   );
@@ -23,7 +22,7 @@ export const useServiceLogin = () => {
 export const useServiceRegister = () => {
   return useMutation<API.TAuthResponse, TMeta, TRegisterFormFields>(
     [API_ENDPOINTS.REGISTER],
-    (body) => register(body),
+    (body: TRegisterFormFields) => register(body),
     {
       onSuccess: (authResult: API.TAuthResponse) => {
         const { accessToken } = authResult;

@@ -35,6 +35,7 @@ export const useLoginForm = () => {
   const onSubmit = (body: TLoginFormFields) => {
     mutate(body, {
       onSuccess: async (data) => {
+        console.log(data, 'ff');
         if (data) {
           const defaultLoginSuccessMessage = formatMessage({
             id: 'login.submit.success',
@@ -50,7 +51,6 @@ export const useLoginForm = () => {
           });
         }
       },
-
       onError: (error) => {
         if (error.statusCode === 503) {
           notification.error({

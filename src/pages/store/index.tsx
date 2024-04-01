@@ -46,6 +46,9 @@ const Store: React.FC = () => {
               className="max-h-[calc(100vh-88px)] sm:flex  flex-row xl:flex-col pb-4 xl:pb-0 gap-4 xl:sticky xl:top-[72px] overflow-auto px-2 hidden"
             >
               <Categories setCategory={setCategory} selectedKeys={(() => [category])()} />
+
+              <Locations setLocations={setLocations} />
+
               <FadeIn direction="left" className="w-full" index={3} key="railing-rating">
                 <Card
                   title={formatMessage({
@@ -57,7 +60,6 @@ const Store: React.FC = () => {
                   <Rate className="custom-star animate-pulse" />
                 </Card>
               </FadeIn>
-              <Locations setLocations={setLocations} />
 
               <Pricing control={control} error={errors} />
             </Col>
