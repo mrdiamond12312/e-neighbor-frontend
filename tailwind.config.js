@@ -25,6 +25,17 @@ module.exports = {
             transform: 'translate(0%, 50%) skew(45deg)',
           },
         },
+        gradient: {
+          '0%': {
+            'background-position': '0% 50%',
+          },
+          '50%': {
+            'background-position': '100% 50%',
+          },
+          '100%': {
+            'background-position': '0% 50%',
+          },
+        },
         flicker: {
           '0%, 100%': {
             transform: 'rotate(-45deg) translate(0, 0)',
@@ -46,6 +57,7 @@ module.exports = {
         fade: 'fade 1s infinite',
         flicker: 'flicker 1s ease-in-out infinite',
         spriteAnimation: 'frameAnimation 0.5s steps(30) infinite forwards',
+        gradient: 'gradient 7.5s ease-in-out infinite',
       },
       colors: {
         transparent: 'transparent',

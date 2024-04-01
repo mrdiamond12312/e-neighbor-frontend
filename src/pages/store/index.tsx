@@ -4,11 +4,10 @@ import { Card, Col, ConfigProvider, Rate, Row } from 'antd/lib';
 import React, { useState } from 'react';
 
 import FadeIn from '@/components/AnimationKit/FadeIn';
-import FlushReveal from '@/components/AnimationKit/FlushReveal';
-import { PropertyCard } from '@/components/PropertyCard';
 import Categories from '@/pages/store/components/Categories';
 import { CoverSearchBox } from '@/pages/store/components/CoverSearchBox';
 import Locations from '@/pages/store/components/Location';
+import PopularProducts from '@/pages/store/components/PopularProducts';
 import Pricing from '@/pages/store/components/Pricing';
 import { useStoreFilter } from '@/pages/store/hook/useStoreFilter';
 import { useMostViewedProducts } from '@/services/products/services';
@@ -44,7 +43,7 @@ const Store: React.FC = () => {
       }}
     >
       <PageContainer className="w-full max-w-7xl m-auto">
-        <FadeIn direction="top" keyId="main-page-container">
+        <FadeIn direction="top" keyId="main-page-container" className="w-full">
           <Row className="w-full py-4">
             <Col
               span={24}
@@ -75,31 +74,7 @@ const Store: React.FC = () => {
               {
                 // TO DO: Remove and add another component here for a list of rental property
               }
-              <section className="flex flex-col gap-4 w-fit basis-0">
-                <span className="text-neutral-7 text-heading-3 w-fit">Prototyping</span>
-                <div className="flex flex-row flex-wrap gap-y-3 gap-x-2 w-fit justify-center">
-                  {Array(4)
-                    .fill(0)
-                    .map((_, index) => (
-                      <FlushReveal
-                        pointerClassName="bg-favicon bg-no-repeat bg-contain bg-center"
-                        key={`idk ${index}`}
-                        index={index * 5}
-                      >
-                        <PropertyCard
-                          ctaBtnFormattedMessage="Rent Now!"
-                          imageSrc="https://hips.hearstapps.com/hmg-prod/images/dw-burnett-pcoty22-8260-1671143390.jpg?crop=0.668xw:1.00xh;0.184xw,0&resize=640:*"
-                          owner="https://cdn.iconscout.com/icon/free/png-256/free-avatar-380-456332.png"
-                          pricing={1000000}
-                          pricingCurrency="VND/day"
-                          rating={4.5}
-                          tag="Car"
-                          title="Yamahahahahahahahaha"
-                        />
-                      </FlushReveal>
-                    ))}
-                </div>
-              </section>
+              <PopularProducts isVehicle={category === 'vehicles'} />
             </Col>
           </Row>
         </FadeIn>

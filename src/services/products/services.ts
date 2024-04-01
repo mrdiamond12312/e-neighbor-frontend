@@ -18,7 +18,7 @@ export const useProductDetails = (productId?: number | string) =>
 
 export const useMostViewedProducts = (pagination: IProductsPagination) => {
   return useInfiniteQuery({
-    queryKey: [API_ENDPOINTS.PRODUCT_TREND_MOST_VIEWED],
+    queryKey: [API_ENDPOINTS.PRODUCT_TREND_MOST_VIEWED, pagination.isVehicle],
     queryFn: ({ pageParam = 1 }) => getMostViewedProducts({ ...pagination, page: pageParam }),
     getNextPageParam: (lastPage, allPages) => {
       const { hasNextPage } = lastPage.meta;
@@ -29,7 +29,7 @@ export const useMostViewedProducts = (pagination: IProductsPagination) => {
 
 export const useMostRatedProducts = (pagination: IProductsPagination) => {
   return useInfiniteQuery({
-    queryKey: [API_ENDPOINTS.PRODUCT_TREND_MOST_VIEWED],
+    queryKey: [API_ENDPOINTS.PRODUCT_TREND_MOST_RATED, pagination.isVehicle],
     queryFn: ({ pageParam = 1 }) => getMostRatedProducts({ ...pagination, page: pageParam }),
     getNextPageParam: (lastPage, allPages) => {
       const { hasNextPage } = lastPage.meta;

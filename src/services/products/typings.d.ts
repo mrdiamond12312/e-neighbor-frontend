@@ -48,7 +48,11 @@ declare namespace API {
     status: string;
     turnOver: number;
     rating: number;
-    category: string;
-    lessorId: 0;
+    category: {
+      name: string;
+    };
+    lessorId: number;
+    lessorImage: string;
+    image: string;
   }
 }
