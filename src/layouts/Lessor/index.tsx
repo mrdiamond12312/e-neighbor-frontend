@@ -101,7 +101,7 @@ const LessorLayout: React.FC = () => {
           <SideBar items={sideBarItems} containerClassName="sticky top-[56px] left-0" />
         </FadeIn>
       )}
-      <section className="h-[100vh] w-full flex-col">
+      <section className="h-[100vh] w-full flex flex-col justify-start items-center">
         <FadeIn
           direction="top"
           className="w-full h-14 py-2 px-8 bg-neutral-1/30 backdrop-blur shadow flex flex-row justify-between z-20 "
