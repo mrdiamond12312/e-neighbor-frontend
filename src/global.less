@@ -1,7 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap');
 @menu-height: 56px;
 
 html,
@@ -229,10 +229,40 @@ body,
 
 .ant-card {
   .ant-card-actions {
-    @apply justify-end gap-2;
+    @apply justify-end gap-2 mt-auto;
     min-height: 56px;
   }
   .ant-card-actions > li {
     @apply !w-fit flex-grow-0 justify-end;
+  }
+}
+
+/* Date Picker Panel */
+.ant-picker-panel {
+  .ant-picker-date-panel {
+    @apply font-sans;
+
+    .ant-picker-body {
+      .ant-picker-content {
+        .ant-picker-cell-today {
+          .ant-picker-cell-inner {
+            &:before {
+              @apply border-teal-1;
+            }
+          }
+        }
+
+        .ant-picker-cell-selected {
+          .ant-picker-cell-inner {
+            @apply bg-teal-6;
+          }
+        }
+      }
+    }
+  }
+  .ant-picker-footer {
+    .ant-picker-today-btn {
+      @apply text-teal-1 font-sans;
+    }
   }
 }

@@ -200,6 +200,92 @@
   }
 
   /* FORM */
+  .custom-antd-form-small {
+    @apply w-full font-sans;
+
+    .ant-row {
+      @apply gap-1;
+      .ant-form-item-label {
+        @apply lg:text-right font-sans text-teal-7 text-body-2-regular p-0;
+        label {
+          &:after {
+          }
+        }
+      }
+    }
+
+    .ant-form-item {
+      @apply mb-0 pb-4;
+
+      .ant-form-item-row {
+        .ant-form-item-label {
+          @apply font-sans;
+
+          .ant-form-item-required {
+            &:before {
+              content: unset;
+            }
+
+            &:after {
+              @apply font-sans text-body-1-medium visible pl-1 m-0;
+              color: theme('colors.teal-4');
+              font-family: SimSun, sans;
+              content: '*';
+            }
+          }
+          > label {
+            @apply text-body-2-medium;
+          }
+        }
+
+        .ant-form-item-control {
+          .ant-form-item-control-input-content {
+            @apply text-body-2-regular;
+            .ant-input {
+              @apply rounded-[4px]  !bg-transparent align-baseline;
+
+              &:focus {
+                @apply border-teal-5;
+              }
+
+              &:focus-within {
+                @apply border-teal-5;
+              }
+
+              &:hover {
+                @apply border-teal-3;
+              }
+            }
+            .ant-input-affix-wrapper-lg {
+              @apply rounded-[4px] py-0;
+
+              &:focus-within {
+                @apply border-teal-5;
+              }
+
+              &:focus {
+                @apply border-teal-5;
+              }
+
+              &:hover {
+                @apply border-teal-3;
+              }
+            }
+
+            .ant-picker {
+              @apply w-full;
+              &:hover,
+              &:focus-within,
+              &:focus {
+                @apply border-teal-5;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   .custom-ant-form {
     @apply w-full;
     @apply font-sans;

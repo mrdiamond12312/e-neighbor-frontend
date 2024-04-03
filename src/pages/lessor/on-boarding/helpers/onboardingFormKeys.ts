@@ -8,6 +8,7 @@ export enum ONBOARDING_FORM_KEY {
   paymentInfo = 'paymentInfo',
   wareHouseAddress = 'wareHouseAddress',
   description = 'description',
+  shopName = 'shopName',
 }
 
 export enum CREDIT_KEY {
