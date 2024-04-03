@@ -15,7 +15,7 @@ const OnBoarding: React.FC = () => {
     <Card
       rootClassName="w-full max-w-7xl m-4 p-4 bg-neutral-1 h-full rounded-lg"
       actions={[
-        <Button key="form-next" onClick={handlePreviousStep} type="default">
+        <Button key="form-previous" onClick={handlePreviousStep} type="default">
           <FormattedHTMLMessage id="common.previous" defaultMessage="Back" />
         </Button>,
         <Button key="form-next" onClick={handleNextStep} type="primary">
