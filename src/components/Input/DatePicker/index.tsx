@@ -1,4 +1,4 @@
-import { DatePicker } from 'antd';
+import { DatePicker as AntdDatePicker } from 'antd';
 import { RangePickerProps } from 'antd/es/date-picker';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
@@ -12,7 +12,7 @@ export type TPropsDatePicker = TPropsFormInput & {
   disabledDate?: RangePickerProps['disabledDate'];
 };
 
-const AntdDatePicker: React.FC<TPropsDatePicker> = ({
+const DatePicker: React.FC<TPropsDatePicker> = ({
   control,
   name,
   format,
@@ -26,7 +26,7 @@ const AntdDatePicker: React.FC<TPropsDatePicker> = ({
       control={control}
       render={({ field, fieldState: { error } }) => (
         <Fragment>
-          <DatePicker
+          <AntdDatePicker
             {...field}
             value={field.value ? dayjs(field.value) : null}
             format={format}
@@ -45,4 +45,4 @@ const AntdDatePicker: React.FC<TPropsDatePicker> = ({
   );
 };
 
-export default AntdDatePicker;
+export default DatePicker;

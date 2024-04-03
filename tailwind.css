@@ -579,7 +579,7 @@
 
     .ant-steps-item-icon {
       @apply bg-teal-100;
-      margin-inline-start: 104px;
+      margin-inline-start: 102px !important;
 
       span {
         @apply font-sans;
