@@ -103,8 +103,8 @@ export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }
       </Item>
       <Item
         label={formatMessage({
-          id: 'onboarding.form.citizenCardBack.label',
-          defaultMessage: 'CIC Back Image',
+          id: 'onboarding.form.avatar.label',
+          defaultMessage: 'Avatar',
         })}
         required
       >

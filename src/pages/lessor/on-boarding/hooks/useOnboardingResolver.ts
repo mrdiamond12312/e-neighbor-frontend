@@ -27,7 +27,7 @@ const useOnboardingResolver = () => {
       .array()
       .of(
         yup.object().shape({
-          originFileObject: yup.mixed().required(
+          originFileObj: yup.mixed().required(
             formatMessage({
               id: 'lessor.onboarding.avatar.null',
               defaultMessage: 'A Image is Required!',
@@ -52,7 +52,7 @@ const useOnboardingResolver = () => {
       .array()
       .of(
         yup.object().shape({
-          originFileObject: yup.mixed().required(
+          originFileObj: yup.mixed().required(
             formatMessage({
               id: 'lessor.onboarding.citizenCardBack.null',
               defaultMessage: 'A Image is Required!',
@@ -77,7 +77,7 @@ const useOnboardingResolver = () => {
       .array()
       .of(
         yup.object().shape({
-          originFileObject: yup.mixed().required(
+          originFileObj: yup.mixed().required(
             formatMessage({
               id: 'lessor.onboarding.citizenCardFront.null',
               defaultMessage: 'A Image is Required!',

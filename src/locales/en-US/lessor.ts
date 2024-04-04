@@ -34,6 +34,7 @@ export default {
   'lessor.onboarding.email.null': 'Please enter your Email!',
   'lessor.onboarding.description.null': 'Please enter the Shop Description!',
   'lessor.onboarding.wareHouseAddress.null': 'Please enter the Warehouse Address!',
+  'lessor.onboarding.avatar.null': 'Please take an avatar for your shop',
 
   // Submit-Error
   'lessor.onboard.error.already': 'Already been a Lessor!',
@@ -56,4 +57,5 @@ export default {
   'onboarding.form.citizenId.label': 'Citizen ID',
   'onboarding.form.citizenCardFront.label': 'Front of Citizen Card',
   'onboarding.form.citizenCardBack.label': 'Back of Citizen Card',
+  'onboarding.form.avatar.label': 'Avatar',
 };

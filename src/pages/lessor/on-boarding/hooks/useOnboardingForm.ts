@@ -80,7 +80,9 @@ export const useOnboardingForm = () => {
       [ONBOARDING_FORM_KEY['dob']]: currentUser?.[ONBOARDING_FORM_KEY['dob']],
       [ONBOARDING_FORM_KEY['fullName']]: currentUser?.[ONBOARDING_FORM_KEY['fullName']],
       [ONBOARDING_FORM_KEY['email']]: currentUser?.[ONBOARDING_FORM_KEY['email']],
-      [ONBOARDING_FORM_KEY['avatar']]: [{ url: currentUser?.[ONBOARDING_FORM_KEY['avatar']] }],
+      [ONBOARDING_FORM_KEY['avatar']]: currentUser?.[ONBOARDING_FORM_KEY['avatar']]
+        ? [{ url: currentUser?.[ONBOARDING_FORM_KEY['avatar']] }]
+        : [],
     },
     resolver: FormSchema,
     mode: 'onTouched',
@@ -103,6 +105,7 @@ export const useOnboardingForm = () => {
           ONBOARDING_FORM_KEY.dob,
           ONBOARDING_FORM_KEY.address,
           ONBOARDING_FORM_KEY.phoneNumber,
+          ONBOARDING_FORM_KEY.avatar,
         ]);
       }
       case 1: {
@@ -126,45 +129,50 @@ export const useOnboardingForm = () => {
 
   const handleNextStep = async () => {
     const isGoodToForward = await checkValidate();
+    console.log(isGoodToForward, currentStep);
     if (isGoodToForward && currentStep < stepItems.length) {
       setCurrentStep((prev) => prev + 1);
     }
   };
 
-  const handleSubmit = (formFields: TOnboardingFormFields) => {
-    if (
-      formFields[ONBOARDING_FORM_KEY['citizenCardBack']][0].status === 'uploading' ||
-      formFields[ONBOARDING_FORM_KEY['citizenCardFront']][0].status === 'uploading'
-    ) {
-      notification.info({
-        message: formatMessage({
-          id: 'common.upload.wait',
-          defaultMessage: 'Please wait for image to upload before submit!',
-        }),
+  const handleSubmit = async (formFields: TOnboardingFormFields) => {
+    const isGoodToForward = await checkValidate();
+    console.log(isGoodToForward);
+    if (isGoodToForward) {
+      if (
+        formFields[ONBOARDING_FORM_KEY['citizenCardBack']][0].status === 'uploading' ||
+        formFields[ONBOARDING_FORM_KEY['citizenCardFront']][0].status === 'uploading'
+      ) {
+        notification.info({
+          message: formatMessage({
+            id: 'common.upload.wait',
+            defaultMessage: 'Please wait for image to upload before submit!',
+          }),
+        });
+      }
+      mutate(formFields, {
+        onSuccess: (data) => {
+          setStorageItem('accessToken', data.accessToken);
+          notification.success({
+            message: formatMessage({
+              id: 'lessor.onboard.success',
+              defaultMessage: 'You have successfully registered as a Lessor!',
+            }),
+            duration: 0.5,
+            onClose: () => {
+              window.location.href = PATH_LESSOR_DASHBOARD;
+            },
+          });
+        },
+        onError: () =>
+          notification.error({
+            message: formatMessage({
+              id: 'lessor.onboard.error.already',
+              defaultMessage: "You've already been a Lessor!",
+            }),
+          }),
       });
     }
-    mutate(formFields, {
-      onSuccess: (data) => {
-        setStorageItem('accessToken', data.accessToken);
-        notification.success({
-          message: formatMessage({
-            id: 'lessor.onboard.success',
-            defaultMessage: 'You have successfully registered as a Lessor!',
-          }),
-          duration: 0.5,
-          onClose: () => {
-            window.location.href = PATH_LESSOR_DASHBOARD;
-          },
-        });
-      },
-      onError: () =>
-        notification.error({
-          message: formatMessage({
-            id: 'lessor.onboard.error.already',
-            defaultMessage: "You've already been a Lessor!",
-          }),
-        }),
-    });
   };
 
   return {

@@ -35,6 +35,7 @@ export default {
   'lessor.onboarding.email.null': 'Vui lòng nhập Email!',
   'lessor.onboarding.description.null': 'Vui lòng nhập Mô tả Gian hàng!',
   'lessor.onboarding.wareHouseAddress.null': 'Vui lòng nhập địa chỉ Kho hàng!',
+  'lessor.onboarding.avatar.null': 'Hãy chụp một tấm ảnh đại diện',
 
   // Submit-Error
   'lessor.onboard.error.already': 'Bạn đã là Chủ thuê',
@@ -57,4 +58,5 @@ export default {
   'onboarding.form.citizenId.label': 'Số CCCD',
   'onboarding.form.citizenCardFront.label': 'Mặt trước CCCD',
   'onboarding.form.citizenCardBack.label': 'Mặt sau CCCD',
+  'onboarding.form.avatar.label': 'Ảnh đại diện',
 };
