@@ -104,7 +104,7 @@ const LessorLayout: React.FC = () => {
       <section className="h-[100vh] w-full flex flex-col justify-start items-center">
         <FadeIn
           direction="top"
-          className="w-full h-14 py-2 px-8 bg-neutral-1/30 backdrop-blur shadow flex flex-row justify-between z-20 "
+          className="w-full h-14 py-2 px-8 bg-neutral-1/30 backdrop-blur shadow flex flex-row justify-between z-20 sticky top-0"
         >
           <div className="flex flex-row items-center h-full gap-2 header-right-container">
             <span className="text-heading-4 text-teal-7">

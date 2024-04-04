@@ -5,9 +5,9 @@ import { Controller } from 'react-hook-form';
 
 import ValidateError from '@/components/Input/ValidateError';
 
-const { TextArea } = Input;
+const { TextArea: AntdTextArea } = Input;
 
-const AntdTextArea: React.FC<TPropsFormInput> = ({
+const TextArea: React.FC<TPropsFormInput> = ({
   control,
   name,
   autoSize,
@@ -23,7 +23,7 @@ const AntdTextArea: React.FC<TPropsFormInput> = ({
       control={control}
       render={({ field, fieldState: { error } }) => (
         <Fragment>
-          <TextArea
+          <AntdTextArea
             rows={rows}
             placeholder={placeholder}
             {...field}
@@ -40,4 +40,4 @@ const AntdTextArea: React.FC<TPropsFormInput> = ({
   );
 };
 
-export default AntdTextArea;
+export default TextArea;

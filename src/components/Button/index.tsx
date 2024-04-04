@@ -16,6 +16,7 @@ const Button: React.FC<IButtonProps> = ({ children, btnSize, className, type, ..
     'btn-default',
     { 'btn-primary': type === 'primary' },
     { 'btn-dashed': type === 'dashed' },
+    { 'btn-text': type === 'text' },
     className,
   );
   return (

@@ -1,9 +1,11 @@
-import { useIntl } from '@umijs/max';
-import { Form } from 'antd/lib';
+import { FormattedHTMLMessage, useIntl } from '@umijs/max';
+import { Divider, Form } from 'antd/lib';
+import ImgCrop from 'antd-img-crop';
 import React from 'react';
 
 import InputText from '@/components/Input';
 import DatePicker from '@/components/Input/DatePicker';
+import { ImageDragger } from '@/components/Input/ImageDragger';
 import { ONBOARDING_FORM_KEY } from '@/pages/lessor/on-boarding/helpers/onboardingFormKeys';
 
 const { Item } = Form;
@@ -20,6 +22,19 @@ export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }
       labelCol={{ span: 24, lg: 6 }}
       wrapperCol={{ span: 24, lg: 18 }}
     >
+      <h1 className="text-heading-3">
+        <FormattedHTMLMessage
+          id="lessor.onboarding.step.userInfo.header"
+          defaultMessage="User Information"
+        />
+      </h1>
+      <span className="text-body-1-regular">
+        <FormattedHTMLMessage
+          id="lessor.onboarding.step.userInfo.description"
+          defaultMessage="It's recommended that you verify your account details and update them if required."
+        />
+      </span>
+      <Divider className="hidden md:block" />
       <Item
         label={formatMessage({
           id: 'onboarding.form.fullName.label',
@@ -28,7 +43,10 @@ export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }
         required
       >
         <InputText
-          placeholder="abcxyz"
+          placeholder={formatMessage({
+            id: 'onboarding.form.fullName.label',
+            defaultMessage: 'Fullname',
+          })}
           placement="top"
           control={control}
           error={errors}
@@ -44,7 +62,7 @@ export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }
         required
       >
         <InputText
-          placeholder="abcxyz"
+          placeholder="someone@mail.to"
           placement="top"
           control={control}
           error={errors}
@@ -60,27 +78,11 @@ export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }
         required
       >
         <InputText
-          placeholder="abcxyz"
+          placeholder="+84 xxxx xxx xxx"
           placement="top"
           control={control}
           error={errors}
           name={ONBOARDING_FORM_KEY['phoneNumber']}
-          size="large"
-        />
-      </Item>
-      <Item
-        label={formatMessage({
-          id: 'onboarding.form.citizenId.label',
-          defaultMessage: 'Citizen ID',
-        })}
-        required
-      >
-        <InputText
-          placeholder="abcxyz"
-          placement="top"
-          control={control}
-          error={errors}
-          name={ONBOARDING_FORM_KEY['citizenId']}
           size="large"
         />
       </Item>
@@ -101,13 +103,32 @@ export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }
       </Item>
       <Item
         label={formatMessage({
+          id: 'onboarding.form.citizenCardBack.label',
+          defaultMessage: 'CIC Back Image',
+        })}
+        required
+      >
+        <ImgCrop aspect={1} rotationSlider>
+          <ImageDragger
+            className="custom-ant-upload"
+            control={control}
+            name={ONBOARDING_FORM_KEY['avatar']}
+            maxCount={1}
+          />
+        </ImgCrop>
+      </Item>
+      <Item
+        label={formatMessage({
           id: 'onboarding.form.address.label',
           defaultMessage: 'Address',
         })}
         required
       >
         <InputText
-          placeholder="abcxyz"
+          placeholder={formatMessage({
+            id: 'onboarding.form.address.label',
+            defaultMessage: 'Address',
+          })}
           placement="top"
           control={control}
           error={errors}

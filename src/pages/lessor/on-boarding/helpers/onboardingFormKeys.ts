@@ -9,10 +9,14 @@ export enum ONBOARDING_FORM_KEY {
   wareHouseAddress = 'wareHouseAddress',
   description = 'description',
   shopName = 'shopName',
+  citizenCardFront = 'citizendFrontImg',
+  citizenCardBack = 'citizendBackImg',
+  avatar = 'avatar',
 }
 
 export enum CREDIT_KEY {
   holderName = 'name',
   cardType = 'type',
   accountNumber = 'accountNumber',
+  bank = 'bankName',
 }

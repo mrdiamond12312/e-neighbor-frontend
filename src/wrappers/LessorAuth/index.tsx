@@ -1,7 +1,7 @@
 import { Navigate, Outlet, useAccess, useLocation } from '@umijs/max';
 import React from 'react';
 
-import { PATH_LESSOR_ONBOARDING, PATH_LOGIN } from '@/const/path';
+import { PATH_LESSOR_DASHBOARD, PATH_LESSOR_ONBOARDING, PATH_LOGIN } from '@/const/path';
 
 const LessorAuth: React.FC = () => {
   const { isGuest, isUser, isLessor } = useAccess();
@@ -15,6 +15,9 @@ const LessorAuth: React.FC = () => {
   if (isUser && pathname !== PATH_LESSOR_ONBOARDING) {
     return <Navigate to={PATH_LESSOR_ONBOARDING} replace />;
   }
+
+  if (isLessor && pathname === PATH_LESSOR_ONBOARDING)
+    return <Navigate to={PATH_LESSOR_DASHBOARD} replace />;
 
   if (isLessor) return <Outlet />;
 

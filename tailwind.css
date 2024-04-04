@@ -203,12 +203,21 @@
   .custom-antd-form-small {
     @apply w-full font-sans;
 
+    input {
+      @apply !font-sans !text-body-2-semibold;
+    }
+
     .ant-row {
-      @apply gap-1;
+      @apply gap-1 flex;
       .ant-form-item-label {
         @apply lg:text-right font-sans text-teal-7 text-body-2-regular p-0;
         label {
+          @apply h-10 text-teal-4;
           &:after {
+            @apply font-sans visible m-0;
+            color: theme('colors.teal-4');
+            font-family: SimSun, sans;
+            content: ':';
           }
         }
       }
@@ -223,18 +232,21 @@
 
           .ant-form-item-required {
             &:before {
-              content: unset;
+              @apply font-sans text-body-1-medium visible m-0 pr-1;
+              font-family: SimSun, sans;
+              content: '*';
             }
 
             &:after {
-              @apply font-sans text-body-1-medium visible pl-1 m-0;
-              color: theme('colors.teal-4');
-              font-family: SimSun, sans;
-              content: '*';
             }
           }
           > label {
             @apply text-body-2-medium;
+            &:before {
+              @apply font-sans text-body-1-medium invisible m-0 pr-1;
+              font-family: SimSun, sans;
+              content: '*';
+            }
           }
         }
 
@@ -242,7 +254,7 @@
           .ant-form-item-control-input-content {
             @apply text-body-2-regular;
             .ant-input {
-              @apply rounded-[4px]  !bg-transparent align-baseline;
+              @apply rounded-[4px]  !bg-transparent align-baseline font-sans text-body-2-semibold;
 
               &:focus {
                 @apply border-teal-5;
@@ -279,6 +291,9 @@
               &:focus {
                 @apply border-teal-5;
               }
+            }
+            .ant-picker-focused {
+              @apply border-teal-1;
             }
           }
         }
@@ -705,6 +720,28 @@
             @apply text-teal-7;
           }
         }
+      }
+    }
+  }
+
+  /* Upload */
+  .custom-ant-upload {
+    .ant-upload {
+      @apply bg-teal-50 p-0;
+    }
+    .ant-upload-drag p.ant-upload-drag-icon .anticon {
+      @apply text-heading-3 text-teal-5;
+    }
+    .ant-upload-drag {
+      @apply border-teal-1;
+      &:not(.ant-upload-disabled):hover {
+        @apply border-teal-7;
+      }
+    }
+    .ant-upload-disabled {
+      @apply bg-neutral-2;
+      .ant-upload-drag {
+        @apply border-neutral-1;
       }
     }
   }

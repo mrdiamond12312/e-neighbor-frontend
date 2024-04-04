@@ -10,7 +10,7 @@ export type TOnboardStep = {
 export const OnboardStep: React.FC<TOnboardStep> = ({ currentStep, stepItems }) => {
   return (
     <Steps
-      className="custom-steps"
+      className="custom-steps !hidden md:!flex"
       current={currentStep}
       direction="horizontal"
       items={stepItems}
