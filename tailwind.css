@@ -625,7 +625,7 @@
     }
   }
   .custom-sidebar {
-    @apply text-teal-7 text-body-2-regular bg-transparent flex-grow;
+    @apply text-teal-7 font-sans text-body-2-regular bg-transparent flex-grow;
     @apply flex flex-col justify-center gap-2;
     border-inline-end: none !important;
 
@@ -634,10 +634,13 @@
     }
 
     .ant-menu-item {
-      @apply gap-4 m-0 w-full !h-14 !pl-5 py-2;
+      @apply gap-[6px] m-0 w-full !h-14 !pl-5 py-2;
 
       &:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected):hover {
         @apply text-teal-6;
+      }
+      & > span {
+        margin-inline-start: 0;
       }
     }
 
@@ -646,7 +649,7 @@
     }
 
     .ant-menu-submenu-title {
-      @apply gap-4 m-0 w-full !h-14 !pl-5 bg-neutral-1 py-2;
+      @apply gap-[6px] m-0 w-full !h-14 !pl-5 bg-neutral-1 py-2;
 
       &:not(.ant-menu-submenu-selected):hover {
         @apply bg-teal-200;
