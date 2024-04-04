@@ -12,4 +12,5 @@ export default {
   'menu.avatar.dropdown.logout': 'Đăng xuất',
   'menu.on-boarding': 'Đăng ký làm Chủ thuê',
   'menu.product-detail': 'Chi tiết sản phẩm',
+  'menu.dashboard': 'Dashboard',
 };

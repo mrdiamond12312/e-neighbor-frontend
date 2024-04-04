@@ -37,6 +37,7 @@ export default [
       {
         name: 'on-boarding',
         path: 'on-boarding',
+        component: '@/pages/lessor/on-boarding',
       },
       {
         name: 'dashboard',

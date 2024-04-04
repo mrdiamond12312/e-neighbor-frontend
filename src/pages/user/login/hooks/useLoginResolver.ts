@@ -1,4 +1,3 @@
-'use client';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useIntl } from '@umijs/max';
 import * as yup from 'yup';

@@ -13,7 +13,6 @@ body,
   font-family: 'Montserrat', BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
     'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
     'Noto Color Emoji' !important;
-  span,
   p {
     margin: 0;
     word-wrap: break-word;
@@ -225,5 +224,45 @@ body,
 .ant-spin {
   .ant-spin-dot-item {
     @apply bg-teal-1;
+  }
+}
+
+.ant-card {
+  .ant-card-actions {
+    @apply justify-end gap-2 mt-auto;
+    min-height: 56px;
+  }
+  .ant-card-actions > li {
+    @apply !w-fit flex-grow-0 justify-end;
+  }
+}
+
+/* Date Picker Panel */
+.ant-picker-panel {
+  .ant-picker-date-panel {
+    @apply font-sans;
+
+    .ant-picker-body {
+      .ant-picker-content {
+        .ant-picker-cell-today {
+          .ant-picker-cell-inner {
+            &:before {
+              @apply border-teal-1;
+            }
+          }
+        }
+
+        .ant-picker-cell-selected {
+          .ant-picker-cell-inner {
+            @apply bg-teal-6;
+          }
+        }
+      }
+    }
+  }
+  .ant-picker-footer {
+    .ant-picker-today-btn {
+      @apply text-teal-1 font-sans;
+    }
   }
 }
