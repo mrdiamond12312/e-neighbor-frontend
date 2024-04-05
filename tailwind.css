@@ -748,4 +748,20 @@
       }
     }
   }
+
+  /* Breadcrumb*/
+  .custom-breadcrumb {
+    @apply font-sans text-heading-4;
+
+    .ant-breadcrumb-link {
+      a {
+        @apply h-fit;
+      }
+      .breadcrumb-active {
+        @apply text-teal-4;
+      }
+    }
+
+
+  }
 }

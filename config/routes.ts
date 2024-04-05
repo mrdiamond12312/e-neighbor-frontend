@@ -27,21 +27,37 @@ export default [
     ],
   },
   {
-    path: '/lessor/*',
+    path: 'lessor',
     wrappers: ['@/wrappers/LessorAuth', '@/layouts/Lessor'],
-
     headerRender: false,
-    menuRender: false,
-    menuHeaderRender: false,
+
     routes: [
+      {
+        path: '',
+        redirect: 'dashboard',
+      },
       {
         name: 'on-boarding',
         path: 'on-boarding',
         component: '@/pages/lessor/on-boarding',
       },
       {
+        path: 'products',
+        headerRender: false,
+        //Do not display the menu top ba
+        routes: [
+          {
+            name: 'add-product',
+            path: 'new',
+            component: '@/pages/lessor/products/add',
+          },
+        ],
+      },
+
+      {
         name: 'dashboard',
         path: 'dashboard',
+        alias: '/',
       },
     ],
   },
