@@ -4,6 +4,7 @@ import { useModel, useLocation, NavLink, FormattedHTMLMessage, Link } from '@umi
 import FadeIn from '@/components/AnimationKit/FadeIn';
 import type { MenuItem } from '@/components/SideBar/hooks/useLocationMenuKeys';
 import {
+  PATH_LESSOR,
   PATH_LESSOR_ADD_PRODUCT,
   PATH_LESSOR_DASHBOARD,
   PATH_LESSOR_ONBOARDING,
@@ -111,7 +112,10 @@ export const useLessorLayout = () => {
           to: link,
           title: (
             <FadeIn direction="top" keyId={formatId} key={formatId}>
-              <NavLink to={link} className={className}>
+              <NavLink
+                to={link === PATH_LESSOR ? PATH_LESSOR_DASHBOARD : link}
+                className={className}
+              >
                 <FormattedHTMLMessage id={formatId} />
               </NavLink>
             </FadeIn>

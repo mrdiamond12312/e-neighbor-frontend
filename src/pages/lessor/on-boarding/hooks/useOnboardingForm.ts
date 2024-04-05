@@ -130,7 +130,7 @@ export const useOnboardingForm = () => {
   const handleNextStep = async () => {
     const isGoodToForward = await checkValidate();
     console.log(isGoodToForward, currentStep);
-    if (isGoodToForward && currentStep < stepItems.length) {
+    if (isGoodToForward && !isLastStep) {
       setCurrentStep((prev) => prev + 1);
     }
   };

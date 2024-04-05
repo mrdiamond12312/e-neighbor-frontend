@@ -1,6 +1,5 @@
 import { Outlet, SelectLang } from '@umijs/max';
 import { Breadcrumb } from 'antd/lib';
-import { AnimatePresence } from 'framer-motion';
 import React from 'react';
 
 import FadeIn from '@/components/AnimationKit/FadeIn';
@@ -24,9 +23,15 @@ const LessorLayout: React.FC = () => {
           className="w-full h-14 py-2 px-8 bg-neutral-1/30 backdrop-blur shadow flex flex-row justify-between z-20 sticky top-0"
         >
           <div className="flex flex-row items-center h-full gap-2 header-right-container">
-            <AnimatePresence mode="popLayout">
-              <Breadcrumb items={breadCrumbItems} className="custom-breadcrumb" separator=">" />
-            </AnimatePresence>
+            <Breadcrumb
+              items={breadCrumbItems}
+              className="custom-breadcrumb"
+              separator={
+                <FadeIn direction="top">
+                  <span>{'>'}</span>
+                </FadeIn>
+              }
+            />
           </div>
           <div className="flex flex-row items-center h-full gap-2 header-left-container">
             <Avatar currentUser={initialState?.currentUser} loading={loading} />
