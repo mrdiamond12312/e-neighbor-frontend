@@ -4,13 +4,13 @@ export enum ONBOARDING_FORM_KEY {
   dob = 'dob',
   phoneNumber = 'phoneNumber',
   fullName = 'fullName',
-  citizenId = 'CCCD',
+  citizenId = 'citizenId',
   paymentInfo = 'paymentInfo',
   wareHouseAddress = 'wareHouseAddress',
   description = 'description',
   shopName = 'shopName',
-  citizenCardFront = 'citizendFrontImg',
-  citizenCardBack = 'citizendBackImg',
+  citizenCardFront = 'citizenCardFront',
+  citizenCardBack = 'citizenCardback',
   avatar = 'avatar',
 }
 

@@ -22,6 +22,6 @@ declare namespace API {
     phoneNumber?: string;
     fullName: string;
     role: AuthRole;
-    CCCD?: string;
+    citizenId?: string;
   };
 }
