@@ -16,8 +16,6 @@ export const uploadImage = async (
 
   let authenticationParameters = imagekit.getAuthenticationParameters();
 
-  console.log(authenticationParameters);
-
   return request<API.TUploadResponse>(IMG_KIT_API, {
     method: 'POST',
     data: {

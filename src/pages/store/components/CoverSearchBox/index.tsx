@@ -19,10 +19,11 @@ export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({ onPressEnter, c
   });
 
   return (
-    <FadeIn direction="right" className="w-full" keyId="store-searchbox">
+    <FadeIn direction="right" exitDirection="right" className="w-full" keyId="store-searchbox">
       <div className="h-72 max-h-96 sm:h-96 flex items-center justify-center relative overflow-visible">
         <FadeIn
           direction="right"
+          exitDirection="right"
           keyId={coverImage}
           className="h-full overflow-hidden flex items-center justify-center xs:overflow-hidden"
           mode="wait"
@@ -36,6 +37,7 @@ export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({ onPressEnter, c
         <div className="bg-neutral-1/80 backdrop-blur-sm p-4 rounded w-[65%] flex flex-col items-center justify-center gap-2  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <FadeIn
             direction="right"
+            exitDirection="right"
             className="w-full"
             keyId={`store.cover.${category}`}
             mode="wait"
@@ -48,6 +50,7 @@ export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({ onPressEnter, c
           <FadeIn
             className="w-full max-w-[75%] p-4 flex flex-col gap-4"
             direction="right"
+            exitDirection="right"
             keyId={'store.cover.para'}
           >
             <span className="text-body-1-regular text-center line-clamp-3 hidden sm:block">
