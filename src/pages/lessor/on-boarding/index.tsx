@@ -24,7 +24,6 @@ const OnBoarding: React.FC = () => {
     getValues,
   } = useOnboardingForm();
 
-  console.log(getValues());
   const steps = [
     <UserInfo key={'onboarding.userInfo'} control={control} errors={errors} />,
     <LessorInfo key="onboarding.lessorInfo" control={control} errors={errors} />,

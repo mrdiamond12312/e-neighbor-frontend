@@ -17,6 +17,7 @@ export enum ADD_PRODUCT_FORM_KEY {
   timeUnit = 'timeUnit',
   surcharge = 'surcharge',
   insurance = 'insurance',
+  haveInsurance = 'haveInsurance',
 }
 
 export enum PRODUCT_CHARACTERISTICS_KEY {
@@ -75,17 +76,19 @@ export type TInsurance = {
 export type TProductFormField = {
   [ADD_PRODUCT_FORM_KEY.name]: string;
   [ADD_PRODUCT_FORM_KEY.images]: any[];
-  [ADD_PRODUCT_FORM_KEY.category]: number;
   [ADD_PRODUCT_FORM_KEY.description]: string;
+  [ADD_PRODUCT_FORM_KEY.price]: number;
+  [ADD_PRODUCT_FORM_KEY.timeUnit]: keyof typeof TIME_UNIT;
 
+  [ADD_PRODUCT_FORM_KEY.category]: (string | number | boolean)[];
   [ADD_PRODUCT_FORM_KEY.characteristics]?: TProductCharacteristic[];
 
   [ADD_PRODUCT_FORM_KEY.value]: number;
   [ADD_PRODUCT_FORM_KEY.policies]?: string[];
   [ADD_PRODUCT_FORM_KEY.mortgage]: keyof typeof MORTGAGE;
   [ADD_PRODUCT_FORM_KEY.requiredDocuments]: keyof typeof REQUIRED_DOCUMENTS;
-  [ADD_PRODUCT_FORM_KEY.price]: number;
-  [ADD_PRODUCT_FORM_KEY.timeUnit]: keyof typeof TIME_UNIT;
+
   [ADD_PRODUCT_FORM_KEY.surcharge]: TSurcharge[];
   [ADD_PRODUCT_FORM_KEY.insurance]?: TInsurance;
+  [ADD_PRODUCT_FORM_KEY.haveInsurance]: boolean;
 };

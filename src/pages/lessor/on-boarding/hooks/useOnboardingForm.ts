@@ -129,7 +129,6 @@ export const useOnboardingForm = () => {
 
   const handleNextStep = async () => {
     const isGoodToForward = await checkValidate();
-    console.log(isGoodToForward, currentStep);
     if (isGoodToForward && !isLastStep) {
       setCurrentStep((prev) => prev + 1);
     }
@@ -137,7 +136,6 @@ export const useOnboardingForm = () => {
 
   const handleSubmit = async (formFields: TOnboardingFormFields) => {
     const isGoodToForward = await checkValidate();
-    console.log(isGoodToForward);
     if (isGoodToForward) {
       if (
         formFields[ONBOARDING_FORM_KEY['citizenCardBack']][0].status === 'uploading' ||

@@ -18,7 +18,7 @@ const Store: React.FC = () => {
 
   const { control, errors } = useStoreFilter();
   const { formatMessage } = useIntl();
-
+  console.log(locations);
   const searchBoxHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const currentSearchValue = event.currentTarget.value;
     if (currentSearchValue !== keyword) {
@@ -26,7 +26,6 @@ const Store: React.FC = () => {
     }
   };
 
-  console.log(category, locations, keyword);
   return (
     <ConfigProvider
       theme={{

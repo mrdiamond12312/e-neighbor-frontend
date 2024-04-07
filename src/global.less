@@ -275,3 +275,31 @@ body,
     @apply bg-teal-50 text-teal-7 text-body-2-semibold flex justify-start items-center;
   }
 }
+
+/* Cascader Panel */
+.ant-cascader-menus {
+  .ant-cascader-menu-item {
+    @apply font-sans text-body-2-regular min-w-48;
+    .ant-cascader-menu-item-content {
+    }
+  }
+  .ant-cascader-menu-item-active {
+    &:not(.ant-cascader-menu-item-disabled) {
+      &:hover {
+        @apply bg-teal-100;
+      }
+      @apply bg-teal-50;
+    }
+  }
+}
+
+/* Select */
+.ant-select-focused {
+  .ant-select-selector {
+    @apply !border-teal-7;
+  }
+}
+
+.ant-select-selector {
+  border-radius: 4px !important;
+}

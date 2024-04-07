@@ -11,8 +11,6 @@ import vn from '@/locales/vi-VN';
 export const translate = ({ id, defaultMessage }: TTranslateObject) => {
   const locale = getLocale();
 
-  console.log(locale);
-
   switch (locale) {
     case 'vi-VN':
       return vn[id as keyof typeof vn] ?? defaultMessage;

@@ -19,6 +19,23 @@ export const FADE_IN_VARIANT: Variants = {
       }),
     ),
   }),
+  exit: ({ exitDirection = 'left' }) => ({
+    opacity: 0,
+    x: parseInt(
+      classNames({
+        '-75': exitDirection === 'left',
+        '75': exitDirection === 'right',
+        '0': exitDirection !== 'left' && exitDirection !== 'right',
+      }),
+    ),
+    y: parseInt(
+      classNames({
+        '-75': exitDirection === 'top',
+        '75': exitDirection === 'bottom',
+        '0': exitDirection !== 'top' && exitDirection !== 'bottom',
+      }),
+    ),
+  }),
   visible: ({ index = 0 }) => ({
     opacity: 1,
     x: 0,

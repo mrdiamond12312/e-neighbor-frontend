@@ -1,5 +1,6 @@
 import { PieChartOutlined, ShoppingOutlined } from '@ant-design/icons';
 import { useModel, useLocation, NavLink, FormattedHTMLMessage, Link } from '@umijs/max';
+import { useState } from 'react';
 
 import FadeIn from '@/components/AnimationKit/FadeIn';
 import type { MenuItem } from '@/components/SideBar/hooks/useLocationMenuKeys';
@@ -140,6 +141,8 @@ export const useLessorLayout = () => {
       return acc;
     }, []);
 
+  const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
+  const handleDrawerBtn = () => setIsMenuDrawerOpen((prev) => !prev);
   return {
     loading,
     initialState,
@@ -147,5 +150,7 @@ export const useLessorLayout = () => {
     isAtOnboardingPage,
     breadCrumbItems,
     sideBarItems,
+    isMenuDrawerOpen,
+    handleDrawerBtn,
   } as const;
 };

@@ -191,6 +191,15 @@
     }
   }
 
+  .btn-danger {
+    @apply border-error-5 text-error-5;
+    transition: all 1s ease-out;
+    &:not(:disabled):not(.ant-btn-disabled):hover {
+      @apply border-error-7 text-error-7;
+      box-shadow: 2px 3px theme('colors.error-7');
+    }
+  }
+
   .btn-primary {
     @apply bg-teal-4 text-neutral-1;
     &:not(:disabled):not(.ant-btn-disabled):hover {
@@ -398,6 +407,7 @@
         .ant-form-item-control {
           .ant-form-item-control-input-content {
             @apply text-body-2-regular;
+            /* Input */
             .ant-input {
               @apply rounded-[4px] h-8 !bg-transparent align-baseline;
 
@@ -485,7 +495,7 @@
 
       .ant-menu-sub {
         .ant-menu-item-selected {
-          @apply bg-white text-teal-4 font-medium;
+          @apply bg-neutral-1 text-teal-4 font-medium;
 
           &:before {
             @apply animate-flicker;
@@ -646,6 +656,7 @@
 
     .ant-menu-item-selected {
       @apply text-teal-7 bg-teal-100;
+      font-weight: 600;
     }
 
     .ant-menu-submenu-title {
@@ -660,7 +671,7 @@
     }
     .ant-menu-submenu-selected {
       .ant-menu-submenu-title {
-        @apply gap-4 m-0 w-full !h-14 !pl-5 bg-neutral-1 py-4 text-teal-7 text-body-2-semibold;
+        @apply gap-4 m-0 w-full !h-14 !pl-5 bg-teal-100 py-4 text-teal-7 text-body-2-semibold;
       }
     }
 
@@ -751,7 +762,7 @@
 
   /* Breadcrumb*/
   .custom-breadcrumb {
-    @apply font-sans text-heading-4;
+    @apply font-sans text-heading-4 hidden lg:flex;
 
     .ant-breadcrumb-link {
       a {
@@ -759,6 +770,124 @@
       }
       .breadcrumb-active {
         @apply text-teal-4;
+      }
+    }
+  }
+
+  /* Drawer */
+  .custom-drawer {
+    .ant-drawer-content-wrapper {
+      .ant-drawer-content {
+        .ant-drawer-header {
+          @apply hidden;
+        }
+      }
+      .ant-drawer-body {
+        @apply p-0;
+      }
+    }
+  }
+
+  /* Cascader & Select */
+  .custom-cascader-select {
+    @apply font-sans;
+    .ant-select-selector {
+      border-radius: 4px;
+      .ant-select-selection-item {
+        @apply text-body-2-semibold;
+      }
+    }
+
+    &:not(.ant-select-disabled):not(.ant-select-customize-input):not(
+        .ant-pagination-size-changer
+      ):hover {
+      .ant-select-selector {
+        @apply border-teal-4;
+      }
+    }
+  }
+  /* Radio */
+  .custom-radio {
+    @apply w-full border-l-[1px] pl-2;
+
+    .ant-space {
+      .ant-space-item {
+        @apply h-10 flex flex-row items-center;
+
+        .ant-radio-wrapper {
+          @apply font-sans text-body-2-regular;
+
+          &:hover {
+            .ant-radio {
+              .ant-radio-inner {
+                @apply border-teal-4;
+              }
+            }
+          }
+          .ant-radio {
+            @apply w-5 h-5;
+          }
+          .ant-radio-inner {
+            @apply w-full h-full;
+          }
+        }
+
+        .ant-radio-wrapper-checked {
+          @apply text-body-2-semibold;
+
+          .ant-radio-checked {
+            .ant-radio-inner {
+              @apply bg-neutral-1 border-teal-7;
+
+              &:after {
+                inset-block-start: unset;
+                inset-inline-start: unset;
+                margin-block-start: 0;
+                margin-inline-start: 0;
+                @apply bg-teal-4 w-3 h-3;
+                @apply -translate-x-2/4 -translate-y-2/4 scale-100 left-2/4 top-2/4;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  /* Checkboxes*/
+  .custom-checkbox {
+    @apply w-full border-l-[1px] pl-2;
+
+    .ant-space {
+      .ant-space-item {
+        @apply h-10 flex flex-row items-center;
+        .ant-checkbox-wrapper {
+          @apply font-sans text-body-2-regular;
+
+          &:hover {
+            .ant-checkbox {
+              .ant-checkbox-inner {
+                @apply border-teal-4;
+              }
+            }
+          }
+
+          .ant-checkbox {
+            @apply w-5 h-5;
+          }
+          .ant-checkbox-inner {
+            @apply w-full h-full;
+          }
+        }
+
+        .ant-checkbox-wrapper-checked {
+          @apply text-body-2-semibold;
+
+          .ant-checkbox-checked {
+            .ant-checkbox-inner {
+              @apply bg-teal-4 border-teal-50 p-1;
+            }
+          }
+        }
       }
     }
   }

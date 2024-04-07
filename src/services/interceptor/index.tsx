@@ -18,7 +18,7 @@ class HttpError extends Error {
 
 const errorHandler = async (err: ResponseError) => {
   const { statusCode, error }: TMeta = await err.response.json();
-  console.log(statusCode, error);
+
   if (!err?.response) {
     return Promise.reject({
       meta: {

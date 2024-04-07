@@ -7,6 +7,7 @@ import {
   ADD_PRODUCT_FORM_KEY,
   TProductFormField,
 } from '@/pages/lessor/products/add/helpers/addProductFormKeys';
+import { useCategoriesDetails } from '@/services/product-categories/services';
 
 export const useAddProductForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -30,22 +31,22 @@ export const useAddProductForm = () => {
         defaultMessage: 'Rental Information',
       }),
     },
+    {
+      title: formatMessage({
+        id: 'lessor.products.add.step.title.additionalInfo',
+        defaultMessage: 'Additional Information',
+      }),
+    },
   ];
 
   const numberOfSteps = stepItems.length;
   const isLastStep = currentStep === numberOfSteps - 1;
 
-  const {
-    control,
-    formState: { errors, dirtyFields, isValid, isDirty },
-    getValues,
-    trigger,
-  } = useForm<TProductFormField>({ mode: 'onTouched' });
-
+  const methods = useForm<TProductFormField>({ mode: 'onTouched' });
   const checkValidate = useCallback(async () => {
     switch (currentStep) {
       case 0:
-        return await trigger([
+        return await methods.trigger([
           ADD_PRODUCT_FORM_KEY.name,
           ADD_PRODUCT_FORM_KEY.images,
           ADD_PRODUCT_FORM_KEY.category,
@@ -53,10 +54,10 @@ export const useAddProductForm = () => {
         ]);
 
       case 1:
-        return await trigger([ADD_PRODUCT_FORM_KEY.characteristics]);
+        return await methods.trigger([ADD_PRODUCT_FORM_KEY.characteristics]);
 
       case 2:
-        return await trigger([
+        return await methods.trigger([
           ADD_PRODUCT_FORM_KEY.value,
           ADD_PRODUCT_FORM_KEY.policies,
           ADD_PRODUCT_FORM_KEY.mortgage,
@@ -66,11 +67,17 @@ export const useAddProductForm = () => {
         ]);
 
       case 3:
-        return await trigger([ADD_PRODUCT_FORM_KEY.insurance]);
+        return await methods.trigger([ADD_PRODUCT_FORM_KEY.insurance]);
       default:
         return false;
     }
   }, [currentStep]);
+
+  // Chosen Category is compose of link to that category (Furniture/../etc) => take last
+  const chosenCategory = methods.watch(ADD_PRODUCT_FORM_KEY.category);
+  const { data: categoryDetail, isInitialLoading: isLoadingCategoryDetail } = useCategoriesDetails(
+    chosenCategory ? chosenCategory[chosenCategory.length - 1] ?? undefined : undefined,
+  );
 
   const handleNextStep = async () => {
     // Trigger Validate for current step
@@ -89,11 +96,9 @@ export const useAddProductForm = () => {
     stepItems,
     handleNextStep,
     handlePreviousStep,
-    control,
-    errors,
-    getValues,
-    dirtyFields,
-    isValid,
-    isDirty,
+    control: methods.control,
+    methods,
+    categoryDetail,
+    isLoadingCategoryDetail,
   } as const;
 };

@@ -1,4 +1,4 @@
-import { Radio as AntdRadio } from 'antd';
+import { Checkbox as AntdCheckbox } from 'antd';
 import type { SizeType } from 'antd/es/config-provider/SizeContext';
 import { Space } from 'antd/lib';
 import { Fragment } from 'react';
@@ -6,23 +6,31 @@ import { Controller } from 'react-hook-form';
 
 import ValidateError from '@/components/Input/ValidateError';
 
-export type TRadioOption = {
+export type TCheckboxOption = {
   value: any;
   label: string;
   disabled?: boolean;
 };
 
-export type TRadio = {
+export type TCheckbox = {
   size?: SizeType;
   control: any;
   name: string;
-  options: TRadioOption[];
+  options: TCheckboxOption[];
   className?: string;
   disabled?: boolean;
   direction?: 'vertical' | 'horizontal';
 };
 
-const Radio: React.FC<TRadio> = ({ control, name, options, className, disabled, direction }) => {
+const Checkbox: React.FC<TCheckbox> = ({
+  control,
+  name,
+  options,
+  className,
+  disabled,
+  direction,
+  ...restProps
+}) => {
   return (
     <Fragment>
       <Controller
@@ -31,20 +39,20 @@ const Radio: React.FC<TRadio> = ({ control, name, options, className, disabled, 
         render={({ field, fieldState: { error } }) => {
           return (
             <Fragment>
-              <AntdRadio.Group
-                value={field.value}
-                onChange={(e) => field.onChange(e.target.value)}
+              <AntdCheckbox.Group
+                {...field}
                 className={className}
                 disabled={disabled}
+                {...restProps}
               >
                 <Space direction={direction ?? 'horizontal'}>
                   {options?.map((item) => (
-                    <AntdRadio key={item.value} value={item.value} disabled={item.disabled}>
+                    <AntdCheckbox key={item.value} value={item.value} disabled={item.disabled}>
                       {item.label}
-                    </AntdRadio>
+                    </AntdCheckbox>
                   ))}
                 </Space>
-              </AntdRadio.Group>
+              </AntdCheckbox.Group>
               <ValidateError error={error} />
             </Fragment>
           );
@@ -54,4 +62,4 @@ const Radio: React.FC<TRadio> = ({ control, name, options, className, disabled, 
   );
 };
 
-export default Radio;
+export default Checkbox;

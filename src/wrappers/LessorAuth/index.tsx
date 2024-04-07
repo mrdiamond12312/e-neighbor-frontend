@@ -15,7 +15,6 @@ const LessorAuth: React.FC = () => {
 
   const lessorRedirectPath = [PATH_LESSOR_ONBOARDING, PATH_LESSOR];
 
-  console.log(pathname in lessorRedirectPath);
   if (isGuest) return <Navigate state={{ from: pathname }} to={PATH_LOGIN} replace />;
 
   if (isUser && pathname !== PATH_LESSOR_ONBOARDING)

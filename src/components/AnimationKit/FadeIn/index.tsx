@@ -8,6 +8,7 @@ export interface IFadeInProps extends AnimationProps {
   children: React.ReactNode;
   index?: number;
   direction: 'top' | 'bottom' | 'left' | 'right';
+  exitDirection: 'top' | 'bottom' | 'left' | 'right';
   keyId?: string | number;
   mode?: 'wait' | 'sync' | 'popLayout';
   className?: string;
@@ -16,6 +17,7 @@ export interface IFadeInProps extends AnimationProps {
 const FadeIn: React.FC<IFadeInProps> = ({
   children,
   direction,
+  exitDirection,
   index,
   keyId,
   className,
@@ -25,10 +27,10 @@ const FadeIn: React.FC<IFadeInProps> = ({
   return (
     <AnimatePresence mode={mode}>
       <motion.div
-        custom={{ index, direction }}
+        custom={{ index, direction, exitDirection }}
         animate="visible"
         initial="hidden"
-        exit={{ opacity: 0 }}
+        exit="exit"
         key={keyId}
         variants={FADE_IN_VARIANT}
         className={rootClassName}
