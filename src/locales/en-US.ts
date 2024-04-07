@@ -8,9 +8,13 @@ import {
   productCategories,
   productCharacteristicsLabel,
   productLocale,
+  productMortgage,
+  productReqDocs,
+  productSurchage,
 } from '@/locales/en-US/product';
 import register from '@/locales/en-US/register';
 import store from '@/locales/en-US/store';
+import { productInsurace, productPolicies } from '@/locales/vi-VN/product';
 
 export default {
   'nav.Home': 'Landing Page',
@@ -19,6 +23,12 @@ export default {
   ...productLocale,
   ...productCategories,
   ...productCharacteristicsLabel,
+
+  ...productMortgage,
+  ...productPolicies,
+  ...productReqDocs,
+  ...productInsurace,
+  ...productSurchage,
   ...lessorBreadCrumbs,
   ...aboutUs,
   ...menu,

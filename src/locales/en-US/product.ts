@@ -12,6 +12,11 @@ export const productCategories = {
   'furniture.category.bed': 'Bed',
   'furniture.category.cabinet': 'Cabinet',
   'furniture.category.kitchen-appliances': 'Kitchen Appliances',
+  'vehicle.category.motorbike': 'Motorbike',
+  'vehicle.category.bike': 'Bicycle',
+  'product.category.furnitures': 'Furnitures',
+  'product.category.vehicles': 'Vehicles',
+  'vehicle.category.car': 'Car',
 };
 
 export const productCharacteristicsLabel = {
@@ -45,4 +50,35 @@ export const productCharacteristicsLabel = {
   'vehicle-characteristics-utility-etc': 'ETC',
   'vehicle-characteristics-utility-tyreSensor': 'Tyre Sensor',
   'vehicle-characteristics-utility-airBag': 'Air Bag',
+};
+
+export const productInsurance = {
+  'product.insurance.exist.yes': 'Yes',
+  'product.insurance.exist.no': 'No',
+};
+
+export const productMortgage = {
+  'product.mortgage.none': 'No mortgage required',
+  'product.mortgage.motorbike.deposite': 'Motorcycle mortgage',
+};
+
+export const productReqDocs = {
+  'product.reqDocs.none': 'No documents required',
+  'product.reqDocs.need.citizenCard.with.driverLicense':
+    "Compare citizen ID card and driver's license",
+  'product.reqDocs.keep.passport': "Compare driver's license & keep passport",
+};
+
+export const productSurchage = {
+  'products.surCharge.lateFees': 'Late return fee',
+  'products.surCharge.lateFees.description':
+    'Additional fee incurred if the product is returned late, the penalty amount corresponds to the number of hours late',
+
+  'products.surCharge.sanityFees': 'Cleaning fee',
+  'products.surCharge.sanityFees.description':
+    'Additional fee incurred when the product is returned not clean (many stains, odors,...)',
+
+  'products.surCharge.damageFees': 'Product damage fee',
+  'products.surCharge.damageFees.description':
+    'Additional fee incurred when the product is returned damaged, the product cannot be rented anymore or the owner has to take it for repair, in this case the tenant will compensate the owner according to the agreement',
 };
