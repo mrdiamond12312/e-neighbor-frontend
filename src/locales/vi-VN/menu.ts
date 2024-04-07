@@ -1,5 +1,6 @@
 export default {
   'menu.nav.AboutUs': 'Giới thiệu Team',
+  'menu.nav.Profile': 'Trang cá nhân',
   'menu.nav.Home': 'Landing Page',
   'menu.nav.Store': 'Các mặt hàng',
   'menu.linkin': 'Theo dõi chúng tôi:',

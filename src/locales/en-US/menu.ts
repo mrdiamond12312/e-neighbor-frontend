@@ -1,5 +1,6 @@
 export default {
   'menu.nav.AboutUs': 'About Us',
+  'menu.nav.Profile': 'Profile',
   'menu.nav.Home': 'Landing Page',
   'menu.nav.Store': 'Rental',
   'menu.linkin': 'Keep in touch:',

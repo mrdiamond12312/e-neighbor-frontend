@@ -1,12 +1,11 @@
+import { EditOutlined, FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
 import { Avatar, Button, Card, Col, Descriptions, Input, Modal, Row, Switch } from 'antd/lib';
 import React, { useState } from 'react';
 
 import BgProfile from '../../../public/profile/bg-profile.jpg';
 import profilavatar from '../../../public/profile/face-2.jpg';
-import { Iconify } from '../../utils/Iconify';
 // import { data } from '../../utils/ProfileData';
-
 const Profile: React.FC = () => {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [username, setUsername] = useState<string>('judarclitus1920');
@@ -128,7 +127,7 @@ const Profile: React.FC = () => {
             className="header-solid h-full card-profile-information"
             extra={
               <Button type="link" onClick={handleToggleEditMode}>
-                {<Iconify icon="akar-icons:pencil" />}
+                <EditOutlined />
               </Button>
             }
             bodyStyle={{ paddingTop: 0, paddingBottom: 16 }}
@@ -178,10 +177,10 @@ const Profile: React.FC = () => {
               </Descriptions.Item>
               <Descriptions.Item label="Social" span={3}>
                 <a href="#pablo" className="mx-5 px-5">
-                  {<Iconify icon="akar-icons:facebook-fill" style={{ color: '#344e86' }} />}
+                  {<FacebookOutlined style={{ color: '#344e86' }} />}
                 </a>
                 <a href="#pablo" className="mx-5 px-5">
-                  {<Iconify icon="akar-icons:instagram-fill" style={{ color: '#e1306c' }} />}
+                  {<InstagramOutlined style={{ color: '#e1306c' }} />}
                 </a>
               </Descriptions.Item>
             </Descriptions>

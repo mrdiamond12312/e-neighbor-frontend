@@ -56,6 +56,11 @@ export default [
     component: './AboutUs',
   },
   {
+    name: 'nav.Profile',
+    path: '/profile',
+    component: './Profile',
+  },
+  {
     path: '/',
     redirect: '/home',
   },
