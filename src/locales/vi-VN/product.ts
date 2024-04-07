@@ -12,6 +12,11 @@ export const productCategories = {
   'furniture.category.bed': 'Giường',
   'furniture.category.cabinet': 'Tủ',
   'furniture.category.kitchen-appliances': 'Thiết bị nhà bếp',
+  'vehicle.category.motorbike': 'Xe gắn máy',
+  'vehicle.category.bike': 'Xe đạp',
+  'product.category.furnitures': 'Nội Thất',
+  'product.category.vehicles': 'Phương tiện',
+  'vehicle.category.car': 'Ô tô',
 };
 
 export const productCharacteristicsLabel = {
@@ -45,4 +50,46 @@ export const productCharacteristicsLabel = {
   'vehicle-characteristics-utility-etc': 'ETC',
   'vehicle-characteristics-utility-tyreSensor': 'Cảm biến áp suất lốp',
   'vehicle-characteristics-utility-airBag': 'Túi khí',
+};
+
+export const productPolicies = {
+  'product.policies.correctPurpose': 'Sử dụng tài sản đúng mục đích',
+  'product.policies.not.illegalPurpose': 'Không sử dụng cho việc phi pháp',
+  'product.policies.not.pawnShop': 'Không đem tài sản để cầm cố',
+  'product.policies.carDirty': 'Không nhả kẹo cao su, xả rác trên xe',
+  'product.policies.not.deliver.prohibited':
+    'Không dùng xe để vận chuyển hàng quốc cấm, dễ cháy nổ',
+  'product.policies.carDirty.handOver': 'Giữ gìn xe sạch sẽ, phụ thu nếu vi phạm khi trả xe',
+  'product.policies.furnDirty': 'Giữ cho nội thất sạch sẽ, không hư hại',
+  'product.policies.furnDirty.handOver': 'Nếu phát hiện vi phạm, sẽ trả phí phát sinh',
+};
+
+export const productInsurace = {
+  'product.insurance.exist.yes': 'Có',
+  'product.insurance.exist.no': 'Không có',
+};
+
+export const productMortgage = {
+  'product.mortgage.none': 'Không cần thế chấp',
+  'product.mortgage.motorbike.deposite': 'Thế chấp xe gắn máy',
+};
+
+export const productReqDocs = {
+  'product.reqDocs.none': 'Không cần giấy tờ',
+  'product.reqDocs.need.citizenCard.with.driverLicense': 'Đối chiếu CCCD và Giấy phép Lái xe',
+  'product.reqDocs.keep.passport': 'Đối chiếu GPLX & Giữ lại Passport',
+};
+
+export const productSurchage = {
+  'products.surCharge.lateFees': 'Phí thuê quá giờ',
+  'products.surCharge.lateFees.description':
+    'Phụ phí phát sinh nếu hoàn trả sản phẩm trễ giờ, số tiền phạt tương ứng với số giờ trễ',
+
+  'products.surCharge.sanityFees': 'Phí vệ sinh',
+  'products.surCharge.sanityFees.description':
+    'Phụ phí phát sinh khi sản phẩm hoàn trả không đảm bảo vệ sinh (nhiều vết bẩn, ám mùi,...)',
+
+  'products.surCharge.damageFees': 'Phí tổn hại sản phẩm',
+  'products.surCharge.damageFees.description':
+    'Phụ phí phát sinh khi sản phẩm hoàn trả bị tổn hại, sản phẩm không cho thuê được nữa hoặc chủ sản phẩm phải mang đi sửa chữa, trường hợp này bên thuê bồi thường cho chủ sản phẩm theo thỏa thuận',
 };

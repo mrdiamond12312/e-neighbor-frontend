@@ -78,7 +78,7 @@ export const DetailInfo: React.FC<TAddProductDetailInfo> = ({
                   description={
                     <span className="text-teal-7 font-sans">
                       <FormattedHTMLMessage
-                        id="add.product.form.empty"
+                        id="add.product.form.characteristics.empty"
                         defaultMessage="Characteristics is now empty, please choose a Category for your product to load!"
                       />
                     </span>

@@ -157,9 +157,11 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
               id: 'add.product.form.insuranceDetail.description.label',
               defaultMessage: 'Description',
             })}
+            autoSize={{ minRows: 2, maxRows: 6 }}
             control={control}
             name={[ADD_PRODUCT_FORM_KEY['insurance'], INSURANCE_KEY['description']].join('.')}
             disabled={disabledInsuranceDetail}
+            size="large"
           />
         </Item>
         <Item

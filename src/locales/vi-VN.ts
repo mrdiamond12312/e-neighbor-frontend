@@ -7,7 +7,12 @@ import menu from '@/locales/vi-VN/menu';
 import {
   productCategories,
   productCharacteristicsLabel,
+  productInsurace,
   productLocale,
+  productMortgage,
+  productPolicies,
+  productReqDocs,
+  productSurchage,
 } from '@/locales/vi-VN/product';
 import register from '@/locales/vi-VN/register';
 import store from '@/locales/vi-VN/store';
@@ -19,6 +24,11 @@ export default {
   ...productLocale,
   ...productCategories,
   ...productCharacteristicsLabel,
+  ...productMortgage,
+  ...productPolicies,
+  ...productReqDocs,
+  ...productInsurace,
+  ...productSurchage,
   ...lessorBreadCrumbs,
   ...menu,
   ...aboutUs,

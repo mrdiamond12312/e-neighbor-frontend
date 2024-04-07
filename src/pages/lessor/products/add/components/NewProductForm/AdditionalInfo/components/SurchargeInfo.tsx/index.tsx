@@ -20,7 +20,7 @@ export type TSurchargeRecord = {
   control: Control<any>;
   index: number;
   handleRemoveField: () => void;
-  surchargeOptions: API.ISurcharge[] | undefined;
+  surchargeOptions: any[] | undefined;
   surchargesLoading: boolean;
 };
 
@@ -50,8 +50,18 @@ export const SurchargeInfo: React.FC<TSurchargeRecord> = ({
             required
           >
             <Popover
-              title={surchargeDetail?.name}
-              content={isInitialLoading ? <Spin /> : surchargeDetail?.description}
+              title={
+                isInitialLoading
+                  ? ''
+                  : surchargeDetail && formatMessage({ id: surchargeDetail?.name })
+              }
+              content={
+                isInitialLoading ? (
+                  <Spin />
+                ) : (
+                  surchargeDetail && formatMessage({ id: surchargeDetail?.description })
+                )
+              }
               rootClassName="custom-popover"
               placement="right"
             >
@@ -64,7 +74,6 @@ export const SurchargeInfo: React.FC<TSurchargeRecord> = ({
                 loading={surchargesLoading}
                 name={fieldName}
                 options={surchargeOptions}
-                fieldNames={{ label: 'name', value: 'id' }}
                 size="large"
                 className="custom-cascader-select"
                 popupClassName="custom-select-panel"

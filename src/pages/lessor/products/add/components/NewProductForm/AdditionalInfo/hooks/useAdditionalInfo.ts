@@ -28,7 +28,14 @@ export const useAdditionalInfo = () => {
     remove(index);
   };
 
-  const { data: surchargesOptions, isLoading: surchargesLoading } = useSurchargesList();
+  const { data, isLoading: surchargesLoading } = useSurchargesList();
+
+  const surchargesOptions = surchargesLoading
+    ? []
+    : data?.map((record) => ({
+        value: record.id,
+        label: formatMessage({ id: record.name, defaultMessage: record.name }),
+      }));
   console.log(surchargesOptions);
 
   const insuranceOptions: TRadioOption[] = [
