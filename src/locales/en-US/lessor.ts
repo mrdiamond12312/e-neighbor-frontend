@@ -5,12 +5,6 @@ export default {
   'lessor.onboarding.modal.intro':
     "Wait! Before you can rent out furniture/equipment, we need you to provide some additional information. Let's get started!",
 
-  // Sidebar
-  'lessor.sidebar.dashboard': 'Dashboard',
-  'lessor.sidebar.products.management': 'Products Management',
-  'lessor.sidebar.orders.management': 'Orders Management',
-
-  // Header
   'lessor.menu.title': "Lessor's Channel",
 
   'lessor.onboarding.step.userInfo.header': 'General Information',
@@ -64,74 +58,4 @@ export default {
   'onboarding.form.citizenCardFront.label': 'Front of Citizen Card',
   'onboarding.form.citizenCardBack.label': 'Back of Citizen Card',
   'onboarding.form.avatar.label': 'Avatar',
-
-  // Add Product Form Error
-  'lessor.addProduct.images.null': 'Please take some photos of the Product ^o^',
-  'lessor.addProduct.description.null': 'Please describe the Product in a few words',
-  'lessor.addProduct.price.null': 'Please enter the price',
-  'lessor.addProduct.price.notDivideBy1000': 'The price must be in thousands',
-  'lessor.addProduct.timeUnit.null': 'Please enter the rental period',
-  'lessor.addProduct.category.null': 'Please select a category',
-  'lessor.addProduct.value.null': 'Please enter the value of the asset',
-  'lessor.addProduct.surCharge.price.number': 'Please enter a number',
-  'lessor.addProduct.mortgage.null': 'Please select a type of mortgage',
-  'lessor.addProduct.reqDocuments.null': 'Please select a type of document',
-  'lessor.addProduct.haveInsurance.null': 'Please let us know if this asset has insurance',
-
-  'lessor.addProduct.surCharge.id.null': 'Select a type of surcharge',
-  'lessor.addProduct.surCharge.price.null': 'Please enter the surcharge amount',
-  'lessor.addProduct.insurance.holdername.null': "Please enter the owner's name",
-  'lessor.addProduct.insurance.issueDate.null': 'Please enter the issued date of the insurance',
-  'lessor.addProduct.insurance.expiryDate.null':
-    'Please enter the expiration date of the insurance',
-  'lessor.addProduct.name.null': 'Please enter the name of the Product',
-
-  // Add Product Form Label
-  'add.product.form.name.label': 'Product name',
-  'add.product.form.images.label': 'Product photos (5)',
-  'add.product.form.description.label': 'Descriptions',
-  'add.product.form.price.label': 'Rental Price',
-  'add.product.form.timeUnit.label': 'Time Unit',
-
-  'add.product.form.category.label': 'Category',
-  'add.product.form.characteristics.label': 'Characteristics',
-  'add.product.form.characteristics.empty':
-    'Please select an category to display the characteristics',
-
-  'add.product.form.value.label': 'Asset Value',
-  'add.product.form.policies.label': 'Policies',
-  'add.product.form.mortgage.label': 'Mortgage',
-  'add.product.form.reqDocs.label': 'Required Documents',
-
-  'add.product.form.surcharges.label': 'Surcharges',
-  'add.product.form.haveInsurance.label': 'Asset Insurance',
-  'add.product.form.insuranceDetail.label': 'Insurance details',
-  'add.product.form.insuranceDetail.holderName.label': 'Insurance Holdername',
-  'add.product.form.insuranceDetail.images.label': 'Insurance Photos',
-  'add.product.form.insuranceDetail.description.label': 'Description',
-  'add.product.form.insuranceDetail.issueDate.label': 'Issued Date',
-  'add.product.form.insuranceDetail.expiryDate.label': 'Expiration Date',
-  'add.product.form.surcharges.add': 'Add additional surcharge',
-  'add.product.form.surcharge.id.label': 'Surcharge Type',
-  'add.product.form.surcharge.price.label': 'Surcharge Amout',
-  'add.product.form.surcharges.delete': 'Delete',
-
-  // Add Product Form Step
-  'lessor.products.add.step.title.basicInfo': 'Basic information',
-  'lessor.products.add.step.title.detailInfo': 'Detailed information',
-  'lessor.products.add.step.title.rentalInfo': 'Rental information',
-  'lessor.products.add.step.title.additionalInfo': 'Additional information',
-
-  // Add Product Form Header
-  'lessor.product.add.step.basicInfo.header': 'Basic information.',
-  'lessor.product.add.step.basicInfo.description':
-    'Some basic information about the product, used to search for your product!',
-
-  'lessor.product.add.step.rentalInfo.header': 'Rental information.',
-  'lessor.product.add.step.rentalInfo.description':
-    'Some necessary information for renting, an agreement between the customer and the lessor.',
-
-  'lessor.product.add.step.addtionalInfo.header': 'Additional information.',
-  'lessor.product.add.step.addtionalInfo.description':
-    'Provide additional information about surcharges and insurance.',
 };

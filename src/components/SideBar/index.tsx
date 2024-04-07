@@ -1,4 +1,4 @@
-import { LeftOutlined } from '@ant-design/icons';
+import { RightOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Menu } from 'antd/lib';
 import classNames from 'classnames';
@@ -29,15 +29,9 @@ export type TSideBarProps = {
   items: MenuItem[];
   containerClassName?: string;
   menuClassName?: string;
-  hideCollapseBtn?: boolean;
 };
 
-export const SideBar: React.FC<TSideBarProps> = ({
-  items,
-  containerClassName,
-  menuClassName,
-  hideCollapseBtn = false,
-}) => {
+export const SideBar: React.FC<TSideBarProps> = ({ items, containerClassName, menuClassName }) => {
   const { defaultActiveKey } = useLocationMenuKeys(items);
 
   const [isCollapsed, setCollapsed] = useState<boolean>(false);
@@ -50,14 +44,9 @@ export const SideBar: React.FC<TSideBarProps> = ({
   );
   const combinedMenuClassName = classNames('custom-sidebar', menuClassName);
 
-  const collapsedBtnCss = classNames(
-    'rounded-full p-0 text-center flex justify-center items-center h-fit absolute -right-3 top-[43px] z-20',
-    { hidden: hideCollapseBtn },
-  );
-  const collapsedSignCss = classNames('p-1 transition-all', {
+  const collapsedBtnCss = classNames('p-1 transition-all', {
     'rotate-180': isCollapsed,
   });
-
   const handleCollapsedButton = () => {
     setCollapsed((prev) => !prev);
   };
@@ -67,13 +56,17 @@ export const SideBar: React.FC<TSideBarProps> = ({
       <div className="flex flex-row gap-2 justify-center items-center h-14 w-full">
         <Logo collapsedLogoText={isCollapsed} />
       </div>
-      <Button type="primary" onClick={handleCollapsedButton} className={collapsedBtnCss}>
-        <LeftOutlined className={collapsedSignCss} />
+      <Button
+        type="primary"
+        onClick={handleCollapsedButton}
+        className="rounded-full p-0 text-center flex justify-center items-center h-fit absolute -right-3 top-[43px] z-20"
+      >
+        <RightOutlined className={collapsedBtnCss} />
       </Button>
       <Menu
+        defaultSelectedKeys={defaultActiveKey}
         mode="inline"
         inlineCollapsed={isCollapsed}
-        selectedKeys={defaultActiveKey}
         items={items}
         className={combinedMenuClassName}
       />

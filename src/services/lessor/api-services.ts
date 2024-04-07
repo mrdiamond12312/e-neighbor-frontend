@@ -9,14 +9,9 @@ export const lessorOnboard = (body: TOnboardingFormFields) => {
     method: 'POST',
     data: {
       ...body,
-      [ONBOARDING_FORM_KEY['citizenCardFront']]:
-        body[ONBOARDING_FORM_KEY['citizenCardFront']][0].response.url,
-      [ONBOARDING_FORM_KEY['citizenCardBack']]:
-        body[ONBOARDING_FORM_KEY['citizenCardBack']][0].response.url,
-      [ONBOARDING_FORM_KEY['avatar']]: body[ONBOARDING_FORM_KEY['avatar']][0].response.url,
-      [ONBOARDING_FORM_KEY['paymentInfo']]: body[ONBOARDING_FORM_KEY['paymentInfo']]
-        ? body[ONBOARDING_FORM_KEY['paymentInfo']]
-        : [],
+      citizenFrontImg: body[ONBOARDING_FORM_KEY['citizenCardFront']][0].response.url,
+      citizenBackImg: body[ONBOARDING_FORM_KEY['citizenCardBack']][0].response.url,
+      avatar: body[ONBOARDING_FORM_KEY['avatar']][0].response.url,
       dob: body[ONBOARDING_FORM_KEY['dob']]
         ? parseTimestampToISOString(body[ONBOARDING_FORM_KEY['dob']])
         : null,

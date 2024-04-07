@@ -10,6 +10,7 @@ const ProductDetail: React.FC = () => {
   const { data, isLoading } = useProductDetails(productId);
 
   console.log(data, isLoading);
+
   return <ContactInfo></ContactInfo>;
 };
 

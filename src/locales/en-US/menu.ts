@@ -3,7 +3,6 @@ export default {
   'menu.nav.Home': 'Landing Page',
   'menu.nav.Store': 'Rental',
   'menu.linkin': 'Keep in touch:',
-  'menu.add-product': 'Add new Product',
 
   'menu.avatar.dropdown.userInfo': 'User Info',
   'menu.avatar.dropdown.lessor.channel': 'To Lessor Channel',

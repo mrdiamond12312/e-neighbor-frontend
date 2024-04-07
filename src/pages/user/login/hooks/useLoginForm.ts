@@ -3,7 +3,7 @@ import { notification } from 'antd';
 import { useForm } from 'react-hook-form';
 
 import { LOGIN_FORM_KEY } from '@/const/login-form';
-import { PATH_LOGIN, PATH_ROOT } from '@/const/path';
+import { PATH_ROOT } from '@/const/path';
 import useLoginResolver from '@/pages/user/login/hooks/useLoginResolver';
 import { useServiceLogin } from '@/services/auth/services';
 
@@ -45,8 +45,7 @@ export const useLoginForm = () => {
             message: defaultLoginSuccessMessage,
             duration: 0.5,
             onClose: () => {
-              window.location.href =
-                state?.from === PATH_LOGIN ? PATH_ROOT : state?.from ?? PATH_ROOT;
+              window.location.href = state?.from ?? PATH_ROOT;
             },
           });
         }

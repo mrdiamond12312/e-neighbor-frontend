@@ -7,7 +7,6 @@ import { FLUSH_CONTAINER_VARIANT, FLUSH_POINTER_VARIANT } from './helpers/varian
 export interface IFlushRevealProps extends AnimationProps {
   rootClassName?: string;
   pointerClassName?: string;
-  contentClassName?: string;
   children: React.ReactNode;
   mode?: 'wait' | 'sync' | 'popLayout';
   keyId?: string | number;
@@ -17,7 +16,6 @@ export interface IFlushRevealProps extends AnimationProps {
 const FlushReveal: React.FC<IFlushRevealProps> = ({
   children,
   rootClassName,
-  contentClassName,
   pointerClassName,
   index,
   mode = 'wait',
@@ -37,7 +35,6 @@ const FlushReveal: React.FC<IFlushRevealProps> = ({
           initial="hidden"
           exit="hidden"
           key={keyId}
-          className={contentClassName}
           variants={FLUSH_CONTAINER_VARIANT}
         >
           {children}

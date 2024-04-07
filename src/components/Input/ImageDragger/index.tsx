@@ -14,7 +14,6 @@ export type TPropsDragger = {
   control: Control<FieldValues>;
   name: string;
   maxCount: number;
-  disabled?: boolean;
 };
 
 export const ImageDragger: React.FC<TPropsDragger & Partial<UploadListProps>> = ({

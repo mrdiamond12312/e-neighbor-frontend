@@ -4,11 +4,11 @@ import { Card, Divider } from 'antd/lib';
 import React from 'react';
 
 import Button from '@/components/Button';
-import { Steps } from '@/components/Steps';
 import { NotifyModal } from '@/pages/lessor/on-boarding/components/NotifyModal';
 import { IdentityInfo } from '@/pages/lessor/on-boarding/components/OnboardingForm/IdentityInfo';
 import { LessorInfo } from '@/pages/lessor/on-boarding/components/OnboardingForm/LessorInfo';
 import { UserInfo } from '@/pages/lessor/on-boarding/components/OnboardingForm/UserInfo';
+import { OnboardStep } from '@/pages/lessor/on-boarding/components/OnboardStep';
 import { useOnboardingForm } from '@/pages/lessor/on-boarding/hooks/useOnboardingForm';
 
 const OnBoarding: React.FC = () => {
@@ -24,6 +24,7 @@ const OnBoarding: React.FC = () => {
     getValues,
   } = useOnboardingForm();
 
+  console.log(getValues());
   const steps = [
     <UserInfo key={'onboarding.userInfo'} control={control} errors={errors} />,
     <LessorInfo key="onboarding.lessorInfo" control={control} errors={errors} />,
@@ -47,9 +48,9 @@ const OnBoarding: React.FC = () => {
             </Button>
           ),
         ]}
-        styles={{ body: { display: 'flex', flexDirection: 'column', height: '100%', padding: 0 } }}
+        bodyStyle={{ display: 'flex', flexDirection: 'column', height: '100%', padding: 0 }}
       >
-        <Steps currentStep={currentStep} stepItems={stepItems} />
+        <OnboardStep currentStep={currentStep} stepItems={stepItems} />
         <Divider className="hidden md:block" />
         <section className="flex w-full max-w-3xl justify-center items-center m-auto">
           {steps[currentStep]}

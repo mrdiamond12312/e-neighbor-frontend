@@ -1,12 +1,10 @@
-import { useInfiniteQuery, useMutation, useQuery } from '@umijs/max';
+import { useInfiniteQuery, useQuery } from '@umijs/max';
 
-import { TProductFormField } from '@/pages/lessor/products/add/helpers/addProductFormKeys';
 import API_ENDPOINTS from '@/services/products/api-path';
 import {
   getMostRatedProducts,
   getMostViewedProducts,
   getProductDetails,
-  postNewProduct,
 } from '@/services/products/api-services';
 
 export const useProductDetails = (productId?: number | string) =>
@@ -39,10 +37,3 @@ export const useMostRatedProducts = (pagination: IProductsPagination) => {
     },
   });
 };
-
-export const useCreateNewProducts = () =>
-  useMutation(
-    [API_ENDPOINTS.PRODUCTS],
-    (formFields: TProductFormField) => postNewProduct(formFields),
-    {},
-  );
