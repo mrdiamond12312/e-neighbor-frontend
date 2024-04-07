@@ -27,6 +27,8 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
     fields,
     handleNewField,
     handleRemoveField,
+    surchargesLoading,
+    surchargesOptions,
   } = useAdditionalInfo();
   return (
     <Form
@@ -67,6 +69,8 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
           >
             <SurchargeInfo
               control={control}
+              surchargeOptions={surchargesOptions}
+              surchargesLoading={surchargesLoading}
               handleRemoveField={() => handleRemoveField(index)}
               index={index}
             />
@@ -117,7 +121,7 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
             })}
             placement="top"
             control={control}
-            name={[ADD_PRODUCT_FORM_KEY['name'], INSURANCE_KEY['holderName']].join('.')}
+            name={[ADD_PRODUCT_FORM_KEY['insurance'], INSURANCE_KEY['holderName']].join('.')}
             size="large"
             disabled={disabledInsuranceDetail}
           />
@@ -133,7 +137,7 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
         >
           <ImageDragger
             control={control}
-            name={[ADD_PRODUCT_FORM_KEY['name'], INSURANCE_KEY['images']].join('.')}
+            name={[ADD_PRODUCT_FORM_KEY['insurance'], INSURANCE_KEY['images']].join('.')}
             maxCount={2}
             className="custom-ant-upload"
             disabled={disabledInsuranceDetail}
@@ -154,7 +158,7 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
               defaultMessage: 'Description',
             })}
             control={control}
-            name={[ADD_PRODUCT_FORM_KEY['name'], INSURANCE_KEY['description']].join('.')}
+            name={[ADD_PRODUCT_FORM_KEY['insurance'], INSURANCE_KEY['description']].join('.')}
             disabled={disabledInsuranceDetail}
           />
         </Item>
@@ -174,7 +178,7 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
             })}
             size="large"
             control={control}
-            name={[ADD_PRODUCT_FORM_KEY['name'], INSURANCE_KEY['issueDate']].join('.')}
+            name={[ADD_PRODUCT_FORM_KEY['insurance'], INSURANCE_KEY['issueDate']].join('.')}
             disabled={disabledInsuranceDetail}
           />
         </Item>
@@ -194,7 +198,7 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
             })}
             size="large"
             control={control}
-            name={[ADD_PRODUCT_FORM_KEY['name'], INSURANCE_KEY['expiryDate']].join('.')}
+            name={[ADD_PRODUCT_FORM_KEY['insurance'], INSURANCE_KEY['expiryDate']].join('.')}
             disabled={disabledInsuranceDetail}
           />
         </Item>

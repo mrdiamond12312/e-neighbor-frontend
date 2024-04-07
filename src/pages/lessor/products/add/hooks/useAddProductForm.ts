@@ -7,6 +7,7 @@ import {
   ADD_PRODUCT_FORM_KEY,
   TProductFormField,
 } from '@/pages/lessor/products/add/helpers/addProductFormKeys';
+import { useAddProductResolver } from '@/pages/lessor/products/add/hooks/useAddProductResolver';
 import { useCategoriesDetails } from '@/services/product-categories/services';
 
 export const useAddProductForm = () => {
@@ -41,20 +42,26 @@ export const useAddProductForm = () => {
 
   const numberOfSteps = stepItems.length;
   const isLastStep = currentStep === numberOfSteps - 1;
+  const { FormSchema } = useAddProductResolver();
+  const methods = useForm<TProductFormField>({ mode: 'onTouched', resolver: FormSchema });
 
-  const methods = useForm<TProductFormField>({ mode: 'onTouched' });
+  console.log(methods.watch());
   const checkValidate = useCallback(async () => {
     switch (currentStep) {
       case 0:
         return await methods.trigger([
           ADD_PRODUCT_FORM_KEY.name,
           ADD_PRODUCT_FORM_KEY.images,
-          ADD_PRODUCT_FORM_KEY.category,
           ADD_PRODUCT_FORM_KEY.description,
+          ADD_PRODUCT_FORM_KEY.price,
+          ADD_PRODUCT_FORM_KEY.timeUnit,
         ]);
 
       case 1:
-        return await methods.trigger([ADD_PRODUCT_FORM_KEY.characteristics]);
+        return await methods.trigger([
+          ADD_PRODUCT_FORM_KEY.category,
+          ADD_PRODUCT_FORM_KEY.characteristics,
+        ]);
 
       case 2:
         return await methods.trigger([
@@ -62,12 +69,14 @@ export const useAddProductForm = () => {
           ADD_PRODUCT_FORM_KEY.policies,
           ADD_PRODUCT_FORM_KEY.mortgage,
           ADD_PRODUCT_FORM_KEY.requiredDocuments,
-          ADD_PRODUCT_FORM_KEY.price,
-          ADD_PRODUCT_FORM_KEY.surcharge,
         ]);
 
       case 3:
-        return await methods.trigger([ADD_PRODUCT_FORM_KEY.insurance]);
+        return await methods.trigger([
+          ADD_PRODUCT_FORM_KEY.haveInsurance,
+          ADD_PRODUCT_FORM_KEY.surcharge,
+          ADD_PRODUCT_FORM_KEY.insurance,
+        ]);
       default:
         return false;
     }

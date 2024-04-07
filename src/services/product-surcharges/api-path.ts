@@ -1,0 +1,4 @@
+export const PRODUCT_SURCHARGES = '/surcharges';
+export const PRODUCT_SURCHARGES_DETAILS = PRODUCT_SURCHARGES + '/:surchargeId';
+
+export default { PRODUCT_SURCHARGES, PRODUCT_SURCHARGES_DETAILS };

@@ -7,6 +7,7 @@ import {
   SURCHARGE_KEY,
   TProductFormField,
 } from '@/pages/lessor/products/add/helpers/addProductFormKeys';
+import { useSurchargesList } from '@/services/product-surcharges/services';
 
 export const useAdditionalInfo = () => {
   const { formatMessage } = useIntl();
@@ -27,6 +28,9 @@ export const useAdditionalInfo = () => {
     remove(index);
   };
 
+  const { data: surchargesOptions, isLoading: surchargesLoading } = useSurchargesList();
+  console.log(surchargesOptions);
+
   const insuranceOptions: TRadioOption[] = [
     {
       value: true,
@@ -45,5 +49,7 @@ export const useAdditionalInfo = () => {
     handleNewField,
     handleRemoveField,
     getFieldName,
+    surchargesOptions,
+    surchargesLoading,
   } as const;
 };

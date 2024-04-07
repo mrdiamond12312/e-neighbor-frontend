@@ -26,6 +26,8 @@ const LessorAddProduct: React.FC = () => {
   } = useAddProductForm();
 
   const steps = [
+    <AdditionalInfo key="add.product.additionalInfo" control={control} />,
+
     <BasicInfo key="add.product.basicInfo" control={control} />,
     <DetailInfo
       key="add.product.detailInfo"
@@ -34,7 +36,6 @@ const LessorAddProduct: React.FC = () => {
       categoryDetail={categoryDetail}
     />,
     <RentalInfo key="add.product.rentalInfo" control={control} />,
-    <AdditionalInfo key="add.product.additionalInfo" control={control} />,
   ];
   return (
     <PageContainer className="w-full max-w-screen-2xl p-4 rounded-lg flex flex-col">

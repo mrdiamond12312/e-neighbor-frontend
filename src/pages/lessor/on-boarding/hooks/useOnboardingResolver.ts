@@ -30,7 +30,7 @@ const useOnboardingResolver = () => {
           originFileObj: yup.mixed().required(
             formatMessage({
               id: 'lessor.onboarding.avatar.null',
-              defaultMessage: 'A Image is Required!',
+              defaultMessage: 'An Image is Required!',
             }),
           ),
         }),
@@ -38,14 +38,14 @@ const useOnboardingResolver = () => {
       .required(
         formatMessage({
           id: 'lessor.onboarding.avatar.null',
-          defaultMessage: 'A Image is Required!',
+          defaultMessage: 'An Image is Required!',
         }),
       )
       .min(
         1,
         formatMessage({
           id: 'lessor.onboarding.avatar.null',
-          defaultMessage: 'A Image is Required!',
+          defaultMessage: 'An Image is Required!',
         }),
       ),
     [ONBOARDING_FORM_KEY.citizenCardBack]: yup
@@ -55,7 +55,7 @@ const useOnboardingResolver = () => {
           originFileObj: yup.mixed().required(
             formatMessage({
               id: 'lessor.onboarding.citizenCardBack.null',
-              defaultMessage: 'A Image is Required!',
+              defaultMessage: 'An Image is Required!',
             }),
           ),
         }),
@@ -63,14 +63,14 @@ const useOnboardingResolver = () => {
       .required(
         formatMessage({
           id: 'lessor.onboarding.citizenCardBack.null',
-          defaultMessage: 'A Image is Required!',
+          defaultMessage: 'An Image is Required!',
         }),
       )
       .min(
         1,
         formatMessage({
           id: 'lessor.onboarding.citizenCardBack.null',
-          defaultMessage: 'A Image is Required!',
+          defaultMessage: 'An Image is Required!',
         }),
       ),
     [ONBOARDING_FORM_KEY.citizenCardFront]: yup
@@ -80,7 +80,7 @@ const useOnboardingResolver = () => {
           originFileObj: yup.mixed().required(
             formatMessage({
               id: 'lessor.onboarding.citizenCardFront.null',
-              defaultMessage: 'A Image is Required!',
+              defaultMessage: 'An Image is Required!',
             }),
           ),
         }),
@@ -88,14 +88,14 @@ const useOnboardingResolver = () => {
       .required(
         formatMessage({
           id: 'lessor.onboarding.citizenCardFront.null',
-          defaultMessage: 'A Image is Required!',
+          defaultMessage: 'An Image is Required!',
         }),
       )
       .min(
         1,
         formatMessage({
           id: 'lessor.onboarding.citizenCardFront.null',
-          defaultMessage: 'A Image is Required!',
+          defaultMessage: 'An Image is Required!',
         }),
       ),
     [ONBOARDING_FORM_KEY.citizenId]: yup

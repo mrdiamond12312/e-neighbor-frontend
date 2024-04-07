@@ -891,4 +891,14 @@
       }
     }
   }
+
+  /* Popover */
+  .custom-popover {
+    @apply w-80 ;
+
+    .ant-popover-inner {
+      @apply font-sans;
+    }
+
+  }
 }
