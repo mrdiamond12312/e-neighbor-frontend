@@ -806,6 +806,18 @@
       }
     }
   }
+
+  .custom-select-panel {
+    .ant-select-item {
+      @apply font-sans;
+    }
+    .ant-select-item-option-selected {
+      &:not(.ant-select-item-option-disabled) {
+        @apply bg-teal-50;
+      }
+    }
+  }
+
   /* Radio */
   .custom-radio {
     @apply w-full border-l-[1px] pl-2;
@@ -894,11 +906,10 @@
 
   /* Popover */
   .custom-popover {
-    @apply w-80 ;
+    @apply w-80;
 
     .ant-popover-inner {
       @apply font-sans;
     }
-
   }
 }

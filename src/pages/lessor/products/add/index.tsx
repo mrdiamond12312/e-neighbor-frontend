@@ -23,11 +23,13 @@ const LessorAddProduct: React.FC = () => {
     categoryDetail,
     isLoadingCategoryDetail,
     methods,
+    getValues,
+    isLastStep,
+    handleSubmit,
+    isSubmitting,
   } = useAddProductForm();
 
   const steps = [
-    <AdditionalInfo key="add.product.additionalInfo" control={control} />,
-
     <BasicInfo key="add.product.basicInfo" control={control} />,
     <DetailInfo
       key="add.product.detailInfo"
@@ -36,6 +38,7 @@ const LessorAddProduct: React.FC = () => {
       categoryDetail={categoryDetail}
     />,
     <RentalInfo key="add.product.rentalInfo" control={control} />,
+    <AdditionalInfo key="add.product.additionalInfo" control={control} />,
   ];
   return (
     <PageContainer className="w-full max-w-screen-2xl p-4 rounded-lg flex flex-col">
@@ -46,8 +49,13 @@ const LessorAddProduct: React.FC = () => {
             <Button key="form-previous" type="default" onClick={handlePreviousStep}>
               <FormattedHTMLMessage id="common.previous" defaultMessage="Back" />
             </Button>,
-            false ? (
-              <Button key="form-submit" onClick={() => {}} type="primary">
+            isLastStep ? (
+              <Button
+                key="form-submit"
+                onClick={() => handleSubmit(getValues())}
+                loading={isSubmitting}
+                type="primary"
+              >
                 <FormattedHTMLMessage id="common.submit" defaultMessage="Submit" />
               </Button>
             ) : (

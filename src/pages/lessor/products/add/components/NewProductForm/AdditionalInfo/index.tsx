@@ -42,7 +42,7 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
       <h1 className="text-heading-3">
         <FormattedHTMLMessage
           id="lessor.product.add.step.addtionalInfo.header"
-          defaultMessage="Basic Information"
+          defaultMessage="Additional Information"
         />
       </h1>
       <span className="text-body-1-regular">

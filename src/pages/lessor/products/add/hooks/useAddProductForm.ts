@@ -1,14 +1,16 @@
-import { useIntl } from '@umijs/max';
-import { StepProps } from 'antd/lib';
+import { useIntl, history } from '@umijs/max';
+import { notification, StepProps } from 'antd/lib';
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { PATH_LESSOR } from '@/const/path';
 import {
   ADD_PRODUCT_FORM_KEY,
   TProductFormField,
 } from '@/pages/lessor/products/add/helpers/addProductFormKeys';
 import { useAddProductResolver } from '@/pages/lessor/products/add/hooks/useAddProductResolver';
 import { useCategoriesDetails } from '@/services/product-categories/services';
+import { useCreateNewProducts } from '@/services/products/services';
 
 export const useAddProductForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -96,6 +98,28 @@ export const useAddProductForm = () => {
     }
   };
 
+  const { mutate, isLoading: isSubmitting } = useCreateNewProducts();
+
+  const handleSubmit = async (formFields: TProductFormField) => {
+    const isGoodToForward = await checkValidate();
+    if (isGoodToForward && isLastStep) {
+      mutate(formFields, {
+        onSuccess: () => {
+          notification.success({
+            message: formatMessage({
+              id: 'lessor.addProduct.success',
+              defaultMessage: 'You have successfully added a new Product!',
+            }),
+            duration: 1,
+            onClose: () => {
+              history.push(PATH_LESSOR);
+            },
+          });
+        },
+      });
+    }
+  };
+
   const handlePreviousStep = () => {
     setCurrentStep((prev) => (prev > 0 ? prev - 1 : prev));
   };
@@ -109,5 +133,9 @@ export const useAddProductForm = () => {
     methods,
     categoryDetail,
     isLoadingCategoryDetail,
+    getValues: methods.getValues,
+    handleSubmit,
+    isSubmitting,
+    isLastStep,
   } as const;
 };

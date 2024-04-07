@@ -52,7 +52,6 @@ export const SurchargeInfo: React.FC<TSurchargeRecord> = ({
             <Popover
               title={surchargeDetail?.name}
               content={isInitialLoading ? <Spin /> : surchargeDetail?.description}
-              open
               rootClassName="custom-popover"
               placement="right"
             >
@@ -67,6 +66,8 @@ export const SurchargeInfo: React.FC<TSurchargeRecord> = ({
                 options={surchargeOptions}
                 fieldNames={{ label: 'name', value: 'id' }}
                 size="large"
+                className="custom-cascader-select"
+                popupClassName="custom-select-panel"
               />
             </Popover>
           </Item>
