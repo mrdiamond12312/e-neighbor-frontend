@@ -22,6 +22,7 @@ export const getMostViewedProducts = async (pagination: IProductsPagination) => 
     timeout: 15000,
     params: {
       ...pagination,
+      take: 4,
     },
   });
 };
@@ -31,6 +32,17 @@ export const getMostRatedProducts = async (pagination: IProductsPagination) => {
     timeout: 15000,
     params: {
       ...pagination,
+      take: 4,
+    },
+  });
+};
+
+export const getProducts = async (pagination: API.IProductPaginationParams) => {
+  return request<IPaginationResponse<API.IProductCard>>(API_ENDPOINTS.PRODUCTS, {
+    timeout: 15000,
+    params: {
+      ...pagination,
+      take: 12,
     },
   });
 };

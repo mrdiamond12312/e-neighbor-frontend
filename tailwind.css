@@ -208,6 +208,41 @@
     }
   }
 
+  /* Radio Group */
+  .custom-radio-group {
+    @apply text-body-2-medium;
+    .ant-radio-button-wrapper {
+      @apply font-sans;
+      box-shadow: 0px 3px theme('colors.neutral-5');
+
+      &:not(:disabled):not(.ant-radio-button-disabled):hover {
+        @apply text-teal-1 border-teal-1;
+        box-shadow: 0px 3px theme('colors.teal-1');
+
+        &:not(.ant-radio-button-wrapper-disabled)::before {
+          @apply bg-teal-1;
+          box-shadow: 0px 3px theme('colors.teal-1');
+        }
+      }
+    }
+
+    .ant-radio-button-wrapper-checked {
+      @apply text-teal-7 border-teal-5;
+      box-shadow: 0px 3px theme('colors.teal-5');
+      &:not(:disabled):not(.ant-radio-button-disabled):hover {
+        @apply text-teal-7 border-neutral-5;
+        box-shadow: 0px 3px theme('colors.teal-5');
+      }
+      &:not(.ant-radio-button-wrapper-disabled)::before {
+        @apply bg-teal-5;
+        box-shadow: 0px 3px theme('colors.teal-5');
+      }
+      &:not(.ant-radio-button-wrapper-disabled):first-child {
+        @apply text-teal-7 border-teal-5;
+        box-shadow: 0px 3px theme('colors.teal-5');
+      }
+    }
+  }
   /* FORM */
   .custom-antd-form-small {
     @apply w-full font-sans;
@@ -446,7 +481,7 @@
 
   /* MENU */
   .category-menu {
-    @apply rounded-md font-sans h-full;
+    @apply rounded-none font-sans h-full;
 
     .ant-menu-submenu {
       @apply pb-1 bg-white;
@@ -508,7 +543,7 @@
 
   /* CARD */
   .railing-card {
-    @apply font-sans;
+    @apply font-sans rounded-none;
 
     .ant-card-head {
       @apply border-0;
@@ -807,6 +842,20 @@
     }
   }
 
+  .custom-select-border-shadow {
+    .ant-select-selector {
+      box-shadow: 0px 3px theme('colors.neutral-5');
+    }
+
+    &:not(.ant-select-disabled):not(.ant-select-customize-input):not(
+        .ant-pagination-size-changer
+      ):hover {
+      .ant-select-selector {
+        box-shadow: 0px 3px theme('colors.teal-5');
+      }
+    }
+  }
+
   .custom-select-panel {
     .ant-select-item {
       @apply font-sans;
@@ -910,6 +959,59 @@
 
     .ant-popover-inner {
       @apply font-sans;
+    }
+  }
+
+  /* Pagination */
+  .custom-pagination {
+    .ant-pagination-jump-prev {
+      .ant-pagination-item-container {
+        .ant-pagination-item-link-icon {
+          @apply text-teal-1;
+        }
+      }
+    }
+
+    .ant-pagination-jump-next {
+      .ant-pagination-item-container {
+        .ant-pagination-item-link-icon {
+          @apply text-teal-1;
+        }
+      }
+    }
+
+    .ant-pagination-item {
+      @apply font-sans;
+
+      &:not(.ant-pagination-item-active):hover {
+        @apply bg-teal-50;
+      }
+    }
+    .ant-pagination-item-active {
+      @apply border-teal-5 rounded;
+
+      a {
+        @apply text-teal-5;
+      }
+
+      &:hover {
+        @apply border-teal-3 rounded;
+
+        a {
+          @apply text-teal-3;
+        }
+      }
+    }
+
+    .ant-pagination-options-quick-jumper {
+      @apply font-sans;
+
+      input {
+        &:hover,
+        &:focus {
+          @apply border-teal-5;
+        }
+      }
     }
   }
 }

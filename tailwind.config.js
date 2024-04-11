@@ -1,4 +1,5 @@
 module.exports = {
+  purge: ['./src/**/*.tsx'],
   content: [
     './src/pages/**/*.tsx',
     './src/components/**/*.tsx',

@@ -31,7 +31,7 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
   const { formatMessage } = useIntl();
 
   return (
-    <section className="flex flex-col gap-4 w-full basis-0">
+    <section className="flex flex-col gap-8 w-full basis-0">
       <span className="text-neutral-7 text-heading-3 w-full">
         <FormattedHTMLMessage
           id="store.products.preview.most.viewed"
@@ -39,7 +39,7 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
         />
       </span>
 
-      <div className="flex flex-row flex-wrap gap-y-3 gap-x-2 w-full justify-start">
+      <div className="flex flex-row flex-wrap gap-y-3 gap-x-2 w-full justify-center">
         {mostViewedProducts?.pages.map((page, pageIndex) =>
           page.data.map((item, index) => (
             <FlushReveal
@@ -77,26 +77,28 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
         />
       </span>
 
-      <div className="flex flex-row flex-wrap gap-y-3 gap-x-2 w-full justify-start">
+      <div className="flex flex-row flex-wrap gap-y-3 gap-x-2 w-full justify-center">
         {mostRatedProducts?.pages.map((page, pageIndex) =>
           page.data.map((item, index) => (
-            <FlushReveal key={item.id} keyId={item.id} index={pageIndex * page.data.length + index}>
-              <div onClick={() => handleProductClick(item.id)}>
-                <PropertyCard
-                  ctaBtnFormattedMessage={formatMessage({
-                    id: 'store.preview.card.btn.rent',
-                    defaultMessage: 'Rent Now!',
-                  })}
-                  imageSrc={item.image}
-                  owner={item.lessorImage}
-                  pricing={item.price}
-                  pricingCurrency={formatMessage({ id: item.timeUnit, defaultMessage: '%Nan%' })}
-                  rating={item.rating}
-                  tag={item.category.name}
-                  key={item.id}
-                  title={item.name}
-                />
-              </div>
+            <FlushReveal
+              key={item.id}
+              keyId={item.id}
+              index={(pageIndex * page.data.length + index) * 6}
+            >
+              <PropertyCard
+                ctaBtnFormattedMessage={formatMessage({
+                  id: 'store.preview.card.btn.rent',
+                  defaultMessage: 'Rent Now!',
+                })}
+                imageSrc={item.image}
+                owner={item.lessorImage}
+                pricing={item.price}
+                pricingCurrency={formatMessage({ id: item.timeUnit, defaultMessage: '%Nan%' })}
+                rating={item.rating}
+                tag={item.category.name}
+                key={item.id}
+                title={item.name}
+              />
             </FlushReveal>
           )),
         )}

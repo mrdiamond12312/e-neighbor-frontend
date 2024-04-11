@@ -6,6 +6,7 @@ import {
   getMostRatedProducts,
   getMostViewedProducts,
   getProductDetails,
+  getProducts,
   postNewProduct,
 } from '@/services/products/api-services';
 
@@ -17,6 +18,21 @@ export const useProductDetails = (productId?: number | string) =>
       enabled: !!productId,
     },
   );
+
+export const useProductPage = (pagination: API.IProductPaginationParams) => {
+  return useQuery({
+    queryKey: [API_ENDPOINTS.PRODUCT_TREND_MOST_VIEWED, pagination],
+    queryFn: () =>
+      getProducts({
+        ...pagination,
+        rating: pagination.rating === 0 ? undefined : pagination.rating,
+      }),
+    getNextPageParam: (lastPage, allPages) => {
+      const { hasNextPage } = lastPage.meta;
+      return hasNextPage ? allPages.length + 1 : undefined;
+    },
+  });
+};
 
 export const useMostViewedProducts = (pagination: IProductsPagination) => {
   return useInfiniteQuery({

@@ -8,7 +8,7 @@ import { STORE_FILTER } from '@/const/store.filter';
 
 const { Item } = Form;
 
-const Pricing: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
+const Pricing: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
   return (
@@ -31,7 +31,6 @@ const Pricing: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
               placeholder="0"
               placement="top"
               control={control}
-              error={errors}
               name={STORE_FILTER['min']}
               size="large"
             />
@@ -46,7 +45,6 @@ const Pricing: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
               placeholder="9999999"
               placement="top"
               control={control}
-              error={errors}
               name={STORE_FILTER['max']}
               size="large"
             />

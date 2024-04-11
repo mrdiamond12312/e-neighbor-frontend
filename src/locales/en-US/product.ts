@@ -62,6 +62,23 @@ export const productMortgage = {
   'product.mortgage.motorbike.deposite': 'Motorcycle mortgage',
 };
 
+export const productInsurace = {
+  'product.insurance.exist.yes': 'Yes',
+  'product.insurance.exist.no': 'Not have',
+};
+
+export const productPolicies = {
+  'product.policies.correctPurpose': 'Proper Use of Property',
+  'product.policies.not.illegalPurpose': 'No Illegal Use',
+  'product.policies.not.pawnShop': 'No Pawning of Property',
+  'product.policies.carDirty': 'No Gum Chewing or Littering in Car',
+  'product.policies.not.deliver.prohibited': 'No Transporting of Prohibited or Flammable Goods',
+  'product.policies.carDirty.handOver':
+    'Keep Car Clean, Additional Charges for Violation upon Return',
+  'product.policies.furnDirty': 'Keep Interior Clean and Undamaged',
+  'product.policies.furnDirty.handOver': 'Additional Charges for Violation upon Return',
+};
+
 export const productReqDocs = {
   'product.reqDocs.none': 'No documents required',
   'product.reqDocs.need.citizenCard.with.driverLicense':
@@ -81,4 +98,8 @@ export const productSurchage = {
   'products.surCharge.damageFees': 'Product damage fee',
   'products.surCharge.damageFees.description':
     'Additional fee incurred when the product is returned damaged, the product cannot be rented anymore or the owner has to take it for repair, in this case the tenant will compensate the owner according to the agreement',
+};
+
+export const productPage = {
+  'products.page.empty': 'Không tìm thấy sản phẩm phù hợp!',
 };
