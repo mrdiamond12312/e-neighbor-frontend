@@ -1,5 +1,6 @@
 import { FormattedHTMLMessage, useIntl } from '@umijs/max';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import FlushReveal from '@/components/AnimationKit/FlushReveal';
 import { PropertyCard } from '@/components/PropertyCard';
@@ -13,13 +14,19 @@ export interface IPopularProductsProps {
 const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
   const { data: mostViewedProducts, isLoading: isLoadingMostViewed } = useMostViewedProducts({
     isVehicle,
-    isConfirmedByAdmin: false,
+    isConfirmedByAdmin: true,
   });
 
   const { data: mostRatedProducts, isLoading: isLoadingMostRated } = useMostRatedProducts({
     isVehicle,
-    isConfirmedByAdmin: false,
+    isConfirmedByAdmin: true,
   });
+
+  const navigate = useNavigate();
+
+  const handleProductClick = (productId: string | number) => {
+    navigate(`/product/${productId}/detail/`);
+  };
 
   const { formatMessage } = useIntl();
 
@@ -41,20 +48,22 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
               index={(pageIndex * page.data.length + index) * 6}
               pointerClassName="bg-favicon bg-no-repeat bg-contain bg-center"
             >
-              <PropertyCard
-                ctaBtnFormattedMessage={formatMessage({
-                  id: 'store.preview.card.btn.rent',
-                  defaultMessage: 'Rent Now!',
-                })}
-                imageSrc={item.image}
-                owner={item.lessorImage}
-                pricing={item.price}
-                pricingCurrency={formatMessage({ id: item.timeUnit, defaultMessage: '%Nan%' })}
-                rating={item.rating}
-                tag={item.category.name}
-                key={item.id}
-                title={item.name}
-              />
+              <div onClick={() => handleProductClick(item.id)}>
+                <PropertyCard
+                  ctaBtnFormattedMessage={formatMessage({
+                    id: 'store.preview.card.btn.rent',
+                    defaultMessage: 'Rent Now!',
+                  })}
+                  imageSrc={item.image}
+                  owner={item.lessorImage}
+                  pricing={item.price}
+                  pricingCurrency={formatMessage({ id: item.timeUnit, defaultMessage: '%Nan%' })}
+                  rating={item.rating}
+                  tag={item.category.name}
+                  key={item.id}
+                  title={item.name}
+                />
+              </div>
             </FlushReveal>
           )),
         )}
@@ -72,20 +81,22 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
         {mostRatedProducts?.pages.map((page, pageIndex) =>
           page.data.map((item, index) => (
             <FlushReveal key={item.id} keyId={item.id} index={pageIndex * page.data.length + index}>
-              <PropertyCard
-                ctaBtnFormattedMessage={formatMessage({
-                  id: 'store.preview.card.btn.rent',
-                  defaultMessage: 'Rent Now!',
-                })}
-                imageSrc={item.image}
-                owner={item.lessorImage}
-                pricing={item.price}
-                pricingCurrency={formatMessage({ id: item.timeUnit, defaultMessage: '%Nan%' })}
-                rating={item.rating}
-                tag={item.category.name}
-                key={item.id}
-                title={item.name}
-              />
+              <div onClick={() => handleProductClick(item.id)}>
+                <PropertyCard
+                  ctaBtnFormattedMessage={formatMessage({
+                    id: 'store.preview.card.btn.rent',
+                    defaultMessage: 'Rent Now!',
+                  })}
+                  imageSrc={item.image}
+                  owner={item.lessorImage}
+                  pricing={item.price}
+                  pricingCurrency={formatMessage({ id: item.timeUnit, defaultMessage: '%Nan%' })}
+                  rating={item.rating}
+                  tag={item.category.name}
+                  key={item.id}
+                  title={item.name}
+                />
+              </div>
             </FlushReveal>
           )),
         )}
