@@ -7,11 +7,16 @@ import FadeIn from '@/components/AnimationKit/FadeIn';
 import { SearchBar } from '@/components/SearchBar';
 
 export type TCoverSearchBoxProps = {
+  kwValue?: string;
   onPressEnter: React.KeyboardEventHandler<HTMLInputElement>;
   category: string;
 };
 
-export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({ onPressEnter, category }) => {
+export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({
+  onPressEnter,
+  category,
+  kwValue,
+}) => {
   const { formatMessage } = useIntl();
   const coverImage = classNames({
     '/store-cover/furniture.png': category === 'furnitures',
@@ -61,12 +66,13 @@ export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({ onPressEnter, c
               })}
             </span>
             <SearchBar
-              onPressEnter={onPressEnter}
+              onPressEnter={(event) => onPressEnter(event)}
               placeholder={formatMessage({
                 id: 'store.cover.search.placeholder',
                 defaultMessage: 'Search',
               })}
-            ></SearchBar>
+              defaultValue={kwValue}
+            />
           </FadeIn>
         </div>
       </div>

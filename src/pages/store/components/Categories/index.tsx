@@ -5,7 +5,7 @@ import React from 'react';
 import FadeIn from '@/components/AnimationKit/FadeIn';
 
 export type TCategoriesProps = {
-  setCategory: React.Dispatch<React.SetStateAction<string>>;
+  setCategory: (category: string) => void;
   selectedKeys: string[];
 };
 

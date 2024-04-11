@@ -13,6 +13,7 @@ import {
   productPolicies,
   productReqDocs,
   productSurchage,
+  productPage,
 } from '@/locales/vi-VN/product';
 import register from '@/locales/vi-VN/register';
 import store from '@/locales/vi-VN/store';
@@ -29,6 +30,7 @@ export default {
   ...productReqDocs,
   ...productInsurace,
   ...productSurchage,
+  ...productPage,
   ...lessorBreadCrumbs,
   ...menu,
   ...aboutUs,

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { AnimatePresence, AnimationProps, motion } from 'framer-motion';
+import { AnimationProps, motion } from 'framer-motion';
 import React from 'react';
 
 import { FLUSH_CONTAINER_VARIANT, FLUSH_POINTER_VARIANT } from './helpers/variants';
@@ -20,7 +20,6 @@ const FlushReveal: React.FC<IFlushRevealProps> = ({
   contentClassName,
   pointerClassName,
   index,
-  mode = 'wait',
   keyId,
 }) => {
   const rootClassNames = classNames('w-fit relative overflow-hidden', rootClassName);
@@ -29,28 +28,26 @@ const FlushReveal: React.FC<IFlushRevealProps> = ({
     pointerClassName,
   );
   return (
-    <AnimatePresence mode={mode}>
-      <div className={rootClassNames}>
-        <motion.div
-          custom={index}
-          animate="visible"
-          initial="hidden"
-          exit="hidden"
-          key={keyId}
-          className={contentClassName}
-          variants={FLUSH_CONTAINER_VARIANT}
-        >
-          {children}
-        </motion.div>
-        <motion.div
-          className={pointerClassNames}
-          custom={index}
-          initial="visible"
-          animate="hidden"
-          variants={FLUSH_POINTER_VARIANT}
-        />
-      </div>
-    </AnimatePresence>
+    <motion.div className={rootClassNames} key={keyId}>
+      <motion.div
+        custom={index}
+        animate="visible"
+        initial="hidden"
+        exit="exit"
+        className={contentClassName}
+        variants={FLUSH_CONTAINER_VARIANT}
+      >
+        {children}
+      </motion.div>
+      <motion.div
+        className={pointerClassNames}
+        custom={index}
+        initial="visible"
+        animate="hidden"
+        exit="exit"
+        variants={FLUSH_POINTER_VARIANT}
+      />
+    </motion.div>
   );
 };
 

@@ -1,19 +1,20 @@
 import { useForm } from 'react-hook-form';
 
 import { STORE_FILTER } from '@/const/store.filter';
-import usePricingResolver from '@/pages/store/hook/useStoreResolver';
+import { usePricingResolver } from '@/hooks/usePriceResolver';
 
 export type TStoreFields = {
   [STORE_FILTER.min]?: number | null;
   [STORE_FILTER.max]?: number | null;
 };
 
-export const useStoreFilter = () => {
+export const usePriceFilter = () => {
   const { FormSchema } = usePricingResolver();
   const {
     control,
     formState: { errors, dirtyFields, isValid, isDirty },
     getValues,
+    watch,
     trigger,
     handleSubmit,
   } = useForm<TStoreFields>({
@@ -31,5 +32,6 @@ export const useStoreFilter = () => {
     getValues,
     trigger,
     handleSubmit,
+    watch,
   };
 };

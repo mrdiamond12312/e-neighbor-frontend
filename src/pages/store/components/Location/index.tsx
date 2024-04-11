@@ -5,7 +5,7 @@ import React from 'react';
 import FadeIn from '@/components/AnimationKit/FadeIn';
 
 export type TLocationsProps = {
-  setLocations: React.Dispatch<React.SetStateAction<string[]>>;
+  setLocations: (location: string[]) => void;
 };
 
 const Locations: React.FC<TLocationsProps> = ({ setLocations }) => {
