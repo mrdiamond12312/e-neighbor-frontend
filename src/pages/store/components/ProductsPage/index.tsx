@@ -53,13 +53,13 @@ const ProductsPage: React.FC<IProductsPageProps> = ({ isLoading, products }) => 
                 />
               </FlushReveal>
             ))}
-            {Array((products?.meta.take ?? 0) - (products?.meta.itemCount ?? 0))
+            {Array((products?.meta.take ?? 0) - (products?.data.length ?? 0))
               .fill(0)
               .map((_, index) => (
                 <FlushReveal
                   key={`index ${index}`}
                   keyId={`index ${index}`}
-                  index={((products?.meta.itemCount ?? 0) + index) * 6}
+                  index={((products?.data.length ?? 0) + index) * 6}
                   pointerClassName="bg-favicon bg-no-repeat bg-contain bg-center"
                 >
                   <PropertyCard type="empty" />

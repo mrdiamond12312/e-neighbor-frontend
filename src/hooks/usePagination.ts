@@ -65,7 +65,7 @@ export const usePagination = (
     setPage(1);
   }, [keyword]);
   const takeHandler = (take: number) => setTake(take);
-  const pageHandler = (page: number) => setTake(page);
+  const pageHandler = (page: number) => setPage(page);
   const [sortField, setSortField] = useState<PRODUCT_PAGE_SORTFIELDS>(
     PRODUCT_PAGE_SORTFIELDS.createdAt,
   );
