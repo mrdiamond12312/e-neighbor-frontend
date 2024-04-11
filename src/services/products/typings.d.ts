@@ -39,6 +39,23 @@ declare namespace API {
     insurance: object; // Insurance type can be further defined if known
   }
 
+  interface IProductPaginationParams {
+    sortField?: string;
+    order?: string;
+    page?: number;
+    take?: number;
+    isConfirmedByAdmin: boolean;
+    name?: string;
+    categoryId?: number;
+    isVehicle: boolean;
+    lessorId?: number;
+    status?: string;
+    offset?: number;
+    rating?: number;
+    priceUpperBound?: number;
+    priceLowerBound?: number;
+    locations?: string[];
+  }
   interface IProductCard {
     id: number | string;
     name: string;

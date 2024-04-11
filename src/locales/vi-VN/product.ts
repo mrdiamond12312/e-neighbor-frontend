@@ -93,3 +93,7 @@ export const productSurchage = {
   'products.surCharge.damageFees.description':
     'Phụ phí phát sinh khi sản phẩm hoàn trả bị tổn hại, sản phẩm không cho thuê được nữa hoặc chủ sản phẩm phải mang đi sửa chữa, trường hợp này bên thuê bồi thường cho chủ sản phẩm theo thỏa thuận',
 };
+
+export const productPage = {
+  'products.page.empty': 'Không tìm thấy sản phẩm phù hợp!',
+};

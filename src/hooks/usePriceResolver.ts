@@ -4,7 +4,7 @@ import * as yup from 'yup';
 
 import { STORE_FILTER } from '@/const/store.filter';
 
-const usePricingResolver = () => {
+export const usePricingResolver = () => {
   const { formatMessage } = useIntl();
   const LoginValidationSchema = yup.object().shape({
     [STORE_FILTER.min]: yup
@@ -48,5 +48,3 @@ const usePricingResolver = () => {
     FormSchema: yupResolver(LoginValidationSchema),
   };
 };
-
-export default usePricingResolver;

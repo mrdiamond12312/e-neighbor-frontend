@@ -1,31 +1,43 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { useIntl } from '@umijs/max';
-import { Card, Col, ConfigProvider, Rate, Row } from 'antd/lib';
-import React, { useState } from 'react';
+import { Col, ConfigProvider, Row } from 'antd/lib';
+import React from 'react';
 
 import FadeIn from '@/components/AnimationKit/FadeIn';
+import { ProductsPagination } from '@/components/ProductsPagination';
+import { usePagination } from '@/hooks/usePagination';
 import Categories from '@/pages/store/components/Categories';
 import { CoverSearchBox } from '@/pages/store/components/CoverSearchBox';
 import Locations from '@/pages/store/components/Location';
 import PopularProducts from '@/pages/store/components/PopularProducts';
 import Pricing from '@/pages/store/components/Pricing';
-import { useStoreFilter } from '@/pages/store/hook/useStoreFilter';
+import ProductsPage from '@/pages/store/components/ProductsPage';
+import { Rating } from '@/pages/store/components/Rating';
+import { useProductPage } from '@/services/products/services';
 
 const Store: React.FC = () => {
-  const [category, setCategory] = useState<string>('furnitures');
-  const [locations, setLocations] = useState<string[]>([]);
-  const [keyword, setKeyword] = useState<string>();
+  const {
+    category,
+    categoryHandler,
+    sortOptions,
+    sortFieldHandler,
+    sortField,
+    control,
+    keyword,
+    locationHandler,
+    ratingHandler,
+    searchBoxHandler,
+    paginationParams,
+    order,
+    orderHandler,
+    orderOptions,
+    page,
+    pageHandler,
+  } = usePagination();
 
-  const { control, errors } = useStoreFilter();
-  const { formatMessage } = useIntl();
-  console.log(locations);
-  const searchBoxHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const currentSearchValue = event.currentTarget.value;
-    if (currentSearchValue !== keyword) {
-      setKeyword(currentSearchValue);
-    }
-  };
+  const { data: products, isLoading } = useProductPage(paginationParams);
 
+  console.log(products);
+  console.log(paginationParams);
   return (
     <ConfigProvider
       theme={{
@@ -36,38 +48,42 @@ const Store: React.FC = () => {
       }}
     >
       <PageContainer className="w-full max-w-7xl m-auto">
-        <FadeIn direction="top" keyId="main-page-container" className="w-full">
+        <FadeIn direction="top" exitDirection="top" keyId="main-page-container" className="w-full">
           <Row className="w-full py-4">
             <Col
               span={24}
               xl={4}
               className="max-h-[calc(100vh-88px)] sm:flex  flex-row xl:flex-col pb-4 xl:pb-0 gap-4 xl:sticky xl:top-[72px] overflow-auto px-2 hidden"
             >
-              <Categories setCategory={setCategory} selectedKeys={(() => [category])()} />
+              <Categories setCategory={categoryHandler} selectedKeys={(() => [category])()} />
 
-              <Locations setLocations={setLocations} />
+              <Locations setLocations={locationHandler} />
 
-              <FadeIn direction="left" className="w-full" index={3} key="railing-rating">
-                <Card
-                  title={formatMessage({
-                    id: 'store.rating.title',
-                    defaultMessage: 'Ratings',
-                  })}
-                  className="railing-card h-full"
-                >
-                  <Rate className="custom-star animate-pulse" />
-                </Card>
-              </FadeIn>
+              <Rating ratingHandler={ratingHandler} />
 
-              <Pricing control={control} error={errors} />
+              <Pricing control={control} />
             </Col>
-            <Col span={24} xl={20} className="flex flex-col gap-8 px-2">
-              <CoverSearchBox onPressEnter={searchBoxHandler} category={category} />
-
-              {
-                // TO DO: Remove and add another component here for a list of rental property
-              }
-              <PopularProducts isVehicle={category === 'vehicles'} />
+            <Col span={24} xl={20} className="flex flex-col gap-8 px-2 font-sans">
+              <CoverSearchBox
+                onPressEnter={searchBoxHandler}
+                category={category}
+                kwValue={keyword}
+              />
+              <ProductsPagination
+                sortOptions={sortOptions}
+                sortField={sortField}
+                sortFieldHandler={sortFieldHandler}
+                orderOptions={orderOptions}
+                order={order}
+                orderHandler={orderHandler}
+                page={page}
+                pageHandler={pageHandler}
+                pageMeta={products?.meta}
+                isLoading={isLoading}
+              >
+                <ProductsPage products={products} isLoading={isLoading} />
+              </ProductsPagination>
+              <PopularProducts isVehicle={paginationParams.isVehicle} />
             </Col>
           </Row>
         </FadeIn>
