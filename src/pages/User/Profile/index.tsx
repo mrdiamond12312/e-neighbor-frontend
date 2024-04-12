@@ -1,7 +1,14 @@
-import { EditOutlined, FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
+import {
+  EditOutlined,
+  FacebookOutlined,
+  InstagramOutlined,
+  SearchOutlined,
+  BellTwoTone,
+} from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
-import { Avatar, Button, Card, Col, Descriptions, Input, Modal, Row } from 'antd';
-import React, { useState } from 'react';
+import { Avatar, Button, Card, Col, Descriptions, Input, Modal, Row, Badge } from 'antd';
+import React, { useState, useEffect } from 'react';
+import './asset/Profile.css';
 
 import UserCategories from './Categories';
 import useEditForm from './hook/useEditForm';
@@ -51,6 +58,10 @@ const Profile: React.FC = () => {
     setEditMode(false);
   };
 
+  useEffect(() => {
+    console.log('Phong', username);
+  }, []);
+
   return (
     <PageContainer className="w-full max-w-7xl m-auto">
       <Row gutter={[24, 0]} className="py-4">
@@ -63,11 +74,30 @@ const Profile: React.FC = () => {
         </Col>
 
         <Col span={20} className="flex flex-col gap-12">
-          {/* <div className="profile-nav-bg bg-cover bg-center" style={{ backgroundImage: `url(${BgProfile})` }} /> */}
+          <div className="img__background--profile">
+            <div className="header__profile">
+              <div className="header__profile--title">
+                <div>
+                  <p>User/Profile</p>
+                </div>
+                <p className="body-3-semibold">Profile</p>
+              </div>
+              <div className="header__profile--notification">
+                <Input
+                  className="input__profile"
+                  placeholder="Type here..."
+                  prefix={<SearchOutlined />}
+                />
+                <Badge count={5}>
+                  <BellTwoTone className="icon__bell" />
+                </Badge>
+              </div>
+            </div>
+          </div>
           <Card className="card-profile-head">
             <Row justify="space-between" align="middle" gutter={[24, 0]} className="px-4">
               <Col className="col-info">
-                <Avatar.Group>{/* Avatar group content here */}</Avatar.Group>
+                <Avatar.Group>{}</Avatar.Group>
               </Col>
               <Col>
                 <Col
@@ -82,6 +112,7 @@ const Profile: React.FC = () => {
               </Col>
             </Row>
           </Card>
+
           <Row gutter={[24, 0]}>
             <Col span={24} md={16} className="mb-24">
               <Card

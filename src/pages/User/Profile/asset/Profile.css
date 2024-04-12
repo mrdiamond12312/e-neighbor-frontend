@@ -1,0 +1,54 @@
+.img__background--profile {
+    width: 100%;
+    height: 245px;
+    background-color: red;
+    border-radius: 10px;
+    background-image: url('../asset/img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center;
+    margin: 0 0 20px 0;
+}
+
+.header__profile {
+    padding: 20px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__profile--title {
+    display: flex;
+    color: white;
+    flex-direction: column;
+}
+
+.card-profile-head {
+    position: absolute;
+    width: 1020px;
+    height: 90px;
+    right: 50%;
+    transform: translateX(50%);
+    top: 200px;
+}
+
+.input__profile {
+    width: 180px;
+    border-radius: 8px;
+}
+
+.input__profile >input {
+    margin: 0 0 0 5px;
+}
+
+.icon__bell {
+    width: 23px;
+    height: 23px;
+    font-size: 20px;
+    margin: 0 0 0 10px !important;
+    cursor: pointer;
+}
+
+.header__profile--notification {
+    display: flex;
+    align-items: center;
+}
