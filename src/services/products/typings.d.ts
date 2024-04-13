@@ -11,7 +11,7 @@ declare namespace API {
 
   interface IProductCharacteristic {
     localeId: string;
-    value: string | number;
+    description: string | number;
   }
   interface IProductDetails {
     id: number | string;
@@ -21,7 +21,7 @@ declare namespace API {
     status: string;
     mortgage: string;
     description: string;
-    category: string;
+    category: IProductCategory;
     subCategory: string;
     value: number;
     policies: string[];
@@ -32,11 +32,33 @@ declare namespace API {
     location: string;
     timeUnit: string;
     tags: string[]; // Category type can be further defined if known
-    productSurcharges: string[];
+    productSurcharges: {
+      id: number;
+      createdAt: string;
+      updatedAt: string;
+      price: number;
+      surcharge?: {
+        id: number;
+        createdAt: string;
+        updatedAt: string;
+        name: string;
+        description: string;
+      };
+    }[];
     isConfirmed: boolean;
     rejectReason: string[];
+    averageStar: number;
     lessor: IProductLessor; // Lessor type can be further defined if known
     insurance: object; // Insurance type can be further defined if known
+  }
+
+  interface IProductCategory {
+    id: number | string;
+    createdAt: string;
+    updatedAt: string;
+    name: string;
+    isVehicle: boolean;
+    characteristics: string[];
   }
 
   interface IProductPaginationParams {
