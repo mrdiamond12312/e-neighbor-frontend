@@ -28,22 +28,21 @@ export const ImageGallery: React.FC<IImageGalleryProps> = ({ images }) => {
           ))}
         </Carousel>
       </Image.PreviewGroup>
-      {images.length > 1 && (
-        <Carousel
-          infinite={false}
-          rootClassName="custom-carousel-preview w-full justify-center items-center"
-          slidesToShow={7}
-        >
-          {images.map((image, index) => (
-            <img
-              key={['product.image.preview', index].join('.')}
-              src={image}
-              className="!w-[100px] h-[100px] object-cover items-center cursor-pointer"
-              onMouseOver={() => carouselRef.current?.goTo(index)}
-            />
-          ))}
-        </Carousel>
-      )}
+
+      <Carousel
+        infinite={false}
+        rootClassName="custom-carousel-preview w-full justify-center items-center"
+        slidesToShow={7}
+      >
+        {images.map((image, index) => (
+          <img
+            key={['product.image.preview', index].join('.')}
+            src={image}
+            className="!w-[100px] h-[100px] object-cover items-center cursor-pointer"
+            onMouseOver={() => carouselRef.current?.goTo(index)}
+          />
+        ))}
+      </Carousel>
     </section>
   );
 };

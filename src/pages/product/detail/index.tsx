@@ -1,3 +1,4 @@
+import { PageContainer } from '@ant-design/pro-components';
 import { Col, Flex, Row, Tabs } from 'antd/lib';
 import React from 'react';
 // import ImageGallery from 'react-image-gallery';
@@ -20,8 +21,15 @@ const ProductDetail: React.FC = () => {
         <LoadingSkeleton />
       ) : (
         data && (
-          <Flex className="flex-col gap-4">
-            <Row gutter={8} className="justify-center items-center">
+          <PageContainer
+            className="max-h-[calc(100vh-56px)] xl:max-h-[calc(100vh-112px)] overflow-auto p-4 flex-col gap-4 snap-mandatory snap-y snap-page-container"
+            header={{ title: '1' }}
+          >
+            <Row
+              gutter={8}
+              className="justify-center max-w-7xl w-full items-center snap-center"
+              style={{ marginLeft: 0, marginRight: 0 }}
+            >
               <Col lg={16} span={24}>
                 <div className="p-4">
                   <ImageGallery images={data.images} />
@@ -31,7 +39,11 @@ const ProductDetail: React.FC = () => {
                 <ProductLanding data={data} />
               </Col>
             </Row>
-            <Row gutter={16}>
+            <Row
+              gutter={16}
+              className="snap-center w-full max-w-7xl"
+              style={{ marginLeft: 0, marginRight: 0 }}
+            >
               <Col lg={16} span={24}>
                 <Flex className="bg-neutral-1 p-4 min-h-[calc(100vh-136px)] rounded-lg">
                   <Tabs items={tabs} className="custom-tabs" />
@@ -43,7 +55,7 @@ const ProductDetail: React.FC = () => {
                 </Flex>
               </Col>
             </Row>
-          </Flex>
+          </PageContainer>
         )
       )}
     </ContactInfo>

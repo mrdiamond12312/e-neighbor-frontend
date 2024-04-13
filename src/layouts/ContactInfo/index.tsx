@@ -1,5 +1,4 @@
 import { FacebookOutlined, MailOutlined, PhoneOutlined, TwitterOutlined } from '@ant-design/icons';
-import { PageContainer } from '@ant-design/pro-components';
 import { Outlet, useIntl } from '@umijs/max';
 import React from 'react';
 
@@ -40,10 +39,9 @@ const ContactInfo: React.FC<TComponentsProps> = ({ children }) => {
           </div>
         </div>
       </div>
-      <PageContainer className="max-w-7xl w-full m-auto p-4" header={{ title: '1' }}>
-        <Outlet />
-        {children}
-      </PageContainer>
+
+      <Outlet />
+      {children}
     </div>
   );
 };
