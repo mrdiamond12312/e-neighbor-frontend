@@ -1,6 +1,5 @@
-import { FormattedHTMLMessage, useIntl } from '@umijs/max';
+import { FormattedHTMLMessage, useIntl, useNavigate } from '@umijs/max';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import FlushReveal from '@/components/AnimationKit/FlushReveal';
 import { PropertyCard } from '@/components/PropertyCard';

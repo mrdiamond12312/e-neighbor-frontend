@@ -3,9 +3,8 @@ import React from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
-import LoadingSkeleton from '../../store/components/LoadingSkeleton';
-
 import ContactInfo from '@/layouts/ContactInfo';
+import LoadingSkeleton from '@/pages/store/components/LoadingSkeleton';
 import { useProductDetails } from '@/services/products/services';
 
 const ProductDetail: React.FC = () => {
