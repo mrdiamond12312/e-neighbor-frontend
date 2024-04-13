@@ -32,7 +32,19 @@ declare namespace API {
     location: string;
     timeUnit: string;
     tags: string[]; // Category type can be further defined if known
-    productSurcharges: string[];
+    productSurcharges: {
+      id: number;
+      createdAt: string;
+      updatedAt: string;
+      price: number;
+      surcharge?: {
+        id: number;
+        createdAt: string;
+        updatedAt: string;
+        name: string;
+        description: string;
+      };
+    }[];
     isConfirmed: boolean;
     rejectReason: string[];
     averageStar: number;

@@ -13,12 +13,12 @@ export interface IPopularProductsProps {
 const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
   const { data: mostViewedProducts, isLoading: isLoadingMostViewed } = useMostViewedProducts({
     isVehicle,
-    isConfirmedByAdmin: true,
+    isConfirmedByAdmin: false,
   });
 
   const { data: mostRatedProducts, isLoading: isLoadingMostRated } = useMostRatedProducts({
     isVehicle,
-    isConfirmedByAdmin: true,
+    isConfirmedByAdmin: false,
   });
 
   const navigate = useNavigate();

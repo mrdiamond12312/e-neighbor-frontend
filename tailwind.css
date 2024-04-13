@@ -30,6 +30,10 @@
 }
 
 @layer components {
+  /* Extras */
+  .img-edge-blur {
+    box-shadow: 0 0 8px 8px theme('colors.neutral-2') inset;
+  }
   /* Sprite Animatin */
   .sprite {
     @apply animate-spriteAnimation;
@@ -1012,6 +1016,81 @@
           @apply border-teal-5;
         }
       }
+    }
+  }
+
+  /* Antd Image */
+  .antd-image-nomask {
+    .ant-image-img {
+      @apply cursor-pointer;
+    }
+    .ant-image-mask {
+      @apply hidden;
+    }
+  }
+
+  /* Carousel*/
+  .custom-carousel {
+    @apply w-full justify-center items-center;
+
+    .slick-slider {
+      .slick-list {
+        .slick-track {
+          @apply flex justify-center items-center;
+        }
+      }
+    }
+
+    .slick-dots {
+      li {
+        button {
+          @apply bg-teal-1;
+        }
+      }
+      li.slick-active {
+        button {
+          @apply bg-teal-7;
+        }
+      }
+    }
+  }
+
+  .custom-carousel-preview {
+    .slick-list {
+      @apply flex flex-row items-center justify-center;
+
+      .slick-track {
+        @apply flex flex-row gap-2 !w-fit;
+
+        .slick-slide {
+          @apply !w-fit;
+        }
+      }
+    }
+  }
+
+  .custom-tabs {
+    @apply w-full;
+    .ant-tabs-nav-wrap {
+      .ant-tabs-nav-list {
+        .ant-tabs-tab {
+          @apply px-8 m-0 font-sans text-body-1-medium;
+          border-bottom: 2px solid transparent;
+          &:hover {
+            @apply text-teal-1;
+            border-bottom: solid 2px theme('colors.teal-1');
+          }
+        }
+
+        .ant-tabs-tab-active {
+          .ant-tabs-tab-btn {
+            @apply text-teal-5;
+          }
+        }
+      }
+    }
+    .ant-tabs-ink-bar {
+      @apply bg-teal-5;
     }
   }
 }

@@ -33,6 +33,7 @@ export enum SURCHARGE_KEY {
 export enum MORTGAGE {
   NONE = 'product.mortgage.none',
   OPTION1 = 'product.mortgage.motorbike.deposite',
+  OPTION2 = 'product.mortgage.money.deposite',
 }
 
 export enum REQUIRED_DOCUMENTS {

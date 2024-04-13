@@ -38,7 +38,7 @@ export const PropertyCard: React.FC<ICardProps> = ({
     );
   return (
     <article className="w-64 h-[415px] bg-teal-2 property-card overflow-clip">
-      <img src={imageSrc} className="h-72 object-cover" />
+      <img src={imageSrc} className="h-72 w-full object-cover" />
       <div className="rounded-none bg-neutral-1 h-[calc(100%-288px)] card-information-container">
         <section className="h-full p-4 flex flex-col gap-2 card-information">
           <section className="flex flex-row gap-3 card-title-section ">
