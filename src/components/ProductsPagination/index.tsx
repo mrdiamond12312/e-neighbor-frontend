@@ -95,7 +95,7 @@ export const ProductsPagination: React.FC<IProductsPaginationProps> = ({
                   current={page}
                   onChange={(page) => pageHandler(page)}
                   pageSize={pageMeta?.take}
-                  total={(pageMeta?.pageCount ?? 0) * (pageMeta?.take ?? 0)}
+                  total={pageMeta?.itemCount ?? 0}
                 />
               </Fragment>
             )}
