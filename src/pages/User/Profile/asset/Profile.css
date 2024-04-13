@@ -1,7 +1,6 @@
 .img__background--profile {
     width: 100%;
     height: 245px;
-    background-color: red;
     border-radius: 10px;
     background-image: url('../asset/img/background.jpg');
     background-repeat: no-repeat;
@@ -31,6 +30,14 @@
     top: 200px;
 }
 
+.card-profile-head .ant-card-body {
+    padding: 0;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    padding: 0 0 0 15px;
+}
+
 .input__profile {
     width: 180px;
     border-radius: 8px;
@@ -51,4 +58,15 @@
 .header__profile--notification {
     display: flex;
     align-items: center;
+}
+
+.profile__name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+    .card-profile-head {
+        width: 100%;
+    }
 }

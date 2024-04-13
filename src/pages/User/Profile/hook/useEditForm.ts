@@ -9,32 +9,72 @@ const useEditForm = () => {
   const [email, setEmail] = useState<string>('judarclitus@eneighbor.com');
   const [location, setLocation] = useState<string>('Vietnam');
 
-  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
+  const [dataProfile, setDataProfile] = useState<any>({
+    username: 'judarclitus1920',
+    password: 'abcdef',
+    fullName: 'Judar Clitus',
+    mobile: '(84) 838 972 219',
+    email: 'judarclitus@eneighbor.com',
+    location: 'Vietnam',
+    avatar:
+      'https://rukminim2.flixcart.com/image/850/1000/l0y6qa80/stuffed-toy/u/d/t/duck-doll-10-simba-s-collection-original-imagcmspfdhpxfuy.jpeg?q=90',
+    role: 'user',
+    address: null,
+    detailAddress: null,
+    dob: '20/02/2002',
+    gender: 0,
+  });
+
+  const dataConversation = [
+    {
+      name: 'Sophie B',
+      content: 'Are you satisfied with the product quality? ...',
+    },
+    {
+      name: 'Anne Marie',
+      content: 'Are you satisfied with the product quality? ...',
+    },
+    {
+      name: 'Ivan',
+      content: 'Are you satisfied with the product quality? ...',
+    },
+    {
+      name: 'Peterson',
+      content: 'Are you satisfied with the product quality? ...',
+    },
+  ];
+
+  const handleDataProfile = (e: any) => {
+    console.log('e', e);
+    setDataProfile(e);
   };
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
+  const handleUsernameChange = (e: string) => {
+    setUsername(e);
+  };
+
+  const handlePasswordChange = (e: string) => {
+    setPassword(e);
   };
 
   const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setConfirmPassword(e.target.value);
   };
 
-  const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFullName(e.target.value);
+  const handleFullNameChange = (e: string) => {
+    setFullName(e);
   };
 
-  const handleMobileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setMobile(e.target.value);
+  const handleMobileChange = (e: string) => {
+    setMobile(e);
   };
 
-  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
+  const handleEmailChange = (e: string) => {
+    setEmail(e);
   };
 
-  const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLocation(e.target.value);
+  const handleLocationChange = (e: string) => {
+    setLocation(e);
   };
 
   return {
@@ -52,6 +92,10 @@ const useEditForm = () => {
     handleMobileChange,
     handleEmailChange,
     handleLocationChange,
+    dataConversation,
+    dataProfile,
+    setDataProfile,
+    handleDataProfile,
   };
 };
 

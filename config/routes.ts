@@ -31,6 +31,11 @@ export default [
         path: 'profile',
         component: '@/pages/User/Profile',
       },
+      {
+        name: 'payment',
+        path: 'payment',
+        component: '@/pages/User/Payment',
+      },
     ],
   },
   {

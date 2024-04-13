@@ -1,7 +1,7 @@
 {
   "css.customData": [".vscode/tailwind.json"],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": true
   },
   "eslint.validate": ["javascript", "typescript"]
 }
