@@ -13,6 +13,7 @@ import LoadingSkeleton from '@/pages/store/components/LoadingSkeleton';
 const ProductDetail: React.FC = () => {
   const { data, isLoading } = useProductDetail();
   const { tabs } = useTabs(data);
+
   return (
     <ContactInfo>
       {isLoading ? (

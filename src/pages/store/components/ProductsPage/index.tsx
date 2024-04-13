@@ -1,9 +1,11 @@
-import { FormattedHTMLMessage, useIntl } from '@umijs/max';
+import { FormattedHTMLMessage, Link, useIntl } from '@umijs/max';
 import { Empty } from 'antd/lib';
 import React, { Fragment } from 'react';
+import urlcat from 'urlcat';
 
 import FlushReveal from '@/components/AnimationKit/FlushReveal';
 import { PropertyCard } from '@/components/PropertyCard';
+import { PATH_PRODUCTS_DETAILS } from '@/const/path';
 import LoadingSkeleton from '@/pages/store/components/LoadingSkeleton';
 
 export interface IProductsPageProps {
@@ -37,20 +39,25 @@ const ProductsPage: React.FC<IProductsPageProps> = ({ isLoading, products }) => 
                 index={index * 6}
                 pointerClassName="bg-favicon bg-no-repeat bg-contain bg-center"
               >
-                <PropertyCard
-                  ctaBtnFormattedMessage={formatMessage({
-                    id: 'store.preview.card.btn.rent',
-                    defaultMessage: 'Rent Now!',
-                  })}
-                  imageSrc={product.image}
-                  owner={product.lessorImage}
-                  pricing={product.price}
-                  pricingCurrency={formatMessage({ id: product.timeUnit, defaultMessage: '%Nan%' })}
-                  rating={product.rating}
-                  tag={product.category.name}
-                  key={product.id}
-                  title={product.name}
-                />
+                <Link to={urlcat(PATH_PRODUCTS_DETAILS, { productId: product.id })}>
+                  <PropertyCard
+                    ctaBtnFormattedMessage={formatMessage({
+                      id: 'store.preview.card.btn.rent',
+                      defaultMessage: 'Rent Now!',
+                    })}
+                    imageSrc={product.image}
+                    owner={product.lessorImage}
+                    pricing={product.price}
+                    pricingCurrency={formatMessage({
+                      id: product.timeUnit,
+                      defaultMessage: '%Nan%',
+                    })}
+                    rating={product.rating}
+                    tag={product.category.name}
+                    key={product.id}
+                    title={product.name}
+                  />
+                </Link>
               </FlushReveal>
             ))}
             {Array((products?.meta.take ?? 0) - (products?.data.length ?? 0))

@@ -1,8 +1,10 @@
-import { FormattedHTMLMessage, useIntl, useNavigate } from '@umijs/max';
+import { FormattedHTMLMessage, Link, useIntl } from '@umijs/max';
 import React from 'react';
+import urlcat from 'urlcat';
 
 import FlushReveal from '@/components/AnimationKit/FlushReveal';
 import { PropertyCard } from '@/components/PropertyCard';
+import { PATH_PRODUCTS_DETAILS } from '@/const/path';
 import LoadingSkeleton from '@/pages/store/components/LoadingSkeleton';
 import { useMostRatedProducts, useMostViewedProducts } from '@/services/products/services';
 
@@ -20,12 +22,6 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
     isVehicle,
     isConfirmedByAdmin: false,
   });
-
-  const navigate = useNavigate();
-
-  const handleProductClick = (productId: string | number) => {
-    navigate(`/product/${productId}/detail/`);
-  };
 
   const { formatMessage } = useIntl();
 
@@ -47,7 +43,7 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
               index={(pageIndex * page.data.length + index) * 6}
               pointerClassName="bg-favicon bg-no-repeat bg-contain bg-center"
             >
-              <div onClick={() => handleProductClick(item.id)}>
+              <Link to={urlcat(PATH_PRODUCTS_DETAILS, { productId: item.id })}>
                 <PropertyCard
                   ctaBtnFormattedMessage={formatMessage({
                     id: 'store.preview.card.btn.rent',
@@ -62,7 +58,7 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
                   key={item.id}
                   title={item.name}
                 />
-              </div>
+              </Link>
             </FlushReveal>
           )),
         )}
@@ -84,20 +80,22 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
               keyId={item.id}
               index={(pageIndex * page.data.length + index) * 6}
             >
-              <PropertyCard
-                ctaBtnFormattedMessage={formatMessage({
-                  id: 'store.preview.card.btn.rent',
-                  defaultMessage: 'Rent Now!',
-                })}
-                imageSrc={item.image}
-                owner={item.lessorImage}
-                pricing={item.price}
-                pricingCurrency={formatMessage({ id: item.timeUnit, defaultMessage: '%Nan%' })}
-                rating={item.rating}
-                tag={item.category.name}
-                key={item.id}
-                title={item.name}
-              />
+              <Link to={urlcat(PATH_PRODUCTS_DETAILS, { productId: item.id })}>
+                <PropertyCard
+                  ctaBtnFormattedMessage={formatMessage({
+                    id: 'store.preview.card.btn.rent',
+                    defaultMessage: 'Rent Now!',
+                  })}
+                  imageSrc={item.image}
+                  owner={item.lessorImage}
+                  pricing={item.price}
+                  pricingCurrency={formatMessage({ id: item.timeUnit, defaultMessage: '%Nan%' })}
+                  rating={item.rating}
+                  tag={item.category.name}
+                  key={item.id}
+                  title={item.name}
+                />
+              </Link>
             </FlushReveal>
           )),
         )}

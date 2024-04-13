@@ -11,3 +11,6 @@ export const PATH_LESSOR_DASHBOARD = PATH_LESSOR + '/dashboard';
 export const PATH_LESSOR_ORDERS = PATH_LESSOR + '/orders';
 export const PATH_LESSOR_ORDERS_DETAILS = PATH_LESSOR_ORDERS + '/:orderId';
 export const PATH_LESSOR_ORDERS_CANCELED = PATH_LESSOR_ORDERS + '/cancels';
+
+export const PATH_PRODUCTS = '/product';
+export const PATH_PRODUCTS_DETAILS = PATH_PRODUCTS + '/:productId/detail';
