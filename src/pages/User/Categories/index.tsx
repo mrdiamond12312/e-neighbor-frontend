@@ -1,7 +1,6 @@
 import { Menu } from 'antd';
 import { useIntl, Link, history, useLocation } from 'umi';
 
-import FadeIn from '@/components/AnimationKit/FadeIn';
 import { PATH_USER_PAYMENT, PATH_USER_PROFILE } from '@/const/path';
 
 export type TCategoriesProps = {
@@ -48,23 +47,21 @@ const UserCategories: React.FC<TCategoriesProps> = ({ setCategory }) => {
   const selectedKey = items[0].children.find((item) => item.path === location.pathname)?.key || '';
 
   return (
-    <FadeIn direction="left" className="w-full" index={1}>
-      <Menu
-        onSelect={handleSelect}
-        disabledOverflow={true}
-        openKeys={['category']}
-        className="category-menu"
-        mode="inline"
-        items={items}
-        selectedKeys={[selectedKey]}
-      >
-        {items[0].children.map((item) => (
-          <Menu.Item key={item.key}>
-            <Link to={item.path}>{item.label}</Link>
-          </Menu.Item>
-        ))}
-      </Menu>
-    </FadeIn>
+    <Menu
+      onSelect={handleSelect}
+      disabledOverflow={true}
+      openKeys={['category']}
+      className="category-menu"
+      mode="inline"
+      items={items}
+      selectedKeys={[selectedKey]}
+    >
+      {items[0].children.map((item) => (
+        <Menu.Item key={item.key}>
+          <Link to={item.path}>{item.label}</Link>
+        </Menu.Item>
+      ))}
+    </Menu>
   );
 };
 

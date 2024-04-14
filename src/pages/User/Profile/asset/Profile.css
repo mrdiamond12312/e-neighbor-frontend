@@ -58,6 +58,8 @@
 .header__profile--notification {
     display: flex;
     align-items: center;
+    width: 100%;
+    justify-content: right;
 }
 
 .profile__name {

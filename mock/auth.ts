@@ -46,6 +46,7 @@ const profile = (req: Request, res: Response) => {
           updatedAt: '2023-11-19T06:28:24.719Z',
           userName: 'mrdiamond12312',
           email: 'hoangkimcuong@gmail.com',
+          password: '78945678',
           avatar:
             'https://rukminim2.flixcart.com/image/850/1000/l0y6qa80/stuffed-toy/u/d/t/duck-doll-10-simba-s-collection-original-imagcmspfdhpxfuy.jpeg?q=90',
           address: null,

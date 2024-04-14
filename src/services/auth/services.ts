@@ -12,7 +12,7 @@ import { removeStorageItem, setStorageItem } from '@/utils/local-storage';
 export const useServiceLogin = () => {
   return useMutation<TMetaWrapper<API.TAuthResponse>, TMeta, TLoginFormFields>(
     [API_ENDPOINTS.LOGIN],
-    (body) => login(body),
+    (body: any) => login(body),
     {
       onSuccess: (loginResult: TMetaWrapper<API.TAuthResponse>) => {
         const { meta, result } = loginResult;
@@ -27,7 +27,7 @@ export const useServiceLogin = () => {
 export const useServiceRegister = () => {
   return useMutation<TMetaWrapper<API.TAuthResponse>, TMeta, TRegisterFormFields>(
     [API_ENDPOINTS.REGISTER],
-    (body) => register(body),
+    (body: any) => register(body),
     {
       onSuccess: (authResult: TMetaWrapper<API.TAuthResponse>) => {
         const { meta, result } = authResult;

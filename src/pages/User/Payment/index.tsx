@@ -99,14 +99,14 @@ const Payment: React.FC = () => {
           <UserCategories setCategory={setCategory} />
         </Col>
         <Col span={24} md={20}>
-          <Col span={24} className="flex justify-between items-center">
+          {/* <Col span={24} className="flex justify-between items-center">
             <Col>
               <p>
                 <span className="text-stone-400">User</span> / Billing
               </p>
               <p className="font-semibold pt-1">Billing</p>
             </Col>
-          </Col>
+          </Col> */}
           <Row gutter={20} className="mt-5">
             <Col span={24} md={15}>
               <Card>

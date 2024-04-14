@@ -16,70 +16,61 @@ import {
   Input,
   Modal,
   DatePicker,
+  Image,
   Row,
   Badge,
   Form,
   type FormProps,
-  Radio,
-  type RadioChangeEvent,
   Popconfirm,
   type PopconfirmProps,
 } from 'antd';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import moment from 'moment';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import '@/pages/User/Profile/asset/Profile.css';
 import UserCategories from '@/pages/User/Categories';
-import useEditForm from '@/pages/User/Profile/hook/useEditForm';
+import { fetchAuthInfo } from '@/services/auth/services';
+import { dataConversation } from '@/utils/dataConversation';
+dayjs.extend(customParseFormat);
 
 const Profile: React.FC = () => {
-  const {
-    confirmPassword,
-    handleConfirmPasswordChange,
-    dataConversation,
-    dataProfile,
-    handleDataProfile,
-  } = useEditForm();
-
-  const [gender, setGender] = useState(0);
+  const [dataProfileAPI, setDataProfileAPI] = useState<any>();
   const [editMode, setEditMode] = useState<boolean>(false);
   const [isConfirmationModalVisible, setIsConfirmationModalVisible] = useState<boolean>(false);
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [, setCategory] = useState<string>('user_information');
+  const dateFormat = 'YYYY/MM/DD';
   const handleToggleEditMode = () => {
     setIsConfirmationModalVisible(true);
   };
 
+  useEffect(() => {
+    const getData = async () => {
+      const currentUser = await fetchAuthInfo();
+      setDataProfileAPI(currentUser);
+    };
+    getData();
+  }, []);
+
   type FieldType = {
-    usernameForm?: string;
-    passwordForm?: string;
-    fullNameForm?: string;
-    mobileForm?: string;
-    emailForm?: string;
-    locationForm?: string;
-    addressForm?: string;
-    detailedAddressForm?: string;
-    dobForm?: string;
-    roleForm?: string;
+    userName?: string;
+    fullName?: string;
+    phoneNumber?: string;
+    email?: string;
+    address?: string;
+    detailedAddress?: string;
+    dob?: string;
     avatar?: string;
-    genderForm?: string;
-    avatarForm?: string;
   };
 
   const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
-    handleDataProfile({
-      username: values.usernameForm,
-      password: values.passwordForm,
-      fullName: values.fullNameForm,
-      mobile: values.mobileForm,
-      email: values.emailForm,
-      location: values.locationForm,
-      address: values.addressForm,
-      detailedAddress: values.detailedAddressForm,
-      dob: moment(values?.dobForm).format('YYYY-MM-DD'),
-      role: values.roleForm,
-      avatar: values.avatarForm,
-      gender: values.genderForm,
-    });
+    let dataTemp = {
+      ...values,
+      dob: moment(values?.dob).format(dateFormat),
+    };
+    setDataProfileAPI(dataTemp);
     setEditMode(false);
   };
 
@@ -87,20 +78,21 @@ const Profile: React.FC = () => {
     console.log('Failed:', errorInfo);
   };
 
-  const onChange = (e: RadioChangeEvent) => {
-    setGender(e.target.value);
-  };
-
   const handleConfirmPassword = () => {
-    if (confirmPassword === dataProfile?.password) {
+    if (confirmPassword === dataProfileAPI?.password) {
       setIsConfirmationModalVisible(false);
       setEditMode(true);
     } else {
       Modal.error({
         title: 'Incorrect Password',
         content: 'Please enter the correct password to proceed.',
+        okButtonProps: { className: 'btn-medium btn-primary' },
       });
     }
+  };
+
+  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setConfirmPassword(e.target.value);
   };
 
   const itemConversation = (item: any) => {
@@ -114,7 +106,7 @@ const Profile: React.FC = () => {
           <p className="font-medium text-xs text-gray-400">{item.content}</p>
         </Col>
         <Col span={4} className="mt-4">
-          <a href="" className="uppercase font-semibold text-xs text-sky-400">
+          <a href="#" className="uppercase font-semibold text-xs text-sky-400">
             Reply
           </a>
         </Col>
@@ -138,16 +130,9 @@ const Profile: React.FC = () => {
         >
           <UserCategories setCategory={setCategory} />
         </Col>
-
         <Col span={24} md={20} className="flex flex-col gap-12">
           <div className="img__background--profile">
             <div className="header__profile">
-              <div className="header__profile--title">
-                <div>
-                  <p>User/Profile</p>
-                </div>
-                <p style={{ margin: '10px 0 0 0', fontWeight: 600 }}>Profile</p>
-              </div>
               <div className="header__profile--notification">
                 <Input
                   className="input__profile"
@@ -162,19 +147,20 @@ const Profile: React.FC = () => {
           </div>
           <Card className="card-profile-head">
             <Row gutter={[24, 0]} className="flex">
-              <Avatar
-                style={{ margin: '0 10px' }}
-                shape="square"
-                size={60}
-                icon={<UserOutlined />}
-              />
+              <div className="mx-3">
+                <Image
+                  width={60}
+                  height={60}
+                  src={dataProfileAPI?.avatar}
+                  fallback="data:image/png;base64,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"
+                />
+              </div>
               <div>
-                <p className="profile__name">{dataProfile.fullName}</p>
-                <p className="font-medium text-sm text-gray-400">{dataProfile.email}</p>
+                <p className="profile__name">{dataProfileAPI?.fullName}</p>
+                <p className="font-medium text-sm text-gray-400">{dataProfileAPI?.email}</p>
               </div>
             </Row>
           </Card>
-
           <Row gutter={[24, 0]}>
             <Col span={24} md={16} className="mb-4 sm:mb-24">
               <Card
@@ -196,41 +182,27 @@ const Profile: React.FC = () => {
                   <div>
                     <Descriptions title="Login Information">
                       <Descriptions.Item label="Username" span={3}>
-                        {dataProfile.username}
-                      </Descriptions.Item>
-                      <Descriptions.Item label="Password" span={3}>
-                        {'******'}
+                        {dataProfileAPI?.userName}
                       </Descriptions.Item>
                     </Descriptions>
                     <Descriptions title="Contact Information">
                       <Descriptions.Item label="Full Name" span={3}>
-                        {dataProfile.fullName}
+                        {dataProfileAPI?.fullName}
                       </Descriptions.Item>
                       <Descriptions.Item label="Mobile" span={3}>
-                        {dataProfile.mobile}
+                        {dataProfileAPI?.phoneNumber}
                       </Descriptions.Item>
                       <Descriptions.Item label="Email" span={3}>
-                        {dataProfile.email}
+                        {dataProfileAPI?.email}
                       </Descriptions.Item>
-
                       <Descriptions.Item label="Address" span={3}>
-                        {dataProfile.address}
+                        {dataProfileAPI?.address}
                       </Descriptions.Item>
                       <Descriptions.Item label="Detail Address" span={3}>
-                        {dataProfile.detailAddress}
+                        {dataProfileAPI?.detailedAddress}
                       </Descriptions.Item>
                       <Descriptions.Item label="Date of birth" span={3}>
-                        {dataProfile.dob}
-                      </Descriptions.Item>
-                      <Descriptions.Item label="Role" span={3}>
-                        {dataProfile.role}
-                      </Descriptions.Item>
-                      <Descriptions.Item label="Gender" span={3}>
-                        {dataProfile.gender}
-                      </Descriptions.Item>
-
-                      <Descriptions.Item label="Location" span={3}>
-                        {dataProfile.location}
+                        {dataProfileAPI?.dob}
                       </Descriptions.Item>
                       <Descriptions.Item label="Social" span={3}>
                         <a href="#pablo" className="mx-5 px-5">
@@ -249,13 +221,13 @@ const Profile: React.FC = () => {
                     wrapperCol={{ span: 18 }}
                     style={{ maxWidth: 700 }}
                     initialValues={{
-                      usernameForm: dataProfile?.username,
-                      passwordForm: dataProfile?.password,
-                      fullNameForm: dataProfile?.fullName,
-                      mobileForm: dataProfile?.mobile,
-                      emailForm: dataProfile?.email,
-                      locationForm: dataProfile?.location,
-                      genderForm: 0,
+                      userName: dataProfileAPI?.userName,
+                      fullName: dataProfileAPI?.fullName,
+                      phoneNumber: dataProfileAPI?.phoneNumber,
+                      email: dataProfileAPI?.email,
+                      address: dataProfileAPI?.address,
+                      detailedAddress: dataProfileAPI?.detailedAddress,
+                      dob: dataProfileAPI?.dob ? dayjs(dataProfileAPI?.dob) : dayjs(),
                     }}
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
@@ -264,23 +236,15 @@ const Profile: React.FC = () => {
                     <div className="font-semibold mt-3">Login Information</div>
                     <Form.Item<FieldType>
                       label="Username"
-                      name="usernameForm"
+                      name="userName"
                       rules={[{ required: true, message: 'Please input your username!' }]}
                     >
                       <Input />
                     </Form.Item>
-
-                    <Form.Item<FieldType>
-                      label="Password"
-                      name="passwordForm"
-                      rules={[{ required: true, message: 'Please input your password!' }]}
-                    >
-                      <Input.Password />
-                    </Form.Item>
                     <div className="font-semibold">Contact Information</div>
                     <Form.Item<FieldType>
                       label="Email"
-                      name="emailForm"
+                      name="email"
                       rules={[
                         {
                           type: 'email',
@@ -294,37 +258,21 @@ const Profile: React.FC = () => {
                     >
                       <Input />
                     </Form.Item>
-                    <Form.Item<FieldType> label="Full Name" name="fullNameForm">
+                    <Form.Item<FieldType> label="Full Name" name="fullName">
                       <Input />
                     </Form.Item>
-                    <Form.Item<FieldType> label="Address" name="addressForm">
+                    <Form.Item<FieldType> label="Address" name="address">
                       <Input />
                     </Form.Item>
-                    <Form.Item<FieldType> label="Detail Address" name="detailedAddressForm">
+                    <Form.Item<FieldType> label="Detail Address" name="detailedAddress">
                       <Input />
                     </Form.Item>
-                    <Form.Item<FieldType> label="Date of birth" name="dobForm">
-                      <DatePicker />
+                    <Form.Item<FieldType> label="Date of birth" name="dob">
+                      <DatePicker format={dateFormat} />
                     </Form.Item>
-                    <Form.Item<FieldType> label="Role" name="roleForm">
+                    <Form.Item<FieldType> label="Phone Number" name="phoneNumber">
                       <Input />
                     </Form.Item>
-                    <Form.Item<FieldType> label="Gender" name="genderForm">
-                      <Radio.Group onChange={onChange} value={gender}>
-                        <Radio value={0}>Nam</Radio>
-                        <Radio value={1}>Nữ</Radio>
-                        <Radio value={2}>Khác</Radio>
-                      </Radio.Group>
-                    </Form.Item>
-
-                    <Form.Item<FieldType> label="Mobile" name="mobileForm">
-                      <Input />
-                    </Form.Item>
-
-                    <Form.Item<FieldType> label="Location" name="locationForm">
-                      <Input />
-                    </Form.Item>
-
                     <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
                       <div className="flex justify-end">
                         <Button
@@ -342,6 +290,8 @@ const Profile: React.FC = () => {
                           onCancel={cancel}
                           okText="Yes"
                           cancelText="No"
+                          okButtonProps={{ className: 'btn-medium btn-primary' }}
+                          cancelButtonProps={{ className: 'btn-medium btn-default' }}
                         >
                           <Button className="btn-medium btn-default">Cancel</Button>
                         </Popconfirm>
@@ -351,7 +301,6 @@ const Profile: React.FC = () => {
                 )}
               </Card>
             </Col>
-
             <Col span={24} md={8} className="mb-4 sm:mb-24">
               <Card
                 bordered={false}

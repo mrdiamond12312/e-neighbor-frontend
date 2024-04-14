@@ -15,6 +15,7 @@ declare namespace API {
     updatedAt: string;
     userName: string;
     email: string;
+    password: string;
     avatar?: string;
     address?: string;
     detailedAddress?: string;
