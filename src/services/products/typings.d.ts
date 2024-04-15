@@ -69,7 +69,7 @@ declare namespace API {
     isConfirmedByAdmin: boolean;
     name?: string;
     categoryId?: number;
-    isVehicle: boolean;
+    isVehicle?: boolean;
     lessorId?: number;
     status?: string;
     offset?: number;

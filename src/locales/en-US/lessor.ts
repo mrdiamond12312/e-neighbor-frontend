@@ -134,4 +134,19 @@ export default {
   'lessor.product.add.step.addtionalInfo.header': 'Additional information.',
   'lessor.product.add.step.addtionalInfo.description':
     'Provide additional information about surcharges and insurance.',
+
+  // Product Management Page
+
+  'lessor.product.management.table.col.productName': 'Product Name',
+  'lessor.product.management.table.col.category': 'Category',
+  'lessor.product.management.table.col.rating': 'Rating',
+  'lessor.product.management.table.col.accessCount': 'Views',
+  'lessor.product.management.table.col.orders': 'Orders',
+  'lessor.product.management.table.col.price': 'Rental Price',
+  'lessor.product.management.table.col.value': 'Value',
+  'lessor.product.management.table.col.status': 'Status',
+
+  'lessor.products.management.is.not.approved': 'Approval Requested',
+  'lessor.products.management.is.approved': 'Approved',
+  'lessor.products.management.is.rejected': 'Rejected',
 };

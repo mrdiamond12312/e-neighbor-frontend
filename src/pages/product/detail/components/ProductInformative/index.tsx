@@ -2,10 +2,6 @@ import { FormattedHTMLMessage } from '@umijs/max';
 import { Col, Divider, Flex, Row } from 'antd/lib';
 import React from 'react';
 
-import {
-  MORTGAGE,
-  REQUIRED_DOCUMENTS,
-} from '@/pages/lessor/products/add/helpers/addProductFormKeys';
 import { CHARACTERISTICS_ATTRIBUTE_FILTER } from '@/pages/product/detail/components/ProductInformative/helpers/characteristics-filter';
 
 export type TProductInformativeProps = {
@@ -13,12 +9,6 @@ export type TProductInformativeProps = {
 };
 
 export const ProductInformative: React.FC<TProductInformativeProps> = ({ data }) => {
-  const mortgage =
-    data?.mortgage === 'NONE' ? 'NONE' : data?.mortgage === 'OPTION1' ? 'OPTION1' : 'OPTION2';
-
-  const requiredDocuments =
-    data?.mortgage === 'NONE' ? 'NONE' : data?.mortgage === 'OPTION1' ? 'OPTION1' : 'OPTION2';
-
   return (
     <Flex className="flex-col gap-2 p-4 max-h-[calc(100vh-242px)] overflow-auto">
       <h2 className="text-heading-5 font-sans m-0">
@@ -74,9 +64,7 @@ export const ProductInformative: React.FC<TProductInformativeProps> = ({ data })
         />
       </h2>
       <p className="bg-gradient-to-r from-teal-50 to-transparent text-body-1-medium p-4 rounded-l border-l-4 border-teal-7">
-        <FormattedHTMLMessage
-          id={data?.mortgage ? MORTGAGE[mortgage] : data?.mortgage}
-        ></FormattedHTMLMessage>
+        <FormattedHTMLMessage id={data?.requiredDocuments}></FormattedHTMLMessage>
       </p>
 
       <h2 className="text-heading-5 font-sans m-0">
@@ -86,13 +74,7 @@ export const ProductInformative: React.FC<TProductInformativeProps> = ({ data })
         />
       </h2>
       <p className="bg-gradient-to-r from-teal-50 to-transparent text-body-1-medium p-4 rounded-l border-l-4 border-teal-7">
-        <FormattedHTMLMessage
-          id={
-            data?.requiredDocuments
-              ? REQUIRED_DOCUMENTS[requiredDocuments]
-              : data?.requiredDocuments
-          }
-        ></FormattedHTMLMessage>
+        <FormattedHTMLMessage id={data?.requiredDocuments}></FormattedHTMLMessage>
       </p>
 
       <h2 className="text-heading-5 font-sans m-0">

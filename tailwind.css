@@ -601,7 +601,7 @@
     }
 
     > input.ant-input {
-      @apply rounded-[4px] h-12 !bg-transparent text-body-1-medium font-sans text-teal-6;
+      @apply rounded-[4px] !bg-transparent text-body-1-medium font-sans text-teal-6;
 
       &:focus {
         @apply border-teal-5;
@@ -720,13 +720,12 @@
 
       .ant-menu-submenu-title {
         .ant-menu-title-content {
-          @apply m-0;
         }
       }
     }
     .ant-menu-submenu-selected {
       .ant-menu-submenu-title {
-        @apply gap-4 m-0 w-full !h-14 !pl-5 bg-teal-100 py-4 text-teal-7 text-body-2-semibold;
+        @apply gap-[6px] m-0 w-full !h-14 !pl-5 bg-teal-100 py-4 text-teal-7 text-body-2-semibold;
       }
     }
 
@@ -1087,6 +1086,9 @@
 
   .custom-tabs {
     @apply w-full;
+    .ant-tabs-nav {
+      @apply m-0;
+    }
     .ant-tabs-nav-wrap {
       .ant-tabs-nav-list {
         .ant-tabs-tab {

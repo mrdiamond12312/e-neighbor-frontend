@@ -23,5 +23,6 @@ declare namespace API {
     fullName: string;
     role: AuthRole;
     citizenId?: string;
+    lessorId?: number;
   };
 }

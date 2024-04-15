@@ -1,67 +1,66 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { useModel } from '@umijs/max';
-import { Table } from 'antd/lib';
-import { TableProps } from 'antd/lib/table';
-import { SorterResult } from 'antd/lib/table/interface';
+import { getLocale } from '@umijs/max';
+import { ConfigProvider, Flex, Table, Tabs } from 'antd/lib';
+import enUS from 'antd/locale/en_US';
+import viVN from 'antd/locale/vi_VN';
 import React from 'react';
 
-import { ORDER, PRODUCT_PAGE_SORTFIELDS, usePagination } from '@/hooks/usePagination';
+import { SearchBar } from '@/components/SearchBar';
 import { useProductsTable } from '@/pages/lessor/products/management/hooks/useProductsTable';
-import { useProductPage } from '@/services/products/services';
 
 const ProductManagement: React.FC = () => {
-  const { initialState } = useModel('@@initialState');
-  console.log(initialState);
   const {
-    pageHandler,
-    takeHandler,
-    categoryIdHandler,
-    paginationParams,
-    sortFieldHandler,
-    orderHandler,
+    columns,
     take,
-  } = usePagination();
-
-  const { columns } = useProductsTable();
-  const { data: productPage, isLoading: productPageLoading } = useProductPage(paginationParams);
-
-  const handleTableChange: TableProps['onChange'] = (
-    pagination,
-    filters,
-    sorter: SorterResult<API.IProductCard> | SorterResult<API.IProductCard>[],
-  ) => {
-    pageHandler(pagination.current ?? 1);
-    takeHandler(pagination.pageSize ?? 10);
-    categoryIdHandler(filters.category?.at(-1) ?? undefined);
-    if (!Array.isArray(sorter)) {
-      orderHandler(
-        sorter.order ? (sorter.order === 'ascend' ? ORDER['asc'] : ORDER['des']) : undefined,
-      );
-      sortFieldHandler(sorter.field as PRODUCT_PAGE_SORTFIELDS);
-    }
-    console.log(pagination, filters, sorter);
-  };
+    productPage,
+    productPageLoading,
+    handleTableChange,
+    searchBoxHandler,
+    tabsItem,
+    defaultActiveTab,
+    formatMessage,
+  } = useProductsTable();
 
   return (
-    <PageContainer
-      className="max-h-[calc(100vh-56px)] xl:max-h-[calc(100vh-112px)] w-full overflow-auto p-4 flex-col gap-4 snap-mandatory snap-y snap-page-container"
-      header={{ title: '1' }}
-    >
-      <Table
-        columns={columns}
-        // rowKey={(record) => record.login.uuid}
-        dataSource={productPage?.data}
-        // pagination={tableParams.pagination}
-        loading={productPageLoading}
-        onChange={handleTableChange}
-        className="custom-table"
-        pagination={{
-          pageSize: take,
-          showSizeChanger: true,
-          showQuickJumper: true,
-        }}
-      />
-    </PageContainer>
+    <ConfigProvider locale={getLocale() === 'vi-VN' ? viVN : enUS}>
+      <PageContainer
+        className="max-h-[calc(100vh-56px)] xl:max-h-[calc(100vh-112px)] max-w-7xl w-full overflow-auto p-4 flex-col gap-4 snap-mandatory snap-y snap-page-container"
+        header={{ title: '1' }}
+      >
+        <Flex className="flex-col gap-4 bg-neutral-1 p-4 w-full">
+          <Flex className="flex-col md:flex-row gap-4 bg-neutral-1 w-full items-center">
+            <Tabs
+              items={tabsItem}
+              className="custom-tabs w-full md:w-fit"
+              defaultActiveKey={defaultActiveTab}
+            />
+            <SearchBar
+              onPressEnter={searchBoxHandler}
+              className="h-10 text-body-2-semibold"
+              placeholder={formatMessage({
+                id: 'common.search.placeholder',
+                defaultMessage: 'Search',
+              })}
+            />
+          </Flex>
+
+          <Table
+            columns={columns}
+            rowKey={(record) => record.id}
+            dataSource={productPage?.data}
+            loading={productPageLoading}
+            onChange={handleTableChange}
+            className="custom-table w-full overflow-auto"
+            pagination={{
+              pageSize: take,
+              showSizeChanger: true,
+              showQuickJumper: true,
+              pageSizeOptions: [5, 10, 20],
+            }}
+          />
+        </Flex>
+      </PageContainer>
+    </ConfigProvider>
   );
 };
 

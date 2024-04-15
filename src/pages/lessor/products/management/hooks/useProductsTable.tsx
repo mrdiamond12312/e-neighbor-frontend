@@ -1,10 +1,13 @@
-import { FormattedHTMLMessage, useIntl } from '@umijs/max';
+import { FormattedHTMLMessage, useIntl, useModel } from '@umijs/max';
 import { Rate } from 'antd';
 import { Image } from 'antd/lib';
-import { ColumnsType } from 'antd/lib/table';
+import { ColumnsType, TableProps } from 'antd/lib/table';
+import { SorterResult } from 'antd/lib/table/interface';
 
+import { ORDER, PRODUCT_PAGE_SORTFIELDS, usePagination } from '@/hooks/usePagination';
 import { CategoryFilter } from '@/pages/lessor/products/management/components/CategoryFilter';
 import { StatusTag } from '@/pages/lessor/products/management/components/StatusTag';
+import { useProductPage } from '@/services/products/services';
 
 export const useProductsTable = () => {
   const { formatMessage } = useIntl();
@@ -43,7 +46,6 @@ export const useProductsTable = () => {
           />
         );
       },
-      filterOnClose: true,
       render: (value: API.ICategory) => <FormattedHTMLMessage id={value.name} />,
     },
     {
@@ -106,5 +108,95 @@ export const useProductsTable = () => {
     },
   ];
 
-  return { columns } as const;
+  const { initialState } = useModel('@@initialState');
+  const {
+    pageHandler,
+    takeHandler,
+    categoryIdHandler,
+    paginationParams,
+    sortFieldHandler,
+    orderHandler,
+    keyword,
+    searchBoxHandler,
+    take,
+    isConfirmedByAdmin,
+    setIsConfirmedByAdmin,
+  } = usePagination({
+    initialTake: 5,
+    initialPage: 1,
+    initialOffset: 0,
+    lessorId: initialState?.currentUser?.lessorId ?? undefined,
+    initialAdminApproved: false,
+  });
+
+  const { data: productPage, isLoading: productPageLoading } = useProductPage(paginationParams);
+
+  const handleTableChange: TableProps['onChange'] = (
+    pagination,
+    filters,
+    sorter: SorterResult<API.IProductCard> | SorterResult<API.IProductCard>[],
+  ) => {
+    pageHandler(pagination.current ?? 1);
+    takeHandler(pagination.pageSize ?? 10);
+    categoryIdHandler(filters.category?.at(-1) ?? undefined);
+    if (!Array.isArray(sorter)) {
+      orderHandler(
+        sorter.order ? (sorter.order === 'ascend' ? ORDER['asc'] : ORDER['des']) : undefined,
+      );
+      sortFieldHandler(sorter.field as PRODUCT_PAGE_SORTFIELDS);
+    }
+  };
+
+  const tabsItem = [
+    {
+      key: 'lessor.products.management.is.not.approved',
+      label: (
+        <div onClick={() => setIsConfirmedByAdmin(false)} className="cursor-pointer">
+          <FormattedHTMLMessage
+            id="lessor.products.management.is.not.approved"
+            defaultMessage="Waiting for Approval"
+          />
+        </div>
+      ),
+    },
+    {
+      key: 'lessor.products.management.is.approved',
+      label: (
+        <div onClick={() => setIsConfirmedByAdmin(true)} className="cursor-pointer">
+          <FormattedHTMLMessage
+            id="lessor.products.management.is.approved"
+            defaultMessage="Approved"
+          />
+        </div>
+      ),
+    },
+    {
+      key: 'lessor.products.management.is.rejected',
+      label: (
+        <div className="cursor-pointer">
+          <FormattedHTMLMessage
+            id="lessor.products.management.is.rejected"
+            defaultMessage="Rejected"
+          />
+        </div>
+      ),
+    },
+  ];
+
+  const defaultActiveTab = isConfirmedByAdmin
+    ? 'lessor.products.management.is.not.approved'
+    : 'lessor.products.management.is.not.approved';
+
+  return {
+    columns,
+    take,
+    productPage,
+    productPageLoading,
+    handleTableChange,
+    keyword,
+    searchBoxHandler,
+    tabsItem,
+    formatMessage,
+    defaultActiveTab,
+  } as const;
 };

@@ -32,7 +32,7 @@ const Store: React.FC = () => {
     orderOptions,
     page,
     pageHandler,
-  } = usePagination();
+  } = usePagination({ initialCategory: 'furnitures' });
 
   const { data: products, isLoading } = useProductPage(paginationParams);
 
@@ -55,7 +55,7 @@ const Store: React.FC = () => {
               xl={4}
               className="max-h-[calc(100vh-88px)] sm:flex  flex-row xl:flex-col pb-4 xl:pb-0 gap-4 xl:sticky xl:top-[72px] overflow-auto px-2 hidden"
             >
-              <Categories setCategory={categoryHandler} selectedKeys={(() => [category])()} />
+              <Categories setCategory={categoryHandler} selectedKeys={category ? [category] : []} />
 
               <Locations setLocations={locationHandler} />
 
@@ -66,7 +66,7 @@ const Store: React.FC = () => {
             <Col span={24} xl={20} className="flex flex-col gap-8 px-2 font-sans">
               <CoverSearchBox
                 onPressEnter={searchBoxHandler}
-                category={category}
+                category={category ?? 'furnitures'}
                 kwValue={keyword}
               />
               <ProductsPagination
@@ -83,7 +83,7 @@ const Store: React.FC = () => {
               >
                 <ProductsPage products={products} isLoading={isLoading} />
               </ProductsPagination>
-              <PopularProducts isVehicle={paginationParams.isVehicle} />
+              <PopularProducts isVehicle={paginationParams.isVehicle ?? false} />
             </Col>
           </Row>
         </FadeIn>

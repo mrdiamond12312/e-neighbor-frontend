@@ -103,3 +103,35 @@ export const productSurchage = {
 export const productPage = {
   'products.page.empty': 'Không tìm thấy sản phẩm phù hợp!',
 };
+
+export const productStatus = {
+  'product.status.available': 'Available',
+  'product.status.not.available': 'Disabled',
+};
+
+export const productDetailPage = {
+  'product.details.feedback.count': 'Feedbacks',
+  'product.details.tab.detailsInfo': 'Detailed Information',
+  'product.details.tab.feedbacks': 'Feedbacks',
+  'product.details.description.label': 'Description',
+  'product.details.characteristics.label': 'Details provided by Lessor',
+  'product.details.characteristics.otherUtils.label': 'Other Utilities',
+  'product.details.mortgages.label': 'Mortgage for renting this Product',
+  'product.details.requiredDocuments.label': 'Documents Requirement for this Product',
+  'product.details.policies.label': 'Policies',
+  'product.details.surcharge.label': 'Surcharges',
+};
+
+export const product = {
+  ...productLocale,
+  ...productCategories,
+  ...productCharacteristicsLabel,
+  ...productDetailPage,
+  ...productInsurace,
+  ...productMortgage,
+  ...productPage,
+  ...productPolicies,
+  ...productReqDocs,
+  ...productStatus,
+  ...productSurchage,
+};
