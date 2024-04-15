@@ -1113,6 +1113,7 @@
   /* Table */
   .custom-table {
     /* Loading Spin level*/
+    @apply border-teal-200 border rounded-lg bg-teal-100;
     .ant-spin-nested-loading {
       .ant-spin-container {
         /* Table level*/
@@ -1124,7 +1125,7 @@
               .ant-table-thead {
                 tr {
                   .ant-table-cell {
-                    @apply bg-teal-200 text-teal-7;
+                    @apply bg-teal-100 text-teal-7;
                     &:before {
                       @apply bg-teal-3;
                     }
@@ -1133,7 +1134,23 @@
                       .ant-table-filter-trigger {
                         @apply p-1;
                         &.active {
-                          @apply text-teal-1;
+                          @apply text-teal-800;
+                        }
+                      }
+                    }
+
+                    .ant-table-column-sorters {
+                      .ant-table-column-sorter {
+                        .ant-table-column-sorter-up {
+                          &.active {
+                            @apply text-teal-800;
+                          }
+                        }
+
+                        .ant-table-column-sorter-down {
+                          &.active {
+                            @apply text-teal-800;
+                          }
                         }
                       }
                     }
@@ -1210,7 +1227,7 @@
           }
 
           .ant-pagination-options {
-            @apply font-sans;
+            @apply font-sans mr-4;
 
             .ant-select {
               .ant-select-dropdown {
