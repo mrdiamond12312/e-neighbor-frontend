@@ -42,11 +42,9 @@ export const usePagination = (
 
   const searchBoxHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const currentSearchValue = event.currentTarget.value;
-    console.log(event);
     setKeyword(currentSearchValue);
     return;
   };
-  console.log(rating);
 
   const ratingHandler = (value: number) => {
     setRating(value);
@@ -77,7 +75,7 @@ export const usePagination = (
     value: PRODUCT_PAGE_SORTFIELDS[key],
   }));
 
-  const [order, setOrder] = useState<ORDER>(ORDER.des);
+  const [order, setOrder] = useState<ORDER | undefined>(ORDER.des);
   const orderOptions: SelectProps['options'] = (
     Object.keys(ORDER) as Array<keyof typeof ORDER>
   ).map((key) => ({
@@ -86,7 +84,7 @@ export const usePagination = (
   }));
 
   const sortFieldHandler = (value: PRODUCT_PAGE_SORTFIELDS) => setSortField(value);
-  const orderHandler = (value: ORDER) => setOrder(value);
+  const orderHandler = (value?: ORDER) => setOrder(value);
 
   const [offset, setOffset] = useState(paginationMeta.offset);
   const [status, setStatus] = useState<AVAILABILITY>(AVAILABILITY.available);
@@ -94,9 +92,13 @@ export const usePagination = (
   const offsetHandler = (offset: number) => setOffset(offset);
   const statusHandler = (availablity: AVAILABILITY) => setStatus(availablity);
 
+  const [categoryId, setCategoryId] = useState();
+  const categoryIdHandler = (id: any) => setCategoryId(id);
+
   const paginationParams: API.IProductPaginationParams = {
     isConfirmedByAdmin: false,
     isVehicle: category === 'vehicles' ?? false,
+    categoryId,
     name: keyword,
     offset,
     sortField,
@@ -142,5 +144,6 @@ export const usePagination = (
     sortFieldHandler,
     offsetHandler,
     statusHandler,
+    categoryIdHandler,
   } as const;
 };

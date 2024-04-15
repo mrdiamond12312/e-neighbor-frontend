@@ -11,7 +11,7 @@ import {
   PATH_LESSOR_ONBOARDING,
   PATH_LESSOR_ORDERS,
   PATH_LESSOR_ORDERS_CANCELED,
-  PATH_LESSOR_PRODUCTS,
+  PATH_LESSOR_PRODUCTS_MANAGE,
 } from '@/const/path';
 
 export type TBreadCrumbsObj = {
@@ -47,14 +47,14 @@ export const useLessorLayout = () => {
       children: [
         {
           label: (
-            <Link to={PATH_LESSOR_PRODUCTS}>
+            <Link to={PATH_LESSOR_PRODUCTS_MANAGE}>
               <FormattedHTMLMessage
                 id="lessor.sidebar.products.management.all"
                 defaultMessage="All Products"
               />
             </Link>
           ),
-          key: PATH_LESSOR_PRODUCTS,
+          key: PATH_LESSOR_PRODUCTS_MANAGE,
         },
         {
           label: (
