@@ -25,19 +25,7 @@ const FormInfo: React.FC = () => {
 
   const { handleEditMode } = useEditForm();
 
-  type FieldType = {
-    userName?: string;
-    password?: string;
-    fullName?: string;
-    phoneNumber?: string;
-    email?: string;
-    address?: string;
-    detailedAddress?: string;
-    dob?: string;
-    avatar?: string;
-  };
-
-  const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+  const onFinish: FormProps<API.TAuthProfile>['onFinish'] = (values) => {
     let dataTemp = {
       ...values,
       dob: moment(values?.dob).format(dateFormat),
@@ -46,7 +34,7 @@ const FormInfo: React.FC = () => {
     handleEditMode(false);
   };
 
-  const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
+  const onFinishFailed: FormProps<API.TAuthProfile>['onFinishFailed'] = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
 
@@ -84,7 +72,7 @@ const FormInfo: React.FC = () => {
           defaultMessage: 'Login Information',
         })}
       </div>
-      <Form.Item<FieldType>
+      <Form.Item<API.TAuthProfile>
         label={formatMessage({
           id: 'user.profile.input.username',
           defaultMessage: 'Username',
@@ -102,7 +90,7 @@ const FormInfo: React.FC = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<API.TAuthProfile>
         label={formatMessage({
           id: 'user.profile.input.password',
           defaultMessage: 'Password',
@@ -126,7 +114,7 @@ const FormInfo: React.FC = () => {
           defaultMessage: 'Contact Information',
         })}
       </div>
-      <Form.Item<FieldType>
+      <Form.Item<API.TAuthProfile>
         label={formatMessage({
           id: 'user.profile.input.email',
           defaultMessage: 'Email',
@@ -151,7 +139,7 @@ const FormInfo: React.FC = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<API.TAuthProfile>
         label={formatMessage({
           id: 'user.profile.input.fullName',
           defaultMessage: 'Full Name',
@@ -160,7 +148,7 @@ const FormInfo: React.FC = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<API.TAuthProfile>
         label={formatMessage({
           id: 'user.profile.input.address',
           defaultMessage: 'Address',
@@ -169,7 +157,7 @@ const FormInfo: React.FC = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<API.TAuthProfile>
         label={formatMessage({
           id: 'user.profile.input.detailAddress',
           defaultMessage: 'Detail Address',
@@ -178,7 +166,7 @@ const FormInfo: React.FC = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<API.TAuthProfile>
         label={formatMessage({
           id: 'user.profile.input.dateOfBirth',
           defaultMessage: 'Date of Birth',
@@ -187,7 +175,7 @@ const FormInfo: React.FC = () => {
       >
         <DatePicker format={dateFormat} />
       </Form.Item>
-      <Form.Item<FieldType>
+      <Form.Item<API.TAuthProfile>
         label={formatMessage({
           id: 'user.profile.input.phoneNumber',
           defaultMessage: 'Phone Number',
