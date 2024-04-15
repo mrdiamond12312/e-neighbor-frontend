@@ -1142,10 +1142,15 @@
               }
               /* Table Body */
               .ant-table-tbody {
+                @apply rounded;
                 .ant-table-row {
                   .ant-table-cell {
                     @apply border-teal-100;
                   }
+                }
+
+                .ant-table-cell-row-hover {
+                  @apply bg-teal-50;
                 }
               }
             }

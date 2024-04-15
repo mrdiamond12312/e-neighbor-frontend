@@ -1,4 +1,5 @@
 import { PageContainer } from '@ant-design/pro-components';
+import { useModel } from '@umijs/max';
 import { Table } from 'antd/lib';
 import { TableProps } from 'antd/lib/table';
 import { SorterResult } from 'antd/lib/table/interface';
@@ -9,6 +10,8 @@ import { useProductsTable } from '@/pages/lessor/products/management/hooks/usePr
 import { useProductPage } from '@/services/products/services';
 
 const ProductManagement: React.FC = () => {
+  const { initialState } = useModel('@@initialState');
+  console.log(initialState);
   const {
     pageHandler,
     takeHandler,
