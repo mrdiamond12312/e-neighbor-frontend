@@ -132,4 +132,19 @@ export default {
   'lessor.product.add.step.addtionalInfo.header': 'Thông tin khác',
   'lessor.product.add.step.addtionalInfo.description':
     'Cung cấp thêm các thông tin về phí phát sinh, cũng như là bảo hiểm',
+
+  // Product Management Page
+
+  'lessor.product.management.table.col.productName': 'Tên sản phẩm',
+  'lessor.product.management.table.col.category': 'Danh mục',
+  'lessor.product.management.table.col.rating': 'Đánh giá',
+  'lessor.product.management.table.col.accessCount': 'Lượt truy cập',
+  'lessor.product.management.table.col.orders': 'Đơn hàng',
+  'lessor.product.management.table.col.price': 'Giá thuê',
+  'lessor.product.management.table.col.value': 'Giá trị',
+  'lessor.product.management.table.col.status': 'Trạng thái',
+
+  'lessor.products.management.is.not.approved': 'Chờ duyệt',
+  'lessor.products.management.is.approved': 'Đã duyệt',
+  'lessor.products.management.is.rejected': 'Vi phạm',
 };

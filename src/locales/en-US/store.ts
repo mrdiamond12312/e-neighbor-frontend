@@ -27,4 +27,7 @@ export default {
   'store.products.preview.most.rated': 'Trusted by Customers',
   'store.preview.card.btn.rent': 'Rent Now',
   'product.price.time.unit.day': '₫/day',
+
+  // Store wish button
+  'store.preview.card.btn.wish': 'Add to Wishlist',
 };

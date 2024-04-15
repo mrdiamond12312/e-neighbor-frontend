@@ -69,7 +69,7 @@ declare namespace API {
     isConfirmedByAdmin: boolean;
     name?: string;
     categoryId?: number;
-    isVehicle: boolean;
+    isVehicle?: boolean;
     lessorId?: number;
     status?: string;
     offset?: number;
@@ -78,18 +78,25 @@ declare namespace API {
     priceLowerBound?: number;
     locations?: string[];
   }
+
+  interface ICategory {
+    id: number;
+    name: string;
+    isVehicle: boolean;
+  }
   interface IProductCard {
     id: number | string;
     name: string;
     price: number;
     timeUnit: string;
     value: number | string;
+    accessCount: number;
+    rating?: number;
+    completedOrder: number;
     status: string;
     turnOver: number;
     rating: number;
-    category: {
-      name: string;
-    };
+    category: ICategory;
     lessorId: number;
     lessorImage: string;
     image: string;

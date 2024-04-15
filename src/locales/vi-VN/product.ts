@@ -97,3 +97,35 @@ export const productSurchage = {
 export const productPage = {
   'products.page.empty': 'Không tìm thấy sản phẩm phù hợp!',
 };
+
+export const productStatus = {
+  'product.status.available': 'Có thể thuê',
+  'product.status.not.available': 'Ngưng cho thuê',
+};
+
+export const productDetailPage = {
+  'product.details.feedback.count': 'Lượt dánh giá',
+  'product.details.tab.detailsInfo': 'Thông tin chi tiết',
+  'product.details.tab.feedbacks': 'Đánh giá',
+  'product.details.description.label': 'Mô tả',
+  'product.details.characteristics.label': 'Chi tiết',
+  'product.details.characteristics.otherUtils.label': 'Các tiện ích kèm theo',
+  'product.details.mortgages.label': 'Thế chấp khi thuê',
+  'product.details.requiredDocuments.label': 'Giấy tờ thuê sản phẩm',
+  'product.details.policies.label': 'Điều khoản',
+  'product.details.surcharge.label': 'Phí phát sinh',
+};
+
+export const product = {
+  ...productLocale,
+  ...productCategories,
+  ...productCharacteristicsLabel,
+  ...productDetailPage,
+  ...productInsurace,
+  ...productMortgage,
+  ...productPage,
+  ...productPolicies,
+  ...productReqDocs,
+  ...productStatus,
+  ...productSurchage,
+};

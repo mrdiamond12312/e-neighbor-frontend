@@ -72,6 +72,7 @@ export const CoverSearchBox: React.FC<TCoverSearchBoxProps> = ({
                 defaultMessage: 'Search',
               })}
               defaultValue={kwValue}
+              className="h-12"
             />
           </FadeIn>
         </div>

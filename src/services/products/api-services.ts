@@ -42,7 +42,7 @@ export const getProducts = async (pagination: API.IProductPaginationParams) => {
     timeout: 15000,
     params: {
       ...pagination,
-      take: 12,
+      take: pagination.take ?? 12,
     },
   });
 };

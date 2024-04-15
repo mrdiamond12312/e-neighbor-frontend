@@ -49,7 +49,7 @@ const OnBoarding: React.FC = () => {
         ]}
         styles={{ body: { display: 'flex', flexDirection: 'column', height: '100%', padding: 0 } }}
       >
-        <Steps currentStep={currentStep} stepItems={stepItems} />
+        <Steps currentStep={currentStep} stepItems={stepItems} className="!hidden md:!flex" />
         <Divider className="hidden md:block" />
         <section className="flex w-full max-w-3xl justify-center items-center m-auto">
           {steps[currentStep]}

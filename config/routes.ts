@@ -51,6 +51,11 @@ export default [
             path: 'new',
             component: '@/pages/lessor/products/add',
           },
+          {
+            name: 'product-management',
+            path: 'manage',
+            component: '@/pages/lessor/products/management',
+          },
         ],
       },
 

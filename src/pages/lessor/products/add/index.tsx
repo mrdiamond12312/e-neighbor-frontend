@@ -68,8 +68,8 @@ const LessorAddProduct: React.FC = () => {
             body: { display: 'flex', flexDirection: 'column', height: '100%', padding: 0 },
           }}
         >
-          <Steps currentStep={currentStep} stepItems={stepItems} />
-          <Divider className="hidden md:block" />
+          <Steps currentStep={currentStep} stepItems={stepItems} className="!hidden xl:!flex" />
+          <Divider className="!hidden xl:!flex" />
           <section className="flex w-full max-w-5xl justify-center items-center m-auto">
             {steps[currentStep]}
           </section>
