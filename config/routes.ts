@@ -29,12 +29,12 @@ export default [
       {
         name: 'profile',
         path: 'profile',
-        component: '@/pages/User/Profile',
+        component: '@/pages/user/profile',
       },
       {
         name: 'payment',
         path: 'payment',
-        component: '@/pages/User/Payment',
+        component: '@/pages/user/payment',
       },
     ],
   },
