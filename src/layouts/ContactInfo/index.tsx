@@ -1,5 +1,4 @@
 import { FacebookOutlined, MailOutlined, PhoneOutlined, TwitterOutlined } from '@ant-design/icons';
-import { PageContainer } from '@ant-design/pro-components';
 import { Outlet, useIntl } from '@umijs/max';
 import React from 'react';
 
@@ -8,7 +7,7 @@ const ContactInfo: React.FC<TComponentsProps> = ({ children }) => {
 
   return (
     <div className="w-full bigger-outline">
-      <div className=" flex-row justify-center items-center bg-white h-14 shadow-md sticky top-14 px-4 hidden xl:flex">
+      <div className=" flex-row justify-center items-center bg-white h-14 shadow-md sticky top-14 px-4 hidden xl:flex z-10">
         <div className="flex flex-row max-w-7xl w-full ">
           <div className="w-full flex flex-row text-body-2-semibold gap-4">
             <div className="flex flex-row justify-center items-center gap-1">
@@ -40,10 +39,9 @@ const ContactInfo: React.FC<TComponentsProps> = ({ children }) => {
           </div>
         </div>
       </div>
-      <PageContainer className="max-w-7xl w-full m-auto p-4" header={{ title: '1' }}>
-        <Outlet />
-        {children}
-      </PageContainer>
+
+      <Outlet />
+      {children}
     </div>
   );
 };

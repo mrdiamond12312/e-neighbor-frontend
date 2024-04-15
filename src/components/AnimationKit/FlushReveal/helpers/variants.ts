@@ -13,6 +13,10 @@ export const FLUSH_CONTAINER_VARIANT: Variants = {
       delay: 0.25 + index * 0.05,
     },
   }),
+  exit: {
+    opacity: 0,
+    y: 75,
+  },
 };
 
 export const FLUSH_POINTER_VARIANT: Variants = {
@@ -20,6 +24,14 @@ export const FLUSH_POINTER_VARIANT: Variants = {
     left: 0,
   },
   hidden: (index = 0) => ({
+    left: '100%',
+    transition: {
+      duration: 0.5,
+      delay: 0 + index * 0.05,
+      ease: 'easeIn',
+    },
+  }),
+  exit: (index = 0) => ({
     left: '100%',
     transition: {
       duration: 0.5,

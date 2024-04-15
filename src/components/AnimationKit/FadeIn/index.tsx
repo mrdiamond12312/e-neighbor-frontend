@@ -8,19 +8,28 @@ export interface IFadeInProps extends AnimationProps {
   children: React.ReactNode;
   index?: number;
   direction: 'top' | 'bottom' | 'left' | 'right';
-  layoutId?: string;
+  exitDirection?: 'top' | 'bottom' | 'left' | 'right';
+  keyId?: string | number;
+  mode?: 'wait' | 'sync' | 'popLayout';
   className?: string;
 }
 
-const FadeIn: React.FC<IFadeInProps> = ({ children, direction, index, layoutId, className }) => {
+const FadeIn: React.FC<IFadeInProps> = ({
+  children,
+  direction,
+  exitDirection,
+  index,
+  keyId,
+  className,
+}) => {
   const rootClassName = classNames('w-fit', className);
   return (
     <motion.div
-      custom={{ index, direction }}
+      custom={{ index, direction, exitDirection }}
       animate="visible"
       initial="hidden"
-      exit="hidden"
-      key={layoutId}
+      exit="exit"
+      key={keyId}
       variants={FADE_IN_VARIANT}
       className={rootClassName}
     >

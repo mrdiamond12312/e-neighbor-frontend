@@ -18,4 +18,13 @@ export default {
   'store.cover.para':
     'Thỏa sức lựa chọn cho thuê theo phong cách riêng. Từ bình dân đến sang trọng, bạn sẽ có thể tìm chúng ở đây.',
   'store.cover.search.placeholder': 'Tìm kiếm sản phẩm',
+
+  'store.pricing.condition': 'Phải là số lớn hơn 0',
+  'store.pricing.max.condition.thanMin': 'Giá tối đa phải cao hơn giá tối thiểu',
+
+  // Store Cards
+
+  'store.products.preview.most.viewed': 'Được xem nhiều',
+  'store.products.preview.most.rated': 'Được tin dùng bởi khách hàng',
+  'store.preview.card.btn.rent': 'Chọn Thuê',
 };

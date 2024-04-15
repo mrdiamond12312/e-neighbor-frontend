@@ -1,18 +1,28 @@
-import { Radio } from 'antd';
+import { Radio as AntdRadio } from 'antd';
 import type { SizeType } from 'antd/es/config-provider/SizeContext';
+import { Space } from 'antd/lib';
 import { Fragment } from 'react';
 import { Controller } from 'react-hook-form';
 
-declare type TRadio = {
-  size?: SizeType;
-  control: any;
-  name: string;
-  values: { code: string | number | boolean; name: string | number }[];
-  className?: string;
+import ValidateError from '@/components/Input/ValidateError';
+
+export type TRadioOption = {
+  value: any;
+  label: string;
   disabled?: boolean;
 };
 
-const AntdRadio: React.FC<TRadio> = ({ control, name, values, className, disabled }) => {
+export type TRadio = {
+  size?: SizeType;
+  control: any;
+  name: string;
+  options: TRadioOption[];
+  className?: string;
+  disabled?: boolean;
+  direction?: 'vertical' | 'horizontal';
+};
+
+const Radio: React.FC<TRadio> = ({ control, name, options, className, disabled, direction }) => {
   return (
     <Fragment>
       <Controller
@@ -21,25 +31,21 @@ const AntdRadio: React.FC<TRadio> = ({ control, name, values, className, disable
         render={({ field, fieldState: { error } }) => {
           return (
             <Fragment>
-              <Radio.Group
+              <AntdRadio.Group
                 value={field.value}
                 onChange={(e) => field.onChange(e.target.value)}
                 className={className}
                 disabled={disabled}
               >
-                {values?.map(
-                  (item: {
-                    code: number | string | boolean;
-                    name: string | number;
-                    disabled?: boolean;
-                  }) => (
-                    <Radio key={item.name} value={item.code} disabled={item.disabled}>
-                      {item.name}
-                    </Radio>
-                  ),
-                )}
-              </Radio.Group>
-              <p className="text-error-6">{error?.message}</p>
+                <Space direction={direction ?? 'horizontal'}>
+                  {options?.map((item) => (
+                    <AntdRadio key={item.value} value={item.value} disabled={item.disabled}>
+                      {item.label}
+                    </AntdRadio>
+                  ))}
+                </Space>
+              </AntdRadio.Group>
+              <ValidateError error={error} />
             </Fragment>
           );
         }}
@@ -48,4 +54,4 @@ const AntdRadio: React.FC<TRadio> = ({ control, name, values, className, disable
   );
 };
 
-export default AntdRadio;
+export default Radio;

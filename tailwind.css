@@ -30,6 +30,16 @@
 }
 
 @layer components {
+  /* Extras */
+  .img-edge-blur {
+    box-shadow: 0 0 8px 8px theme('colors.neutral-2') inset;
+  }
+
+  .snap-page-container {
+    .ant-pro-page-container-children-container {
+      @apply flex flex-col justify-center items-center;
+    }
+  }
   /* Sprite Animatin */
   .sprite {
     @apply animate-spriteAnimation;
@@ -191,6 +201,15 @@
     }
   }
 
+  .btn-danger {
+    @apply border-error-5 text-error-5;
+    transition: all 1s ease-out;
+    &:not(:disabled):not(.ant-btn-disabled):hover {
+      @apply border-error-7 text-error-7;
+      box-shadow: 2px 3px theme('colors.error-7');
+    }
+  }
+
   .btn-primary {
     @apply bg-teal-4 text-neutral-1;
     &:not(:disabled):not(.ant-btn-disabled):hover {
@@ -199,7 +218,143 @@
     }
   }
 
+  /* Radio Group */
+  .custom-radio-group {
+    @apply text-body-2-medium;
+    .ant-radio-button-wrapper {
+      @apply font-sans;
+      box-shadow: 0px 3px theme('colors.neutral-5');
+
+      &:not(:disabled):not(.ant-radio-button-disabled):hover {
+        @apply text-teal-1 border-teal-1;
+        box-shadow: 0px 3px theme('colors.teal-1');
+
+        &:not(.ant-radio-button-wrapper-disabled)::before {
+          @apply bg-teal-1;
+          box-shadow: 0px 3px theme('colors.teal-1');
+        }
+      }
+    }
+
+    .ant-radio-button-wrapper-checked {
+      @apply text-teal-7 border-teal-5;
+      box-shadow: 0px 3px theme('colors.teal-5');
+      &:not(:disabled):not(.ant-radio-button-disabled):hover {
+        @apply text-teal-7 border-neutral-5;
+        box-shadow: 0px 3px theme('colors.teal-5');
+      }
+      &:not(.ant-radio-button-wrapper-disabled)::before {
+        @apply bg-teal-5;
+        box-shadow: 0px 3px theme('colors.teal-5');
+      }
+      &:not(.ant-radio-button-wrapper-disabled):first-child {
+        @apply text-teal-7 border-teal-5;
+        box-shadow: 0px 3px theme('colors.teal-5');
+      }
+    }
+  }
   /* FORM */
+  .custom-antd-form-small {
+    @apply w-full font-sans;
+
+    input {
+      @apply !font-sans !text-body-2-semibold;
+    }
+
+    .ant-row {
+      @apply gap-1 flex;
+      .ant-form-item-label {
+        @apply lg:text-right font-sans text-teal-7 text-body-2-regular p-0;
+        label {
+          @apply h-10 text-teal-4;
+          &:after {
+            @apply font-sans visible m-0;
+            color: theme('colors.teal-4');
+            font-family: SimSun, sans;
+            content: ':';
+          }
+        }
+      }
+    }
+
+    .ant-form-item {
+      @apply mb-0 pb-4;
+
+      .ant-form-item-row {
+        .ant-form-item-label {
+          @apply font-sans;
+
+          .ant-form-item-required {
+            &:before {
+              @apply font-sans text-body-1-medium visible m-0 pr-1;
+              font-family: SimSun, sans;
+              content: '*';
+            }
+
+            &:after {
+            }
+          }
+          > label {
+            @apply text-body-2-medium;
+            &:before {
+              @apply font-sans text-body-1-medium invisible m-0 pr-1;
+              font-family: SimSun, sans;
+              content: '*';
+            }
+          }
+        }
+
+        .ant-form-item-control {
+          .ant-form-item-control-input-content {
+            @apply text-body-2-regular;
+            .ant-input {
+              @apply rounded-[4px]  !bg-transparent align-baseline font-sans text-body-2-semibold;
+
+              &:focus {
+                @apply border-teal-5;
+              }
+
+              &:focus-within {
+                @apply border-teal-5;
+              }
+
+              &:hover {
+                @apply border-teal-3;
+              }
+            }
+            .ant-input-affix-wrapper-lg {
+              @apply rounded-[4px] py-0;
+
+              &:focus-within {
+                @apply border-teal-5;
+              }
+
+              &:focus {
+                @apply border-teal-5;
+              }
+
+              &:hover {
+                @apply border-teal-3;
+              }
+            }
+
+            .ant-picker {
+              @apply w-full;
+              &:hover,
+              &:focus-within,
+              &:focus {
+                @apply border-teal-5;
+              }
+            }
+            .ant-picker-focused {
+              @apply border-teal-1;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .custom-ant-form {
     @apply w-full;
     @apply font-sans;
@@ -297,6 +452,7 @@
         .ant-form-item-control {
           .ant-form-item-control-input-content {
             @apply text-body-2-regular;
+            /* Input */
             .ant-input {
               @apply rounded-[4px] h-8 !bg-transparent align-baseline;
 
@@ -335,7 +491,7 @@
 
   /* MENU */
   .category-menu {
-    @apply rounded-md font-sans;
+    @apply rounded-none font-sans h-full;
 
     .ant-menu-submenu {
       @apply pb-1 bg-white;
@@ -384,7 +540,7 @@
 
       .ant-menu-sub {
         .ant-menu-item-selected {
-          @apply bg-white text-teal-4 font-medium;
+          @apply bg-neutral-1 text-teal-4 font-medium;
 
           &:before {
             @apply animate-flicker;
@@ -397,7 +553,7 @@
 
   /* CARD */
   .railing-card {
-    @apply font-sans;
+    @apply font-sans rounded-none;
 
     .ant-card-head {
       @apply border-0;
@@ -425,7 +581,7 @@
 
   /* INPUT */
 
-  .ant-input-affix-wrapper-lg {
+  .custom-input {
     @apply rounded-[4px] py-0 gap-2;
 
     &:focus-within {
@@ -436,12 +592,12 @@
       @apply border-teal-5;
     }
 
-    &:hover {
+    &:not(.ant-input-affix-wrapper-disabled):hover {
       @apply border-teal-3;
     }
 
-    .ant-input {
-      @apply rounded-[4px] h-12 !bg-transparent align-baseline;
+    > input.ant-input {
+      @apply rounded-[4px] h-12 !bg-transparent text-body-1-medium font-sans text-teal-6;
 
       &:focus {
         @apply border-teal-5;
@@ -457,7 +613,7 @@
     }
   }
 
-  /* Property Care (For Store and Property) */
+  /* Property Card (For Store and Property) */
   .property-card {
     transition: all 0.5s ease-in-out;
     &:hover {
@@ -524,7 +680,7 @@
     }
   }
   .custom-sidebar {
-    @apply text-teal-7 text-body-2-regular bg-transparent flex-grow;
+    @apply text-teal-7 font-sans text-body-2-regular bg-transparent flex-grow;
     @apply flex flex-col justify-center gap-2;
     border-inline-end: none !important;
 
@@ -533,19 +689,23 @@
     }
 
     .ant-menu-item {
-      @apply gap-4 m-0 w-full !h-14 !pl-5 py-2;
+      @apply gap-[6px] m-0 w-full !h-14 !pl-5 py-2;
 
       &:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected):hover {
         @apply text-teal-6;
+      }
+      & > span {
+        margin-inline-start: 0;
       }
     }
 
     .ant-menu-item-selected {
       @apply text-teal-7 bg-teal-100;
+      font-weight: 600;
     }
 
     .ant-menu-submenu-title {
-      @apply gap-4 m-0 w-full !h-14 !pl-5 bg-neutral-1 py-2;
+      @apply gap-[6px] m-0 w-full !h-14 !pl-5 bg-neutral-1 py-2;
 
       &:not(.ant-menu-submenu-selected):hover {
         @apply bg-teal-200;
@@ -556,7 +716,7 @@
     }
     .ant-menu-submenu-selected {
       .ant-menu-submenu-title {
-        @apply gap-4 m-0 w-full !h-14 !pl-5 bg-neutral-1 py-4 text-teal-7 text-body-2-semibold;
+        @apply gap-4 m-0 w-full !h-14 !pl-5 bg-teal-100 py-4 text-teal-7 text-body-2-semibold;
       }
     }
 
@@ -565,6 +725,378 @@
       }
       @apply !pl-6 gap-2;
       background: unset !important;
+    }
+  }
+
+  /* Steps */
+  .custom-steps {
+    .ant-steps-item-content {
+      @apply font-sans !w-60;
+      .ant-steps-item-title {
+        @apply text-body-2-regular;
+      }
+    }
+
+    .ant-steps-item-icon {
+      @apply bg-teal-100;
+      margin-inline-start: 102px !important;
+
+      span {
+        @apply font-sans;
+      }
+
+      svg {
+        @apply text-teal-7;
+      }
+    }
+
+    .ant-steps-item-tail {
+      margin-inline-start: 118px !important;
+      &:after {
+      }
+    }
+    .ant-steps-item-process {
+      .ant-steps-item-container {
+        .ant-steps-item-icon {
+          @apply bg-teal-1 border-none;
+          svg {
+            @apply text-neutral-1;
+          }
+        }
+      }
+    }
+
+    .ant-steps-item-finish {
+      .ant-steps-item-container {
+        .ant-steps-item-tail {
+          &:after {
+            @apply bg-teal-1;
+          }
+        }
+        .ant-steps-item-icon {
+          @apply bg-teal-100;
+          svg {
+            @apply text-teal-7;
+          }
+        }
+      }
+    }
+  }
+
+  /* Upload */
+  .custom-ant-upload {
+    .ant-upload {
+      @apply bg-teal-50 p-0;
+    }
+    .ant-upload-drag p.ant-upload-drag-icon .anticon {
+      @apply text-heading-3 text-teal-5;
+    }
+    .ant-upload-drag {
+      @apply border-teal-1;
+      &:not(.ant-upload-disabled):hover {
+        @apply border-teal-7;
+      }
+    }
+    .ant-upload-disabled {
+      @apply bg-neutral-2;
+      .ant-upload-drag {
+        @apply border-neutral-1;
+      }
+    }
+  }
+
+  /* Breadcrumb*/
+  .custom-breadcrumb {
+    @apply font-sans text-heading-4 hidden lg:flex;
+
+    .ant-breadcrumb-link {
+      a {
+        @apply h-fit;
+      }
+      .breadcrumb-active {
+        @apply text-teal-4;
+      }
+    }
+  }
+
+  /* Drawer */
+  .custom-drawer {
+    .ant-drawer-content-wrapper {
+      .ant-drawer-content {
+        .ant-drawer-header {
+          @apply hidden;
+        }
+      }
+      .ant-drawer-body {
+        @apply p-0;
+      }
+    }
+  }
+
+  /* Cascader & Select */
+  .custom-cascader-select {
+    @apply font-sans;
+    .ant-select-selector {
+      border-radius: 4px;
+      .ant-select-selection-item {
+        @apply text-body-2-semibold;
+      }
+    }
+
+    &:not(.ant-select-disabled):not(.ant-select-customize-input):not(
+        .ant-pagination-size-changer
+      ):hover {
+      .ant-select-selector {
+        @apply border-teal-4;
+      }
+    }
+  }
+
+  .custom-select-border-shadow {
+    .ant-select-selector {
+      box-shadow: 0px 3px theme('colors.neutral-5');
+    }
+
+    &:not(.ant-select-disabled):not(.ant-select-customize-input):not(
+        .ant-pagination-size-changer
+      ):hover {
+      .ant-select-selector {
+        box-shadow: 0px 3px theme('colors.teal-5');
+      }
+    }
+  }
+
+  .custom-select-panel {
+    .ant-select-item {
+      @apply font-sans;
+    }
+    .ant-select-item-option-selected {
+      &:not(.ant-select-item-option-disabled) {
+        @apply bg-teal-50;
+      }
+    }
+  }
+
+  /* Radio */
+  .custom-radio {
+    @apply w-full border-l-[1px] pl-2;
+
+    .ant-space {
+      .ant-space-item {
+        @apply h-10 flex flex-row items-center;
+
+        .ant-radio-wrapper {
+          @apply font-sans text-body-2-regular;
+
+          &:hover {
+            .ant-radio {
+              .ant-radio-inner {
+                @apply border-teal-4;
+              }
+            }
+          }
+          .ant-radio {
+            @apply w-5 h-5;
+          }
+          .ant-radio-inner {
+            @apply w-full h-full;
+          }
+        }
+
+        .ant-radio-wrapper-checked {
+          @apply text-body-2-semibold;
+
+          .ant-radio-checked {
+            .ant-radio-inner {
+              @apply bg-neutral-1 border-teal-7;
+
+              &:after {
+                inset-block-start: unset;
+                inset-inline-start: unset;
+                margin-block-start: 0;
+                margin-inline-start: 0;
+                @apply bg-teal-4 w-3 h-3;
+                @apply -translate-x-2/4 -translate-y-2/4 scale-100 left-2/4 top-2/4;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  /* Checkboxes*/
+  .custom-checkbox {
+    @apply w-full border-l-[1px] pl-2;
+
+    .ant-space {
+      .ant-space-item {
+        @apply h-10 flex flex-row items-center;
+        .ant-checkbox-wrapper {
+          @apply font-sans text-body-2-regular;
+
+          &:hover {
+            .ant-checkbox {
+              .ant-checkbox-inner {
+                @apply border-teal-4;
+              }
+            }
+          }
+
+          .ant-checkbox {
+            @apply w-5 h-5;
+          }
+          .ant-checkbox-inner {
+            @apply w-full h-full;
+          }
+        }
+
+        .ant-checkbox-wrapper-checked {
+          @apply text-body-2-semibold;
+
+          .ant-checkbox-checked {
+            .ant-checkbox-inner {
+              @apply bg-teal-4 border-teal-50 p-1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Popover */
+  .custom-popover {
+    @apply w-80;
+
+    .ant-popover-inner {
+      @apply font-sans;
+    }
+  }
+
+  /* Pagination */
+  .custom-pagination {
+    .ant-pagination-jump-prev {
+      .ant-pagination-item-container {
+        .ant-pagination-item-link-icon {
+          @apply text-teal-1;
+        }
+      }
+    }
+
+    .ant-pagination-jump-next {
+      .ant-pagination-item-container {
+        .ant-pagination-item-link-icon {
+          @apply text-teal-1;
+        }
+      }
+    }
+
+    .ant-pagination-item {
+      @apply font-sans;
+
+      &:not(.ant-pagination-item-active):hover {
+        @apply bg-teal-50;
+      }
+    }
+    .ant-pagination-item-active {
+      @apply border-teal-5 rounded;
+
+      a {
+        @apply text-teal-5;
+      }
+
+      &:hover {
+        @apply border-teal-3 rounded;
+
+        a {
+          @apply text-teal-3;
+        }
+      }
+    }
+
+    .ant-pagination-options-quick-jumper {
+      @apply font-sans;
+
+      input {
+        &:hover,
+        &:focus {
+          @apply border-teal-5;
+        }
+      }
+    }
+  }
+
+  /* Antd Image */
+  .antd-image-nomask {
+    .ant-image-img {
+      @apply cursor-pointer;
+    }
+    .ant-image-mask {
+      @apply hidden;
+    }
+  }
+
+  /* Carousel*/
+  .custom-carousel {
+    @apply w-full justify-center items-center;
+
+    .slick-slider {
+      .slick-list {
+        .slick-track {
+          @apply flex justify-center items-center;
+        }
+      }
+    }
+
+    .slick-dots {
+      li {
+        button {
+          @apply bg-teal-1;
+        }
+      }
+      li.slick-active {
+        button {
+          @apply bg-teal-7;
+        }
+      }
+    }
+  }
+
+  .custom-carousel-preview {
+    .slick-list {
+      @apply flex flex-row items-center justify-center;
+
+      .slick-track {
+        @apply flex flex-row gap-2 !w-fit;
+
+        .slick-slide {
+          @apply !w-fit;
+        }
+      }
+    }
+  }
+
+  .custom-tabs {
+    @apply w-full;
+    .ant-tabs-nav-wrap {
+      .ant-tabs-nav-list {
+        .ant-tabs-tab {
+          @apply px-8 m-0 font-sans text-body-1-medium;
+          border-bottom: 2px solid transparent;
+          &:hover {
+            @apply text-teal-1;
+            border-bottom: solid 2px theme('colors.teal-1');
+          }
+        }
+
+        .ant-tabs-tab-active {
+          .ant-tabs-tab-btn {
+            @apply text-teal-5;
+          }
+        }
+      }
+    }
+    .ant-tabs-ink-bar {
+      @apply bg-teal-5;
     }
   }
 }

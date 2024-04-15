@@ -9,7 +9,20 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Montserrat', 'ui-sans-serif'],
+        sans: [
+          'Montserrat',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'Noto Sans',
+          'sans-serif',
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+          'Segoe UI Symbol',
+          'Noto Color Emoji',
+        ],
         serif: ['ui-serif'],
       },
       backgroundImage: {
@@ -23,6 +36,17 @@ module.exports = {
           '50%': { transform: 'translate(-50%, -50%) skew(45deg)' },
           '100%': {
             transform: 'translate(0%, 50%) skew(45deg)',
+          },
+        },
+        gradient: {
+          '0%': {
+            'background-position': '0% 50%',
+          },
+          '50%': {
+            'background-position': '100% 50%',
+          },
+          '100%': {
+            'background-position': '0% 50%',
           },
         },
         flicker: {
@@ -46,6 +70,7 @@ module.exports = {
         fade: 'fade 1s infinite',
         flicker: 'flicker 1s ease-in-out infinite',
         spriteAnimation: 'frameAnimation 0.5s steps(30) infinite forwards',
+        gradient: 'gradient 7.5s ease-in-out infinite',
       },
       colors: {
         transparent: 'transparent',

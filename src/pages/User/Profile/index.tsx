@@ -29,8 +29,8 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 
-import '@/pages/User/Profile/asset/Profile.css';
-import UserCategories from '@/pages/User/Categories';
+import '@/pages/user/profile/asset/profile.css';
+import UserCategories from '@/pages/user/categories';
 import { fetchAuthInfo } from '@/services/auth/services';
 import { dataConversation } from '@/utils/dataConversation';
 dayjs.extend(customParseFormat);

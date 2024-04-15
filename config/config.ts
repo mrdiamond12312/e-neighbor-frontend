@@ -5,12 +5,22 @@ import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 import routes from './routes';
 
-const { REACT_APP_ENV, ENEIGHBOR_API, MOCK } = process.env;
+const {
+  REACT_APP_ENV,
+  ENEIGHBOR_API,
+  MOCK,
+  REACT_APP_IMAGEKIT_PRIVATE_KEY,
+  REACT_APP_IMAGEKIT_PUBLIC_KEY,
+  REACT_APP_IMAGEKIT_ENDPOINT_URL,
+} = process.env;
 
 export default defineConfig({
   define: {
     ENEIGHBOR_API,
     REACT_APP_ENV,
+    REACT_APP_IMAGEKIT_PRIVATE_KEY,
+    REACT_APP_IMAGEKIT_PUBLIC_KEY,
+    REACT_APP_IMAGEKIT_ENDPOINT_URL,
     MOCK,
   },
   /**

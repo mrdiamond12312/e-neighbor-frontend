@@ -4,7 +4,7 @@ import { Row, Col, Card, Button, Modal, Form, type FormProps, Input } from 'antd
 import moment from 'moment';
 import React, { useState } from 'react';
 
-import UserCategories from '@/pages/User/Categories';
+import UserCategories from '@/pages/user/categories';
 
 const Payment: React.FC = () => {
   const [, setCategory] = useState<string>('payment');

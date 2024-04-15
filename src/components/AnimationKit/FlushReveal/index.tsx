@@ -7,15 +7,20 @@ import { FLUSH_CONTAINER_VARIANT, FLUSH_POINTER_VARIANT } from './helpers/varian
 export interface IFlushRevealProps extends AnimationProps {
   rootClassName?: string;
   pointerClassName?: string;
+  contentClassName?: string;
   children: React.ReactNode;
+  mode?: 'wait' | 'sync' | 'popLayout';
+  keyId?: string | number;
   index?: number;
 }
 
 const FlushReveal: React.FC<IFlushRevealProps> = ({
   children,
   rootClassName,
+  contentClassName,
   pointerClassName,
   index,
+  keyId,
 }) => {
   const rootClassNames = classNames('w-fit relative overflow-hidden', rootClassName);
   const pointerClassNames = classNames(
@@ -23,11 +28,13 @@ const FlushReveal: React.FC<IFlushRevealProps> = ({
     pointerClassName,
   );
   return (
-    <div className={rootClassNames}>
+    <motion.div className={rootClassNames} key={keyId}>
       <motion.div
         custom={index}
         animate="visible"
         initial="hidden"
+        exit="exit"
+        className={contentClassName}
         variants={FLUSH_CONTAINER_VARIANT}
       >
         {children}
@@ -37,9 +44,10 @@ const FlushReveal: React.FC<IFlushRevealProps> = ({
         custom={index}
         initial="visible"
         animate="hidden"
+        exit="exit"
         variants={FLUSH_POINTER_VARIANT}
       />
-    </div>
+    </motion.div>
   );
 };
 
