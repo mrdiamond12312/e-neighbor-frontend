@@ -10,7 +10,8 @@ import {
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import moment from 'moment';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { useIntl } from 'umi';
 
 import useEditForm from '@/pages/user/profile/hook/useEditForm';
@@ -25,26 +26,43 @@ const FormInfo: React.FC = () => {
 
   const { handleEditMode } = useEditForm();
 
-  const onFinish: FormProps<API.TAuthProfile>['onFinish'] = (values) => {
+  const onFinish: FormProps<API.TAuthProfile>['onFinish'] = (data) => {
+    console.log(data);
     let dataTemp = {
-      ...values,
-      dob: moment(values?.dob).format(dateFormat),
+      ...data,
+      dob: moment(data?.dob).format(dateFormat),
     };
     setDataProfileAPI(dataTemp);
     handleEditMode(false);
   };
+  // console.log(dataProfileAPI)
 
-  const onFinishFailed: FormProps<API.TAuthProfile>['onFinishFailed'] = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
+  // const onFinishFailed: FormProps<API.TAuthProfile>['onFinishFailed'] = (errorInfo) => {
+  //   console.log('Failed:', errorInfo);
+  // };
 
   const confirm: PopconfirmProps['onConfirm'] = () => {
-    handleEditMode(false);
+    handleEditMode(true);
   };
 
   const cancel: PopconfirmProps['onCancel'] = () => {
     handleEditMode(false);
   };
+
+  const { register, handleSubmit, control, setValue } = useForm();
+
+  useEffect(() => {
+    register('userName');
+    register('password');
+    register('email');
+    register('fullName');
+    register('address');
+    register('detailedAddress');
+    register('phoneNumber');
+  }, [register]);
+
+  const getChangeHandlerWithEvent = (name: string) => (event: { target: { value: any } }) =>
+    setValue(name, event.target.value);
 
   return (
     <Form
@@ -62,8 +80,7 @@ const FormInfo: React.FC = () => {
         detailedAddress: dataProfileAPI?.detailedAddress,
         dob: dayjs(dataProfileAPI?.dob) || dayjs(),
       }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
+      onFinish={handleSubmit(onFinish)}
       autoComplete="off"
     >
       <div className="font-semibold mt-3">
@@ -88,7 +105,7 @@ const FormInfo: React.FC = () => {
           },
         ]}
       >
-        <Input />
+        <Input onChange={getChangeHandlerWithEvent('userName')} />
       </Form.Item>
       <Form.Item<API.TAuthProfile>
         label={formatMessage({
@@ -106,7 +123,7 @@ const FormInfo: React.FC = () => {
           },
         ]}
       >
-        <Input.Password />
+        <Input.Password onChange={getChangeHandlerWithEvent('password')} />
       </Form.Item>
       <div className="font-semibold">
         {formatMessage({
@@ -137,7 +154,7 @@ const FormInfo: React.FC = () => {
           },
         ]}
       >
-        <Input />
+        <Input onChange={getChangeHandlerWithEvent('email')} />
       </Form.Item>
       <Form.Item<API.TAuthProfile>
         label={formatMessage({
@@ -146,7 +163,7 @@ const FormInfo: React.FC = () => {
         })}
         name="fullName"
       >
-        <Input />
+        <Input onChange={getChangeHandlerWithEvent('fullName')} />
       </Form.Item>
       <Form.Item<API.TAuthProfile>
         label={formatMessage({
@@ -155,7 +172,7 @@ const FormInfo: React.FC = () => {
         })}
         name="address"
       >
-        <Input />
+        <Input onChange={getChangeHandlerWithEvent('address')} />
       </Form.Item>
       <Form.Item<API.TAuthProfile>
         label={formatMessage({
@@ -164,7 +181,7 @@ const FormInfo: React.FC = () => {
         })}
         name="detailedAddress"
       >
-        <Input />
+        <Input onChange={getChangeHandlerWithEvent('detailedAddress')} />
       </Form.Item>
       <Form.Item<API.TAuthProfile>
         label={formatMessage({
@@ -173,7 +190,11 @@ const FormInfo: React.FC = () => {
         })}
         name="dob"
       >
-        <DatePicker format={dateFormat} />
+        <Controller
+          name="dob"
+          control={control}
+          render={({ field }) => <DatePicker {...field} format={dateFormat} />}
+        />
       </Form.Item>
       <Form.Item<API.TAuthProfile>
         label={formatMessage({
@@ -182,7 +203,7 @@ const FormInfo: React.FC = () => {
         })}
         name="phoneNumber"
       >
-        <Input />
+        <Input onChange={getChangeHandlerWithEvent('phoneNumber')} />
       </Form.Item>
       <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
         <div className="flex justify-end">

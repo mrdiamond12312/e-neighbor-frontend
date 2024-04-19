@@ -8,7 +8,7 @@ const useEditForm = () => {
 
   const { dataProfile } = useDataProfile();
 
-  const handleEditMode = (e: any) => {
+  const handleEditMode = (e: boolean) => {
     setEditMode(e);
   };
 
