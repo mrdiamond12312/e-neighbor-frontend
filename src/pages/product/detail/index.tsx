@@ -27,7 +27,7 @@ const ProductDetail: React.FC = () => {
           >
             <Row
               gutter={8}
-              className="justify-center max-w-7xl w-full items-center snap-center"
+              className="justify-center max-w-7xl w-full min-h-[calc(100vh-112px)] items-center snap-center"
               style={{ marginLeft: 0, marginRight: 0 }}
             >
               <Col lg={16} span={24}>

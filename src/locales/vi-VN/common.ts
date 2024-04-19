@@ -15,4 +15,6 @@ export default {
   'common.loading': 'Đang tải dữ liệu! Vui lòng chờ',
   'common.sort.options.accessCount': 'Lượt truy cập',
   'common.sort.options.price': 'Giá thành',
+  'common.search.placeholder': 'Tìm kiếm',
+  'common.filter.clear': 'Xóa',
 };

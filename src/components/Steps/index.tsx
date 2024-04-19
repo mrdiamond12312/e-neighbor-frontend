@@ -14,7 +14,7 @@ export const Steps: React.FC<TStepProps> = ({
   className,
   ...restProps
 }) => {
-  const combinedClassName = classNames('custom-steps !hidden md:!flex', className);
+  const combinedClassName = classNames('custom-steps', className);
   return (
     <AntdSteps
       current={currentStep}

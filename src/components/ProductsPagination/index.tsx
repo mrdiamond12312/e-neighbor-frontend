@@ -11,7 +11,7 @@ export interface IProductsPaginationProps {
   sortFieldHandler: (value: any) => void;
 
   orderOptions: SelectProps['options'];
-  order: string;
+  order?: string;
   orderHandler: (value: any) => void;
 
   page: number;

@@ -21,32 +21,30 @@ export enum AVAILABILITY {
   notAvailable = 'product.status.not.available',
 }
 
-export const usePagination = (
-  paginationMeta: IPaginationMeta = {
-    page: 1,
-    take: 12,
-    itemCount: 0,
-    pageCount: 1,
-    hasPreviousPage: false,
-    hasNextPage: false,
-    offset: 0,
-  },
-  lessorId?: number,
-) => {
+export type TUsePaginationParams = {
+  lessorId?: number;
+  initialPage?: number;
+  initialTake?: number;
+  initialOffset?: number;
+  initialCategory?: 'vehicles' | 'furnitures';
+  initialAdminApproved?: boolean;
+};
+
+export const usePagination = (initialData?: TUsePaginationParams) => {
   const { control, watch } = usePriceFilter();
   const { formatMessage } = useIntl();
-  const [category, setCategory] = useState<string>('furnitures');
+  const [category, setCategory] = useState<string | undefined>(
+    initialData?.initialCategory ?? undefined,
+  );
   const [locations, setLocations] = useState<string[]>([]);
   const [keyword, setKeyword] = useState<string>();
   const [rating, setRating] = useState<number>();
 
   const searchBoxHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const currentSearchValue = event.currentTarget.value;
-    console.log(event);
     setKeyword(currentSearchValue);
     return;
   };
-  console.log(rating);
 
   const ratingHandler = (value: number) => {
     setRating(value);
@@ -58,8 +56,8 @@ export const usePagination = (
 
   const categoryHandler = (category: string) => setCategory(category);
 
-  const [page, setPage] = useState<number>(paginationMeta.page);
-  const [take, setTake] = useState<number>(paginationMeta.take);
+  const [page, setPage] = useState<number>(initialData?.initialPage ?? 1);
+  const [take, setTake] = useState<number>(initialData?.initialTake ?? 12);
 
   useEffect(() => {
     setPage(1);
@@ -77,7 +75,7 @@ export const usePagination = (
     value: PRODUCT_PAGE_SORTFIELDS[key],
   }));
 
-  const [order, setOrder] = useState<ORDER>(ORDER.des);
+  const [order, setOrder] = useState<ORDER | undefined>(ORDER.des);
   const orderOptions: SelectProps['options'] = (
     Object.keys(ORDER) as Array<keyof typeof ORDER>
   ).map((key) => ({
@@ -86,17 +84,25 @@ export const usePagination = (
   }));
 
   const sortFieldHandler = (value: PRODUCT_PAGE_SORTFIELDS) => setSortField(value);
-  const orderHandler = (value: ORDER) => setOrder(value);
+  const orderHandler = (value?: ORDER) => setOrder(value);
 
-  const [offset, setOffset] = useState(paginationMeta.offset);
+  const [offset, setOffset] = useState(initialData?.initialOffset ?? 0);
   const [status, setStatus] = useState<AVAILABILITY>(AVAILABILITY.available);
 
   const offsetHandler = (offset: number) => setOffset(offset);
   const statusHandler = (availablity: AVAILABILITY) => setStatus(availablity);
 
+  const [categoryId, setCategoryId] = useState();
+  const categoryIdHandler = (id: any) => setCategoryId(id);
+
+  const [isConfirmedByAdmin, setIsConfirmedByAdmin] = useState<boolean>(
+    initialData?.initialAdminApproved ?? false,
+  );
+
   const paginationParams: API.IProductPaginationParams = {
-    isConfirmedByAdmin: false,
-    isVehicle: category === 'vehicles' ?? false,
+    isConfirmedByAdmin: isConfirmedByAdmin,
+    isVehicle: category ? category === 'vehicles' : undefined,
+    categoryId,
     name: keyword,
     offset,
     sortField,
@@ -104,7 +110,7 @@ export const usePagination = (
     order,
     rating,
     take,
-    lessorId,
+    lessorId: initialData?.lessorId ?? undefined,
     status,
     priceLowerBound: isNaN(Number(watch(STORE_FILTER.min)))
       ? undefined
@@ -129,7 +135,7 @@ export const usePagination = (
     rating,
     locations,
     take,
-    lessorId,
+    lessorId: initialData?.lessorId ?? undefined,
     status,
     formatMessage,
     searchBoxHandler,
@@ -142,5 +148,8 @@ export const usePagination = (
     sortFieldHandler,
     offsetHandler,
     statusHandler,
+    categoryIdHandler,
+    isConfirmedByAdmin,
+    setIsConfirmedByAdmin,
   } as const;
 };

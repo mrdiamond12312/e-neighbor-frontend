@@ -1,7 +1,12 @@
 import { Menu } from 'antd';
 import { useIntl, Link, history, useLocation } from 'umi';
 
-import { PATH_USER_PAYMENT, PATH_USER_PROFILE } from '@/const/path';
+import {
+  PATH_USER_ORDER,
+  PATH_USER_PAYMENT,
+  PATH_USER_PROFILE,
+  PATH_USER_WISHLIST,
+} from '@/const/path';
 
 export type TCategoriesProps = {
   setCategory: React.Dispatch<React.SetStateAction<string>>;
@@ -35,13 +40,46 @@ const UserCategories: React.FC<TCategoriesProps> = ({ setCategory }) => {
           key: 'payment',
           path: PATH_USER_PAYMENT,
         },
+        {
+          label: formatMessage({
+            id: 'user.category.order',
+            defaultMessage: 'Order',
+          }),
+          key: 'order',
+          path: PATH_USER_ORDER,
+        },
+        {
+          label: formatMessage({
+            id: 'user.category.wishlist',
+            defaultMessage: 'Wishlist',
+          }),
+          key: 'wishlist',
+          path: PATH_USER_WISHLIST,
+        },
       ],
     },
   ];
 
   const handleSelect = ({ key }: { key: string }) => {
     setCategory(key);
-    history.push(key === 'profile' ? PATH_USER_PROFILE : PATH_USER_PAYMENT);
+    let path = '';
+    switch (key) {
+      case 'profile':
+        path = PATH_USER_PROFILE;
+        break;
+      case 'payment':
+        path = PATH_USER_PAYMENT;
+        break;
+      case 'order':
+        path = PATH_USER_ORDER;
+        break;
+      case 'wishlist':
+        path = PATH_USER_WISHLIST;
+        break;
+      default:
+        path = PATH_USER_PROFILE;
+    }
+    history.push(path);
   };
 
   const selectedKey = items[0].children.find((item) => item.path === location.pathname)?.key || '';

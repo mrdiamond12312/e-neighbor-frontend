@@ -27,4 +27,7 @@ export default {
   'store.products.preview.most.viewed': 'Được xem nhiều',
   'store.products.preview.most.rated': 'Được tin dùng bởi khách hàng',
   'store.preview.card.btn.rent': 'Chọn Thuê',
+
+  // Store wish button
+  'store.preview.card.btn.wish': 'Wishlist',
 };

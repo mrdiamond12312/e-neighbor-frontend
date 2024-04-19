@@ -6,9 +6,9 @@ import '@/pages/user/profile/asset/profile.css';
 import { useIntl } from 'umi';
 
 import UserCategories from '@/pages/user/categories';
-import itemConversation from '@/pages/user/profile/component/conservation';
-import DescriptionsForm from '@/pages/user/profile/component/description';
-import FormInfo from '@/pages/user/profile/component/formInfo';
+import itemConversation from '@/pages/user/profile/components/Conservation';
+import DescriptionsForm from '@/pages/user/profile/components/Description';
+import FormInfo from '@/pages/user/profile/components/FormInfo';
 import useEditForm from '@/pages/user/profile/hook/useEditForm';
 import { dataConversation } from '@/utils/dataConversation';
 

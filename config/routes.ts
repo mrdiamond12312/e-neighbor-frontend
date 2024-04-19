@@ -36,6 +36,16 @@ export default [
         path: 'payment',
         component: '@/pages/user/payment',
       },
+      // {
+      //   name: 'order',
+      //   path: 'order',
+      //   component: '@/pages/user/order',
+      // },
+      // {
+      //   name: 'wishlist',
+      //   path: 'wishlist',
+      //   component: '@/pages/user/wishlist',
+      // },
     ],
   },
   {
@@ -62,6 +72,11 @@ export default [
             name: 'add-product',
             path: 'new',
             component: '@/pages/lessor/products/add',
+          },
+          {
+            name: 'product-management',
+            path: 'manage',
+            component: '@/pages/lessor/products/management',
           },
         ],
       },

@@ -15,4 +15,5 @@ export default {
   'menu.product-detail': 'Chi tiết sản phẩm',
   'menu.dashboard': 'Dashboard',
   'menu.add-product': 'Thêm sản phẩm',
+  'menu.product-management': 'Quản lý sản phẩm',
 };

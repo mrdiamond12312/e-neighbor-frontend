@@ -8,9 +8,7 @@ export const useCategoriesList = (isVehicle?: IOption['value']) =>
   useQuery<API.ICategoryDescriptions[]>(
     [API_ENDPOINTS.PRODUCT_CATEGORIES, isVehicle],
     () => getCategories({ isVehicle }),
-    {
-      enabled: !!isVehicle,
-    },
+    {},
   );
 
 export const useCategoriesDetails = (categoryId?: string | number | boolean) => {
