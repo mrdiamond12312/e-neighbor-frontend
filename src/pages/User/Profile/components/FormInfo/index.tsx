@@ -1,4 +1,4 @@
-import { Button, Form, FormProps, Popconfirm, type PopconfirmProps } from 'antd';
+import { Button, Form, Popconfirm } from 'antd';
 import ImgCrop from 'antd-img-crop';
 import moment from 'moment';
 import { useState } from 'react';
@@ -22,7 +22,7 @@ const FormInfo: React.FC = () => {
 
   const { handleEditMode } = useEditForm();
 
-  const onFinish: FormProps<API.TAuthProfile>['onFinish'] = (data) => {
+  const onFinish = (data: API.TAuthProfile) => {
     console.log(data);
     let dataTemp = {
       ...data,
@@ -32,11 +32,11 @@ const FormInfo: React.FC = () => {
     handleEditMode(false);
   };
 
-  const confirm: PopconfirmProps['onConfirm'] = () => {
+  const confirm = () => {
     handleEditMode(true);
   };
 
-  const cancel: PopconfirmProps['onCancel'] = () => {
+  const cancel = () => {
     handleEditMode(false);
   };
 
@@ -44,165 +44,196 @@ const FormInfo: React.FC = () => {
 
   return (
     <Form
+      rootClassName="custom-antd-form-profile"
       form={form}
       name="basic"
-      wrapperCol={{ span: 20 }}
-      //   initialValues={{
-      //     userName: dataProfileAPI?.userName,
-      //     password: dataProfileAPI?.password,
-      //     fullName: dataProfileAPI?.fullName,
-      //     phoneNumber: dataProfileAPI?.phoneNumber,
-      //     email: dataProfileAPI?.email,
-      //     address: dataProfileAPI?.address,
-      //     detailedAddress: dataProfileAPI?.detailedAddress,
-      //     dob: dayjs(dataProfileAPI?.dob) || dayjs(),
-      //   }}
+      className="w-full"
       onFinish={handleSubmit(onFinish)}
       autoComplete="off"
     >
-      <Item className="font-semibold mt-3">
-        {formatMessage({
-          id: 'user.profile.input.login',
-          defaultMessage: 'Login Information',
-        })}
-      </Item>
-      <Item
-        className="flex items-center space-x-4 mt-2"
-        label={formatMessage({
-          id: 'user.profile.input.username',
-          defaultMessage: 'Username',
-        })}
-        required
-      >
-        <InputText name="username" control={control} />
-      </Item>
-
-      <Item
-        className="flex items-center space-x-4 mt-2"
-        label={formatMessage({
-          id: 'user.profile.input.password',
-          defaultMessage: 'Password',
-        })}
-        required
-      >
-        <HiddenInput placeholder="******" control={control} name="password" />
-      </Item>
-
-      <Item className="font-semibold">
-        {formatMessage({
-          id: 'user.profile.input.contact',
-          defaultMessage: 'Contact Information',
-        })}
-      </Item>
-      <Item
-        className="flex items-center space-x-4 mt-2"
-        label={formatMessage({
-          id: 'user.profile.input.email',
-          defaultMessage: 'Email',
-        })}
-        required
-      >
-        <InputText name="email" control={control} />
-      </Item>
-
-      <Item
-        className="flex items-center space-x-4 mt-2"
-        label={formatMessage({
-          id: 'user.profile.input.fullName',
-          defaultMessage: 'Full Name',
-        })}
-      >
-        <InputText name="fullName" control={control} />
-      </Item>
-
-      <Item
-        className="flex items-center space-x-4 mt-2"
-        label={formatMessage({
-          id: 'user.profile.input.address',
-          defaultMessage: 'Address',
-        })}
-      >
-        <InputText name="address" control={control} />
-      </Item>
-
-      <Item
-        className="flex items-center space-x-4 mt-2"
-        label={formatMessage({
-          id: 'user.profile.input.detailAddress',
-          defaultMessage: 'Detail Address',
-        })}
-      >
-        <InputText name="detailAddress" control={control} />
-      </Item>
-
-      <Item
-        className="flex items-center space-x-4 mt-2"
-        label={formatMessage({
-          id: 'user.profile.input.dateOfBirth',
-          defaultMessage: 'Date of Birth',
-        })}
-      >
-        <DatePicker format="DD-MM-YYYY" name="dob" control={control} />
-      </Item>
-
-      <Item
-        className="flex items-center space-x-4 mt-2"
-        label={formatMessage({
-          id: 'user.profile.input.phoneNumber',
-          defaultMessage: 'Phone Number',
-        })}
-      >
-        <InputText name="phoneNumber" control={control} />
-      </Item>
-
-      <Item
-        className="flex items-center space-x-4 mt-2"
-        label={formatMessage({
-          id: 'user.profile.input.citizenCardNumber',
-          defaultMessage: 'Citizen Card Number',
-        })}
-      >
-        <ImgCrop aspect={1} rotationSlider>
-          <ImageDragger control={control} maxCount={2} className="custom-ant-upload" name="CCCD" />
-        </ImgCrop>
-      </Item>
-
-      <div className="flex items-center space-x-4 mt-2">
-        <Button type="primary" className="btn-medium btn-primary" htmlType="submit">
-          {formatMessage({
-            id: 'user.profile.input.saveChangesBtn',
-            defaultMessage: 'Save Changes',
-          })}
-        </Button>
-        <Popconfirm
-          title={formatMessage({
-            id: 'user.profile.input.confirmExit',
-            defaultMessage: 'Confirm Exit',
-          })}
-          description={formatMessage({
-            id: 'user.profile.input.cancel',
-            defaultMessage: 'If you exit, you will lose your modified data.',
-          })}
-          onConfirm={confirm}
-          onCancel={cancel}
-          okText={formatMessage({
-            id: 'user.profile.input.yes',
-            defaultMessage: 'Yes',
-          })}
-          cancelText={formatMessage({
-            id: 'user.profile.input.no',
-            defaultMessage: 'No',
-          })}
-          okButtonProps={{ className: 'btn-medium btn-primary' }}
-          cancelButtonProps={{ className: 'btn-medium btn-default' }}
-        >
-          <Button className="btn-medium btn-default">
+      <div className="space-y-4">
+        <div className="space-y-2 mt-5">
+          <Item className="font-semibold text-center">
             {formatMessage({
-              id: 'user.profile.input.cancelBtn',
-              defaultMessage: 'Cancel',
+              id: 'user.profile.input.login',
+              defaultMessage: 'Login Information',
+            })}
+          </Item>
+          <div className="grid gap-x-4">
+            <div>
+              <Item
+                label={formatMessage({
+                  id: 'user.profile.input.username',
+                  defaultMessage: 'Username',
+                })}
+                required
+              >
+                <InputText name="username" control={control} className="w-full" />
+              </Item>
+              <Item
+                label={formatMessage({
+                  id: 'user.profile.input.password',
+                  defaultMessage: 'Password',
+                })}
+                required
+              >
+                <HiddenInput
+                  placeholder="******"
+                  control={control}
+                  name="password"
+                  className="w-full"
+                />
+              </Item>
+            </div>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <Item className="font-semibold text-center">
+            {formatMessage({
+              id: 'user.profile.input.contact',
+              defaultMessage: 'Contact Information',
+            })}
+          </Item>
+          <div className="grid grid-cols-2 gap-x-4">
+            <div>
+              <Item
+                label={formatMessage({
+                  id: 'user.profile.input.email',
+                  defaultMessage: 'Email',
+                })}
+                required
+              >
+                <InputText name="email" control={control} className="w-full" />
+              </Item>
+
+              <Item
+                label={formatMessage({
+                  id: 'user.profile.input.fullName',
+                  defaultMessage: 'Full Name',
+                })}
+              >
+                <InputText name="fullName" control={control} className="w-full" />
+              </Item>
+
+              <Item
+                label={formatMessage({
+                  id: 'user.profile.input.address',
+                  defaultMessage: 'Address',
+                })}
+              >
+                <InputText name="address" control={control} className="w-full" />
+              </Item>
+
+              <Item
+                label={formatMessage({
+                  id: 'user.profile.input.detailAddress',
+                  defaultMessage: 'Detail Address',
+                })}
+              >
+                <InputText name="detailAddress" control={control} className="w-full" />
+              </Item>
+              <Item
+                label={formatMessage({
+                  id: 'user.profile.input.dateOfBirth',
+                  defaultMessage: 'Date of Birth',
+                })}
+              >
+                <DatePicker format="DD-MM-YYYY" name="dob" className="w-full" control={control} />
+              </Item>
+            </div>
+
+            <div>
+              <Item
+                label={formatMessage({
+                  id: 'user.profile.input.phoneNumber',
+                  defaultMessage: 'Phone Number',
+                })}
+              >
+                <InputText name="phoneNumber" control={control} className="w-full" />
+              </Item>
+
+              <Item
+                label={formatMessage({
+                  id: 'user.profile.input.citizenID',
+                  defaultMessage: 'Citizen ID',
+                })}
+              >
+                <InputText name="citizenID" control={control} className="w-full" />
+              </Item>
+
+              <Item
+                label={formatMessage({
+                  id: 'user.profile.input.citizenIDCardFront',
+                  defaultMessage: 'Citizen Card Front',
+                })}
+              >
+                <ImgCrop aspect={1} rotationSlider>
+                  <ImageDragger
+                    control={control}
+                    maxCount={1}
+                    className="w-full"
+                    name="citizenCardFront"
+                  />
+                </ImgCrop>
+              </Item>
+
+              <Item
+                label={formatMessage({
+                  id: 'user.profile.input.citizenIDCardBack',
+                  defaultMessage: 'Citizen Card Back',
+                })}
+              >
+                <ImgCrop aspect={1} rotationSlider>
+                  <ImageDragger
+                    control={control}
+                    maxCount={1}
+                    className="w-full"
+                    name="citizenCardBack"
+                  />
+                </ImgCrop>
+              </Item>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-end space-x-1">
+          <Button type="primary" className="btn-medium btn-primary" htmlType="submit">
+            {formatMessage({
+              id: 'user.profile.input.saveChangesBtn',
+              defaultMessage: 'Save Changes',
             })}
           </Button>
-        </Popconfirm>
+          <Popconfirm
+            title={formatMessage({
+              id: 'user.profile.input.confirmExit',
+              defaultMessage: 'Confirm Exit',
+            })}
+            description={formatMessage({
+              id: 'user.profile.input.cancel',
+              defaultMessage: 'If you exit, you will lose your modified data.',
+            })}
+            onConfirm={confirm}
+            onCancel={cancel}
+            okText={formatMessage({
+              id: 'user.profile.input.yes',
+              defaultMessage: 'Yes',
+            })}
+            cancelText={formatMessage({
+              id: 'user.profile.input.no',
+              defaultMessage: 'No',
+            })}
+            okButtonProps={{ className: 'btn-medium btn-primary' }}
+            cancelButtonProps={{ className: 'btn-medium btn-default' }}
+          >
+            <Button className="btn-medium btn-default">
+              {formatMessage({
+                id: 'user.profile.input.cancelBtn',
+                defaultMessage: 'Cancel',
+              })}
+            </Button>
+          </Popconfirm>
+        </div>
       </div>
     </Form>
   );

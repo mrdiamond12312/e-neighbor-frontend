@@ -489,6 +489,39 @@
     }
   }
 
+  .custom-antd-form-profile {
+    .ant-input,
+    .ant-input-password,
+    .ant-picker {
+      &:focus {
+        @apply border-teal-5;
+      }
+
+      &:focus-within {
+        @apply border-teal-5;
+      }
+
+      &:hover {
+        @apply border-teal-3;
+      }
+    }
+    .ant-input-affix-wrapper-lg {
+      @apply rounded-[4px] py-0;
+
+      &:focus-within {
+        @apply border-teal-5;
+      }
+
+      &:focus {
+        @apply border-teal-5;
+      }
+
+      &:hover {
+        @apply border-teal-3;
+      }
+    }
+  }
+
   /* MENU */
   .category-menu {
     @apply rounded-none font-sans h-full;
