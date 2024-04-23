@@ -4,6 +4,7 @@ import type { ResponseError } from 'umi-request';
 import { extend } from 'umi-request';
 
 import * as Path from '@/const/path';
+import { removeStorageItem } from '@/utils/local-storage';
 import { translate } from '@/utils/translator';
 
 class HttpError extends Error {
@@ -17,8 +18,7 @@ class HttpError extends Error {
 }
 
 const errorHandler = async (err: ResponseError) => {
-  const { statusCode, error }: TMeta = await err.response.json();
-
+  const { statusCode, error, message }: TMeta = await err.response.json();
   if (!err?.response) {
     return Promise.reject({
       meta: {
@@ -131,9 +131,10 @@ const errorHandler = async (err: ResponseError) => {
         break;
     }
     if (statusCode === 401 && window.location.pathname !== Path.PATH_LOGIN) {
+      removeStorageItem('accessToken');
       return history.push(Path.PATH_LOGIN);
     }
-    return Promise.reject({ statusCode, error });
+    return Promise.reject({ statusCode, error, message });
   }
 };
 
@@ -165,11 +166,22 @@ request.interceptors.response.use(
   async (response) => {
     const data = await response.clone().json();
 
+    if (data?.meta?.statusCode === 307) {
+      window.location.href = data.result.data.url;
+    }
+
     if (data && data?.result && (data?.result?.data || data?.result?.data !== null) && data?.meta) {
       if (data.result.meta) return data.result;
       return data.result.data;
     } else {
-      throw new HttpError(response, data.meta);
+      throw new HttpError(
+        response,
+        data.meta ?? {
+          message: data.message,
+          statusCode: data.statusCode,
+          error: data.error,
+        },
+      );
     }
   },
   { global: false },

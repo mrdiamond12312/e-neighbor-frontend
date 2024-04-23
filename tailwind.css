@@ -345,6 +345,10 @@
               &:focus {
                 @apply border-teal-5;
               }
+
+              .ant-picker-active-bar {
+                @apply bg-teal-200;
+              }
             }
             .ant-picker-focused {
               @apply border-teal-1;
@@ -1076,7 +1080,7 @@
 
       .slick-track {
         @apply flex flex-row gap-2 !w-fit;
-
+        transform: translate3d(0px, 0px, 0px) !important;
         .slick-slide {
           @apply !w-fit;
         }
@@ -1249,6 +1253,20 @@
                 }
               }
             }
+          }
+        }
+      }
+    }
+  }
+
+  /* Range Picker */
+  .custom-antd-picker-panel {
+    .ant-picker-panels {
+      .ant-picker-cell-range-start,
+      .ant-picker-cell-range-end {
+        &:not(.ant-picker-cell-disabled) {
+          .ant-picker-cell-inner {
+            @apply bg-teal-1 text-neutral-1;
           }
         }
       }

@@ -14,4 +14,9 @@ export const PATH_LESSOR_ORDERS_DETAILS = PATH_LESSOR_ORDERS + '/:orderId';
 export const PATH_LESSOR_ORDERS_CANCELED = PATH_LESSOR_ORDERS + '/cancels';
 
 export const PATH_PRODUCTS = '/product';
-export const PATH_PRODUCTS_DETAILS = PATH_PRODUCTS + '/:productId/detail';
+export const PATH_PRODUCTS_DETAILS = PATH_PRODUCTS + '/:productId';
+export const PATH_PRODUCTS_RENT = PATH_PRODUCTS_DETAILS + '/rent';
+
+export const PATH_USER = '/user/profile';
+export const PATH_USER_OVERVIEW = '/user/profile/overview';
+export const PATH_USER_PROFILE_EDIT = '/user/profile/edit';

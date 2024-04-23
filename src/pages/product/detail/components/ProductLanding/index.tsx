@@ -1,8 +1,10 @@
-import { FormattedHTMLMessage } from '@umijs/max';
+import { FormattedHTMLMessage, Link, useParams } from '@umijs/max';
 import { Col, Flex, Rate, Row } from 'antd/lib';
 import React, { Fragment } from 'react';
+import urlcat from 'urlcat';
 
 import Button from '@/components/Button';
+import { PATH_PRODUCTS_RENT } from '@/const/path';
 
 const INTRO_CHARACTERISTICS = [
   'furniture-characteristics-function',
@@ -55,6 +57,8 @@ export const Characteristic: React.FC<TCharacteristic> = ({ characteristics }) =
 };
 
 export const ProductLanding: React.FC<TProductCharacteristicsProps> = ({ data }) => {
+  const { productId } = useParams();
+
   return (
     <div className="flex flex-col w-full">
       <h1 className="text-heading-1 font-sans font-medium m-0 pb-4">{data?.name}</h1>
@@ -73,10 +77,11 @@ export const ProductLanding: React.FC<TProductCharacteristicsProps> = ({ data })
         <Button type="dashed" btnSize="large" className="text-heading-5 w-full">
           <FormattedHTMLMessage id="store.preview.card.btn.wish" defaultMessage="Add to Wishlist" />
         </Button>
-
-        <Button type="primary" btnSize="large" className="text-heading-5 w-full">
-          <FormattedHTMLMessage id="store.preview.card.btn.rent" defaultMessage="Rent Now!" />
-        </Button>
+        <Link to={urlcat(PATH_PRODUCTS_RENT, { productId })} className="w-full">
+          <Button type="primary" btnSize="large" className="text-heading-5 w-full">
+            <FormattedHTMLMessage id="store.preview.card.btn.rent" defaultMessage="Rent Now!" />
+          </Button>{' '}
+        </Link>
       </Flex>
       <Flex className="pt-3">
         <Characteristic characteristics={data?.characteristics} />

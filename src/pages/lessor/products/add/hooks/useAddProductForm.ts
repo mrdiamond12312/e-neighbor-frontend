@@ -47,7 +47,6 @@ export const useAddProductForm = () => {
   const { FormSchema } = useAddProductResolver();
   const methods = useForm<TProductFormField>({ mode: 'onTouched', resolver: FormSchema });
 
-  console.log(methods.watch());
   const checkValidate = useCallback(async () => {
     switch (currentStep) {
       case 0:

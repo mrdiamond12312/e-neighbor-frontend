@@ -20,12 +20,29 @@ export default [
         component: '@/pages/user/login',
       },
       {
+        path: 'profile',
+        wrappers: ['@/layouts/User'],
+        routes: [
+          {
+            name: 'profile-overview',
+            path: 'overview',
+            component: '@/pages/user/profile',
+          },
+          {
+            name: 'edit-profile',
+            path: 'edit',
+            component: '@/pages/user/edit-profile',
+          },
+        ],
+      },
+      {
         name: 'signUp',
         path: 'sign-up',
         component: '@/pages/user/sign-up',
       },
     ],
   },
+
   {
     path: 'lessor',
     wrappers: ['@/wrappers/LessorAuth', '@/layouts/Lessor'],
@@ -77,12 +94,19 @@ export default [
     component: './store',
   },
   {
-    path: '/product/*',
+    path: 'product',
     routes: [
       {
         name: 'product-detail',
-        path: ':productId/detail/*',
-        component: '@/pages/product/detail',
+        path: ':productId',
+        wrappers: ['@/pages/product/detail'],
+        routes: [
+          {
+            name: 'rent',
+            path: 'rent',
+            component: '@/pages/product/renting',
+          },
+        ],
       },
     ],
   },
