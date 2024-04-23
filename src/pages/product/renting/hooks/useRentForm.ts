@@ -47,7 +47,6 @@ export const useRentForm = () => {
     if (isGoodToForward) {
       mutate(formFields, {
         onError: (error: TMeta) => {
-          console.log(error);
           notification.error({
             message: [error.statusCode, error.error].join(' - '),
             description: error.message,

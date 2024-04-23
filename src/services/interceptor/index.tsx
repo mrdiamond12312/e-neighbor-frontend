@@ -4,6 +4,7 @@ import type { ResponseError } from 'umi-request';
 import { extend } from 'umi-request';
 
 import * as Path from '@/const/path';
+import { removeStorageItem } from '@/utils/local-storage';
 import { translate } from '@/utils/translator';
 
 class HttpError extends Error {
@@ -130,6 +131,7 @@ const errorHandler = async (err: ResponseError) => {
         break;
     }
     if (statusCode === 401 && window.location.pathname !== Path.PATH_LOGIN) {
+      removeStorageItem('accessToken');
       return history.push(Path.PATH_LOGIN);
     }
     return Promise.reject({ statusCode, error, message });

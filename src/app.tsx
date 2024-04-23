@@ -48,8 +48,8 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         return <AvatarDropdown>{avatarChildren ?? ''}</AvatarDropdown>;
       },
     },
-    waterMarkProps: null,
-    footerRender: null,
+    waterMarkProps: undefined,
+    footerRender: undefined,
     onPageChange: () => {
       const { location } = history;
       // 如果没有登录，重定向到 login
@@ -58,7 +58,6 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
       }
     },
     bgLayoutImgList: [],
-    links: null,
     menuHeaderRender: undefined,
     // 自定义 403 页面
     // unAccessible: <div>unAccessible</div>,

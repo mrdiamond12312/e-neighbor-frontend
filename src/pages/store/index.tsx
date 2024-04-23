@@ -36,8 +36,6 @@ const Store: React.FC = () => {
 
   const { data: products, isLoading } = useProductPage(paginationParams);
 
-  console.log(products);
-  console.log(paginationParams);
   return (
     <ConfigProvider
       theme={{
