@@ -27,7 +27,7 @@ const ProductDetail: React.FC = () => {
           >
             <Row
               gutter={8}
-              className="justify-center max-w-7xl w-full min-h-[calc(100vh-112px)] items-center snap-center"
+              className="justify-center max-w-7xl w-full min-h-[calc(100vh-56px)] xl:min-h-[calc(100vh-112px)] items-center lg:snap-center"
               style={{ marginLeft: 0, marginRight: 0 }}
             >
               <Col lg={16} span={24}>
@@ -41,11 +41,11 @@ const ProductDetail: React.FC = () => {
             </Row>
             <Row
               gutter={16}
-              className="snap-center w-full max-w-7xl"
+              className="lg:snap-center w-full max-w-7xl"
               style={{ marginLeft: 0, marginRight: 0 }}
             >
               <Col lg={16} span={24}>
-                <Flex className="bg-neutral-1 p-4 min-h-[calc(100vh-136px)] rounded-lg">
+                <Flex className="bg-neutral-1 p-2 px-4 min-h-[calc(100vh-80px)] xl:min-h-[calc(100vh-136px)] rounded-lg">
                   <Tabs items={tabs} className="custom-tabs" />
                 </Flex>
               </Col>

@@ -162,13 +162,15 @@ export const useOnboardingForm = () => {
             },
           });
         },
-        onError: () =>
+        onError: (error) => {
+          console.log(error);
           notification.error({
             message: formatMessage({
               id: 'lessor.onboard.error.already',
               defaultMessage: "You've already been a Lessor!",
             }),
-          }),
+          });
+        },
       });
     }
   };
