@@ -16,7 +16,7 @@ export const AvatarBanner: React.FC<IAvatarProps> = ({ image = NO_IMAGE_URL, nam
       <div className="w-full h-48 rounded-bl-xl bg-teal-1" />
       <Image
         src={image}
-        rootClassName="absolute left-12 top-[calc(156px-50%)] w-48 rounded-full avatar-custom-mask border-teal-50 border-4 z-10"
+        rootClassName="absolute left-12 top-[calc(156px-50%)] w-48 rounded-full avatar-custom-mask border-teal-50 border-4 z-[15]"
         className="rounded-full aspect-square object-cover"
       />
       <article

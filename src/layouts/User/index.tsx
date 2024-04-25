@@ -17,14 +17,14 @@ const LessorLayout: React.FC = () => {
         name={currentUser?.fullName}
         role={currentUser?.role}
       />
-      <Flex className="flex-row pl-12 w-full sticky top-0">
+      <Flex className="flex-row pl-12 w-full sticky top-14 left-0 z-10">
         <div
           className="w-48 bg-gradient-to-r from-transparent to-neutral-1"
           aria-label="placeholder"
         />
-        <Flex className="flex-row w-full h-14 bg-neutral-1 justify-end items-end rounded-br-xl px-4 overflow-auto">
+        <Flex className="flex-row w-full h-14 bg-neutral-1 items-end rounded-br-xl px-4 overflow-auto">
           <Tabs
-            className="custom-tabs w-auto"
+            className="custom-tabs w-full min-w-fit inline-block"
             defaultActiveKey={defaultActiveTabKey}
             items={tabsItem}
             onChange={handleTabChange}

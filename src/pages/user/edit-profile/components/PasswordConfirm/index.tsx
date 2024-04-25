@@ -3,7 +3,7 @@ import { Divider, Form } from 'antd/lib';
 import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
-import InputText from '@/components/Input';
+import HiddenInput from '@/components/Input/HiddenInput';
 import { EDIT_PROFILE_KEYS } from '@/pages/user/edit-profile/helpers/edit-form-keys';
 
 const { Item } = Form;
@@ -41,13 +41,14 @@ export const PasswordConfirm: React.FC<Partial<TPropsFormInput>> = ({ control })
         })}
         required
       >
-        <InputText
+        <HiddenInput
           placeholder={formatMessage({
             id: 'user.profile.form.password.label',
             defaultMessage: 'Password',
           })}
           placement="top"
           control={control}
+          className="custom-input h-10"
           name={EDIT_PROFILE_KEYS.password}
           size={size}
         />

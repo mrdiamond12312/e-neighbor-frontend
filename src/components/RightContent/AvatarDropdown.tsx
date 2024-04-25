@@ -9,7 +9,7 @@ import { flushSync } from 'react-dom';
 import HeaderDropdown from '../HeaderDropdown';
 
 import Login from '@/components/RightContent/Login';
-import { PATH_LESSOR, PATH_USER_OVERVIEW } from '@/const/path';
+import { PATH_LESSOR, PATH_USER_PROFILE_EDIT } from '@/const/path';
 import { handleLogout } from '@/services/auth/services';
 
 export type GlobalHeaderRightProps = {
@@ -49,7 +49,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
       switch (key) {
         case 'personal-information': {
           history.replace({
-            pathname: PATH_USER_OVERVIEW,
+            pathname: PATH_USER_PROFILE_EDIT,
           });
           return;
         }

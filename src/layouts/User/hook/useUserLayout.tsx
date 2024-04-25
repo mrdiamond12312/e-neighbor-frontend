@@ -1,6 +1,11 @@
 import { history, useIntl, useLocation, useModel } from '@umijs/max';
 
-import { PATH_USER_OVERVIEW, PATH_USER_PROFILE_EDIT } from '@/const/path';
+import {
+  PATH_USER_PROFILE_EDIT,
+  PATH_USER_PROFILE_ORDERS,
+  PATH_USER_PROFILE_WALLET,
+  PATH_USER_PROFILE_WISHLIST,
+} from '@/const/path';
 
 export type TBreadCrumbsObj = {
   key: string;
@@ -16,18 +21,35 @@ export const useUserLayout = () => {
   const { pathname } = useLocation();
   const tabsItem = [
     {
-      key: PATH_USER_OVERVIEW,
+      key: PATH_USER_PROFILE_EDIT,
       label: formatMessage({
-        id: 'user.profile.menu.overview',
-        defaultMessage: 'Overview',
+        id: 'user.profile.menu.accountInfo',
+        defaultMessage: 'Account Information',
       }),
     },
     {
-      key: PATH_USER_PROFILE_EDIT,
+      key: PATH_USER_PROFILE_ORDERS,
       label: formatMessage({
-        id: 'user.profile.menu.edit-profile',
-        defaultMessage: 'Edit Information',
+        id: 'user.profile.menu.orders',
+        defaultMessage: 'Orders',
       }),
+      disabled: true,
+    },
+    {
+      key: PATH_USER_PROFILE_WALLET,
+      label: formatMessage({
+        id: 'user.profile.menu.wallet',
+        defaultMessage: 'My Wallet',
+      }),
+      disabled: true,
+    },
+    {
+      key: PATH_USER_PROFILE_WISHLIST,
+      label: formatMessage({
+        id: 'user.profile.menu.wishlist',
+        defaultMessage: 'Wishlist',
+      }),
+      disabled: true,
     },
   ];
 

@@ -72,8 +72,11 @@ export const useEditProfileForm = () => {
               id: 'user.profile.form.submit.success.description',
               defaultMessage: 'The window will now reload to apply the update',
             }),
+            duration: 0.5,
+            onClose: () => {
+              window.location.reload();
+            },
           });
-          window.location.reload();
         },
         onError: (error) => {
           notification.error({

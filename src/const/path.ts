@@ -18,5 +18,7 @@ export const PATH_PRODUCTS_DETAILS = PATH_PRODUCTS + '/:productId';
 export const PATH_PRODUCTS_RENT = PATH_PRODUCTS_DETAILS + '/rent';
 
 export const PATH_USER = '/user/profile';
-export const PATH_USER_OVERVIEW = '/user/profile/overview';
 export const PATH_USER_PROFILE_EDIT = '/user/profile/edit';
+export const PATH_USER_PROFILE_ORDERS = '/user/profile/orders';
+export const PATH_USER_PROFILE_WALLET = '/user/profile/wallet';
+export const PATH_USER_PROFILE_WISHLIST = '/user/profile/wishlist';
