@@ -7,9 +7,14 @@ import Button from '@/components/Button';
 export type TSectionPaneProps = {
   editMode: boolean;
   flipEditMode: () => void;
+  openSubmitModal: () => void;
 };
 
-export const SectionPane: React.FC<TSectionPaneProps> = ({ editMode, flipEditMode }) => {
+export const SectionPane: React.FC<TSectionPaneProps> = ({
+  editMode,
+  flipEditMode,
+  openSubmitModal,
+}) => {
   return editMode ? (
     <Flex className="flex-row py-2 px-4 justify-between items-center w-full text-heading-4">
       <FormattedHTMLMessage
@@ -20,7 +25,7 @@ export const SectionPane: React.FC<TSectionPaneProps> = ({ editMode, flipEditMod
         <Button onClick={flipEditMode} type="primary">
           <FormattedHTMLMessage id="common.cancel" defaultMessage="Cancel" />
         </Button>
-        <Button>
+        <Button onClick={openSubmitModal}>
           <FormattedHTMLMessage id="common.submit" defaultMessage="Submit" />
         </Button>
       </Flex>

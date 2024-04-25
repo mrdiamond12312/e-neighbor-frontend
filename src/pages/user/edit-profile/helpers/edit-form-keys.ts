@@ -1,4 +1,6 @@
 export enum EDIT_PROFILE_KEYS {
+  id = 'id',
+  password = 'password',
   fullName = 'fullName',
   dob = 'dob',
   avatar = 'avatar',

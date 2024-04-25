@@ -1,5 +1,6 @@
 import { FormattedHTMLMessage } from '@umijs/max';
 import { Divider, Form } from 'antd/lib';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
 import InputText from '@/components/Input';

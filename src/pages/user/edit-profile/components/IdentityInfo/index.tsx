@@ -51,7 +51,7 @@ export const IdentityInfo: React.FC<TIdentityInfoFormProps> = ({ control, readOn
               })}
               placement="top"
               control={control}
-              name={EDIT_PROFILE_KEYS.phone}
+              name={EDIT_PROFILE_KEYS.citizenId}
               size={size}
               readOnly={readOnly}
             />
@@ -59,45 +59,47 @@ export const IdentityInfo: React.FC<TIdentityInfoFormProps> = ({ control, readOn
         </Col>
         <Col span={24} lg={12}></Col>
 
-        {!readOnly && (
-          <Col span={24} lg={12}>
-            <Item
-              label={formatMessage({
-                id: 'user.profile.form.citizenCardFront.label',
-                defaultMessage: 'Card Front',
-              })}
-            >
-              <ImgCrop aspect={85.6 / 53.98} rotationSlider>
-                <ImageDragger
-                  className="custom-ant-upload"
-                  control={control}
-                  name={EDIT_PROFILE_KEYS.citizenCardFront}
-                  maxCount={1}
-                />
-              </ImgCrop>
-            </Item>
-          </Col>
-        )}
+        {/* {!readOnly && ( */}
+        <Col span={24} lg={12}>
+          <Item
+            label={formatMessage({
+              id: 'user.profile.form.citizenCardFront.label',
+              defaultMessage: 'Card Front',
+            })}
+          >
+            <ImgCrop aspect={85.6 / 53.98} rotationSlider>
+              <ImageDragger
+                className="custom-ant-upload"
+                control={control}
+                name={EDIT_PROFILE_KEYS.citizenCardFront}
+                maxCount={1}
+                readOnly={readOnly}
+              />
+            </ImgCrop>
+          </Item>
+        </Col>
+        {/* )} */}
 
-        {!readOnly && (
-          <Col span={24} lg={12}>
-            <Item
-              label={formatMessage({
-                id: 'user.profile.form.citizenCardBack.label',
-                defaultMessage: 'Card Back',
-              })}
-            >
-              <ImgCrop aspect={85.6 / 53.98} rotationSlider>
-                <ImageDragger
-                  className="custom-ant-upload"
-                  control={control}
-                  name={EDIT_PROFILE_KEYS.citizenCardBack}
-                  maxCount={1}
-                />
-              </ImgCrop>
-            </Item>
-          </Col>
-        )}
+        {/* {!readOnly && ( */}
+        <Col span={24} lg={12}>
+          <Item
+            label={formatMessage({
+              id: 'user.profile.form.citizenCardBack.label',
+              defaultMessage: 'Card Back',
+            })}
+          >
+            <ImgCrop aspect={85.6 / 53.98} rotationSlider>
+              <ImageDragger
+                className="custom-ant-upload"
+                control={control}
+                name={EDIT_PROFILE_KEYS.citizenCardBack}
+                maxCount={1}
+                readOnly={readOnly}
+              />
+            </ImgCrop>
+          </Item>
+        </Col>
+        {/* )} */}
       </Row>
     </Form>
   );

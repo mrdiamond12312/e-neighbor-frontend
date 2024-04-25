@@ -2,6 +2,7 @@ import { FileImageOutlined } from '@ant-design/icons';
 import { useIntl } from '@umijs/max';
 import { UploadListProps } from 'antd/es/upload';
 import Dragger from 'antd/es/upload/Dragger';
+import { Flex, Image, Row } from 'antd/lib';
 import React, { Fragment } from 'react';
 import { Control, Controller, FieldValues } from 'react-hook-form';
 
@@ -15,12 +16,14 @@ export type TPropsDragger = {
   name: string;
   maxCount: number;
   disabled?: boolean;
+  readOnly?: boolean;
 };
 
 export const ImageDragger: React.FC<TPropsDragger & Partial<UploadListProps>> = ({
   control,
   name,
   maxCount,
+  readOnly,
   ...settings
 }) => {
   const intl = useIntl();
@@ -32,7 +35,15 @@ export const ImageDragger: React.FC<TPropsDragger & Partial<UploadListProps>> = 
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => {
-        return (
+        return readOnly ? (
+          <Row>
+            {!field.value?.[0] || field.value[0].url === '' ? (
+              <Flex className="pl-3 h-8 items-end font-sans text-body-2-semibold">NaN</Flex>
+            ) : (
+              <Image rootClassName="pl-3" src={field.value[0].url} />
+            )}
+          </Row>
+        ) : (
           <Fragment>
             <Dragger
               multiple={true}

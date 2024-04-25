@@ -65,6 +65,7 @@ export const BasicInfo: React.FC<TBasicInfoFormProps> = ({ control, readOnly }) 
               id: 'user.profile.form.dob.label',
               defaultMessage: 'Date of birth',
             })}
+            required
           >
             <DatePicker
               placeholder={formatMessage({
@@ -79,25 +80,26 @@ export const BasicInfo: React.FC<TBasicInfoFormProps> = ({ control, readOnly }) 
           </Item>
         </Col>
 
-        {!readOnly && (
-          <Col span={24} lg={12}>
-            <Item
-              label={formatMessage({
-                id: 'user.profile.form.avatar.label',
-                defaultMessage: 'Your Avatar',
-              })}
-            >
-              <ImgCrop aspect={1} rotationSlider>
-                <ImageDragger
-                  className="custom-ant-upload"
-                  control={control}
-                  name={EDIT_PROFILE_KEYS.avatar}
-                  maxCount={1}
-                />
-              </ImgCrop>
-            </Item>
-          </Col>
-        )}
+        {/* {!readOnly && ( */}
+        <Col span={24} lg={12}>
+          <Item
+            label={formatMessage({
+              id: 'user.profile.form.avatar.label',
+              defaultMessage: 'Your Avatar',
+            })}
+          >
+            <ImgCrop aspect={1} rotationSlider>
+              <ImageDragger
+                className="custom-ant-upload"
+                control={control}
+                name={EDIT_PROFILE_KEYS.avatar}
+                maxCount={1}
+                readOnly={readOnly}
+              />
+            </ImgCrop>
+          </Item>
+        </Col>
+        {/* )} */}
 
         <Col span={24} lg={12}>
           <Item

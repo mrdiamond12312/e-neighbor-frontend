@@ -45,7 +45,7 @@ const DatePicker: React.FC<TPropsDatePicker> = ({
             <ValidateError error={error} />
           </Fragment>
         ) : (
-          <Flex className="h-8 font-sans text-body-2-semibold items-end">
+          <Flex className="pl-3 h-8 font-sans text-body-2-semibold items-end">
             {field.value ?? 'NaN'}
           </Flex>
         )

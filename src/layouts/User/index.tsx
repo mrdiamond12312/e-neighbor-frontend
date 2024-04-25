@@ -13,7 +13,7 @@ const LessorLayout: React.FC = () => {
   return (
     <section className="flex flex-col w-full max-w-7xl mx-auto">
       <AvatarBanner
-        image={currentUser?.image}
+        image={currentUser?.avatar}
         name={currentUser?.fullName}
         role={currentUser?.role}
       />
