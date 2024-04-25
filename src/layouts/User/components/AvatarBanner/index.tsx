@@ -12,7 +12,7 @@ export interface IAvatarProps {
 
 export const AvatarBanner: React.FC<IAvatarProps> = ({ image = NO_IMAGE_URL, name, role }) => {
   return (
-    <section className="relative overflow-visible w-full">
+    <section className="relative overflow-visible w-full px-4">
       <div className="w-full h-48 rounded-bl-xl bg-teal-1" />
       <Image
         src={image}

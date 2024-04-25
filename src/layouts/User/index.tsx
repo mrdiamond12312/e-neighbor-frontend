@@ -17,7 +17,7 @@ const LessorLayout: React.FC = () => {
         name={currentUser?.fullName}
         role={currentUser?.role}
       />
-      <Flex className="flex-row pl-12 w-full z-10">
+      <Flex className="flex-row pl-12 pr-4 w-full z-10">
         <div
           className="w-48 bg-gradient-to-r from-transparent to-neutral-1"
           aria-label="placeholder"
