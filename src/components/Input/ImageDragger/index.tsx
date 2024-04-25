@@ -40,7 +40,7 @@ export const ImageDragger: React.FC<TPropsDragger & Partial<UploadListProps>> = 
             {!field.value?.[0] || field.value[0].url === '' ? (
               <Flex className="pl-3 h-8 items-end font-sans text-body-2-semibold">NaN</Flex>
             ) : (
-              <Image rootClassName="pl-3" src={field.value[0].url} />
+              <Image src={field.value[0].url} />
             )}
           </Row>
         ) : (
