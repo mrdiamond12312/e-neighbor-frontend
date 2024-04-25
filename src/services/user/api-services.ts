@@ -9,11 +9,18 @@ export const patchUser = async (body: TEditProfileFields) => {
     method: 'PATCH',
     data: {
       ...body,
-      [EDIT_PROFILE_KEYS.avatar]: body[EDIT_PROFILE_KEYS.avatar]?.[0].response?.url,
+      [EDIT_PROFILE_KEYS.avatar]:
+        body[EDIT_PROFILE_KEYS.avatar]?.[0]?.response?.url ??
+        body[EDIT_PROFILE_KEYS.avatar]?.[0]?.url ??
+        undefined,
       [EDIT_PROFILE_KEYS.citizenCardBack]:
-        body[EDIT_PROFILE_KEYS.citizenCardBack]?.[0].response?.url,
+        body[EDIT_PROFILE_KEYS.citizenCardBack]?.[0]?.response?.url ??
+        body[EDIT_PROFILE_KEYS.citizenCardBack]?.[0]?.url ??
+        undefined,
       [EDIT_PROFILE_KEYS.citizenCardFront]:
-        body[EDIT_PROFILE_KEYS.citizenCardFront]?.[0].response?.url,
+        body[EDIT_PROFILE_KEYS.citizenCardFront]?.[0]?.response?.url ??
+        body[EDIT_PROFILE_KEYS.citizenCardFront]?.[0]?.url ??
+        undefined,
       [EDIT_PROFILE_KEYS.dob]: parseTimestampToISOString(body[EDIT_PROFILE_KEYS.dob]),
     },
   });
