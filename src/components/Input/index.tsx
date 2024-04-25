@@ -1,18 +1,19 @@
 import { Input } from 'antd';
+import { InputProps } from 'antd/lib';
 import classNames from 'classnames';
 import React, { Fragment } from 'react';
 import { Controller } from 'react-hook-form';
 
 import ValidateError from '@/components/Input/ValidateError';
 
-const InputText: React.FC<TPropsFormInput> = ({
+const InputText: React.FC<TPropsFormInput & InputProps> = ({
   name,
   control,
   type,
-  size,
   placeholder,
   className,
   disabled,
+  ...restProps
 }) => {
   return (
     <Controller
@@ -23,9 +24,9 @@ const InputText: React.FC<TPropsFormInput> = ({
           <Fragment>
             <Input
               {...field}
+              {...restProps}
               disabled={disabled}
               type={type}
-              size={size}
               placeholder={placeholder}
               status={error ? 'error' : ''}
               className={classNames(error ? `error` : `focus hover`, className)}

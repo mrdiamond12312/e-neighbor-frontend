@@ -1,5 +1,6 @@
 import { FormattedHTMLMessage, useIntl } from '@umijs/max';
 import { Divider, Form } from 'antd/lib';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import ImgCrop from 'antd-img-crop';
 import React from 'react';
 
@@ -13,6 +14,7 @@ const { Item } = Form;
 export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
+  const size: SizeType = 'large';
 
   return (
     <Form
@@ -51,7 +53,7 @@ export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }
           control={control}
           error={errors}
           name={ONBOARDING_FORM_KEY['fullName']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -67,7 +69,7 @@ export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }
           control={control}
           error={errors}
           name={ONBOARDING_FORM_KEY['email']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -83,7 +85,7 @@ export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }
           control={control}
           error={errors}
           name={ONBOARDING_FORM_KEY['phoneNumber']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -98,7 +100,7 @@ export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }
           control={control}
           error={errors}
           name={ONBOARDING_FORM_KEY['dob']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -133,7 +135,7 @@ export const UserInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }
           control={control}
           error={errors}
           name={ONBOARDING_FORM_KEY['address']}
-          size="large"
+          size={size}
         />
       </Item>
     </Form>

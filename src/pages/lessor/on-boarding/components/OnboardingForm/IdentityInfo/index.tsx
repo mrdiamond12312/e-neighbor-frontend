@@ -1,5 +1,6 @@
 import { FormattedHTMLMessage, useIntl } from '@umijs/max';
 import { Divider, Form } from 'antd/lib';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import ImgCrop from 'antd-img-crop';
 import React from 'react';
 
@@ -11,6 +12,7 @@ const { Item } = Form;
 export const IdentityInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
+  const size: SizeType = 'large';
 
   return (
     <Form
@@ -47,7 +49,7 @@ export const IdentityInfo: React.FC<Partial<TPropsFormInput>> = ({ control, erro
           control={control}
           error={errors}
           name={ONBOARDING_FORM_KEY['citizenId']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item

@@ -1,6 +1,7 @@
 import { EditOutlined } from '@ant-design/icons';
 import { FormattedHTMLMessage, useIntl } from '@umijs/max';
 import { Col, Form, Popover, Row, Spin } from 'antd/lib';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 import { Control, useFormContext } from 'react-hook-form';
 
@@ -38,6 +39,8 @@ export const SurchargeInfo: React.FC<TSurchargeRecord> = ({
   const selectedOptionId = watch(fieldName);
   const { data: surchargeDetail, isInitialLoading } = useSurchargeDetails(selectedOptionId);
 
+  const size: SizeType = 'large';
+
   return (
     <section className="flex flex-row gap-2 items-start w-full px-3">
       <Row gutter={12} className="w-full" style={{ gap: '2px 0px' }}>
@@ -74,7 +77,7 @@ export const SurchargeInfo: React.FC<TSurchargeRecord> = ({
                 loading={surchargesLoading}
                 name={fieldName}
                 options={surchargeOptions}
-                size="large"
+                size={size}
                 className="custom-cascader-select"
                 popupClassName="custom-select-panel"
               />
@@ -97,7 +100,7 @@ export const SurchargeInfo: React.FC<TSurchargeRecord> = ({
               placement="top"
               control={control}
               name={[ADD_PRODUCT_FORM_KEY['surcharge'], index, SURCHARGE_KEY['price']].join('.')}
-              size="large"
+              size={size}
             />
           </Item>
         </Col>

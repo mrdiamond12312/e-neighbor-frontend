@@ -1,5 +1,6 @@
 import { useIntl } from '@umijs/max';
 import { Form } from 'antd';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
 import Button from '@/components/Button';
@@ -15,6 +16,7 @@ const { Item } = Form;
 const LoginForm: React.FC<TLoginForm> = ({ control, errors, onSubmit, isLoading }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
+  const size: SizeType = 'large';
 
   return (
     <Form layout="vertical" rootClassName="custom-ant-form" form={form}>
@@ -30,7 +32,7 @@ const LoginForm: React.FC<TLoginForm> = ({ control, errors, onSubmit, isLoading 
           control={control}
           error={errors}
           name={LOGIN_FORM_KEY['userName']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -46,12 +48,12 @@ const LoginForm: React.FC<TLoginForm> = ({ control, errors, onSubmit, isLoading 
           control={control}
           error={errors}
           name={LOGIN_FORM_KEY['password']}
-          size="large"
+          size={size}
         />
       </Item>
       <Button
         onClick={onSubmit}
-        btnSize="large"
+        btnSize={size}
         type="primary"
         className="w-full"
         loading={isLoading}

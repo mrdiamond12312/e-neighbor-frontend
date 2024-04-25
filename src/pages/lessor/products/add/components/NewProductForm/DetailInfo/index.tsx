@@ -1,5 +1,6 @@
 import { FormattedHTMLMessage, useIntl } from '@umijs/max';
 import { Col, Divider, Empty, Form, Row, Spin } from 'antd/lib';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
 import InputText from '@/components/Input';
@@ -22,6 +23,7 @@ export const DetailInfo: React.FC<TAddProductDetailInfo> = ({
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
   const { options, loadCascadeMenuData } = useCategoryCascader();
+  const size: SizeType = 'large';
 
   return (
     <Form
@@ -58,7 +60,7 @@ export const DetailInfo: React.FC<TAddProductDetailInfo> = ({
           options={options}
           loadData={loadCascadeMenuData}
           name={ADD_PRODUCT_FORM_KEY['category']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -104,7 +106,7 @@ export const DetailInfo: React.FC<TAddProductDetailInfo> = ({
                       placement="top"
                       control={control}
                       name={[ADD_PRODUCT_FORM_KEY['characteristics'], key].join('.')}
-                      size="large"
+                      size={size}
                     />
                   </Item>
                 </Col>

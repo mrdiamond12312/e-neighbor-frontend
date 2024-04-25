@@ -1,5 +1,6 @@
 import { FormattedHTMLMessage, useIntl } from '@umijs/max';
 import { Divider, Form } from 'antd/lib';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 
 import InputText from '@/components/Input';
 import Checkbox from '@/components/Input/Checkbox';
@@ -13,6 +14,8 @@ export const RentalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
   const { policyOptions, mortgageOptions, reqDocumentsOptions } = useRentalFieldForm();
+  const size: SizeType = 'large';
+
   return (
     <Form
       layout="horizontal"
@@ -49,7 +52,7 @@ export const RentalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
           placement="top"
           control={control}
           name={ADD_PRODUCT_FORM_KEY['value']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -62,7 +65,7 @@ export const RentalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
         <Checkbox
           control={control}
           name={ADD_PRODUCT_FORM_KEY['policies']}
-          size="large"
+          size={size}
           direction="vertical"
           options={policyOptions}
           className="custom-checkbox"
@@ -78,7 +81,7 @@ export const RentalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
         <Radio
           control={control}
           name={ADD_PRODUCT_FORM_KEY['mortgage']}
-          size="large"
+          size={size}
           direction="vertical"
           options={mortgageOptions}
           className="custom-radio"
@@ -94,7 +97,7 @@ export const RentalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
         <Radio
           control={control}
           name={ADD_PRODUCT_FORM_KEY['requiredDocuments']}
-          size="large"
+          size={size}
           direction="vertical"
           options={reqDocumentsOptions}
           className="custom-radio"
