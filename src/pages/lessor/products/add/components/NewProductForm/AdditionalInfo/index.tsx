@@ -1,5 +1,6 @@
 import { FormattedHTMLMessage } from '@umijs/max';
 import { Divider, Form } from 'antd/lib';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
 import FadeIn from '@/components/AnimationKit/FadeIn';
@@ -30,6 +31,9 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
     surchargesLoading,
     surchargesOptions,
   } = useAdditionalInfo();
+
+  const size: SizeType = 'large';
+
   return (
     <Form
       layout="horizontal"
@@ -93,7 +97,7 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
         <Radio
           control={control}
           name={ADD_PRODUCT_FORM_KEY['haveInsurance']}
-          size="large"
+          size={size}
           direction="horizontal"
           options={insuranceOptions}
           className="custom-radio"
@@ -122,7 +126,7 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
             placement="top"
             control={control}
             name={[ADD_PRODUCT_FORM_KEY['insurance'], INSURANCE_KEY['holderName']].join('.')}
-            size="large"
+            size={size}
             disabled={disabledInsuranceDetail}
           />
         </Item>
@@ -161,7 +165,7 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
             control={control}
             name={[ADD_PRODUCT_FORM_KEY['insurance'], INSURANCE_KEY['description']].join('.')}
             disabled={disabledInsuranceDetail}
-            size="large"
+            size={size}
           />
         </Item>
         <Item
@@ -178,7 +182,7 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
               id: 'add.product.form.insuranceDetail.issueDate.label',
               defaultMessage: 'Issued Date',
             })}
-            size="large"
+            size={size}
             control={control}
             name={[ADD_PRODUCT_FORM_KEY['insurance'], INSURANCE_KEY['issueDate']].join('.')}
             disabled={disabledInsuranceDetail}
@@ -198,7 +202,7 @@ export const AdditionalInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) 
               id: 'add.product.form.insuranceDetail.expiryDate.label',
               defaultMessage: 'Expiry Date',
             })}
-            size="large"
+            size={size}
             control={control}
             name={[ADD_PRODUCT_FORM_KEY['insurance'], INSURANCE_KEY['expiryDate']].join('.')}
             disabled={disabledInsuranceDetail}

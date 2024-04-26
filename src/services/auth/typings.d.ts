@@ -14,6 +14,7 @@ declare namespace API {
     createdAt: string;
     updatedAt: string;
     userName: string;
+    image?: string;
     email: string;
     avatar?: string;
     address?: string;
@@ -23,6 +24,8 @@ declare namespace API {
     fullName: string;
     role: AuthRole;
     citizenId?: string;
+    citizenCardFront?: string;
+    citizenCardBack?: string;
     lessorId?: number;
   };
 }

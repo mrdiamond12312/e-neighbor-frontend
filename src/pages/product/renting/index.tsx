@@ -1,5 +1,6 @@
 import { FormattedHTMLMessage, useIntl } from '@umijs/max';
 import { Divider, Form, Image, Modal, Row } from 'antd/lib';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
 import Button from '@/components/Button';
@@ -24,6 +25,7 @@ const RentProduct: React.FC = () => {
     getValues,
     isLoading,
   } = useRentForm();
+  const size: SizeType = 'large';
 
   return (
     <Modal
@@ -39,7 +41,7 @@ const RentProduct: React.FC = () => {
           </Divider>
           <Button
             type="primary"
-            size="large"
+            size={size}
             loading={isLoading}
             className="w-full h-12 flex flex-row items-center justify-center bg-indigo-500"
             icon={
@@ -92,7 +94,7 @@ const RentProduct: React.FC = () => {
             placement="top"
             control={control}
             name={RENTAL_INFO_KEYS.deliveryAddress}
-            size="large"
+            size={size}
           />
         </Item>
         <Item

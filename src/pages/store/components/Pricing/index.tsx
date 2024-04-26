@@ -1,5 +1,6 @@
 import { useIntl } from '@umijs/max';
 import { Card, Form } from 'antd/lib';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
 import FadeIn from '@/components/AnimationKit/FadeIn';
@@ -11,6 +12,8 @@ const { Item } = Form;
 const Pricing: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
+  const size: SizeType = 'large';
+
   return (
     <FadeIn direction="left" className="w-full" index={4} keyId="railing-pricing">
       <Card
@@ -32,7 +35,7 @@ const Pricing: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
               placement="top"
               control={control}
               name={STORE_FILTER['min']}
-              size="large"
+              size={size}
             />
           </Item>
           <Item
@@ -46,7 +49,7 @@ const Pricing: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
               placement="top"
               control={control}
               name={STORE_FILTER['max']}
-              size="large"
+              size={size}
             />
           </Item>
         </Form>

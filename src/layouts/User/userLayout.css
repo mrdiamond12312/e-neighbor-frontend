@@ -1,0 +1,9 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.avatar-custom-mask {
+  .ant-image-mask {
+    @apply rounded-full;
+  }
+}

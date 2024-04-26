@@ -24,11 +24,6 @@ export default [
         wrappers: ['@/layouts/User'],
         routes: [
           {
-            name: 'profile-overview',
-            path: 'overview',
-            component: '@/pages/user/profile',
-          },
-          {
             name: 'edit-profile',
             path: 'edit',
             component: '@/pages/user/edit-profile',

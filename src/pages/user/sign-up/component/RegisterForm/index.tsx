@@ -1,5 +1,6 @@
 import { useIntl } from '@umijs/max';
 import { Form } from 'antd';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
 import Button from '@/components/Button';
@@ -15,6 +16,7 @@ export type TRegisterForm = Partial<TPropsFormInput> & {
 const RegisterForm: React.FC<TRegisterForm> = ({ control, errors, onSubmit, isLoading }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
+  const size: SizeType = 'large';
 
   return (
     <Form layout="vertical" rootClassName="custom-ant-form" form={form}>
@@ -30,7 +32,7 @@ const RegisterForm: React.FC<TRegisterForm> = ({ control, errors, onSubmit, isLo
           control={control}
           error={errors}
           name={REGISTER_FORM_KEY['userName']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -46,7 +48,7 @@ const RegisterForm: React.FC<TRegisterForm> = ({ control, errors, onSubmit, isLo
           control={control}
           error={errors}
           name={REGISTER_FORM_KEY['fullName']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -62,7 +64,7 @@ const RegisterForm: React.FC<TRegisterForm> = ({ control, errors, onSubmit, isLo
           control={control}
           error={errors}
           name={REGISTER_FORM_KEY['password']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -78,7 +80,7 @@ const RegisterForm: React.FC<TRegisterForm> = ({ control, errors, onSubmit, isLo
           control={control}
           error={errors}
           name={REGISTER_FORM_KEY['passwordConfirm']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -94,14 +96,14 @@ const RegisterForm: React.FC<TRegisterForm> = ({ control, errors, onSubmit, isLo
           control={control}
           error={errors}
           name={REGISTER_FORM_KEY['email']}
-          size="large"
+          size={size}
         />
       </Item>
       <Button
         onClick={onSubmit}
         htmlType="submit"
         onSubmit={onSubmit}
-        btnSize="large"
+        btnSize={size}
         type="primary"
         className="w-full"
         loading={isLoading}

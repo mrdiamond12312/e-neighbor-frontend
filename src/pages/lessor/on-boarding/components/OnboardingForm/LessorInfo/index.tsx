@@ -1,5 +1,6 @@
 import { FormattedHTMLMessage, useIntl } from '@umijs/max';
 import { Divider, Form } from 'antd/lib';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
 import InputText from '@/components/Input';
@@ -11,6 +12,7 @@ const { Item } = Form;
 export const LessorInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
+  const size: SizeType = 'large';
 
   return (
     <Form
@@ -47,7 +49,7 @@ export const LessorInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors
           control={control}
           error={errors}
           name={ONBOARDING_FORM_KEY['shopName']}
-          size="large"
+          size={size}
         />
       </Item>
 
@@ -64,7 +66,7 @@ export const LessorInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors
           control={control}
           error={errors}
           name={ONBOARDING_FORM_KEY['wareHouseAddress']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -81,7 +83,7 @@ export const LessorInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors
           error={errors}
           autoSize={{ minRows: 2, maxRows: 6 }}
           name={ONBOARDING_FORM_KEY['description']}
-          size="large"
+          size={size}
         />
       </Item>
     </Form>

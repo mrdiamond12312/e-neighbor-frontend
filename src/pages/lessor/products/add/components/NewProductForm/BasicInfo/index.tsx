@@ -1,5 +1,6 @@
 import { FormattedHTMLMessage } from '@umijs/max';
 import { Divider, Form } from 'antd/lib';
+import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
 import InputText from '@/components/Input';
@@ -14,6 +15,8 @@ const { Item } = Form;
 export const BasicInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
   const [form] = Form.useForm();
   const { formatMessage, rentalTimeUnitOptions } = useRentalTimeUnit();
+  const size: SizeType = 'large';
+
   return (
     <Form
       layout="horizontal"
@@ -51,7 +54,7 @@ export const BasicInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
           placement="top"
           control={control}
           name={ADD_PRODUCT_FORM_KEY['name']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -83,7 +86,7 @@ export const BasicInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
           control={control}
           autoSize={{ minRows: 2, maxRows: 6 }}
           name={ADD_PRODUCT_FORM_KEY['description']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -101,7 +104,7 @@ export const BasicInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
           placement="top"
           control={control}
           name={ADD_PRODUCT_FORM_KEY['price']}
-          size="large"
+          size={size}
         />
       </Item>
       <Item
@@ -115,7 +118,7 @@ export const BasicInfo: React.FC<Partial<TPropsFormInput>> = ({ control }) => {
           control={control}
           name={ADD_PRODUCT_FORM_KEY['timeUnit']}
           options={rentalTimeUnitOptions}
-          size="large"
+          size={size}
           rootClassName="custom-cascader-select"
         />
       </Item>
