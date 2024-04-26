@@ -12,7 +12,7 @@
  */
 export default [
   {
-    path: '/user/*',
+    path: 'user',
     routes: [
       {
         name: 'login',
