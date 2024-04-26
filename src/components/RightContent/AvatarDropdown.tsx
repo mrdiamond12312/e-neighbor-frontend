@@ -51,6 +51,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
           history.replace({
             pathname: PATH_USER_PROFILE_EDIT,
           });
+          return;
         }
         case 'logout': {
           flushSync(() => {
