@@ -74,8 +74,8 @@ declare namespace API {
     status?: string;
     offset?: number;
     rating?: number;
-    priceUpperBound?: number;
-    priceLowerBound?: number;
+    minPrice?: number;
+    maxPrice?: number;
     locations?: string[];
   }
 

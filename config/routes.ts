@@ -28,6 +28,11 @@ export default [
             path: 'edit',
             component: '@/pages/user/edit-profile',
           },
+          {
+            name: 'orders',
+            path: 'orders',
+            component: '@/pages/user/order',
+          },
         ],
       },
       {

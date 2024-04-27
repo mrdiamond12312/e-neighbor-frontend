@@ -4,8 +4,8 @@ import { STORE_FILTER } from '@/const/store.filter';
 import { usePricingResolver } from '@/hooks/usePriceResolver';
 
 export type TStoreFields = {
-  [STORE_FILTER.min]?: number | null;
-  [STORE_FILTER.max]?: number | null;
+  [STORE_FILTER.min]?: number | string | null;
+  [STORE_FILTER.max]?: number | string | null;
 };
 
 export const usePriceFilter = () => {

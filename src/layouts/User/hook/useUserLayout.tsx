@@ -33,7 +33,6 @@ export const useUserLayout = () => {
         id: 'user.profile.menu.orders',
         defaultMessage: 'Orders',
       }),
-      disabled: true,
     },
     {
       key: PATH_USER_PROFILE_WALLET,

@@ -112,10 +112,14 @@ export const usePagination = (initialData?: TUsePaginationParams) => {
     take,
     lessorId: initialData?.lessorId ?? undefined,
     status,
-    priceLowerBound: isNaN(Number(watch(STORE_FILTER.min)))
+    minPrice: isNaN(Number(watch(STORE_FILTER.min)))
+      ? undefined
+      : watch(STORE_FILTER.min) === ''
       ? undefined
       : Number(watch(STORE_FILTER.min)),
-    priceUpperBound: isNaN(Number(watch(STORE_FILTER.max)))
+    maxPrice: isNaN(Number(watch(STORE_FILTER.max)))
+      ? undefined
+      : watch(STORE_FILTER.max) === ''
       ? undefined
       : Number(watch(STORE_FILTER.max)),
     locations,
