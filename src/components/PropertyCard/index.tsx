@@ -1,4 +1,3 @@
-import { FormattedHTMLMessage } from '@umijs/max';
 import { Rate } from 'antd/lib';
 import React from 'react';
 
@@ -56,9 +55,7 @@ export const PropertyCard: React.FC<ICardProps> = ({
           </section>
 
           <section className="flex flex-col gap-1 card-price">
-            <span className="text-teal-5 truncate text-body-2-medium card-tag">
-              <FormattedHTMLMessage id={tag} defaultMessage={tag} />
-            </span>
+            <span className="text-teal-5 truncate text-body-2-medium card-tag">{tag}</span>
 
             <Rate value={rating} disabled className="hidden card-rating" />
             <span className="text-teal-7 text-heading-5 card-price">
