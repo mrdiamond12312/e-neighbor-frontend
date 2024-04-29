@@ -20,5 +20,9 @@ export const PATH_PRODUCTS_RENT = PATH_PRODUCTS_DETAILS + '/rent';
 export const PATH_USER = '/user/profile';
 export const PATH_USER_PROFILE_EDIT = '/user/profile/edit';
 export const PATH_USER_PROFILE_ORDERS = '/user/profile/orders';
+export const PATH_USER_PROFILE_ORDER_DETAILS = '/user/profile/orders/:orderId';
+export const PATH_USER_PROFILE_ORDER_CANCELING = '/user/profile/orders/:orderId/cancel';
+export const PATH_USER_PROFILE_ORDER_FEEDBACK = '/user/profile/orders/:orderId/feedback';
+
 export const PATH_USER_PROFILE_WALLET = '/user/profile/wallet';
 export const PATH_USER_PROFILE_WISHLIST = '/user/profile/wishlist';

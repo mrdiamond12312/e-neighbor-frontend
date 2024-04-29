@@ -32,6 +32,13 @@ export default [
             name: 'orders',
             path: 'orders',
             component: '@/pages/user/order',
+            routes: [
+              {
+                name: 'order-detail',
+                path: ':orderId',
+                component: '@/pages/user/order-details',
+              },
+            ],
           },
         ],
       },

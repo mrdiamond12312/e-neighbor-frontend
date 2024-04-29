@@ -25,9 +25,10 @@ const Button: React.FC<IButtonProps> = ({
       'btn-primary': type === 'primary',
       'btn-dashed': type === 'dashed',
       'btn-text': type === 'text',
+    },
+    {
       'btn-danger': isDanger,
     },
-
     className,
   );
   return (

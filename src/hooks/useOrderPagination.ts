@@ -1,14 +1,15 @@
 import { useIntl } from '@umijs/max';
 import { SelectProps } from 'antd/lib';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { STORE_FILTER } from '@/const/store.filter';
 import { usePriceFilter } from '@/hooks/usePriceFilter';
 
-export enum PRODUCT_PAGE_SORTFIELDS {
-  accessCount = 'accessCount',
-  price = 'price',
+export enum ORDERS_PAGE_SORTFIELDS {
+  rentDay = 'rentDay',
+  returnDay = 'returnDay',
   createdAt = 'createdAt',
+  orderValue = 'orderValue',
 }
 
 export enum ORDER {
@@ -38,15 +39,15 @@ export const useOrderPagination = (initialData?: TUseOrderPaginationParams) => {
   const { formatMessage } = useIntl();
 
   /* Sorter */
-  const [sortField, setSortField] = useState<PRODUCT_PAGE_SORTFIELDS>(
-    PRODUCT_PAGE_SORTFIELDS.createdAt,
+  const [sortField, setSortField] = useState<ORDERS_PAGE_SORTFIELDS>(
+    ORDERS_PAGE_SORTFIELDS.createdAt,
   );
 
   const sortOptions: SelectProps['options'] = (
-    Object.keys(PRODUCT_PAGE_SORTFIELDS) as Array<keyof typeof PRODUCT_PAGE_SORTFIELDS>
+    Object.keys(ORDERS_PAGE_SORTFIELDS) as Array<keyof typeof ORDERS_PAGE_SORTFIELDS>
   ).map((key) => ({
     label: formatMessage({ id: ['common.sort.options', key].join('.'), defaultMessage: key }),
-    value: PRODUCT_PAGE_SORTFIELDS[key],
+    value: ORDERS_PAGE_SORTFIELDS[key],
   }));
 
   const [order, setOrder] = useState<ORDER | undefined>(ORDER.des);
@@ -57,7 +58,7 @@ export const useOrderPagination = (initialData?: TUseOrderPaginationParams) => {
     value: ORDER[key],
   }));
 
-  const sortFieldHandler = (value: PRODUCT_PAGE_SORTFIELDS) => setSortField(value);
+  const sortFieldHandler = (value: ORDERS_PAGE_SORTFIELDS) => setSortField(value);
   const orderHandler = (value?: ORDER) => setOrder(value);
 
   /* Pagination */
@@ -86,7 +87,7 @@ export const useOrderPagination = (initialData?: TUseOrderPaginationParams) => {
   const { control, watch } = usePriceFilter();
 
   /* Query Params */
-  const paginationParams: any = {
+  const paginationParams: API.IOrdersPaginationParams = {
     sortField,
     page,
     order,
@@ -111,6 +112,10 @@ export const useOrderPagination = (initialData?: TUseOrderPaginationParams) => {
       : Number(watch(STORE_FILTER.max)),
     offset: 0,
   };
+
+  useEffect(() => {
+    setPage(1);
+  }, [paginationParams]);
 
   return {
     sortField,

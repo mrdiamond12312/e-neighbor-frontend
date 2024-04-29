@@ -1,3 +1,4 @@
+import { FormattedHTMLMessage } from '@umijs/max';
 import { Rate } from 'antd/lib';
 import React from 'react';
 
@@ -47,7 +48,7 @@ export const PropertyCard: React.FC<ICardProps> = ({
               <h2 className="truncate text-heading-5 text-teal-7 m-0">{title}</h2>
               <Button
                 onClick={ctaBtnFn}
-                className="w-full hidden bg-neutral-1 mix-blend-overlay text-teal-4 text-body-1-semibold border-none opacity-0 cta-btn"
+                className="w-full hidden bg-neutral-1 mix-blend-overlay text-teal-4 text-body-1-semibold border-none opacity-0 cta-btn z-10"
               >
                 {ctaBtnFormattedMessage}
               </Button>
@@ -55,9 +56,11 @@ export const PropertyCard: React.FC<ICardProps> = ({
           </section>
 
           <section className="flex flex-col gap-1 card-price">
-            <span className="text-teal-5 truncate text-body-2-medium card-tag">{tag}</span>
+            <span className="text-teal-5 truncate text-body-2-medium card-tag">
+              <FormattedHTMLMessage id={tag} defaultMessage={tag} />
+            </span>
 
-            <Rate value={rating} className="hidden card-rating" />
+            <Rate value={rating} disabled className="hidden card-rating" />
             <span className="text-teal-7 text-heading-5 card-price">
               {pricing} {pricingCurrency}
             </span>

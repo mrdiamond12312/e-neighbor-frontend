@@ -59,9 +59,6 @@ export const usePagination = (initialData?: TUsePaginationParams) => {
   const [page, setPage] = useState<number>(initialData?.initialPage ?? 1);
   const [take, setTake] = useState<number>(initialData?.initialTake ?? 12);
 
-  useEffect(() => {
-    setPage(1);
-  }, [keyword]);
   const takeHandler = (take: number) => setTake(take);
   const pageHandler = (page: number) => setPage(page);
   const [sortField, setSortField] = useState<PRODUCT_PAGE_SORTFIELDS>(
@@ -124,6 +121,10 @@ export const usePagination = (initialData?: TUsePaginationParams) => {
       : Number(watch(STORE_FILTER.max)),
     locations,
   };
+
+  useEffect(() => {
+    setPage(1);
+  }, [paginationParams]);
 
   return {
     control,

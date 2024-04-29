@@ -1,0 +1,30 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.ripped-paper-modal {
+  .ant-modal-content {
+    @apply rounded-none;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      height: 20px;
+      width: 100%;
+      left: 0;
+      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/23618/rip.svg) bottom;
+      background-size: 200%;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 0;
+      height: 20px;
+      rotate: 180deg;
+      width: 100%;
+      background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/23618/rip.svg) bottom;
+      background-size: 200%;
+    }
+  }
+}

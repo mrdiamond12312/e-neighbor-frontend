@@ -26,6 +26,7 @@ const LessorLayout: React.FC = () => {
           <Tabs
             className="custom-tabs w-full min-w-fit inline-block"
             defaultActiveKey={defaultActiveTabKey}
+            activeKey={defaultActiveTabKey}
             items={tabsItem}
             onChange={handleTabChange}
           />
