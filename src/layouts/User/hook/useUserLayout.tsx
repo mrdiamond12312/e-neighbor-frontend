@@ -33,7 +33,6 @@ export const useUserLayout = () => {
         id: 'user.profile.menu.orders',
         defaultMessage: 'Orders',
       }),
-      disabled: true,
     },
     {
       key: PATH_USER_PROFILE_WALLET,
@@ -57,6 +56,14 @@ export const useUserLayout = () => {
     history.push(activeKey);
   };
 
+  const defaultActiveTabKey = () => {
+    let item;
+    for (item of tabsItem) {
+      if (pathname.includes(item.key)) return item.key;
+    }
+    return pathname;
+  };
+
   return {
     loading,
     initialState,
@@ -64,6 +71,6 @@ export const useUserLayout = () => {
     tabsItem,
     handleTabChange,
     formatMessage,
-    defaultActiveTabKey: pathname,
+    defaultActiveTabKey: defaultActiveTabKey(),
   } as const;
 };

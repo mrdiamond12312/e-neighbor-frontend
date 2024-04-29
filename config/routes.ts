@@ -28,6 +28,30 @@ export default [
             path: 'edit',
             component: '@/pages/user/edit-profile',
           },
+          {
+            name: 'orders',
+            path: 'orders',
+            component: '@/pages/user/order',
+            routes: [
+              {
+                name: 'order-detail',
+                path: ':orderId',
+                component: '@/pages/user/order-details',
+                routes: [
+                  {
+                    name: 'cancel-order',
+                    path: 'cancel',
+                    component: '@/pages/user/order-details/cancel',
+                  },
+                  {
+                    name: 'feedback',
+                    path: 'feedback',
+                    component: '@/pages/user/order-details/feedback',
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
       {

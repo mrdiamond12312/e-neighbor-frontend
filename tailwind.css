@@ -201,20 +201,20 @@
     }
   }
 
+  .btn-primary {
+    @apply bg-teal-4 text-neutral-1;
+    &:not(:disabled):not(.ant-btn-disabled):hover {
+      @apply bg-teal-6 text-neutral-1;
+      box-shadow: 2px 3px theme('colors.teal-1');
+    }
+  }
+
   .btn-danger {
     @apply border-error-5 text-error-5;
     transition: all 1s ease-out;
     &:not(:disabled):not(.ant-btn-disabled):hover {
       @apply border-error-7 text-error-7;
       box-shadow: 2px 3px theme('colors.error-7');
-    }
-  }
-
-  .btn-primary {
-    @apply bg-teal-4 text-neutral-1;
-    &:not(:disabled):not(.ant-btn-disabled):hover {
-      @apply bg-teal-6 text-neutral-1;
-      box-shadow: 2px 3px theme('colors.teal-1');
     }
   }
 
@@ -1182,6 +1182,7 @@
 
         /* Pagination Level */
         .ant-pagination {
+          @apply bg-teal-100 m-0 p-4;
           .ant-pagination-jump-prev {
             .ant-pagination-item-container {
               .ant-pagination-item-link-icon {

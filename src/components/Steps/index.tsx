@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import React from 'react';
 
 export type TStepProps = {
-  currentStep: number;
+  currentStep?: number;
   stepItems: StepProps[];
 } & StepsProps;
 

@@ -53,7 +53,10 @@ const ProductsPage: React.FC<IProductsPageProps> = ({ isLoading, products }) => 
                       defaultMessage: '%Nan%',
                     })}
                     rating={product.rating}
-                    tag={product.category.name}
+                    tag={formatMessage({
+                      id: product.category.name,
+                      defaultMessage: product.category.name,
+                    })}
                     key={product.id}
                     title={product.name}
                   />

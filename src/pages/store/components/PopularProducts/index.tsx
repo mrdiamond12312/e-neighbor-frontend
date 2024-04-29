@@ -54,7 +54,10 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
                   pricing={item.price}
                   pricingCurrency={formatMessage({ id: item.timeUnit, defaultMessage: '%Nan%' })}
                   rating={item.rating}
-                  tag={item.category.name}
+                  tag={formatMessage({
+                    id: item.category.name,
+                    defaultMessage: item.category.name,
+                  })}
                   key={item.id}
                   title={item.name}
                 />
@@ -91,7 +94,10 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
                   pricing={item.price}
                   pricingCurrency={formatMessage({ id: item.timeUnit, defaultMessage: '%Nan%' })}
                   rating={item.rating}
-                  tag={item.category.name}
+                  tag={formatMessage({
+                    id: item.category.name,
+                    defaultMessage: item.category.name,
+                  })}
                   key={item.id}
                   title={item.name}
                 />

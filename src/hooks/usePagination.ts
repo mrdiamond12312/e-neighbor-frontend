@@ -59,9 +59,6 @@ export const usePagination = (initialData?: TUsePaginationParams) => {
   const [page, setPage] = useState<number>(initialData?.initialPage ?? 1);
   const [take, setTake] = useState<number>(initialData?.initialTake ?? 12);
 
-  useEffect(() => {
-    setPage(1);
-  }, [keyword]);
   const takeHandler = (take: number) => setTake(take);
   const pageHandler = (page: number) => setPage(page);
   const [sortField, setSortField] = useState<PRODUCT_PAGE_SORTFIELDS>(
@@ -112,14 +109,22 @@ export const usePagination = (initialData?: TUsePaginationParams) => {
     take,
     lessorId: initialData?.lessorId ?? undefined,
     status,
-    priceLowerBound: isNaN(Number(watch(STORE_FILTER.min)))
+    minPrice: isNaN(Number(watch(STORE_FILTER.min)))
+      ? undefined
+      : watch(STORE_FILTER.min) === ''
       ? undefined
       : Number(watch(STORE_FILTER.min)),
-    priceUpperBound: isNaN(Number(watch(STORE_FILTER.max)))
+    maxPrice: isNaN(Number(watch(STORE_FILTER.max)))
+      ? undefined
+      : watch(STORE_FILTER.max) === ''
       ? undefined
       : Number(watch(STORE_FILTER.max)),
     locations,
   };
+
+  useEffect(() => {
+    setPage(1);
+  }, [paginationParams]);
 
   return {
     control,

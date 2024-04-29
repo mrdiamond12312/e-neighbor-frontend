@@ -3,6 +3,7 @@ import { useIntl } from '@umijs/max';
 import * as yup from 'yup';
 
 import { STORE_FILTER } from '@/const/store.filter';
+import { TStoreFields } from '@/hooks/usePriceFilter';
 
 export const usePricingResolver = () => {
   const { formatMessage } = useIntl();
@@ -45,6 +46,6 @@ export const usePricingResolver = () => {
   });
 
   return {
-    FormSchema: yupResolver(LoginValidationSchema),
+    FormSchema: yupResolver<TStoreFields>(LoginValidationSchema),
   };
 };
