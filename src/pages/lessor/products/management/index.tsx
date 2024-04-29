@@ -19,6 +19,7 @@ const ProductManagement: React.FC = () => {
     tabsItem,
     defaultActiveTab,
     formatMessage,
+    page,
   } = useProductsTable();
 
   return (
@@ -56,6 +57,7 @@ const ProductManagement: React.FC = () => {
               showSizeChanger: true,
               showQuickJumper: true,
               pageSizeOptions: [5, 10, 20],
+              current: page,
             }}
           />
         </Flex>

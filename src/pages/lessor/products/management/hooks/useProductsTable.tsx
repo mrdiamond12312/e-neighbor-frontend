@@ -119,6 +119,7 @@ export const useProductsTable = () => {
     keyword,
     searchBoxHandler,
     take,
+    page,
     isConfirmedByAdmin,
     setIsConfirmedByAdmin,
   } = usePagination({
@@ -190,6 +191,7 @@ export const useProductsTable = () => {
   return {
     columns,
     take,
+    page,
     productPage,
     productPageLoading,
     handleTableChange,
