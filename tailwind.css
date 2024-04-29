@@ -1182,6 +1182,7 @@
 
         /* Pagination Level */
         .ant-pagination {
+          @apply bg-teal-100 m-0 p-4;
           .ant-pagination-jump-prev {
             .ant-pagination-item-container {
               .ant-pagination-item-link-icon {
