@@ -2,19 +2,15 @@ import { useIntl, useModel } from '@umijs/max';
 import { ColumnsType, TableProps } from 'antd/lib/table';
 import { SorterResult } from 'antd/lib/table/interface';
 
-import { ORDER, ORDERS_PAGE_SORTFIELDS, useOrderPagination } from '@/hooks/useOrderPagination';
+import {
+  ORDER,
+  ORDER_STATUS,
+  ORDERS_PAGE_SORTFIELDS,
+  useOrderPagination,
+} from '@/hooks/useOrderPagination';
 import { OrderActionsMenu } from '@/pages/user/order/components/OrderActionsMenu';
 import { useOrdersPage } from '@/services/orders/services';
 import { getDateFormatNormal } from '@/utils/time-format';
-
-export enum ORDER_STATUS {
-  PENDING = 'PENDING',
-  APPROVED = 'APPROVED',
-  IN_PROGRESS = 'IN PROGRESS',
-  COMPLETED = 'COMPLETED',
-  CANCELED = 'CANCELED',
-  REJECTED = 'REJECTED',
-}
 
 export const useOrderTable = () => {
   const { formatMessage } = useIntl();
@@ -27,6 +23,7 @@ export const useOrderTable = () => {
     takeHandler,
     orderHandler,
     sortFieldHandler,
+    orderStatusHandler,
     take,
     page,
   } = useOrderPagination({
@@ -41,7 +38,7 @@ export const useOrderTable = () => {
   ) => {
     pageHandler(pagination.current ?? 1);
     takeHandler(pagination.pageSize ?? 10);
-    console.log(filters)
+    orderStatusHandler((filters.orderStatus?.[0] as ORDER_STATUS) ?? undefined);
     if (!Array.isArray(sorter)) {
       orderHandler(
         sorter.order ? (sorter.order === 'ascend' ? ORDER['asc'] : ORDER['des']) : undefined,
@@ -127,11 +124,17 @@ export const useOrderTable = () => {
         defaultMessage: 'STATUS',
       }),
       dataIndex: 'orderStatus',
+      render: (value) =>
+        formatMessage({
+          id: ['order.management.table.col.status.filter.field', value].join('.'),
+          defaultMessage: value,
+        }),
       filters: Object.keys(ORDER_STATUS).map((key) => ({
         text: formatMessage({
           id: ['order.management.table.col.status.filter.field', (ORDER_STATUS as any)[key]].join(
             '.',
           ),
+          defaultMessage: (ORDER_STATUS as any)[key],
         }),
         value: (ORDER_STATUS as any)[key],
       })),

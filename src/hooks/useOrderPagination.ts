@@ -18,12 +18,12 @@ export enum ORDER {
 }
 
 export enum ORDER_STATUS {
-  pending = 'PENDING',
-  approved = 'APPROVED',
-  inProgress = 'IN PROGRESS',
-  completed = 'COMPLETED',
-  canceled = 'CANCELED',
-  rejected = 'REJECTED',
+  PENDING = 'PENDING',
+  APPROVED = 'APPROVED',
+  IN_PROGRESS = 'IN PROGRESS',
+  COMPLETED = 'COMPLETED',
+  CANCELED = 'CANCELED',
+  REJECTED = 'REJECTED',
 }
 
 export type TUseOrderPaginationParams = {

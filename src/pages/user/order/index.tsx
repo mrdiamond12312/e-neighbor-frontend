@@ -1,5 +1,5 @@
 import { getLocale, Outlet } from '@umijs/max';
-import { ConfigProvider, Flex, Table } from 'antd/lib';
+import { ConfigProvider, Divider, Flex, Table } from 'antd/lib';
 import enUS from 'antd/locale/en_US';
 import viVN from 'antd/locale/vi_VN';
 import React from 'react';
@@ -21,7 +21,7 @@ const UserOrders: React.FC = () => {
   return (
     <ConfigProvider locale={getLocale() === 'vi-VN' ? viVN : enUS}>
       <Flex className="flex-col gap-4 p-4 w-full">
-        <Flex className="flex-col md:flex-row gap-4 bg-neutral-1 w-full items-center p-4 border border-neutral-3">
+        <Flex className="flex-col bg-neutral-1 p-4 w-full rounded-lg border border-neutral-3">
           <SearchBar
             onPressEnter={searchBoxHandler}
             className="h-10 text-body-2-semibold"
@@ -30,8 +30,7 @@ const UserOrders: React.FC = () => {
               defaultMessage: 'Search',
             })}
           />
-        </Flex>
-        <Flex className="flex-col gap-4 bg-neutral-1 p-4 w-full rounded-lg border border-neutral-3">
+          <Divider className="my-4" />
           <Table
             columns={columns}
             rowKey={(record) => record.id}
