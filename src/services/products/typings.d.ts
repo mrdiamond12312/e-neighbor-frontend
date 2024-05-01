@@ -76,7 +76,7 @@ declare namespace API {
     rating?: number;
     minPrice?: number;
     maxPrice?: number;
-    locations?: string[];
+    location?: string[];
   }
 
   interface ICategory {

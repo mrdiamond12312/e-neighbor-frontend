@@ -25,7 +25,7 @@ const ProductManagement: React.FC = () => {
   return (
     <ConfigProvider locale={getLocale() === 'vi-VN' ? viVN : enUS}>
       <PageContainer
-        className="max-h-[calc(100vh-56px)] xl:max-h-[calc(100vh-112px)] max-w-7xl w-full overflow-auto p-4 flex-col gap-4 snap-mandatory snap-y snap-page-container"
+        className="max-h-[calc(100vh-56px)] xl:max-h-[calc(100vh-112px)] max-w-screen-2xl w-full overflow-auto p-4 flex-col gap-4 snap-mandatory snap-y snap-page-container"
         header={{ title: '1' }}
       >
         <Flex className="flex-col gap-4 bg-neutral-1 p-4 w-full">

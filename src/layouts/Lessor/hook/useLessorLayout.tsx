@@ -1,5 +1,5 @@
-import { PieChartOutlined, ShoppingOutlined } from '@ant-design/icons';
-import { useModel, useLocation, NavLink, FormattedHTMLMessage, Link } from '@umijs/max';
+import { ChartLineUp, Invoice, Storefront } from '@phosphor-icons/react';
+import { FormattedHTMLMessage, Link, NavLink, useLocation, useModel } from '@umijs/max';
 import { useState } from 'react';
 
 import FadeIn from '@/components/AnimationKit/FadeIn';
@@ -10,7 +10,6 @@ import {
   PATH_LESSOR_DASHBOARD,
   PATH_LESSOR_ONBOARDING,
   PATH_LESSOR_ORDERS,
-  PATH_LESSOR_ORDERS_CANCELED,
   PATH_LESSOR_PRODUCTS_MANAGE,
 } from '@/const/path';
 
@@ -20,7 +19,9 @@ export type TBreadCrumbsObj = {
   title: React.ReactNode;
 };
 
+export const ICON_SIZE = 20;
 export const LESSOR_BREADCRUMBS_FORMATID_HEADER = 'lessor.breadcrumbs';
+
 export const useLessorLayout = () => {
   const { loading, initialState } = useModel('@@initialState');
   const { pathname } = useLocation();
@@ -33,7 +34,7 @@ export const useLessorLayout = () => {
         </Link>
       ),
       key: PATH_LESSOR_DASHBOARD,
-      icon: <PieChartOutlined />,
+      icon: <ChartLineUp size={ICON_SIZE} />,
     },
     {
       label: (
@@ -43,7 +44,7 @@ export const useLessorLayout = () => {
         />
       ),
       key: 'sub-menu-property-management',
-      icon: <ShoppingOutlined />,
+      icon: <Storefront size={ICON_SIZE} />,
       children: [
         {
           label: (
@@ -71,6 +72,7 @@ export const useLessorLayout = () => {
     },
     {
       key: 'sub-menu-order-management',
+      icon: <Invoice size={ICON_SIZE} />,
       label: (
         <FormattedHTMLMessage
           id="lessor.sidebar.orders.management"
@@ -83,17 +85,6 @@ export const useLessorLayout = () => {
           label: (
             <Link to={PATH_LESSOR_ORDERS}>
               <FormattedHTMLMessage id="lessor.sidebar.orders.all" defaultMessage="All Orders" />
-            </Link>
-          ),
-        },
-        {
-          key: PATH_LESSOR_ORDERS_CANCELED,
-          label: (
-            <Link to={PATH_LESSOR_ORDERS_CANCELED}>
-              <FormattedHTMLMessage
-                id="lessor.sidebar.orders.canceled"
-                defaultMessage="Canceled Orders"
-              />
             </Link>
           ),
         },

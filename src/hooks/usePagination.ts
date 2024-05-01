@@ -119,7 +119,7 @@ export const usePagination = (initialData?: TUsePaginationParams) => {
       : watch(STORE_FILTER.max) === ''
       ? undefined
       : Number(watch(STORE_FILTER.max)),
-    locations,
+    location: locations,
   };
 
   useEffect(() => {

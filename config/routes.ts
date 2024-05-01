@@ -94,6 +94,17 @@ export default [
           },
         ],
       },
+      {
+        path: 'orders',
+        component: '@/pages/lessor/order',
+        routes: [
+          {
+            name: 'order-details',
+            path: ':orderId',
+            component: '@/pages/lessor/order-details',
+          },
+        ],
+      },
 
       {
         name: 'dashboard',
