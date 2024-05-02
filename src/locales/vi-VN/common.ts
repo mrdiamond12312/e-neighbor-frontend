@@ -17,4 +17,8 @@ export default {
   'common.sort.options.price': 'Giá thành',
   'common.search.placeholder': 'Tìm kiếm',
   'common.filter.clear': 'Xóa',
+
+  'common.location.HCM': 'TP Hồ Chí Minh',
+  'common.location.HN': 'Hà Nội',
+  'common.location.else': 'Khác',
 };

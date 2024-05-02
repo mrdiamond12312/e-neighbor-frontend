@@ -17,4 +17,8 @@ export default {
   'common.pagination.page': 'Pages',
   'common.loading': 'Loading data! Please wait',
   'common.filter.clear': 'Clear',
+
+  'common.location.HCM': 'Ho Chi Minh City',
+  'common.location.HN': 'Hanoi Capital',
+  'common.location.else': 'Other Locations',
 };

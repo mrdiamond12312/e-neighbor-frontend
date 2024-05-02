@@ -6,21 +6,34 @@ import urlcat from 'urlcat';
 
 import Button from '@/components/Button';
 import {
-  PATH_USER_PROFILE_ORDER_CANCELING,
-  PATH_USER_PROFILE_ORDER_FEEDBACK,
-  PATH_USER_PROFILE_ORDER_IMAGERECEIPT,
+  PATH_LESSOR_ORDERS_APPROVE,
+  PATH_LESSOR_ORDERS_REJECT,
+  PATH_LESSOR_ORDERS_RETURN_IMAGE,
 } from '@/const/path';
-import { ActionButtons } from '@/pages/user/order-details/components/ActionButtons';
-import { DeliveryImage } from '@/pages/user/order-details/components/DeliveryImage';
-import { DeliveryInfo } from '@/pages/user/order-details/components/DeliveryInfo';
-import { OrderSteps } from '@/pages/user/order-details/components/OrderSteps';
-import { PricingInfo } from '@/pages/user/order-details/components/PricingInfo';
-import { useOrderDetailsModal } from '@/pages/user/order-details/hooks/useOrderDetailsModal';
+import { ORDER_STATUS } from '@/hooks/useOrderPagination';
+import { DeliveryImage } from '@/pages/lessor/order-details/components/DeliveryImage';
+import { DeliveryInfo } from '@/pages/lessor/order-details/components/DeliveryInfo';
+import { LessorActionButtons } from '@/pages/lessor/order-details/components/LessorActionButtons';
+import { OrderSteps } from '@/pages/lessor/order-details/components/OrderSteps';
+import { PricingInfo } from '@/pages/lessor/order-details/components/PricingInfo';
+import { useLessorOrderDetailsModal } from '@/pages/lessor/order-details/hooks/useLessorOrderDetailsModal';
 
 import './orderDetails.css';
 
-const UserOrderDetails: React.FC = () => {
-  const { orderId, isOpen, setIsOpen, handleCancel, data, isLoading } = useOrderDetailsModal();
+const StatusInfo: { [key in ORDER_STATUS]?: React.ReactNode } = {
+  APPROVED: (
+    <p className="pt-4 italic text-body-1-semibold text-teal-1">
+      <FormattedHTMLMessage
+        id="lessor.order.detail.modal.info.approved"
+        defaultMessage="This order has been APPROVED by you! Please ask the user to upload a receipt image upon this property delivery to proceed"
+      />
+    </p>
+  ),
+};
+
+const LessorOrderDetails: React.FC = () => {
+  const { orderId, isOpen, setIsOpen, handleCancel, data, isLoading } =
+    useLessorOrderDetailsModal();
   return (
     <Fragment>
       <Modal
@@ -39,27 +52,27 @@ const UserOrderDetails: React.FC = () => {
         onCancel={() => setIsOpen(false)}
         footer={
           <Flex className="flex-row gap-2 border-t pt-3 border-teal-7 justify-end flex-wrap">
-            <Link to={urlcat(PATH_USER_PROFILE_ORDER_FEEDBACK, { orderId })}>
-              <Button type="primary" disabled={data?.orderStatus !== 'COMPLETED'}>
+            <Link to={urlcat(PATH_LESSOR_ORDERS_APPROVE, { orderId })}>
+              <Button type="primary" disabled={data?.orderStatus !== 'PENDING'}>
                 <FormattedHTMLMessage
-                  id="order.detail.modal.navigate.feedback"
-                  defaultMessage="Add Feedback"
+                  id="lessor.order.detail.modal.navigate.approve"
+                  defaultMessage="Approve this Order"
                 />
               </Button>
             </Link>
-            <Link to={urlcat(PATH_USER_PROFILE_ORDER_IMAGERECEIPT, { orderId })}>
-              <Button disabled={data?.orderStatus !== 'APPROVED'}>
+            <Link to={urlcat(PATH_LESSOR_ORDERS_RETURN_IMAGE, { orderId })}>
+              <Button disabled={data?.orderStatus !== 'IN PROGRESS'}>
                 <FormattedHTMLMessage
-                  id="order.detail.modal.navigate.receipt"
-                  defaultMessage="Add a Receipt Image!"
+                  id="lessor.order.detail.modal.navigate.return"
+                  defaultMessage="Add a Proof of Finish Image"
                 />
               </Button>
             </Link>
-            <Link to={urlcat(PATH_USER_PROFILE_ORDER_CANCELING, { orderId })}>
+            <Link to={urlcat(PATH_LESSOR_ORDERS_REJECT, { orderId })}>
               <Button isDanger disabled={data?.orderStatus !== 'PENDING'}>
                 <FormattedHTMLMessage
-                  id="order.detail.modal.navigate.cancel"
-                  defaultMessage="Cancel this Order!"
+                  id="lessor.order.detail.modal.navigate.reject"
+                  defaultMessage="Reject this Order!"
                 />
               </Button>
             </Link>
@@ -76,10 +89,10 @@ const UserOrderDetails: React.FC = () => {
         ) : (
           <Fragment>
             <OrderSteps data={data} />
-            <ActionButtons
+            <LessorActionButtons
               productId={data?.product.id}
-              lessorId={data?.product.lessor.id}
-              shopName={data?.product.lessor.shopName}
+              userId={data?.user.id}
+              userName={data?.user.fullName}
             />
             <Flex className="w-full md:flex-row flex-col">
               <DeliveryInfo
@@ -93,6 +106,7 @@ const UserOrderDetails: React.FC = () => {
               />
             </Flex>
             <PricingInfo data={data} />
+            {StatusInfo[data?.orderStatus as keyof typeof StatusInfo]}
           </Fragment>
         )}
       </Modal>
@@ -101,4 +115,4 @@ const UserOrderDetails: React.FC = () => {
   );
 };
 
-export default UserOrderDetails;
+export default LessorOrderDetails;

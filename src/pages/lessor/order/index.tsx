@@ -5,9 +5,9 @@ import viVN from 'antd/locale/vi_VN';
 import React from 'react';
 
 import { SearchBar } from '@/components/SearchBar';
-import { useOrderTable } from '@/pages/user/order/hooks/useOrderTable';
+import { useLessorOrderTable } from '@/pages/lessor/order/hooks/useLessorOrderTable';
 
-const LessorOrders: React.FC = () => {
+const UserOrders: React.FC = () => {
   const {
     formatMessage,
     columns,
@@ -17,10 +17,10 @@ const LessorOrders: React.FC = () => {
     handleTableChange,
     take,
     page,
-  } = useOrderTable();
+  } = useLessorOrderTable();
   return (
     <ConfigProvider locale={getLocale() === 'vi-VN' ? viVN : enUS}>
-      <Flex className="flex-col gap-4 p-4 w-full">
+      <Flex className="flex-col gap-4 p-4 w-full max-w-screen-2xl">
         <Flex className="flex-col bg-neutral-1 p-4 w-full rounded-lg border border-neutral-3">
           <SearchBar
             onPressEnter={searchBoxHandler}
@@ -53,4 +53,4 @@ const LessorOrders: React.FC = () => {
   );
 };
 
-export default LessorOrders;
+export default UserOrders;

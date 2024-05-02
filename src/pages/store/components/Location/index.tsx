@@ -20,24 +20,25 @@ const Locations: React.FC<TLocationsProps> = ({ setLocations }) => {
       children: [
         {
           label: formatMessage({
-            id: 'store.location.HCM',
+            id: 'common.location.HCM',
             defaultMessage: 'Ho Chi Minh City',
           }),
-          key: 'HCMC',
+          key: 'common.location.HCM',
         },
         {
           label: formatMessage({
-            id: 'store.location.HN',
+            id: 'common.location.HN',
             defaultMessage: 'Hanoi Capital',
           }),
-          key: 'HN',
+          key: 'common.location.HN',
         },
         {
           label: formatMessage({
-            id: 'store.location.else',
+            id: 'common.location.else',
             defaultMessage: 'Else >',
           }),
-          key: '*',
+          key: 'common.location.else',
+          disabled: true,
         },
       ],
     },
@@ -50,7 +51,6 @@ const Locations: React.FC<TLocationsProps> = ({ setLocations }) => {
         openKeys={['location']}
         className="category-menu"
         mode="inline"
-        multiple
         items={items}
       />
     </FadeIn>
