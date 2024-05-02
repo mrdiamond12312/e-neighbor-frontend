@@ -10,12 +10,14 @@ import {
   PATH_USER_PROFILE_ORDER_DETAILS,
   PATH_USER_PROFILE_ORDER_FEEDBACK,
 } from '@/const/path';
+import { ORDER_STATUS } from '@/hooks/useOrderPagination';
 
 export type TActionsProps = {
   orderId: number;
+  orderStatus: ORDER_STATUS;
 };
 
-export const OrderActionsMenu: React.FC<TActionsProps> = ({ orderId }) => {
+export const OrderActionsMenu: React.FC<TActionsProps> = ({ orderId, orderStatus }) => {
   const dropDownItems: MenuProps['items'] = [
     {
       label: (
@@ -46,6 +48,8 @@ export const OrderActionsMenu: React.FC<TActionsProps> = ({ orderId }) => {
         </Link>
       ),
       key: ['feedback-order', orderId].join('-'),
+      style: { color: orderStatus !== 'PENDING' ? undefined : 'dodgerblue' },
+      disabled: orderStatus !== ORDER_STATUS.COMPLETED,
     },
     {
       type: 'divider',
@@ -65,6 +69,7 @@ export const OrderActionsMenu: React.FC<TActionsProps> = ({ orderId }) => {
       ),
       key: ['cancel-order', orderId].join('-'),
       danger: true,
+      disabled: orderStatus !== ORDER_STATUS.PENDING,
     },
   ];
   return (
