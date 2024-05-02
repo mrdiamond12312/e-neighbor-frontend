@@ -1,4 +1,4 @@
-import { FormattedHTMLMessage, history, useParams } from '@umijs/max';
+import { history, useIntl, useParams } from '@umijs/max';
 import { notification } from 'antd/lib';
 import { useState } from 'react';
 import urlcat from 'urlcat';
@@ -28,21 +28,25 @@ export const useCancel = () => {
     isCanceled: true,
   };
 
+  const { formatMessage } = useIntl();
+
   const handleCancel = () => {
     mutate(body, {
       onSuccess: () =>
         notification.success({
-          message: (
-            <FormattedHTMLMessage
-              id="user.orders.cancel.submit.success"
-              defaultMessage="Successfully cancel this order"
-            />
-          ),
+          message: formatMessage({
+            id: 'user.orders.cancel.submit.success',
+            defaultMessage: 'Successfully cancel this order',
+          }),
+          duration: 0.5,
+          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
         }),
       onError: (error) =>
         notification.error({
           message: [error.statusCode, error.error].join(' - '),
           description: error.message,
+          duration: 0.5,
+          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
         }),
     });
   };

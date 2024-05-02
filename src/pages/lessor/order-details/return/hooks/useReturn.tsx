@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormattedHTMLMessage, history, useIntl, useParams } from '@umijs/max';
+import { history, useIntl, useParams } from '@umijs/max';
 import { notification } from 'antd/lib';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -85,21 +85,21 @@ export const useReturn = () => {
     mutate(body, {
       onSuccess: () => {
         notification.success({
-          message: (
-            <FormattedHTMLMessage
-              id="user.orders.return.submit.success"
-              defaultMessage="Successfully add a Receipt for this order"
-            />
-          ),
+          message: formatMessage({
+            id: 'user.orders.return.submit.success',
+            defaultMessage: 'Successfully add a Receipt for this order',
+          }),
+          duration: 0.5,
+          onClose: () => history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId })),
         });
-        history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId }));
       },
       onError: (error) => {
         notification.error({
           message: [error.statusCode, error.error].join(' - '),
           description: error.message,
+          duration: 0.5,
+          onClose: () => history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId })),
         });
-        history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId }));
       },
     });
   };
