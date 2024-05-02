@@ -44,7 +44,12 @@ export default [
                     component: '@/pages/user/order-details/cancel',
                   },
                   {
-                    name: 'feedback',
+                    name: 'receipt-order',
+                    path: 'receipt',
+                    component: '@/pages/user/order-details/receipt',
+                  },
+                  {
+                    name: 'feedback-order',
                     path: 'feedback',
                     component: '@/pages/user/order-details/feedback',
                   },
@@ -102,6 +107,23 @@ export default [
             name: 'order-details',
             path: ':orderId',
             component: '@/pages/lessor/order-details',
+            routes: [
+              {
+                name: 'reject-order',
+                path: 'reject',
+                component: '@/pages/lessor/order-details/reject',
+              },
+              {
+                name: 'approve-order',
+                path: 'approve',
+                component: '@/pages/lessor/order-details/approve',
+              },
+              {
+                name: 'return-order',
+                path: 'return',
+                component: '@/pages/lessor/order-details/return',
+              },
+            ],
           },
         ],
       },

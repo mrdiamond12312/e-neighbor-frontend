@@ -12,7 +12,7 @@ import ValidateError from '@/components/Input/ValidateError';
 import { useImageUpload } from '@/services/imagekit/services';
 
 export type TPropsDragger = {
-  control: Control<FieldValues>;
+  control: Control<FieldValues> | any;
   name: string;
   maxCount: number;
   disabled?: boolean;
@@ -60,7 +60,7 @@ export const ImageDragger: React.FC<TPropsDragger & Partial<UploadListProps>> = 
             >
               {
                 <div className="flex flex-row gap-2 p-2 justify-center items-center">
-                  <p className="ant-upload-drag-icon mb-5">
+                  <p className="ant-upload-drag-icon !mb-0">
                     <FileImageOutlined />
                   </p>
                   <div>

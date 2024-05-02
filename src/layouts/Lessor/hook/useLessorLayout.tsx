@@ -2,6 +2,8 @@ import { ChartLineUp, Invoice, Storefront } from '@phosphor-icons/react';
 import { FormattedHTMLMessage, Link, NavLink, useLocation, useModel } from '@umijs/max';
 import { useState } from 'react';
 
+import { containsDigits } from '../../../utils/validator/index';
+
 import FadeIn from '@/components/AnimationKit/FadeIn';
 import type { MenuItem } from '@/components/SideBar/hooks/useLocationMenuKeys';
 import {
@@ -130,7 +132,8 @@ export const useLessorLayout = () => {
         });
       }
       return acc;
-    }, []);
+    }, [])
+    .filter((item) => !containsDigits(item.key));
 
   const [isMenuDrawerOpen, setIsMenuDrawerOpen] = useState(false);
   const handleDrawerBtn = () => setIsMenuDrawerOpen((prev) => !prev);

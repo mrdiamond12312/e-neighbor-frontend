@@ -7,17 +7,23 @@ import React from 'react';
 import Button from '@/components/Button';
 import InputText from '@/components/Input';
 import { ImageDragger } from '@/components/Input/ImageDragger';
-import { Rate } from '@/components/Input/Rate';
-import {
-  FEEDBACK_FORM_KEY,
-  useFeedbackForm,
-} from '@/pages/user/order-details/feedback/hooks/useFeedback';
+import Radio from '@/components/Input/Radio';
+import { RECEIPT_FORM_KEY, useReceipt } from '@/pages/user/order-details/receipt/hooks/useReceipt';
 
 const { Item } = Form;
 
-const FeedbackModal: React.FC = () => {
-  const { orderId, isOpen, setIsOpen, handleFeedback, isLoading, afterClose, control, getValues } =
-    useFeedbackForm();
+const ReceiptModal: React.FC = () => {
+  const {
+    orderId,
+    isOpen,
+    setIsOpen,
+    handleReceipt,
+    isLoading,
+    afterClose,
+    punctualityOptions,
+    control,
+    getValues,
+  } = useReceipt();
   const size: SizeType = 'large';
 
   return (
@@ -28,8 +34,8 @@ const FeedbackModal: React.FC = () => {
       title={
         <h1 className="text-heading-4 font-sans">
           <FormattedHTMLMessage
-            id="user.orders.feedback.header"
-            defaultMessage="Add Feedback for Order #{orderId}"
+            id="user.orders.receipt.header"
+            defaultMessage="Adding a Receipt Image for Order #{orderId}"
             values={{ orderId }}
           />
         </h1>
@@ -40,11 +46,11 @@ const FeedbackModal: React.FC = () => {
             type="primary"
             loading={isLoading}
             icon={<CheckCircleOutlined />}
-            onClick={() => handleFeedback(getValues())}
+            onClick={() => handleReceipt(getValues())}
           >
             <FormattedHTMLMessage
-              id="user.order.feedback.button.submit"
-              defaultMessage="Submit Feedback!"
+              id="user.order.receipt.button.submit"
+              defaultMessage="Upload Receipt"
             />
           </Button>
         </Flex>
@@ -52,8 +58,8 @@ const FeedbackModal: React.FC = () => {
       className="font-sans text-body-2-medium"
     >
       <FormattedHTMLMessage
-        id="user.order.feedback.check.question"
-        defaultMessage="Rating this service to make more people know about it"
+        id="user.order.receipt.check.question"
+        defaultMessage="Please upload a image of receipt to let us know that the property is delivered to you safely"
       />
 
       <Form
@@ -65,45 +71,51 @@ const FeedbackModal: React.FC = () => {
         <Item
           label={
             <FormattedHTMLMessage
-              id="user.orders.feedback.fields.star.label"
-              defaultMessage="Star Rating"
+              id="user.orders.receipt.fields.isDeliveredOnTime.label"
+              defaultMessage="Delivery Punctuality"
             />
           }
           required
         >
-          <Rate
+          <Radio
             control={control}
-            name={FEEDBACK_FORM_KEY['star']}
-            className="h-10 content-center"
+            name={RECEIPT_FORM_KEY['isDeliveredOnTime']}
+            size={size}
+            direction="horizontal"
+            options={punctualityOptions}
+            className="custom-radio"
           />
         </Item>
+
         <Item
           label={
             <FormattedHTMLMessage
-              id="user.orders.feedback.fields.content.label"
-              defaultMessage="Comment"
+              id="user.orders.receipt.fields.conditionUponReceipt.label"
+              defaultMessage="Condition of Property"
             />
           }
           required
         >
           <InputText
+            placeholder="abcxyz"
             placement="top"
             control={control}
-            name={FEEDBACK_FORM_KEY['content']}
+            name={RECEIPT_FORM_KEY['conditionUponReceipt']}
             size={size}
           />
         </Item>
         <Item
           label={
             <FormattedHTMLMessage
-              id="user.orders.feedback.fields.image.label"
-              defaultMessage="Image of Product"
+              id="user.orders.receipt.fields.imagesUponReceipt.label"
+              defaultMessage="Image of Receipt"
             />
           }
+          required
         >
           <ImageDragger
             control={control}
-            name={FEEDBACK_FORM_KEY['image']}
+            name={RECEIPT_FORM_KEY['imagesUponReceipt']}
             maxCount={1}
             className="custom-ant-upload"
           />
@@ -113,4 +125,4 @@ const FeedbackModal: React.FC = () => {
   );
 };
 
-export default FeedbackModal;
+export default ReceiptModal;

@@ -5,7 +5,11 @@ import React, { Fragment } from 'react';
 import urlcat from 'urlcat';
 
 import Button from '@/components/Button';
-import { PATH_USER_PROFILE_ORDER_CANCELING, PATH_USER_PROFILE_ORDER_FEEDBACK } from '@/const/path';
+import {
+  PATH_USER_PROFILE_ORDER_CANCELING,
+  PATH_USER_PROFILE_ORDER_FEEDBACK,
+  PATH_USER_PROFILE_ORDER_IMAGERECEIPT,
+} from '@/const/path';
 import { ActionButtons } from '@/pages/user/order-details/components/ActionButtons';
 import { DeliveryImage } from '@/pages/user/order-details/components/DeliveryImage';
 import { DeliveryInfo } from '@/pages/user/order-details/components/DeliveryInfo';
@@ -34,12 +38,20 @@ const UserOrderDetails: React.FC = () => {
         afterClose={handleCancel}
         onCancel={() => setIsOpen(false)}
         footer={
-          <Flex className="flex-row gap-2 border-t pt-3 border-teal-7 justify-end">
+          <Flex className="flex-row gap-2 border-t pt-3 border-teal-7 justify-end flex-wrap">
             <Link to={urlcat(PATH_USER_PROFILE_ORDER_FEEDBACK, { orderId })}>
               <Button type="primary" disabled={data?.orderStatus !== 'COMPLETED'}>
                 <FormattedHTMLMessage
                   id="order.detail.modal.navigate.feedback"
                   defaultMessage="Add Feedback"
+                />
+              </Button>
+            </Link>
+            <Link to={urlcat(PATH_USER_PROFILE_ORDER_IMAGERECEIPT, { orderId })}>
+              <Button disabled={data?.orderStatus !== 'APPROVED'}>
+                <FormattedHTMLMessage
+                  id="order.detail.modal.navigate.receipt"
+                  defaultMessage="Add a Receipt Image!"
                 />
               </Button>
             </Link>

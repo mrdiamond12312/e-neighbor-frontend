@@ -10,12 +10,14 @@ import {
   PATH_LESSOR_ORDERS_DETAILS,
   PATH_LESSOR_ORDERS_REJECT,
 } from '@/const/path';
+import { ORDER_STATUS } from '@/hooks/useOrderPagination';
 
 export type TActionsProps = {
   orderId: number;
+  orderStatus: ORDER_STATUS;
 };
 
-export const OrderActionsMenu: React.FC<TActionsProps> = ({ orderId }) => {
+export const OrderActionsMenu: React.FC<TActionsProps> = ({ orderId, orderStatus }) => {
   const dropDownItems: MenuProps['items'] = [
     {
       label: (
@@ -35,7 +37,7 @@ export const OrderActionsMenu: React.FC<TActionsProps> = ({ orderId }) => {
     {
       label: (
         <Link
-          className="flex flex-row gap-2 text-body-2-semibold items-center !text-cyan-500"
+          className="flex flex-row gap-2 text-body-2-semibold items-center"
           to={urlcat(PATH_LESSOR_ORDERS_APPROVE, { orderId })}
         >
           <CheckCircle className="text-body-1-semibold" />
@@ -46,6 +48,8 @@ export const OrderActionsMenu: React.FC<TActionsProps> = ({ orderId }) => {
         </Link>
       ),
       key: ['approve-order', orderId].join('-'),
+      disabled: orderStatus !== 'PENDING',
+      style: { color: orderStatus !== 'PENDING' ? undefined : 'dodgerblue' },
     },
     {
       type: 'divider',
@@ -65,6 +69,7 @@ export const OrderActionsMenu: React.FC<TActionsProps> = ({ orderId }) => {
       ),
       key: ['reject-order', orderId].join('-'),
       danger: true,
+      disabled: orderStatus !== 'PENDING',
     },
   ];
   return (

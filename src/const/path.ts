@@ -13,7 +13,7 @@ export const PATH_LESSOR_ORDERS = PATH_LESSOR + '/orders';
 export const PATH_LESSOR_ORDERS_DETAILS = PATH_LESSOR_ORDERS + '/:orderId';
 
 export const PATH_LESSOR_ORDERS_DELIVERY_IMAGE = PATH_LESSOR_ORDERS_DETAILS + '/deliveryImage';
-export const PATH_LESSOR_ORDERS_RETURN_IMAGE = PATH_LESSOR_ORDERS_DETAILS + '/returnImage';
+export const PATH_LESSOR_ORDERS_RETURN_IMAGE = PATH_LESSOR_ORDERS_DETAILS + '/return';
 export const PATH_LESSOR_ORDERS_APPROVE = PATH_LESSOR_ORDERS_DETAILS + '/approve';
 export const PATH_LESSOR_ORDERS_REJECT = PATH_LESSOR_ORDERS_DETAILS + '/reject';
 export const PATH_LESSOR_ORDERS_CANCELED = PATH_LESSOR_ORDERS + '/cancels';
@@ -28,6 +28,8 @@ export const PATH_USER_PROFILE_ORDERS = '/user/profile/orders';
 export const PATH_USER_PROFILE_ORDER_DETAILS = '/user/profile/orders/:orderId';
 export const PATH_USER_PROFILE_ORDER_CANCELING = '/user/profile/orders/:orderId/cancel';
 export const PATH_USER_PROFILE_ORDER_FEEDBACK = '/user/profile/orders/:orderId/feedback';
+
+export const PATH_USER_PROFILE_ORDER_IMAGERECEIPT = '/user/profile/orders/:orderId/receipt';
 
 export const PATH_USER_PROFILE_WALLET = '/user/profile/wallet';
 export const PATH_USER_PROFILE_WISHLIST = '/user/profile/wishlist';

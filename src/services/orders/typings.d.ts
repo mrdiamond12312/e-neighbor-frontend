@@ -87,4 +87,25 @@ declare namespace API {
     paymentAmount: number;
     user: API.TAuthProfile;
   }
+
+  interface IPendingOrderLessorUpdateInfoBody {
+    orderId: number;
+    isRejected: boolean;
+    rejectReason?: string;
+  }
+
+  interface IPendingOrderUserCancelInfoBody {
+    orderId: number;
+    rentTime?: string;
+    returnTime?: string;
+    deliveryAddress?: string;
+    isCanceled: boolean;
+  }
+
+  interface IApprovedOrderUserReceiptBody {
+    orderId: number;
+    isDeliveryOnTime: boolean;
+    conditionUponReceipt: string;
+    imagesUponReceipt: string[];
+  }
 }

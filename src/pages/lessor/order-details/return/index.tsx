@@ -7,17 +7,23 @@ import React from 'react';
 import Button from '@/components/Button';
 import InputText from '@/components/Input';
 import { ImageDragger } from '@/components/Input/ImageDragger';
-import { Rate } from '@/components/Input/Rate';
-import {
-  FEEDBACK_FORM_KEY,
-  useFeedbackForm,
-} from '@/pages/user/order-details/feedback/hooks/useFeedback';
+import Radio from '@/components/Input/Radio';
+import { RETURN_FORM_KEY, useReturn } from '@/pages/lessor/order-details/return/hooks/useReturn';
 
 const { Item } = Form;
 
-const FeedbackModal: React.FC = () => {
-  const { orderId, isOpen, setIsOpen, handleFeedback, isLoading, afterClose, control, getValues } =
-    useFeedbackForm();
+const ReceiptModal: React.FC = () => {
+  const {
+    orderId,
+    isOpen,
+    setIsOpen,
+    handleReturn,
+    isLoading,
+    afterClose,
+    punctualityOptions,
+    control,
+    getValues,
+  } = useReturn();
   const size: SizeType = 'large';
 
   return (
@@ -28,8 +34,8 @@ const FeedbackModal: React.FC = () => {
       title={
         <h1 className="text-heading-4 font-sans">
           <FormattedHTMLMessage
-            id="user.orders.feedback.header"
-            defaultMessage="Add Feedback for Order #{orderId}"
+            id="lessor.orders.return.header"
+            defaultMessage="Adding Return Information to finish Order #{orderId}"
             values={{ orderId }}
           />
         </h1>
@@ -40,11 +46,11 @@ const FeedbackModal: React.FC = () => {
             type="primary"
             loading={isLoading}
             icon={<CheckCircleOutlined />}
-            onClick={() => handleFeedback(getValues())}
+            onClick={() => handleReturn(getValues())}
           >
             <FormattedHTMLMessage
-              id="user.order.feedback.button.submit"
-              defaultMessage="Submit Feedback!"
+              id="lessor.order.return.button.submit"
+              defaultMessage="Finish this Order!"
             />
           </Button>
         </Flex>
@@ -52,8 +58,8 @@ const FeedbackModal: React.FC = () => {
       className="font-sans text-body-2-medium"
     >
       <FormattedHTMLMessage
-        id="user.order.feedback.check.question"
-        defaultMessage="Rating this service to make more people know about it"
+        id="lessor.order.return.check.question"
+        defaultMessage="Please provide us about the property condition after rental period"
       />
 
       <Form
@@ -65,45 +71,51 @@ const FeedbackModal: React.FC = () => {
         <Item
           label={
             <FormattedHTMLMessage
-              id="user.orders.feedback.fields.star.label"
-              defaultMessage="Star Rating"
+              id="lessor.orders.return.fields.isReturnedOnTime.label"
+              defaultMessage="Returning Punctuality"
             />
           }
           required
         >
-          <Rate
+          <Radio
             control={control}
-            name={FEEDBACK_FORM_KEY['star']}
-            className="h-10 content-center"
+            name={RETURN_FORM_KEY['isReturnedOnTime']}
+            size={size}
+            direction="horizontal"
+            options={punctualityOptions}
+            className="custom-radio"
           />
         </Item>
+
         <Item
           label={
             <FormattedHTMLMessage
-              id="user.orders.feedback.fields.content.label"
-              defaultMessage="Comment"
+              id="lessor.orders.return.fields.conditionUponReturn.label"
+              defaultMessage="Condition of Property"
             />
           }
           required
         >
           <InputText
+            placeholder="abcxyz"
             placement="top"
             control={control}
-            name={FEEDBACK_FORM_KEY['content']}
+            name={RETURN_FORM_KEY['conditionUponReturn']}
             size={size}
           />
         </Item>
         <Item
           label={
             <FormattedHTMLMessage
-              id="user.orders.feedback.fields.image.label"
-              defaultMessage="Image of Product"
+              id="lessor.orders.return.fields.imagesUponReturn.label"
+              defaultMessage="Image of Property"
             />
           }
+          required
         >
           <ImageDragger
             control={control}
-            name={FEEDBACK_FORM_KEY['image']}
+            name={RETURN_FORM_KEY['imagesUponReturn']}
             maxCount={1}
             className="custom-ant-upload"
           />
@@ -113,4 +125,4 @@ const FeedbackModal: React.FC = () => {
   );
 };
 
-export default FeedbackModal;
+export default ReceiptModal;

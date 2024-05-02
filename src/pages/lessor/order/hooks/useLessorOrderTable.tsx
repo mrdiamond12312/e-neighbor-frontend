@@ -69,8 +69,8 @@ export const useLessorOrderTable = () => {
     },
     {
       title: formatMessage({
-        id: 'order.management.table.col.shopName',
-        defaultMessage: 'Shop Name',
+        id: 'order.management.table.col.userName',
+        defaultMessage: 'User Name',
       }),
       dataIndex: 'user',
       render: (value: API.TAuthProfile) => value.fullName,
@@ -143,7 +143,9 @@ export const useLessorOrderTable = () => {
         id: 'order.management.table.col.actions',
         defaultMessage: 'Actions',
       }),
-      render: (value, record) => <OrderActionsMenu orderId={record.id} />,
+      render: (value, record) => (
+        <OrderActionsMenu orderId={record.id} orderStatus={record.orderStatus} />
+      ),
     },
   ];
   return {

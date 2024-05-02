@@ -7,10 +7,10 @@ import urlcat from 'urlcat';
 import Button from '@/components/Button';
 import {
   PATH_LESSOR_ORDERS_APPROVE,
-  PATH_LESSOR_ORDERS_DELIVERY_IMAGE,
   PATH_LESSOR_ORDERS_REJECT,
   PATH_LESSOR_ORDERS_RETURN_IMAGE,
 } from '@/const/path';
+import { ORDER_STATUS } from '@/hooks/useOrderPagination';
 import { DeliveryImage } from '@/pages/lessor/order-details/components/DeliveryImage';
 import { DeliveryInfo } from '@/pages/lessor/order-details/components/DeliveryInfo';
 import { LessorActionButtons } from '@/pages/lessor/order-details/components/LessorActionButtons';
@@ -19,6 +19,17 @@ import { PricingInfo } from '@/pages/lessor/order-details/components/PricingInfo
 import { useLessorOrderDetailsModal } from '@/pages/lessor/order-details/hooks/useLessorOrderDetailsModal';
 
 import './orderDetails.css';
+
+const StatusInfo: { [key in ORDER_STATUS]?: React.ReactNode } = {
+  APPROVED: (
+    <p className="pt-4 italic text-body-1-semibold text-teal-1">
+      <FormattedHTMLMessage
+        id="lessor.order.detail.modal.info.approved"
+        defaultMessage="This order has been APPROVED by you! Please ask the user to upload a receipt image upon this property delivery to proceed"
+      />
+    </p>
+  ),
+};
 
 const LessorOrderDetails: React.FC = () => {
   const { orderId, isOpen, setIsOpen, handleCancel, data, isLoading } =
@@ -40,7 +51,7 @@ const LessorOrderDetails: React.FC = () => {
         afterClose={handleCancel}
         onCancel={() => setIsOpen(false)}
         footer={
-          <Flex className="flex-row gap-2 border-t pt-3 border-teal-7 justify-end">
+          <Flex className="flex-row gap-2 border-t pt-3 border-teal-7 justify-end flex-wrap">
             <Link to={urlcat(PATH_LESSOR_ORDERS_APPROVE, { orderId })}>
               <Button type="primary" disabled={data?.orderStatus !== 'PENDING'}>
                 <FormattedHTMLMessage
@@ -49,18 +60,10 @@ const LessorOrderDetails: React.FC = () => {
                 />
               </Button>
             </Link>
-            <Link to={urlcat(PATH_LESSOR_ORDERS_DELIVERY_IMAGE, { orderId })}>
-              <Button disabled={data?.orderStatus !== 'APPROVED'}>
-                <FormattedHTMLMessage
-                  id="lessor.order.detail.modal.navigate.deliveryImage"
-                  defaultMessage="Add a Proof of Delivery Image"
-                />
-              </Button>
-            </Link>
             <Link to={urlcat(PATH_LESSOR_ORDERS_RETURN_IMAGE, { orderId })}>
               <Button disabled={data?.orderStatus !== 'IN PROGRESS'}>
                 <FormattedHTMLMessage
-                  id="lessor.order.detail.modal.navigate.returnImage"
+                  id="lessor.order.detail.modal.navigate.return"
                   defaultMessage="Add a Proof of Finish Image"
                 />
               </Button>
@@ -103,6 +106,7 @@ const LessorOrderDetails: React.FC = () => {
               />
             </Flex>
             <PricingInfo data={data} />
+            {StatusInfo[data?.orderStatus as keyof typeof StatusInfo]}
           </Fragment>
         )}
       </Modal>
