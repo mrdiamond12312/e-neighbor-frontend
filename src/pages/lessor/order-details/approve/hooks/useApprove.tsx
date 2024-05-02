@@ -1,4 +1,4 @@
-import { FormattedHTMLMessage, history, useParams } from '@umijs/max';
+import { history, useIntl, useParams } from '@umijs/max';
 import { notification } from 'antd/lib';
 import { useState } from 'react';
 import urlcat from 'urlcat';
@@ -15,23 +15,27 @@ export const useApprove = () => {
     orderId: Number(orderId),
     isRejected: false,
   };
-
+  const { formatMessage } = useIntl();
   const handleApprove = () =>
     mutate(body, {
-      onSuccess: () =>
+      onSuccess: () => {
         notification.success({
-          message: (
-            <FormattedHTMLMessage
-              id="lessor.orders.approve.submit.success"
-              defaultMessage="Successfully approved this order"
-            />
-          ),
-        }),
-      onError: (error) =>
+          message: formatMessage({
+            id: 'lessor.orders.approve.submit.success',
+            defaultMessage: 'Successfully approved this order',
+          }),
+          duration: 0.5,
+          onClose: () => history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId })),
+        });
+      },
+      onError: (error) => {
         notification.error({
           message: [error.statusCode, error.error].join(' - '),
           description: error.message,
-        }),
+          duration: 0.5,
+          onClose: () => history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId })),
+        });
+      },
     });
 
   const afterClose = () => {

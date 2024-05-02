@@ -2,6 +2,7 @@ import { useIntl, useModel } from '@umijs/max';
 import { ColumnsType, TableProps } from 'antd/lib/table';
 import { SorterResult } from 'antd/lib/table/interface';
 
+import { OrderStatus } from '@/components/OrderStatus';
 import {
   ORDER,
   ORDER_STATUS,
@@ -124,11 +125,7 @@ export const useOrderTable = () => {
         defaultMessage: 'STATUS',
       }),
       dataIndex: 'orderStatus',
-      render: (value) =>
-        formatMessage({
-          id: ['order.management.table.col.status.filter.field', value].join('.'),
-          defaultMessage: value,
-        }),
+      render: (value) => <OrderStatus orderStatus={value} />,
       filters: Object.keys(ORDER_STATUS).map((key) => ({
         text: formatMessage({
           id: ['order.management.table.col.status.filter.field', (ORDER_STATUS as any)[key]].join(
@@ -145,7 +142,9 @@ export const useOrderTable = () => {
         id: 'order.management.table.col.actions',
         defaultMessage: 'Actions',
       }),
-      render: (value, record) => <OrderActionsMenu orderId={record.id} />,
+      render: (value, record) => (
+        <OrderActionsMenu orderId={record.id} orderStatus={record.orderStatus} />
+      ),
     },
   ];
   return {
