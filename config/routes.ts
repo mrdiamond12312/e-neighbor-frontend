@@ -21,7 +21,7 @@ export default [
       },
       {
         path: 'profile',
-        wrappers: ['@/layouts/User'],
+        wrappers: ['@/wrappers/Auth', '@/layouts/User'],
         routes: [
           {
             name: 'edit-profile',

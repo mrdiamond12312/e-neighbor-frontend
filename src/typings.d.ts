@@ -70,6 +70,7 @@ declare interface IPaginationMeta {
 declare interface IPaginationResponse<T> {
   data: T[];
   meta: IPaginationMeta;
+  extra?: any;
 }
 
 declare type TPropsFormInput = {

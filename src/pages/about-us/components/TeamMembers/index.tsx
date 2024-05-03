@@ -15,24 +15,16 @@ const TeamMembers: React.FC = () => {
       id: 1,
       firstName: 'Kim Cương',
       lastName: 'Hoàng',
-      expertise: 'FrontEnd',
+      expertise: 'Fullstack',
       job: 'Developer',
       acronym: 'DIAMOND',
       image: 'https://ik.imagekit.io/AliaV14/hoangkimcuong.png',
     },
     {
-      id: 2,
-      firstName: 'Trọng Phú',
-      lastName: 'Nguyễn',
-      expertise: 'FrontEnd',
-      job: 'Developer',
-      acronym: 'CLITUS',
-    },
-    {
-      id: 3,
+      id: 1,
       firstName: 'Minh Thuấn',
       lastName: 'Nguyễn',
-      expertise: 'BackEnd',
+      expertise: 'Back End',
       job: 'Developer',
       acronym: 'MTHUAN',
     },
@@ -55,7 +47,7 @@ const TeamMembers: React.FC = () => {
         <p className="font-sans text-center text-heading-5">
           {formatMessage({
             id: 'about.team.intro.mems',
-            defaultMessage: 'Project developed by 3 Members',
+            defaultMessage: 'Project developed by 2 Members',
           })}
         </p>
 
