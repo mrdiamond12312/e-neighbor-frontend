@@ -47,7 +47,7 @@ const TeamMembers: React.FC = () => {
         <p className="font-sans text-center text-heading-5">
           {formatMessage({
             id: 'about.team.intro.mems',
-            defaultMessage: 'Project developed by 3 Members',
+            defaultMessage: 'Project developed by 2 Members',
           })}
         </p>
 
