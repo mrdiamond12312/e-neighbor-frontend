@@ -110,7 +110,9 @@ export const productStatus = {
 };
 
 export const productDetailPage = {
+  'product.details.loading.description': 'Loading Product #{productId}',
   'product.details.feedback.count': 'Feedbacks',
+  'product.details.completedOrders.count': 'Completed Orders',
   'product.details.tab.detailsInfo': 'Detailed Information',
   'product.details.tab.feedbacks': 'Feedbacks',
   'product.details.description.label': 'Description',

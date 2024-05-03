@@ -12,7 +12,7 @@ import {
 
 export const useProductDetails = (productId?: number | string) =>
   useQuery<API.IProductDetails>(
-    [API_ENDPOINTS.PRODUCT_DETAILS],
+    [API_ENDPOINTS.PRODUCT_DETAILS, productId],
     () => getProductDetails(productId),
     {
       enabled: !!productId,
