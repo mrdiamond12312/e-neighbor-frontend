@@ -104,9 +104,7 @@ export const productStatus = {
 };
 
 export const productDetailPage = {
-  'product.details.loading.description': 'Tải dữ liệu Sản phẩm #{productId}',
   'product.details.feedback.count': 'Lượt dánh giá',
-  'product.details.completedOrders.count': 'Lượt thuê',
   'product.details.tab.detailsInfo': 'Thông tin chi tiết',
   'product.details.tab.feedbacks': 'Đánh giá',
   'product.details.description.label': 'Mô tả',

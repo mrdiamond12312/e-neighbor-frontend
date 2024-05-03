@@ -10,14 +10,14 @@ export type TProductInformativeProps = {
 
 export const ProductInformative: React.FC<TProductInformativeProps> = ({ data }) => {
   return (
-    <Flex className="flex-col gap-2 p-4 max-h-[calc(100vh-168px)] xl:max-h-[calc(100vh-224px)] overflow-auto">
+    <Flex className="flex-col gap-2 p-4 max-h-[calc(100vh-242px)] overflow-auto">
       <h2 className="text-heading-5 font-sans m-0">
         <FormattedHTMLMessage
           id="product.details.description.label"
           defaultMessage="Descriptions"
         />
       </h2>
-      <p className="text-body-1-medium whitespace-pre-wrap">{data?.description}</p>
+      <p className="text-body-1-medium">{data?.description}</p>
       <Divider />
       <h2 className="text-heading-5 font-sans m-0">
         <FormattedHTMLMessage
@@ -57,7 +57,6 @@ export const ProductInformative: React.FC<TProductInformativeProps> = ({ data })
         />
       </h2>
 
-      <Divider />
       <h2 className="text-heading-5 font-sans m-0">
         <FormattedHTMLMessage
           id="product.details.mortgages.label"

@@ -1,6 +1,5 @@
 import { FormattedHTMLMessage } from '@umijs/max';
 
-import { FeedbacksTab } from '@/pages/product/detail/components/FeedbacksTab';
 import { ProductInformative } from '@/pages/product/detail/components/ProductInformative';
 
 export const useTabs = (data?: API.IProductDetails) => {
@@ -18,7 +17,7 @@ export const useTabs = (data?: API.IProductDetails) => {
     {
       key: '2',
       label: <FormattedHTMLMessage id="product.details.tab.feedbacks" defaultMessage="Feedbacks" />,
-      children: <FeedbacksTab />,
+      children: 'Content of Tab Pane 2',
     },
   ];
   return { tabs } as const;

@@ -48,7 +48,6 @@ declare namespace API {
     isConfirmed: boolean;
     rejectReason: string[];
     averageStar: number;
-    numberOfCompletedOrders?: number;
     lessor: IProductLessor; // Lessor type can be further defined if known
     insurance: object; // Insurance type can be further defined if known
   }
