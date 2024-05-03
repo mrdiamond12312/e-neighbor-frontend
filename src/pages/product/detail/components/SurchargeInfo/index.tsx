@@ -9,7 +9,7 @@ export type TSurchargeInfoProps = {
 
 export const SurchargeInfo: React.FC<TSurchargeInfoProps> = ({ data }) => {
   return (
-    <section className="w-full">
+    <section className="w-full flex flex-col gap-2">
       <h2 className="text-heading-5 text-teal-5">
         <FormattedHTMLMessage
           id="product.details.surcharge.label"
@@ -29,7 +29,7 @@ export const SurchargeInfo: React.FC<TSurchargeInfoProps> = ({ data }) => {
                     <p className="text-body-2-semibold">
                       <FormattedHTMLMessage id={surchargeName} defaultMessage={surchargeName} />
                     </p>
-                    <p className="text-body-2-semibold">{surC.price}</p>
+                    <p className="text-body-2-semibold">{surC.price} ₫</p>
                   </Flex>
                   <p className="text-body-2-regular">
                     <FormattedHTMLMessage

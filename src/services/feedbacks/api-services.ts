@@ -16,3 +16,9 @@ export const postFeedback = (feedbackBody: TFeedbackFormFields) =>
       )[0],
     },
   });
+
+export const getFeedbacks = (feedbackParams: API.IFeedbackPaginationParams) =>
+  request<IPaginationResponse<API.IFeedback>>(API_ENDPOINTS.FEEDBACKS, {
+    timeout: 15000,
+    params: feedbackParams,
+  });

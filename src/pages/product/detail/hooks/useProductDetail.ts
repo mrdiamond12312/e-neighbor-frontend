@@ -8,11 +8,32 @@ export const useProductDetail = () => {
 
   const { data, isLoading, isError } = useProductDetails(productId);
   const { formatMessage } = useIntl();
-  const breadCrumbs = !isError ? [data?.category, data?.subCategory, data?.name] : [];
 
+  const mainCategory = data?.category.isVehicle ? 'vehicles' : 'furnitures';
+  const subCategory = data?.category.name;
+
+  const breadcrumbsItems =
+    !isLoading && !isError
+      ? [
+          {
+            key: mainCategory,
+            title: formatMessage({
+              id: ['product.category', mainCategory].join('.'),
+              defaultMessage: mainCategory,
+            }),
+          },
+          {
+            key: subCategory,
+            title: formatMessage({
+              id: subCategory,
+              defaultMessage: subCategory,
+            }),
+          },
+        ]
+      : [];
   // Fixing position
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
-  return { data, isLoading, breadCrumbs, formatMessage };
+  return { data, isLoading, breadcrumbsItems, formatMessage, productId } as const;
 };

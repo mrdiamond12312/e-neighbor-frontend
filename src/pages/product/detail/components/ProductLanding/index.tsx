@@ -1,5 +1,5 @@
 import { FormattedHTMLMessage, Link, useParams } from '@umijs/max';
-import { Col, Flex, Rate, Row } from 'antd/lib';
+import { Breadcrumb, Col, Divider, Flex, Rate, Row } from 'antd/lib';
 import React, { Fragment } from 'react';
 import urlcat from 'urlcat';
 
@@ -24,6 +24,11 @@ type TCharacteristic = {
 
 export type TProductCharacteristicsProps = {
   data?: API.IProductDetails;
+  breadcrumbsItems: {
+    title: string;
+    key?: string;
+    to?: string;
+  }[];
 };
 
 export const Characteristic: React.FC<TCharacteristic> = ({ characteristics }) => {
@@ -56,18 +61,25 @@ export const Characteristic: React.FC<TCharacteristic> = ({ characteristics }) =
   else return <Fragment />;
 };
 
-export const ProductLanding: React.FC<TProductCharacteristicsProps> = ({ data }) => {
+export const ProductLanding: React.FC<TProductCharacteristicsProps> = ({
+  data,
+  breadcrumbsItems,
+}) => {
   const { productId } = useParams();
 
   return (
     <div className="flex flex-col w-full">
+      <Breadcrumb className="font-sans text-heading-5" items={breadcrumbsItems} />
       <h1 className="text-heading-1 font-sans font-medium m-0 pb-4">{data?.name}</h1>
-      <Flex className="flex-row gap-2 justify-start items-center text-heading-5 font-normal">
+      <Flex className="flex-row gap-2 justify-start items-center text-heading-5 font-normal font-sans">
         <Rate value={data?.averageStar} disabled />
         <p className="font-sans text-neutral-6">{data?.averageStar ?? 0}</p>
-        <p>|</p>
-        <p>{0}</p>
-        <FormattedHTMLMessage id="product.details.feedback.count" defaultMessage="Feedbacks" />
+        <Divider type="vertical" />
+        <p>{data?.numberOfCompletedOrders ?? 0}</p>
+        <FormattedHTMLMessage
+          id="product.details.completedOrders.count"
+          defaultMessage="Completed Orders"
+        />
       </Flex>
       <Flex className="flex-row gap-2 justify-start items-center text-heading-2 font-sans font-normal py-2">
         <p className="text-teal-1">{data?.price}</p>
