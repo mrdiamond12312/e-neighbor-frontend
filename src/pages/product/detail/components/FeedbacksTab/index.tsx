@@ -22,24 +22,16 @@ export const FeedbacksTab: React.FC<TFeedbackTabProps> = ({ productData }) => {
   const isInView = useInView(loaderRef);
 
   useEffect(() => {
-    if (isInView && !isFetchingNextPage) {
+    if (isInView && !isFetchingNextPage && hasNextPage) {
       fetchNextPage();
     }
   }, [isInView, isFetchingNextPage]);
-
-  const accData = {
-    5: 125,
-    4: 111,
-    3: 122,
-    2: 1,
-    1: 33,
-  };
   return (
     <Flex className="flex-col p-4 max-h-[calc(100vh-168px)] xl:max-h-[calc(100vh-224px)] overflow-auto">
       <OverallRating
         avgRating={productData?.averageStar ?? 0}
         feedbackCount={productData?.numberOfCompletedOrders ?? 0}
-        accData={accData}
+        accData={data?.pages[0].extra.statistic}
       />
       {data?.pages.map((page) =>
         page.data.map((feedback) => (
@@ -54,7 +46,7 @@ export const FeedbacksTab: React.FC<TFeedbackTabProps> = ({ productData }) => {
       <Flex ref={loaderRef}>
         <Divider className="my-4 font-sans text-body-2-semibold text-teal-4">
           {isFetchingNextPage ? (
-            <Flex className="flex-row gap-2">
+            <Flex className="flex-row gap-2 font-sans">
               <Spin />
               <FormattedHTMLMessage
                 id="product.details.feedback.loader.loading"

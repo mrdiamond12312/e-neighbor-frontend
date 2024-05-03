@@ -6,12 +6,9 @@ import { ResponsiveContainer, BarChart, XAxis, YAxis, Bar, Tooltip, TooltipProps
 export type TOverallRating = {
   avgRating: string | number;
   accData: {
-    '5'?: number;
-    '4'?: number;
-    '3'?: number;
-    '2'?: number;
-    '1'?: number;
-  };
+    rating: number;
+    count: number;
+  }[];
   feedbackCount: string | number;
 };
 
@@ -27,7 +24,7 @@ export const CustomRatingToolTip: React.FC<TooltipProps<number, string>> = ({
           defaultMessage="<span class='text-teal-7 text-body-2-semibold'>{feedbackCount}</span> {numberOfStar}-star feedbacks"
           values={{
             feedbackCount: payload[0].value,
-            numberOfStar: payload[0].payload.numberOfStar,
+            numberOfStar: payload[0].payload.rating,
           }}
         />
       </Flex>
@@ -36,13 +33,11 @@ export const CustomRatingToolTip: React.FC<TooltipProps<number, string>> = ({
 };
 
 export const OverallRating: React.FC<TOverallRating> = ({ avgRating, accData, feedbackCount }) => {
-  const formatAccData = Object.keys(accData)
-    .map((key) => ({
-      numberOfStar: key,
-      feedbackCount: accData?.[key as keyof typeof accData] ?? 0,
-    }))
-    .reverse();
-
+  const allRatings = [5, 4, 3, 2, 1]; // Array of all possible ratings
+  const extendedData = allRatings.map((rating) => {
+    const existingEntry = accData?.find((entry) => entry.rating === rating);
+    return existingEntry || { rating, count: 0 };
+  });
   return (
     <Flex className="flex-row w-full">
       <Flex className="flex-col pl-4 gap-1 font-sans text-body-2-semibold text-neutral-7 shrink-0 justify-center items-center">
@@ -56,7 +51,7 @@ export const OverallRating: React.FC<TOverallRating> = ({ avgRating, accData, fe
       </Flex>
       <ResponsiveContainer className="!w-full !h-32">
         <BarChart
-          data={formatAccData}
+          data={extendedData}
           margin={{
             top: 5,
             right: 30,
@@ -66,10 +61,10 @@ export const OverallRating: React.FC<TOverallRating> = ({ avgRating, accData, fe
           layout="vertical"
           className="font-sans"
         >
-          <XAxis type="number" hide domain={[]} />
-          <YAxis dataKey="numberOfStar" type="category" />
+          <XAxis type="number" hide />
+          <YAxis dataKey="rating" type="category" />
           <Tooltip content={<CustomRatingToolTip />} />
-          <Bar dataKey="feedbackCount" className="fill-teal-1" />
+          <Bar dataKey="count" className="fill-teal-1" />
         </BarChart>
       </ResponsiveContainer>
     </Flex>
