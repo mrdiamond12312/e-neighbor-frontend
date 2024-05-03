@@ -177,7 +177,7 @@ export default defineConfig({
   reactQuery: {},
 
   mfsu: {
-    // strategy: 'normal',
+    strategy: 'normal',
   },
   esbuildMinifyIIFE: true,
   requestRecord: {},
