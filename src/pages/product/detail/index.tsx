@@ -18,7 +18,7 @@ const ProductDetail: React.FC = () => {
   return (
     <ContactInfo>
       <PageContainer
-        className="max-h-[calc(100vh-56px)] xl:max-h-[calc(100vh-112px)] overflow-auto p-4 flex-col gap-4 snap-mandatory snap-y snap-page-container "
+        className="max-h-[calc(100vh-56px)] xl:max-h-[calc(100vh-112px)] overflow-auto p-4 flex-col gap-4 snap-mandatory snap-y snap-page-container"
         header={{ title: '1' }}
       >
         {isLoading ? (
