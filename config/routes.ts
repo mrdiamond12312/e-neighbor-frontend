@@ -158,6 +158,11 @@ export default [
             path: 'rent',
             component: '@/pages/product/renting',
           },
+          {
+            name: 'payment-thankyou',
+            path: 'thank-you',
+            component: '@/pages/product/payment-thank-you',
+          },
         ],
       },
     ],
