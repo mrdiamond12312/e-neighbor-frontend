@@ -2,7 +2,7 @@ import { FormattedHTMLMessage } from '@umijs/max';
 import { Modal } from 'antd/lib';
 import React from 'react';
 
-import { usePaymentPage } from '@/pages/product/payment-thank-you/hooks/usePaymentPage';
+import { usePaymentPage } from '@/pages/user/payment-thank-you/hooks/usePaymentPage';
 
 /**
  * Please check other implemented Modal for more info (@/pages/lessor or @/pages/user)

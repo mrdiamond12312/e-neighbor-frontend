@@ -1,19 +1,15 @@
-import { history, useIntl, useParams, useSearchParams } from '@umijs/max';
+import { history, useIntl, useSearchParams } from '@umijs/max';
 import { useState } from 'react';
-import urlcat from 'urlcat';
 
-import { PATH_PRODUCTS_DETAILS } from '@/const/path';
+import { PATH_USER_PROFILE_ORDERS } from '@/const/path';
 
 export const usePaymentPage = () => {
   // I18n
   const { formatMessage } = useIntl();
 
-  // Page Params
-  const { productId } = useParams();
-
   // Modal settings
   const [isOpen, setIsOpen] = useState<boolean>(true);
-  const handleCancel = () => history.push(urlcat(PATH_PRODUCTS_DETAILS, { productId }));
+  const handleCancel = () => history.push(PATH_USER_PROFILE_ORDERS);
 
   // Can add setSearchParams for the following for other usage
   // Search Params ?[key]=[value] (same behaviours as React's useState)
@@ -30,7 +26,6 @@ export const usePaymentPage = () => {
     isOpen,
     setIsOpen,
     handleCancel,
-    productId,
     searchParams,
     allParams,
   } as const;

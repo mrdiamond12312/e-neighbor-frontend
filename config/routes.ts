@@ -34,6 +34,11 @@ export default [
             component: '@/pages/user/order',
             routes: [
               {
+                name: 'payment-thankyou',
+                path: 'thank-you',
+                component: '@/pages/user/payment-thank-you',
+              },
+              {
                 name: 'order-detail',
                 path: ':orderId',
                 component: '@/pages/user/order-details',
@@ -85,7 +90,6 @@ export default [
       {
         path: 'products',
         headerRender: false,
-        //Do not display the menu top ba
         routes: [
           {
             name: 'add-product',
@@ -157,11 +161,6 @@ export default [
             name: 'rent',
             path: 'rent',
             component: '@/pages/product/renting',
-          },
-          {
-            name: 'payment-thankyou',
-            path: 'thank-you',
-            component: '@/pages/product/payment-thank-you',
           },
         ],
       },
