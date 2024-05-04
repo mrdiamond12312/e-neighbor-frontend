@@ -4,13 +4,13 @@ import React from 'react';
 
 import Button from '@/components/Button';
 
-export type TNoFoundPageProps = {
+export type TUnauthorizedPagePageProps = {
   subTitle?: React.ReactNode;
 };
-const NoFoundPage: React.FC<TNoFoundPageProps> = ({ subTitle }) => (
+const UnauthorizedPage: React.FC<TUnauthorizedPagePageProps> = ({ subTitle }) => (
   <Result
-    status="404"
-    title="404"
+    status="403"
+    title="403"
     subTitle={subTitle}
     extra={
       <Button type="primary" onClick={() => history.back()}>
@@ -20,4 +20,4 @@ const NoFoundPage: React.FC<TNoFoundPageProps> = ({ subTitle }) => (
   />
 );
 
-export default NoFoundPage;
+export default UnauthorizedPage;

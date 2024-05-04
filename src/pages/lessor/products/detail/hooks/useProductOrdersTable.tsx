@@ -1,4 +1,4 @@
-import { useIntl, useModel } from '@umijs/max';
+import { useIntl, useModel, useParams } from '@umijs/max';
 import { ColumnsType, TableProps } from 'antd/lib/table';
 import { SorterResult } from 'antd/lib/table/interface';
 
@@ -11,12 +11,14 @@ import {
 } from '@/hooks/useOrderPagination';
 import { OrderActionsMenu } from '@/pages/lessor/order/components/OrderActionsMenu';
 import { useOrdersPage } from '@/services/orders/services';
+import { useProductDetails } from '@/services/products/services';
 import { getDateFormatNormal } from '@/utils/time-format';
 
-export const useLessorOrderTable = () => {
+export const useProductOrdersTable = () => {
   const { formatMessage } = useIntl();
   const { initialState } = useModel('@@initialState');
   const { currentUser } = initialState || {};
+  const { productId } = useParams();
   const {
     paginationParams,
     searchBoxHandler,
@@ -30,6 +32,7 @@ export const useLessorOrderTable = () => {
   } = useOrderPagination({
     initialTake: 6,
     lessorId: currentUser?.lessorId,
+    productId: Number(productId),
   });
 
   const handleTableChange: TableProps['onChange'] = (
@@ -59,13 +62,6 @@ export const useLessorOrderTable = () => {
       dataIndex: 'createdAt',
       sorter: true,
       render: (value, record) => getDateFormatNormal(record.rentalFees[0].createdAt),
-    },
-    {
-      title: formatMessage({
-        id: 'order.management.table.col.productName',
-        defaultMessage: 'Product Name',
-      }),
-      dataIndex: 'productName',
     },
     {
       title: formatMessage({
@@ -111,15 +107,6 @@ export const useLessorOrderTable = () => {
         ),
       sorter: true,
     },
-    // {
-    //   title: formatMessage({
-    //     id: 'order.management.table.col.actualRentalPeriod',
-    //     defaultMessage: 'Actual Rental Period',
-    //   }),
-    //   dataIndex: 'realRentTime',
-    //   render: (value, record) => (value ? [value, record.realReturnTime].join(' -> ') : '-'),
-    //   sorter: true,
-    // },
     {
       title: formatMessage({
         id: 'order.management.table.col.status',
@@ -140,7 +127,7 @@ export const useLessorOrderTable = () => {
     },
     {
       title: formatMessage({
-        id: 'common.table.col.actions',
+        id: 'order.management.table.col.actions',
         defaultMessage: 'Actions',
       }),
       render: (value, record) => (
@@ -148,6 +135,14 @@ export const useLessorOrderTable = () => {
       ),
     },
   ];
+
+  const {
+    data: productDetail,
+    isLoading: isRetrievingProduct,
+    isError: isRetrievingProductError,
+  } = useProductDetails(productId);
+  const isOwnedByLessor = productDetail?.lessor.id === currentUser?.lessorId;
+
   return {
     formatMessage,
     columns,
@@ -157,5 +152,9 @@ export const useLessorOrderTable = () => {
     handleTableChange,
     take,
     page,
+    productId,
+    isRetrievingProductError,
+    isRetrievingProduct,
+    isOwnedByLessor,
   } as const;
 };

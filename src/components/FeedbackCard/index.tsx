@@ -24,11 +24,15 @@ const FeedbackCard: React.FC<API.IFeedback> = ({ user, content, image, star, cre
       </Flex>
       <Flex className="flex-col gap-2 pl-20">
         <Typography className="text-body-1-regular font-sans">{content}</Typography>
-        <Image
-          src={image}
-          rootClassName="w-32 h-32 object-cover rounded-lg overflow-clip border border-neutral-3"
-          className="!w-32 !h-32 object-cover"
-        />
+        <Flex className="rounded-lg border border-neutral-3 w-fit">
+          <Image
+            src={image}
+            rootClassName="rounded-lg overflow-clip"
+            width={128}
+            height={128}
+            style={{ objectFit: 'cover' }}
+          />
+        </Flex>
       </Flex>
     </Flex>
   );

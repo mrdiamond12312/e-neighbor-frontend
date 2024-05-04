@@ -10,7 +10,7 @@ export type TProductInformativeProps = {
 
 export const ProductInformative: React.FC<TProductInformativeProps> = ({ data }) => {
   return (
-    <Flex className="flex-col gap-2 p-4 max-h-[calc(100vh-168px)] xl:max-h-[calc(100vh-224px)] overflow-auto">
+    <Flex className="flex-col gap-2 p-4 max-h-[calc(100vh-168px)] overflow-auto">
       <h2 className="text-heading-5 font-sans m-0">
         <FormattedHTMLMessage
           id="product.details.description.label"

@@ -105,8 +105,8 @@ export const productPage = {
 };
 
 export const productStatus = {
-  'product.status.available': 'Available',
-  'product.status.not.available': 'Disabled',
+  'product.status.available': 'AVAILABLE',
+  'product.status.not.available': 'DISABLED',
 };
 
 export const productDetailPage = {

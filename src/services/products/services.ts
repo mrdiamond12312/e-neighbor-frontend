@@ -16,6 +16,8 @@ export const useProductDetails = (productId?: number | string) =>
     () => getProductDetails(productId),
     {
       enabled: !!productId,
+      retry: 1,
+      refetchOnWindowFocus: false,
     },
   );
 

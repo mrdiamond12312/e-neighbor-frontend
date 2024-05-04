@@ -1,5 +1,6 @@
 import { FormattedHTMLMessage, Link, useParams } from '@umijs/max';
 import { Breadcrumb, Col, Divider, Flex, Rate, Row } from 'antd/lib';
+import classNames from 'classnames';
 import React, { Fragment } from 'react';
 import urlcat from 'urlcat';
 
@@ -29,6 +30,7 @@ export type TProductCharacteristicsProps = {
     key?: string;
     to?: string;
   }[];
+  hideAction?: boolean;
 };
 
 export const Characteristic: React.FC<TCharacteristic> = ({ characteristics }) => {
@@ -64,8 +66,10 @@ export const Characteristic: React.FC<TCharacteristic> = ({ characteristics }) =
 export const ProductLanding: React.FC<TProductCharacteristicsProps> = ({
   data,
   breadcrumbsItems,
+  hideAction = false,
 }) => {
   const { productId } = useParams();
+  const actionClassname = classNames('flex-row gap-2', { hidden: hideAction });
 
   return (
     <div className="flex flex-col w-full">
@@ -85,7 +89,7 @@ export const ProductLanding: React.FC<TProductCharacteristicsProps> = ({
         <p className="text-teal-1">{data?.price}</p>
         <FormattedHTMLMessage id={data?.timeUnit} />
       </Flex>
-      <Flex className="flex-row gap-2">
+      <Flex className={actionClassname}>
         <Button type="dashed" btnSize="large" className="text-heading-5 w-full">
           <FormattedHTMLMessage id="store.preview.card.btn.wish" defaultMessage="Add to Wishlist" />
         </Button>

@@ -97,6 +97,12 @@ export default [
             path: 'manage',
             component: '@/pages/lessor/products/management',
           },
+
+          {
+            name: 'product-management',
+            path: 'manage/:productId',
+            component: '@/pages/lessor/products/detail',
+          },
         ],
       },
       {

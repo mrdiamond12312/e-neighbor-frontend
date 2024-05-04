@@ -12,7 +12,7 @@ const Loading: React.FC<TLoadingProps> = ({ extra }) => {
   return (
     <FadeIn
       direction="left"
-      className="w-fit fixed bottom-24 right-[calc(50vw-624px)] z-100 flex flex-col gap-2"
+      className="w-fit fixed bottom-24 right-4 xl:right-[calc(50vw-624px)] z-100 flex flex-col gap-2"
       keyId="loading-sprite"
     >
       <div className="sprite" />
