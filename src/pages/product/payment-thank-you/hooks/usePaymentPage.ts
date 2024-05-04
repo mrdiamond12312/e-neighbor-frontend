@@ -18,8 +18,9 @@ export const usePaymentPage = () => {
   // Can add setSearchParams for the following for other usage
   // Search Params ?[key]=[value] (same behaviours as React's useState)
   const [searchParams] = useSearchParams();
-  const allParams = searchParams.entries();
+  const allParams = Object.fromEntries(searchParams.entries());
   console.log(allParams);
+  // ** Please use searchParams.getAll(key) if a value is of array type
 
   // Other Logic here (Checking checksum and generate information to render)
 
