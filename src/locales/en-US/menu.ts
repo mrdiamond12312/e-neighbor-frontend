@@ -16,4 +16,17 @@ export default {
   'menu.dashboard': 'Dashboard',
   'menu.reminder': 'Kết nối người thuê và người cho thuê!',
   'menu.product-management': 'Products Management',
+
+  'menu.thank-you': 'Thank You',
+  'menu.edit-profile': 'Edit Profile',
+  'menu.orders': 'Orders',
+  'menu.orders.order-detail': 'Order Detail',
+  'menu.orders.order-detail.cancel-order': 'Cancel Order',
+  'menu.orders.order-detail.receipt-order': 'Order Receipt',
+  'menu.orders.order-detail.feedback-order': 'Order Feedback',
+  'menu.order-details': 'Order Detail',
+  'menu.order-details.reject-order': 'Reject Order',
+  'menu.order-details.approve-order': 'Approve Order',
+  'menu.order-details.return-order': 'Return Order',
+  'menu.product-detail.rent': 'Rent Product',
 };

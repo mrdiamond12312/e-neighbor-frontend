@@ -1,3 +1,5 @@
+import order from './en-US/order';
+import user from './en-US/user';
 import thankYou from './vi-VN/thankYou';
 
 import aboutUs from '@/locales/vi-VN/aboutUs';
@@ -24,4 +26,6 @@ export default {
   ...lessor,
   ...common,
   ...thankYou,
+  ...order,
+  ...user,
 };
