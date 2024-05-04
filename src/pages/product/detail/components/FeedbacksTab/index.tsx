@@ -27,7 +27,7 @@ export const FeedbacksTab: React.FC<TFeedbackTabProps> = ({ productData }) => {
     }
   }, [isInView, isFetchingNextPage]);
   return (
-    <Flex className="flex-col p-4 max-h-[calc(100vh-168px)] xl:max-h-[calc(100vh-224px)] overflow-auto">
+    <Flex className="flex-col p-4 max-h-[calc(100vh-168px)] overflow-auto">
       <OverallRating
         avgRating={productData?.averageStar ?? 0}
         feedbackCount={productData?.numberOfCompletedOrders ?? 0}

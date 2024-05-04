@@ -99,8 +99,8 @@ export const productPage = {
 };
 
 export const productStatus = {
-  'product.status.available': 'Có thể thuê',
-  'product.status.not.available': 'Ngưng cho thuê',
+  'product.status.available': 'CÓ THỂ THUÊ',
+  'product.status.not.available': 'NGƯNG CHO THUÊ',
 };
 
 export const productDetailPage = {

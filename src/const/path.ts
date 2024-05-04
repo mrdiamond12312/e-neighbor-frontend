@@ -4,10 +4,15 @@ export const PATH_ROOT = '/home';
 
 export const PATH_LESSOR = '/lessor';
 export const PATH_LESSOR_ONBOARDING = PATH_LESSOR + '/on-boarding';
+
 export const PATH_LESSOR_PRODUCTS = PATH_LESSOR + '/products';
 export const PATH_LESSOR_PRODUCTS_MANAGE = PATH_LESSOR_PRODUCTS + '/manage';
 export const PATH_LESSOR_ADD_PRODUCT = PATH_LESSOR_PRODUCTS + '/new';
-export const PATH_LESSOR_PRODUCT_DETAIL = PATH_LESSOR_PRODUCTS + '/:productId';
+export const PATH_LESSOR_PRODUCT_DETAIL = PATH_LESSOR_PRODUCTS_MANAGE + '/:productId';
+export const PATH_LESSOR_PRODUCT_EDIT = PATH_LESSOR_PRODUCT_DETAIL + '/edit';
+export const PATH_LESSOR_PRODUCT_DISABLE = PATH_LESSOR_PRODUCT_DETAIL + '/disable';
+export const PATH_LESSOR_PRODUCT_ENABLE = PATH_LESSOR_PRODUCT_DETAIL + '/enable';
+
 export const PATH_LESSOR_DASHBOARD = PATH_LESSOR + '/dashboard';
 export const PATH_LESSOR_ORDERS = PATH_LESSOR + '/orders';
 export const PATH_LESSOR_ORDERS_DETAILS = PATH_LESSOR_ORDERS + '/:orderId';

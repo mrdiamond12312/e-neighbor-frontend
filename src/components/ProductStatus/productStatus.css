@@ -1,0 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.custom-tag {
+  @apply m-0;
+  span {
+    @apply m-0;
+    margin-inline-start: 0px !important;
+  }
+}
