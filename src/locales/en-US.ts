@@ -1,3 +1,5 @@
+import thankYou from './en-US/thankYou';
+
 import aboutUs from '@/locales/en-US/aboutUs';
 import common from '@/locales/en-US/common';
 import lessor from '@/locales/en-US/lessor';
@@ -21,4 +23,5 @@ export default {
   ...store,
   ...lessor,
   ...common,
+  ...thankYou,
 };

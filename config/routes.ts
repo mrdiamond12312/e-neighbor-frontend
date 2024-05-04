@@ -20,6 +20,11 @@ export default [
         component: '@/pages/user/login',
       },
       {
+        name: 'thank-you',
+        path: 'thank-you',
+        component: './thank-you',
+      },
+      {
         path: 'profile',
         wrappers: ['@/wrappers/Auth', '@/layouts/User'],
         routes: [

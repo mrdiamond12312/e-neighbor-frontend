@@ -1,3 +1,5 @@
+import thankYou from './vi-VN/thankYou';
+
 import aboutUs from '@/locales/vi-VN/aboutUs';
 import common from '@/locales/vi-VN/common';
 import lessor from '@/locales/vi-VN/lessor';
@@ -21,4 +23,5 @@ export default {
   ...store,
   ...lessor,
   ...common,
+  ...thankYou,
 };
