@@ -30,7 +30,7 @@ const ProductManagement: React.FC = () => {
         className="max-h-[calc(100vh-56px)] max-w-screen-2xl w-full overflow-auto p-4 flex-col gap-4 snap-mandatory snap-y snap-page-container"
         header={{ title: '1' }}
       >
-        <Flex className="flex-col gap-4 bg-neutral-1 p-4 w-full">
+        <Flex className="flex-col gap-4 bg-neutral-1 p-4 w-full rounded-lg border border-neutral-3 pt-3">
           <Flex className="flex-col md:flex-row gap-4 bg-neutral-1 w-full items-center">
             <Tabs
               items={tabsItem}

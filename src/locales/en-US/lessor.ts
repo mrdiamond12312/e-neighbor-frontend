@@ -154,12 +154,10 @@ export default {
   'lessor.products.management.is.rejected': 'Rejected',
 
   // Add missing
-  'lessor.breadcrumbs.lessor.dashboard': 'Dashboard',
   'lessor.product.management.table.col.action.view-detail': 'View Detail',
   'lessor.product.management.table.col.action.edit': 'Edit',
   'lessor.product.management.table.col.action.enable': 'Enable Product',
   'lessor.product.management.table.col.action.disable': 'Disable Product',
-  'lessor.breadcrumbs.lessor.orders': 'Orders',
   'lessor.order.management.table.col.action.view-detail': 'View Detail',
   'lessor.order.management.table.col.action.approve': 'Approve',
   'lessor.order.management.table.col.action.reject': 'Reject',

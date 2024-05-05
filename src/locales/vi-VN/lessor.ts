@@ -149,12 +149,10 @@ export default {
   'lessor.products.management.is.rejected': 'Vi phạm',
 
   // Add missing
-  'lessor.breadcrumbs.lessor.dashboard': 'Dashboard',
   'lessor.product.management.table.col.action.view-detail': 'Xem chi tiết',
   'lessor.product.management.table.col.action.edit': 'Chỉnh sửa',
   'lessor.product.management.table.col.action.enable': 'Kích hoạt',
   'lessor.product.management.table.col.action.disable': 'Vô hiệu hóa',
-  'lessor.breadcrumbs.lessor.orders': 'Đơn hàng',
   'lessor.order.management.table.col.action.view-detail': 'Xem chi tiết',
   'lessor.order.management.table.col.action.approve': 'Chấp nhận',
   'lessor.order.management.table.col.action.reject': 'Từ chối',
