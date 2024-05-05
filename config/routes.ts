@@ -92,6 +92,10 @@ export default [
         headerRender: false,
         routes: [
           {
+            path: '',
+            redirect: 'manage',
+          },
+          {
             name: 'add-product',
             path: 'new',
             component: '@/pages/lessor/products/add',
