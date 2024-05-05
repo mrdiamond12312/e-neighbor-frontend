@@ -1,12 +1,13 @@
 import { DatePicker as AntdDatePicker } from 'antd';
 import { RangePickerProps } from 'antd/es/date-picker';
-import { Flex } from 'antd/lib';
+import { Input } from 'antd/lib';
 import classNames from 'classnames';
 import dayjs from 'dayjs';
 import React, { Fragment } from 'react';
 import { Controller } from 'react-hook-form';
 
 import ValidateError from '@/components/Input/ValidateError';
+import { getDateFormatNormal } from '@/utils/time-format';
 
 export type TPropsDatePicker = TPropsFormInput & {
   minimumYear?: number;
@@ -45,9 +46,12 @@ const DatePicker: React.FC<TPropsDatePicker> = ({
             <ValidateError error={error} />
           </Fragment>
         ) : (
-          <Flex className="pl-3 h-8 font-sans text-body-2-semibold items-end">
-            {field.value ?? 'NaN'}
-          </Flex>
+          <Input
+            className={className}
+            size={size}
+            value={getDateFormatNormal(field.value) ?? ''}
+            readOnly
+          />
         )
       }
     />

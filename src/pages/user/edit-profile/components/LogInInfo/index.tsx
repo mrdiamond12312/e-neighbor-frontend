@@ -3,6 +3,8 @@ import { Col, Divider, Form, Input, Row } from 'antd/lib';
 import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
+import { getDateFormatNormal } from '../../../../../utils/time-format/index';
+
 const { Item } = Form;
 
 export const LogInInfo: React.FC = () => {
@@ -38,7 +40,7 @@ export const LogInInfo: React.FC = () => {
             required
           >
             <Input
-              className="custom-input h-10"
+              className="custom-input h-[38px]"
               size={size}
               value={currentUser?.userName}
               readOnly
@@ -54,9 +56,9 @@ export const LogInInfo: React.FC = () => {
             required
           >
             <Input
-              className="custom-input h-10"
+              className="custom-input h-[38px]"
               size={size}
-              value={currentUser?.createdAt}
+              value={getDateFormatNormal(currentUser?.createdAt) ?? ''}
               readOnly
             />
           </Item>
@@ -69,18 +71,7 @@ export const LogInInfo: React.FC = () => {
             })}
             required
           >
-            <Input className="custom-input h-10" size={size} value={currentUser?.id} readOnly />
-          </Item>
-        </Col>
-        <Col span={24} lg={12}>
-          <Item
-            label={formatMessage({
-              id: 'user.profile.form.role.label',
-              defaultMessage: 'Account Role',
-            })}
-            required
-          >
-            <Input className="custom-input h-10" size={size} value={currentUser?.role} readOnly />
+            <Input className="custom-input h-[38px]" size={size} value={currentUser?.id} readOnly />
           </Item>
         </Col>
       </Row>

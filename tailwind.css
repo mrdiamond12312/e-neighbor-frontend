@@ -266,7 +266,7 @@
       .ant-form-item-label {
         @apply lg:text-right font-sans text-teal-7 text-body-2-regular p-0;
         label {
-          @apply h-10 text-teal-4;
+          @apply h-[38px] text-teal-4;
           &:after {
             @apply font-sans visible m-0;
             color: theme('colors.teal-4');
