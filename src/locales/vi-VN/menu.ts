@@ -15,4 +15,18 @@ export default {
   'menu.dashboard': 'Dashboard',
   'menu.add-product': 'Thêm sản phẩm',
   'menu.product-management': 'Quản lý sản phẩm',
+
+  'menu.thank-you': 'Cảm ơn',
+  'menu.edit-profile': 'Cập nhật hồ sơ',
+  'menu.orders': 'Đơn hàng',
+  'menu.orders.order-detail': 'Chi tiết đơn hàng',
+  'menu.orders.order-detail.cancel-order': 'Hủy đơn hàng',
+  'menu.orders.order-detail.receipt-order': 'Hóa đơn đơn hàng',
+  'menu.orders.order-detail.feedback-order': 'Đánh giá đơn hàng',
+  'menu.order-details': 'Chi tiết đơn hàng',
+  'menu.order-details.reject-order': 'Từ chối đơn hàng',
+  'menu.order-details.approve-order': 'Chấp nhận đơn hàng',
+  'menu.order-details.return-order': 'Hoàn trả đơn hàng',
+  'menu.product-detail.rent': 'Thuê sản phẩm',
+  'menu.orders.payment-thankyou': 'Cảm ơn!',
 };

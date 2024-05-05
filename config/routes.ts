@@ -34,6 +34,11 @@ export default [
             component: '@/pages/user/order',
             routes: [
               {
+                name: 'payment-thankyou',
+                path: 'thank-you',
+                component: '@/pages/user/payment-thank-you',
+              },
+              {
                 name: 'order-detail',
                 path: ':orderId',
                 component: '@/pages/user/order-details',
@@ -85,8 +90,11 @@ export default [
       {
         path: 'products',
         headerRender: false,
-        //Do not display the menu top ba
         routes: [
+          {
+            path: '',
+            redirect: 'manage',
+          },
           {
             name: 'add-product',
             path: 'new',

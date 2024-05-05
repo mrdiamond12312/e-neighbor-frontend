@@ -4,9 +4,12 @@ import lessor from '@/locales/vi-VN/lessor';
 import lessorBreadCrumbs from '@/locales/vi-VN/lessor-breadcrumbs';
 import login from '@/locales/vi-VN/login';
 import menu from '@/locales/vi-VN/menu';
+import order from '@/locales/vi-VN/order';
 import { product } from '@/locales/vi-VN/product';
 import register from '@/locales/vi-VN/register';
 import store from '@/locales/vi-VN/store';
+import thankYou from '@/locales/vi-VN/thankYou';
+import user from '@/locales/vi-VN/user';
 
 export default {
   'nav.Home': 'Landing Page',
@@ -21,4 +24,7 @@ export default {
   ...store,
   ...lessor,
   ...common,
+  ...thankYou,
+  ...order,
+  ...user,
 };

@@ -1,4 +1,4 @@
-import { history, useMutation } from '@umijs/max';
+import { history, useMutation, useQuery } from '@umijs/max';
 
 import * as Path from '@/const/path';
 import { TLoginFormFields } from '@/pages/user/login/hooks/useLoginForm';
@@ -53,4 +53,10 @@ export const fetchAuthInfo = async (): Promise<API.TAuthProfile | undefined> => 
     console.log(error);
   }
   return undefined;
+};
+
+export const useAuthInfo = () => {
+  return useQuery<API.TAuthProfile | undefined>([API_ENDPOINTS.PROFILE], () =>
+    getCurrentAuthInfo(),
+  );
 };

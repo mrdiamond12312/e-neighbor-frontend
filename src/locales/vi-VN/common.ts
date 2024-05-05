@@ -21,4 +21,11 @@ export default {
   'common.location.HCM': 'TP Hồ Chí Minh',
   'common.location.HN': 'Hà Nội',
   'common.location.else': 'Khác',
+
+  // Add missing
+  'common.table.col.actions': 'Hành động',
+  'common.sort.options.rentDay': 'Ngày thuê',
+  'common.sort.options.returnDay': 'Ngày hoàn trả',
+  'common.sort.options.orderValue': 'Giá trị đơn hàng',
+  'common.role.lessor': 'Người cho thuê',
 };

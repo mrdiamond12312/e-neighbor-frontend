@@ -15,12 +15,12 @@ export interface IPopularProductsProps {
 const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
   const { data: mostViewedProducts, isLoading: isLoadingMostViewed } = useMostViewedProducts({
     isVehicle,
-    isConfirmedByAdmin: false,
+    isConfirmedByAdmin: true,
   });
 
   const { data: mostRatedProducts, isLoading: isLoadingMostRated } = useMostRatedProducts({
     isVehicle,
-    isConfirmedByAdmin: false,
+    isConfirmedByAdmin: true,
   });
 
   const { formatMessage } = useIntl();

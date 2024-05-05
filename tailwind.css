@@ -266,7 +266,7 @@
       .ant-form-item-label {
         @apply lg:text-right font-sans text-teal-7 text-body-2-regular p-0;
         label {
-          @apply h-10 text-teal-4;
+          @apply h-[38px] text-teal-4;
           &:after {
             @apply font-sans visible m-0;
             color: theme('colors.teal-4');
@@ -697,7 +697,7 @@
     }
 
     .ant-menu-item {
-      @apply gap-[6px] m-0 w-full !h-14 !pl-5 py-2;
+      @apply gap-[6px] m-0 w-full !h-14 !pl-[18px] py-2;
 
       &:not(.ant-menu-item-selected):not(.ant-menu-submenu-selected):hover {
         @apply text-teal-6;
@@ -713,7 +713,7 @@
     }
 
     .ant-menu-submenu-title {
-      @apply gap-[6px] m-0 w-full !h-14 !pl-5 bg-neutral-1 py-2;
+      @apply gap-[6px] m-0 w-full !h-14 !pl-[18px] bg-neutral-1 py-2;
 
       &:not(.ant-menu-submenu-selected):hover {
         @apply bg-teal-200;
@@ -729,7 +729,7 @@
     }
     .ant-menu-submenu-selected {
       .ant-menu-submenu-title {
-        @apply gap-[6px] m-0 w-full !h-14 !pl-5 bg-teal-100 py-4 text-teal-7 text-body-2-semibold;
+        @apply gap-[6px] m-0 w-full !h-14 !pl-[18px] bg-teal-100 py-4 text-teal-7 text-body-2-semibold;
       }
     }
 

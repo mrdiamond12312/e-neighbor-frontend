@@ -7,8 +7,11 @@ export default {
 
   // Sidebar
   'lessor.sidebar.dashboard': 'Dashboard',
+  'lessor.sidebar.products.management.all': 'Products Management',
+  'lessor.sidebar.products.management.add': 'Add Product',
   'lessor.sidebar.products.management': 'Products Management',
   'lessor.sidebar.orders.management': 'Orders Management',
+  'lessor.sidebar.orders.all': 'All Order',
 
   // Header
   'lessor.menu.title': "Lessor's Channel",
@@ -149,4 +152,13 @@ export default {
   'lessor.products.management.is.not.approved': 'Approval Requested',
   'lessor.products.management.is.approved': 'Approved',
   'lessor.products.management.is.rejected': 'Rejected',
+
+  // Add missing
+  'lessor.product.management.table.col.action.view-detail': 'View Detail',
+  'lessor.product.management.table.col.action.edit': 'Edit',
+  'lessor.product.management.table.col.action.enable': 'Enable Product',
+  'lessor.product.management.table.col.action.disable': 'Disable Product',
+  'lessor.order.management.table.col.action.view-detail': 'View Detail',
+  'lessor.order.management.table.col.action.approve': 'Approve',
+  'lessor.order.management.table.col.action.reject': 'Reject',
 };
