@@ -20,11 +20,6 @@ export default [
         component: '@/pages/user/login',
       },
       {
-        name: 'thank-you',
-        path: 'thank-you',
-        component: './thank-you',
-      },
-      {
         path: 'profile',
         wrappers: ['@/wrappers/Auth', '@/layouts/User'],
         routes: [
@@ -38,6 +33,11 @@ export default [
             path: 'orders',
             component: '@/pages/user/order',
             routes: [
+              {
+                name: 'payment-thankyou',
+                path: 'thank-you',
+                component: '@/pages/user/payment-thank-you',
+              },
               {
                 name: 'order-detail',
                 path: ':orderId',
@@ -90,7 +90,6 @@ export default [
       {
         path: 'products',
         headerRender: false,
-        //Do not display the menu top ba
         routes: [
           {
             name: 'add-product',

@@ -6,4 +6,6 @@ export default {
   'thankYou.billingInfo.amount': 'Amount:',
   'thankYou.billingInfo.bankCode': 'Bank code:',
   'thankYou.button.content': 'View order detail',
+  'thankYou.heading': 'Thank you for renting!',
+  'thankYou.divider.content': 'Payment Details',
 };

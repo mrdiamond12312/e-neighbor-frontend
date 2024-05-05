@@ -28,4 +28,5 @@ export default {
   'menu.order-details.approve-order': 'Chấp nhận đơn hàng',
   'menu.order-details.return-order': 'Hoàn trả đơn hàng',
   'menu.product-detail.rent': 'Thuê sản phẩm',
+  'menu.orders.payment-thankyou': 'Cảm ơn!',
 };

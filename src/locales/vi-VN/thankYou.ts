@@ -6,4 +6,6 @@ export default {
   'thankYou.billingInfo.amount': 'Số tiền:',
   'thankYou.billingInfo.bankCode': 'Mã ngân hàng:',
   'thankYou.button.content': 'Xem chi tiết đơn hàng',
+  'thankYou.heading': 'Cảm ơn vì đã thuê sản phẩm!',
+  'thankYou.divider.content': 'Thông tin thanh toán',
 };

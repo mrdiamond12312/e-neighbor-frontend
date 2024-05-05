@@ -29,4 +29,5 @@ export default {
   'menu.order-details.approve-order': 'Approve Order',
   'menu.order-details.return-order': 'Return Order',
   'menu.product-detail.rent': 'Rent Product',
+  'menu.orders.payment-thankyou': 'Thank you for renting!',
 };
