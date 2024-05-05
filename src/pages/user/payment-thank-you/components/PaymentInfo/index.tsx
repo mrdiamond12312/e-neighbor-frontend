@@ -42,7 +42,7 @@ export const PaymentInfo: React.FC<TPaymentInfoProps> = ({ data }) => {
         </Col>
         <Col span={12}>
           <p className="text-body-1-semibold font-normal">
-            {data[PAYMENT_INFO_FIELD.vnpOrderInfo]}
+            {Number(data[PAYMENT_INFO_FIELD.vnpOrderInfo]) / 100}
           </p>
         </Col>
       </Row>
