@@ -1,7 +1,7 @@
 import { PageContainer } from '@ant-design/pro-components';
+import { Outlet } from '@umijs/max';
 import { Col, Flex, Row, Tabs } from 'antd/lib';
 import React, { Fragment } from 'react';
-// import ImageGallery from 'react-image-gallery';
 
 import { ImageGallery } from '@/components/ImageGallery';
 import Loading from '@/loading';
@@ -79,6 +79,7 @@ const ProductDetail: React.FC<TReusableProductDetailExtraProps> = ({ extra }) =>
                 {extra}
               </Row>
             )}
+            <Outlet />
           </Fragment>
         )
       )}
