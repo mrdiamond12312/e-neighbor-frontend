@@ -5,6 +5,7 @@ export default function access(initialState: { currentUser?: API.TAuthProfile } 
   const { currentUser } = initialState ?? {};
 
   return {
+    isAdmin: currentUser?.role === 'admin',
     isLessor: currentUser?.role === 'lessor',
     isUser: currentUser?.role === 'user',
     isGuest: !currentUser,

@@ -38,3 +38,8 @@ export const PATH_USER_PROFILE_ORDER_IMAGERECEIPT = '/user/profile/orders/:order
 
 export const PATH_USER_PROFILE_WALLET = '/user/profile/wallet';
 export const PATH_USER_PROFILE_WISHLIST = '/user/profile/wishlist';
+
+export const PATH_ADMIN = '/admin';
+export const PATH_ADMIN_LOGIN = PATH_ADMIN + '/login';
+export const PATH_ADMIN_DASHBOARD = PATH_ADMIN + '/dashboard';
+export const PATH_ADMIN_PRODUCTS = PATH_ADMIN + '/products';

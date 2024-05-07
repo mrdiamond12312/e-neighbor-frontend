@@ -4,8 +4,9 @@ import React, { Fragment } from 'react';
 import urlcat from 'urlcat';
 
 import FlushReveal from '@/components/AnimationKit/FlushReveal';
+import Button from '@/components/Button';
 import { PropertyCard } from '@/components/PropertyCard';
-import { PATH_PRODUCTS_DETAILS } from '@/const/path';
+import { PATH_PRODUCTS_DETAILS, PATH_PRODUCTS_RENT } from '@/const/path';
 import LoadingSkeleton from '@/pages/store/components/LoadingSkeleton';
 
 export interface IProductsPageProps {
@@ -41,10 +42,16 @@ const ProductsPage: React.FC<IProductsPageProps> = ({ isLoading, products }) => 
               >
                 <Link to={urlcat(PATH_PRODUCTS_DETAILS, { productId: product.id })}>
                   <PropertyCard
-                    ctaBtnFormattedMessage={formatMessage({
-                      id: 'store.preview.card.btn.rent',
-                      defaultMessage: 'Rent Now!',
-                    })}
+                    ctaNode={
+                      <Link to={urlcat(PATH_PRODUCTS_RENT, { productId: product.id })}>
+                        <Button className="w-full hidden bg-neutral-1 mix-blend-overlay text-teal-4 text-body-1-semibold border-none opacity-0 cta-btn z-10">
+                          <FormattedHTMLMessage
+                            id="store.preview.card.btn.rent"
+                            defaultMessage="Rent Now!"
+                          />
+                        </Button>
+                      </Link>
+                    }
                     imageSrc={product.image}
                     owner={product.lessorImage}
                     pricing={product.price}

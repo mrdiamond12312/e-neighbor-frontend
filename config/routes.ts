@@ -73,6 +73,28 @@ export default [
   },
 
   {
+    path: 'admin',
+    wrappers: ['@/wrappers/AdminAuth', '@/layouts/Admin'],
+    headerRender: false,
+    routes: [
+      { path: '', redirect: 'login' },
+      {
+        path: 'login',
+        name: 'admin-login',
+        component: '@/pages/admin/login',
+      },
+      {
+        path: 'dashboard',
+        name: 'admin-dashboard',
+      },
+
+      {
+        path: 'products',
+        name: 'admin-products',
+      },
+    ],
+  },
+  {
     path: 'lessor',
     wrappers: ['@/wrappers/LessorAuth', '@/layouts/Lessor'],
     headerRender: false,

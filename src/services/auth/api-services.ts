@@ -24,3 +24,10 @@ export const getCurrentAuthInfo = async () => {
     timeoutMessage: 'Connection Timeout!',
   });
 };
+
+export const adminLogin = async (body: TLoginFormFields) => {
+  return request<API.TAuthResponse>(API_ENDPOINTS.ADMIN_LOGIN, {
+    method: 'POST',
+    data: body,
+  });
+};

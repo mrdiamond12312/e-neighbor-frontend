@@ -23,7 +23,7 @@ const Avatar: React.FC<IAvatar> = ({ currentUser, loading }) => {
           icon={<User />}
         />
         <span className="text-body-2-regular text-neutral-1" key="menu-user-name">
-          {currentUser?.fullName}
+          {currentUser?.fullName ?? currentUser?.userName}
         </span>
       </div>
     </AvatarDropdown>

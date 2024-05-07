@@ -1,16 +1,14 @@
-import { ChartLineUp, Invoice, Storefront } from '@phosphor-icons/react';
+import { ChartLineUp, Storefront } from '@phosphor-icons/react';
 import { FormattedHTMLMessage, Link, NavLink, useLocation, useModel } from '@umijs/max';
 import { useState } from 'react';
 
 import FadeIn from '@/components/AnimationKit/FadeIn';
 import type { MenuItem } from '@/components/SideBar/hooks/useLocationMenuKeys';
 import {
-  PATH_LESSOR,
-  PATH_LESSOR_ADD_PRODUCT,
-  PATH_LESSOR_DASHBOARD,
-  PATH_LESSOR_ONBOARDING,
-  PATH_LESSOR_ORDERS,
-  PATH_LESSOR_PRODUCTS_MANAGE,
+  PATH_ADMIN,
+  PATH_ADMIN_DASHBOARD,
+  PATH_ADMIN_LOGIN,
+  PATH_ADMIN_PRODUCTS,
 } from '@/const/path';
 import { containsDigits } from '@/utils/validator';
 
@@ -21,26 +19,27 @@ export type TBreadCrumbsObj = {
 };
 
 export const ICON_SIZE = 20;
-export const LESSOR_BREADCRUMBS_FORMATID_HEADER = 'lessor.breadcrumbs';
+export const ADMIN_BREADCRUMBS_FORMATID_HEADER = 'admin.breadcrumbs';
 
-export const useLessorLayout = () => {
+export const useAdminLayout = () => {
   const { loading, initialState } = useModel('@@initialState');
   const { pathname } = useLocation();
-  const isAtOnboardingPage = pathname === PATH_LESSOR_ONBOARDING;
+  const isAtAdminLoginPage = pathname === PATH_ADMIN_LOGIN;
+
   const sideBarItems: MenuItem[] = [
     {
       label: (
-        <Link to={PATH_LESSOR_DASHBOARD}>
-          <FormattedHTMLMessage id="lessor.sidebar.dashboard" defaultMessage="Dashboard" />
+        <Link to={PATH_ADMIN_DASHBOARD}>
+          <FormattedHTMLMessage id="admin.sidebar.dashboard" defaultMessage="Dashboard" />
         </Link>
       ),
-      key: PATH_LESSOR_DASHBOARD,
+      key: PATH_ADMIN_DASHBOARD,
       icon: <ChartLineUp size={ICON_SIZE} />,
     },
     {
       label: (
         <FormattedHTMLMessage
-          id="lessor.sidebar.products.management"
+          id="admin.sidebar.products.management"
           defaultMessage="Products Management"
         />
       ),
@@ -49,45 +48,14 @@ export const useLessorLayout = () => {
       children: [
         {
           label: (
-            <Link to={PATH_LESSOR_PRODUCTS_MANAGE}>
+            <Link to={PATH_ADMIN_PRODUCTS}>
               <FormattedHTMLMessage
-                id="lessor.sidebar.products.management.all"
-                defaultMessage="All Products"
+                id="admin.sidebar.products.approval.all"
+                defaultMessage="Approval Requests"
               />
             </Link>
           ),
-          key: PATH_LESSOR_PRODUCTS_MANAGE,
-        },
-        {
-          label: (
-            <Link to={PATH_LESSOR_ADD_PRODUCT}>
-              <FormattedHTMLMessage
-                id="lessor.sidebar.products.management.add"
-                defaultMessage="Add a Product"
-              />
-            </Link>
-          ),
-          key: PATH_LESSOR_ADD_PRODUCT,
-        },
-      ],
-    },
-    {
-      key: 'sub-menu-order-management',
-      icon: <Invoice size={ICON_SIZE} />,
-      label: (
-        <FormattedHTMLMessage
-          id="lessor.sidebar.orders.management"
-          defaultMessage="Orders Management"
-        />
-      ),
-      children: [
-        {
-          key: PATH_LESSOR_ORDERS,
-          label: (
-            <Link to={PATH_LESSOR_ORDERS}>
-              <FormattedHTMLMessage id="lessor.sidebar.orders.all" defaultMessage="All Orders" />
-            </Link>
-          ),
+          key: PATH_ADMIN_PRODUCTS,
         },
       ],
     },
@@ -98,17 +66,14 @@ export const useLessorLayout = () => {
     .reduce((acc: TBreadCrumbsObj[], part, index, array) => {
       const className = index === array.length - 1 ? 'breadcrumb-active' : 'breadcrumb';
       if (index === 0) {
-        const formatId = [LESSOR_BREADCRUMBS_FORMATID_HEADER, part].join('.');
+        const formatId = [ADMIN_BREADCRUMBS_FORMATID_HEADER, part].join('.');
         const link = `/${part}`;
         acc.push({
           key: formatId,
           to: link,
           title: (
             <FadeIn direction="top" keyId={formatId} key={formatId}>
-              <NavLink
-                to={link === PATH_LESSOR ? PATH_LESSOR_DASHBOARD : link}
-                className={className}
-              >
+              <NavLink to={link === PATH_ADMIN ? PATH_ADMIN_DASHBOARD : link} className={className}>
                 <FormattedHTMLMessage id={formatId} />
               </NavLink>
             </FadeIn>
@@ -116,7 +81,7 @@ export const useLessorLayout = () => {
         });
       } else {
         const previous = acc.at(-1);
-        const formatId = [previous?.key ?? 'lessor.breadcrumbs', part].join('.');
+        const formatId = [previous?.key ?? ADMIN_BREADCRUMBS_FORMATID_HEADER, part].join('.');
         const link = [previous?.to ?? '', part].join('/');
         acc.push({
           key: formatId,
@@ -140,7 +105,7 @@ export const useLessorLayout = () => {
     loading,
     initialState,
     pathname,
-    isAtOnboardingPage,
+    isAtAdminLoginPage,
     breadCrumbItems,
     sideBarItems,
     isMenuDrawerOpen,

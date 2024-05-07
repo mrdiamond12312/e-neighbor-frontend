@@ -1,5 +1,5 @@
 import { Rate } from 'antd/lib';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import Button from '@/components/Button';
 import Logo from '@/components/Logo';
@@ -14,6 +14,7 @@ export interface ICardProps {
   pricingCurrency?: string;
   ctaBtnFormattedMessage?: string;
   ctaBtnFn?: () => void;
+  ctaNode?: React.ReactNode;
   type?: 'empty' | 'default';
 }
 
@@ -23,13 +24,13 @@ export const PropertyCard: React.FC<ICardProps> = ({
   owner,
   ctaBtnFn,
   ctaBtnFormattedMessage,
+  ctaNode,
   tag,
   rating,
   pricing,
   pricingCurrency,
   type = 'default',
 }) => {
-  // const { formatMessage } = useIntl();
   if (type === 'empty')
     return (
       <article className="w-64 h-[415px] bg-neutral-3 property-card overflow-clip flex flex-col items-center justify-center">
@@ -45,12 +46,16 @@ export const PropertyCard: React.FC<ICardProps> = ({
             <img src={owner} className="w-16 h-16 object-cover hidden opacity-0 avatar" />
             <section className="bg-neutral-1 flex flex-col gap-1 w-full title">
               <h2 className="truncate text-heading-5 text-teal-7 m-0">{title}</h2>
-              <Button
-                onClick={ctaBtnFn}
-                className="w-full hidden bg-neutral-1 mix-blend-overlay text-teal-4 text-body-1-semibold border-none opacity-0 cta-btn z-10"
-              >
-                {ctaBtnFormattedMessage}
-              </Button>
+              {ctaNode ? (
+                <Fragment>{ctaNode}</Fragment>
+              ) : (
+                <Button
+                  onClick={ctaBtnFn}
+                  className="w-full hidden bg-neutral-1 mix-blend-overlay text-teal-4 text-body-1-semibold border-none opacity-0 cta-btn z-10"
+                >
+                  {ctaBtnFormattedMessage}
+                </Button>
+              )}
             </section>
           </section>
 
