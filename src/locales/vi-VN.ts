@@ -1,5 +1,6 @@
 import aboutUs from '@/locales/vi-VN/aboutUs';
 import common from '@/locales/vi-VN/common';
+import { feedbackLocales } from '@/locales/vi-VN/feedbacks';
 import lessor from '@/locales/vi-VN/lessor';
 import lessorBreadCrumbs from '@/locales/vi-VN/lessor-breadcrumbs';
 import login from '@/locales/vi-VN/login';
@@ -29,4 +30,5 @@ export default {
   ...order,
   ...user,
   ...rentLocale,
+  ...feedbackLocales,
 };
