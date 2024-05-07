@@ -1,3 +1,8 @@
+export enum LOCATION {
+  HCM = 'common.location.HCM',
+  HN = 'common.location.HN',
+}
+
 export enum ONBOARDING_FORM_KEY {
   address = 'address',
   email = 'email',
@@ -10,8 +15,9 @@ export enum ONBOARDING_FORM_KEY {
   description = 'description',
   shopName = 'shopName',
   citizenCardFront = 'citizenCardFront',
-  citizenCardBack = 'citizenCardback',
+  citizenCardBack = 'citizenCardBack',
   avatar = 'avatar',
+  location = 'location',
 }
 
 export enum CREDIT_KEY {

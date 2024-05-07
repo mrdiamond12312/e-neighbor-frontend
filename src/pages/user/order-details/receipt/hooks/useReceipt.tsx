@@ -86,13 +86,16 @@ export const useReceipt = () => {
     mutate(body, {
       onSuccess: () => {
         notification.success({
-          message: formatMessage({
-            id: 'user.orders.receipt.submit.success',
-            defaultMessage: 'Successfully add a Receipt for this order',
-          }),
+          message: formatMessage(
+            {
+              id: 'user.orders.receipt.submit.success',
+              defaultMessage: 'Successfully add a Receipt for order #{orderId}',
+            },
+            { orderId },
+          ),
 
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
       onError: (error) => {
@@ -100,7 +103,7 @@ export const useReceipt = () => {
           message: [error.statusCode, error.error].join(' - '),
           description: error.message,
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
     });
@@ -126,6 +129,7 @@ export const useReceipt = () => {
   const afterClose = () => {
     history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId }));
   };
+
   return {
     orderId,
     isOpen,

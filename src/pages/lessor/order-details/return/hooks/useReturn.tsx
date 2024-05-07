@@ -85,12 +85,15 @@ export const useReturn = () => {
     mutate(body, {
       onSuccess: () => {
         notification.success({
-          message: formatMessage({
-            id: 'user.orders.return.submit.success',
-            defaultMessage: 'Successfully add a Receipt for this order',
-          }),
+          message: formatMessage(
+            {
+              id: 'user.orders.return.submit.success',
+              defaultMessage: 'Successfully add a Receipt for order #{orderId}',
+            },
+            { orderId },
+          ),
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
       onError: (error) => {
@@ -98,7 +101,7 @@ export const useReturn = () => {
           message: [error.statusCode, error.error].join(' - '),
           description: error.message,
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
     });

@@ -183,4 +183,5 @@ export default defineConfig({
   requestRecord: {},
   tailwindcss: {},
   styledComponents: {},
+  clickToComponent: {},
 });

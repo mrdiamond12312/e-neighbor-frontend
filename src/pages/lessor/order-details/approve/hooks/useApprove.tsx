@@ -20,12 +20,15 @@ export const useApprove = () => {
     mutate(body, {
       onSuccess: () => {
         notification.success({
-          message: formatMessage({
-            id: 'lessor.orders.approve.submit.success',
-            defaultMessage: 'Successfully approved this order',
-          }),
+          message: formatMessage(
+            {
+              id: 'lessor.orders.approve.submit.success',
+              defaultMessage: 'Successfully approved order #{orderId}',
+            },
+            { orderId },
+          ),
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
       onError: (error) => {
@@ -33,7 +36,7 @@ export const useApprove = () => {
           message: [error.statusCode, error.error].join(' - '),
           description: error.message,
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
     });

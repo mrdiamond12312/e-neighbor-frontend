@@ -23,7 +23,7 @@ export const NotifyModal: React.FC = () => {
       )}
       centered
     >
-      <Row className="w-full m-3 flex flex-col justify-center items-center gap-2 ">
+      <Row className="w-full m-3 flex flex-col justify-center items-center gap-2 font-sans">
         <article className="flex flex-row justify-center items-end gap-2">
           <Logo imgClassName="h-20" />
         </article>

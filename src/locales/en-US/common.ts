@@ -22,10 +22,11 @@ export default {
   'common.location.HN': 'Hanoi Capital',
   'common.location.else': 'Other Locations',
 
-  // Add missing
   'common.table.col.actions': 'Actions',
   'common.sort.options.rentDay': 'Rent Day',
   'common.sort.options.returnDay': 'Return Day',
   'common.sort.options.orderValue': 'Order Value',
   'common.role.lessor': 'Lessor',
+
+  'common.sort.options.star': 'Rating',
 };

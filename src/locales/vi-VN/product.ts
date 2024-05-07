@@ -116,6 +116,7 @@ export const productDetailPage = {
   'product.details.requiredDocuments.label': 'Giấy tờ thuê sản phẩm',
   'product.details.policies.label': 'Điều khoản',
   'product.details.surcharge.label': 'Phí phát sinh',
+  'product.details.surcharge.noData': 'Sản phẩm này không có phí phát sinh!',
 };
 
 export const product = {

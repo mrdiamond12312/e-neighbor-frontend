@@ -68,12 +68,15 @@ export const useFeedbackForm = () => {
     mutate(body, {
       onSuccess: () => {
         notification.success({
-          message: formatMessage({
-            id: 'user.orders.feedback.submit.success',
-            defaultMessage: 'Successfully add a Feedback for this order',
-          }),
+          message: formatMessage(
+            {
+              id: 'user.orders.feedback.submit.success',
+              defaultMessage: 'Successfully add a Feedback order #{orderId}',
+            },
+            { orderId },
+          ),
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
       onError: (error) => {
@@ -81,7 +84,7 @@ export const useFeedbackForm = () => {
           message: [error.statusCode, error.error].join(' - '),
           description: error.message,
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
     });

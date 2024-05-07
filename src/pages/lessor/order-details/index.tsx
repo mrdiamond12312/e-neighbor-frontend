@@ -107,10 +107,10 @@ const LessorOrderDetails: React.FC = () => {
             </Flex>
             <PricingInfo data={data} />
             {StatusInfo[data?.orderStatus as keyof typeof StatusInfo]}
+            <Outlet />
           </Fragment>
         )}
       </Modal>
-      <Outlet />
     </Fragment>
   );
 };

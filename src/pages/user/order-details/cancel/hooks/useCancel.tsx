@@ -31,24 +31,30 @@ export const useCancel = () => {
   const { formatMessage } = useIntl();
 
   const handleCancel = () => {
-    mutate(body, {
-      onSuccess: () =>
-        notification.success({
-          message: formatMessage({
-            id: 'user.orders.cancel.submit.success',
-            defaultMessage: 'Successfully cancel this order',
+    mutate(
+      { ...body, deliveryAddress: '' },
+      {
+        onSuccess: () =>
+          notification.success({
+            message: formatMessage(
+              {
+                id: 'user.orders.cancel.submit.success',
+                defaultMessage: 'Successfully cancel order #{orderId}',
+              },
+              { orderId },
+            ),
+            duration: 0.5,
+            onClose: () => setIsOpen(false),
           }),
-          duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
-        }),
-      onError: (error) =>
-        notification.error({
-          message: [error.statusCode, error.error].join(' - '),
-          description: error.message,
-          duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
-        }),
-    });
+        onError: (error) =>
+          notification.error({
+            message: [error.statusCode, error.error].join(' - '),
+            description: error.message,
+            duration: 0.5,
+            onClose: () => setIsOpen(false),
+          }),
+      },
+    );
   };
 
   const afterClose = () => {
