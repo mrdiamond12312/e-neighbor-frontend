@@ -7,11 +7,11 @@ export default {
 
   // Sidebar
   'lessor.sidebar.dashboard': 'Dashboard',
-  'lessor.sidebar.products.management.all': 'Products Management',
-  'lessor.sidebar.products.management.add': 'Add Product',
+  'lessor.sidebar.products.management.all': 'All Products',
+  'lessor.sidebar.products.management.add': 'Add a Product',
   'lessor.sidebar.products.management': 'Products Management',
   'lessor.sidebar.orders.management': 'Orders Management',
-  'lessor.sidebar.orders.all': 'All Order',
+  'lessor.sidebar.orders.all': 'All Orders',
 
   // Header
   'lessor.menu.title': "Lessor's Channel",

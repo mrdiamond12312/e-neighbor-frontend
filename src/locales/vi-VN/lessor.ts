@@ -8,7 +8,10 @@ export default {
   // Sidebar
   'lessor.sidebar.dashboard': 'Dashboard',
   'lessor.sidebar.products.management': 'Quản lý Sản phẩm',
+  'lessor.sidebar.products.management.all': 'Tất cả sản phẩm',
+  'lessor.sidebar.products.management.add': 'Thêm sản phẩm',
   'lessor.sidebar.orders.management': 'Quản lý đơn hàng',
+  'lessor.sidebar.orders.all': 'Tất cả Đơn hàng',
 
   // Header
   'lessor.menu.title': 'Kênh của Chủ thuê',

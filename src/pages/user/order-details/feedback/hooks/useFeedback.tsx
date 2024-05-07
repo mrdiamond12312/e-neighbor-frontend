@@ -76,7 +76,7 @@ export const useFeedbackForm = () => {
             { orderId },
           ),
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
       onError: (error) => {
@@ -84,7 +84,7 @@ export const useFeedbackForm = () => {
           message: [error.statusCode, error.error].join(' - '),
           description: error.message,
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
     });

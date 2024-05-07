@@ -93,7 +93,7 @@ export const useReturn = () => {
             { orderId },
           ),
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
       onError: (error) => {
@@ -101,7 +101,7 @@ export const useReturn = () => {
           message: [error.statusCode, error.error].join(' - '),
           description: error.message,
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_LESSOR_ORDERS_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
     });

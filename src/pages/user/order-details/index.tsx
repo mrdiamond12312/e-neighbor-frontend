@@ -93,10 +93,10 @@ const UserOrderDetails: React.FC = () => {
               />
             </Flex>
             <PricingInfo data={data} />
+            <Outlet />
           </Fragment>
         )}
       </Modal>
-      <Outlet />
     </Fragment>
   );
 };

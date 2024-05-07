@@ -44,14 +44,14 @@ export const useCancel = () => {
               { orderId },
             ),
             duration: 0.5,
-            onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
+            onClose: () => setIsOpen(false),
           }),
         onError: (error) =>
           notification.error({
             message: [error.statusCode, error.error].join(' - '),
             description: error.message,
             duration: 0.5,
-            onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
+            onClose: () => setIsOpen(false),
           }),
       },
     );

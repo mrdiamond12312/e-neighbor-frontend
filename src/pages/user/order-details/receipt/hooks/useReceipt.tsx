@@ -95,7 +95,7 @@ export const useReceipt = () => {
           ),
 
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
       onError: (error) => {
@@ -103,7 +103,7 @@ export const useReceipt = () => {
           message: [error.statusCode, error.error].join(' - '),
           description: error.message,
           duration: 0.5,
-          onClose: () => history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId })),
+          onClose: () => setIsOpen(false),
         });
       },
     });
@@ -129,6 +129,7 @@ export const useReceipt = () => {
   const afterClose = () => {
     history.push(urlcat(PATH_USER_PROFILE_ORDER_DETAILS, { orderId }));
   };
+
   return {
     orderId,
     isOpen,
