@@ -7,11 +7,13 @@ import { useForm } from 'react-hook-form';
 import { PATH_LESSOR_DASHBOARD } from '@/const/path';
 import {
   CREDIT_KEY,
+  LOCATION,
   ONBOARDING_FORM_KEY,
 } from '@/pages/lessor/on-boarding/helpers/onboardingFormKeys';
 import useOnboardingResolver from '@/pages/lessor/on-boarding/hooks/useOnboardingResolver';
 import { useLessorOnboardMutate } from '@/services/lessor/services';
 import { setStorageItem } from '@/utils/local-storage';
+import { imageDraggerFactory } from '@/utils/upload-file';
 
 export interface ICreditInfo {
   [CREDIT_KEY.accountNumber]: string;
@@ -34,6 +36,7 @@ export type TOnboardingFormFields = {
   [ONBOARDING_FORM_KEY.citizenCardFront]: any[];
   [ONBOARDING_FORM_KEY.shopName]: string;
   [ONBOARDING_FORM_KEY.avatar]: any[];
+  [ONBOARDING_FORM_KEY.location]: LOCATION;
 };
 
 export const useOnboardingForm = () => {
@@ -79,9 +82,20 @@ export const useOnboardingForm = () => {
       [ONBOARDING_FORM_KEY['citizenId']]: currentUser?.[ONBOARDING_FORM_KEY['citizenId']],
       [ONBOARDING_FORM_KEY['dob']]: currentUser?.[ONBOARDING_FORM_KEY['dob']],
       [ONBOARDING_FORM_KEY['fullName']]: currentUser?.[ONBOARDING_FORM_KEY['fullName']],
+      [ONBOARDING_FORM_KEY['phoneNumber']]: currentUser?.[ONBOARDING_FORM_KEY['phoneNumber']],
       [ONBOARDING_FORM_KEY['email']]: currentUser?.[ONBOARDING_FORM_KEY['email']],
       [ONBOARDING_FORM_KEY['avatar']]: currentUser?.[ONBOARDING_FORM_KEY['avatar']]
-        ? [{ url: currentUser?.[ONBOARDING_FORM_KEY['avatar']] }]
+        ? [imageDraggerFactory(currentUser?.[ONBOARDING_FORM_KEY['avatar']])]
+        : [],
+      [ONBOARDING_FORM_KEY['citizenCardBack']]: currentUser?.[
+        ONBOARDING_FORM_KEY['citizenCardBack']
+      ]
+        ? [imageDraggerFactory(currentUser?.[ONBOARDING_FORM_KEY['citizenCardBack']])]
+        : [],
+      [ONBOARDING_FORM_KEY['citizenCardFront']]: currentUser?.[
+        ONBOARDING_FORM_KEY['citizenCardFront']
+      ]
+        ? [imageDraggerFactory(currentUser?.[ONBOARDING_FORM_KEY['citizenCardFront']])]
         : [],
     },
     resolver: FormSchema,
@@ -126,9 +140,9 @@ export const useOnboardingForm = () => {
         return false;
     }
   }, [currentStep]);
-
   const handleNextStep = async () => {
     const isGoodToForward = await checkValidate();
+    console.log(isGoodToForward);
     if (isGoodToForward && !isLastStep) {
       setCurrentStep((prev) => prev + 1);
     }

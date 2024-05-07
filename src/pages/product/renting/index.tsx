@@ -76,7 +76,7 @@ const RentProduct: React.FC = () => {
         </h1>
         <span className="text-body-1-regular">
           <FormattedHTMLMessage
-            id="product.rent.information.header"
+            id="product.rent.information.description"
             defaultMessage="Some extra information are needed to rent this product"
           />
         </span>
@@ -90,7 +90,10 @@ const RentProduct: React.FC = () => {
           required
         >
           <InputText
-            placeholder="abcxyz"
+            placeholder={formatMessage({
+              id: 'product.renting.form.deliveryAddress.label',
+              defaultMessage: 'Delivery Address',
+            })}
             placement="top"
             control={control}
             name={RENTAL_INFO_KEYS.deliveryAddress}

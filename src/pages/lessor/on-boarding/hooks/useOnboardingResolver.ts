@@ -4,6 +4,7 @@ import * as yup from 'yup';
 
 import {
   CREDIT_KEY,
+  LOCATION,
   ONBOARDING_FORM_KEY,
 } from '@/pages/lessor/on-boarding/helpers/onboardingFormKeys';
 import { TOnboardingFormFields } from '@/pages/lessor/on-boarding/hooks/useOnboardingForm';
@@ -17,6 +18,15 @@ const useOnboardingResolver = () => {
         defaultMessage: 'Please input your address',
       }),
     ),
+    [ONBOARDING_FORM_KEY.location]: yup
+      .mixed<LOCATION>()
+      .oneOf(Object.values(LOCATION))
+      .required(
+        formatMessage({
+          id: 'lessor.onboarding.location.null',
+          defaultMessage: 'Please add your Biz Location',
+        }),
+      ),
     [ONBOARDING_FORM_KEY.shopName]: yup.string().required(
       formatMessage({
         id: 'lessor.onboarding.shopName.null',
@@ -27,7 +37,7 @@ const useOnboardingResolver = () => {
       .array()
       .of(
         yup.object().shape({
-          originFileObj: yup.mixed().required(
+          response: yup.mixed().required(
             formatMessage({
               id: 'lessor.onboarding.avatar.null',
               defaultMessage: 'An Image is Required!',

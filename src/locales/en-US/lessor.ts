@@ -30,6 +30,7 @@ export default {
 
   // Errors
   'lessor.onboarding.address.null': 'Address cannot be empty!',
+  'lessor.onboarding.location.null': 'Please choose your Biz Location!',
   'lessor.onboarding.shopName.null': 'Please enter the name of the Shop!',
   'lessor.onboarding.citizenCardBack.null': 'A photo is required!',
   'lessor.onboarding.citizenCardFront.null': 'A photo is required!',

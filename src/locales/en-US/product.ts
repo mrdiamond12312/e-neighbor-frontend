@@ -122,6 +122,7 @@ export const productDetailPage = {
   'product.details.requiredDocuments.label': 'Documents Requirement for this Product',
   'product.details.policies.label': 'Policies',
   'product.details.surcharge.label': 'Surcharges',
+  'product.details.surcharge.noData': 'No Extra fees for this product!',
 };
 
 export const product = {

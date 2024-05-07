@@ -1,4 +1,4 @@
-import { HandCoins, Truck, UserCheck } from '@phosphor-icons/react';
+import { HandCoins, Package, Truck, UserCheck } from '@phosphor-icons/react';
 import { useIntl } from '@umijs/max';
 import { StepProps } from 'antd/lib';
 import React from 'react';
@@ -13,14 +13,20 @@ export type TOrderStepsProps = {
 export const OrderSteps: React.FC<TOrderStepsProps> = ({ data }) => {
   const { formatMessage } = useIntl();
   const isPaid = data?.paymentStatus === 'COMPLETE';
+
   const lessorStatus =
     data?.orderStatus === 'PENDING'
       ? 'process'
       : data?.orderStatus === 'REJECTED'
       ? 'error'
       : 'finish';
+
   const deliveryStatus =
     lessorStatus !== 'finish' ? 'wait' : data?.imagesUponReceipt !== null ? 'finish' : 'process';
+
+  const finishStatus =
+    deliveryStatus !== 'finish' ? 'wait' : data?.imagesUponReturn !== null ? 'finish' : 'process';
+
   const stepItems: StepProps[] = [
     {
       title: formatMessage({
@@ -52,8 +58,8 @@ export const OrderSteps: React.FC<TOrderStepsProps> = ({ data }) => {
         id: 'order.details.step.complete',
         defaultMessage: 'Order Complete!',
       }),
-      status: deliveryStatus,
-      icon: <Truck size={32} className="p-1" />,
+      status: finishStatus,
+      icon: <Package size={32} className="p-1" />,
     },
   ];
   return <Steps stepItems={stepItems} />;

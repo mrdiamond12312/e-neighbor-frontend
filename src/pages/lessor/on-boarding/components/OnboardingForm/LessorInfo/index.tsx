@@ -4,14 +4,22 @@ import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
 import InputText from '@/components/Input';
+import Select from '@/components/Input/Select';
 import TextArea from '@/components/Input/TextArea';
-import { ONBOARDING_FORM_KEY } from '@/pages/lessor/on-boarding/helpers/onboardingFormKeys';
+import {
+  LOCATION,
+  ONBOARDING_FORM_KEY,
+} from '@/pages/lessor/on-boarding/helpers/onboardingFormKeys';
 
 const { Item } = Form;
 
 export const LessorInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors }) => {
   const [form] = Form.useForm();
   const { formatMessage } = useIntl();
+  const bizLocationOptions = (Object.keys(LOCATION) as Array<keyof typeof LOCATION>).map((key) => ({
+    label: formatMessage({ id: LOCATION[key], defaultMessage: key }),
+    value: LOCATION[key],
+  }));
   const size: SizeType = 'large';
 
   return (
@@ -69,6 +77,23 @@ export const LessorInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors
           size={size}
         />
       </Item>
+
+      <Item
+        label={formatMessage({
+          id: 'add.product.form.timeUnit.label',
+          defaultMessage: 'Rental Time Unit',
+        })}
+        required
+      >
+        <Select
+          control={control}
+          name={ONBOARDING_FORM_KEY['location']}
+          options={bizLocationOptions}
+          size={size}
+          rootClassName="custom-cascader-select"
+        />
+      </Item>
+
       <Item
         label={formatMessage({
           id: 'onboarding.form.description.label',

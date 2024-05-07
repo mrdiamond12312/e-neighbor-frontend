@@ -27,6 +27,7 @@ export default {
 
   // Errors
   'lessor.onboarding.address.null': 'Địa chỉ không được để trống!',
+  'lessor.onboarding.location.null': 'Vui lòng chọn Khu vực Kinh doanh',
   'lessor.onboarding.shopName.null': 'Vui lòng nhập tên của Gian hàng!',
   'lessor.onboarding.citizenCardBack.null': 'Yêu cầu một bức ảnh!',
   'lessor.onboarding.citizenCardFront.null': 'Yêu cầu một bức ảnh!',

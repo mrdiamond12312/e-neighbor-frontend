@@ -1,4 +1,5 @@
 import { Rate as AntdRate, RateProps } from 'antd/lib';
+import classNames from 'classnames';
 import React, { Fragment } from 'react';
 import { Controller } from 'react-hook-form';
 
@@ -24,7 +25,12 @@ export const Rate: React.FC<TRateProps> = ({
       name={name}
       render={({ field, fieldState: { error } }) => (
         <Fragment>
-          <AntdRate {...field} className={className} disabled={disabled} {...restProps} />
+          <AntdRate
+            {...field}
+            className={classNames('px-3', className)}
+            disabled={disabled}
+            {...restProps}
+          />
           <ValidateError error={error} />
         </Fragment>
       )}
