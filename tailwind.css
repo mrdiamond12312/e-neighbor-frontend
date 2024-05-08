@@ -1284,7 +1284,8 @@
       }
       .ant-segmented-item {
         .ant-segmented-item-label {
-          @apply min-h-8 leading-8;
+          @apply leading-8;
+          min-height: 32px;
         }
 
         &:hover:not(.ant-segmented-item-selected):not(.ant-segmented-item-disabled) {
