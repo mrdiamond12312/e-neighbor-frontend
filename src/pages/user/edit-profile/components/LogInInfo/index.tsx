@@ -3,7 +3,7 @@ import { Col, Divider, Form, Input, Row } from 'antd/lib';
 import { SizeType } from 'antd/lib/config-provider/SizeContext';
 import React from 'react';
 
-import { getDateFormatNormal } from '../../../../../utils/time-format/index';
+import { getDateFormatNormal } from '@/utils/time-format/index';
 
 const { Item } = Form;
 

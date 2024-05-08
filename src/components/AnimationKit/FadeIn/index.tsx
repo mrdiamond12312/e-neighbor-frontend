@@ -7,8 +7,8 @@ import { FADE_IN_VARIANT } from './helpers/variants';
 export interface IFadeInProps extends AnimationProps {
   children: React.ReactNode;
   index?: number;
-  direction: 'top' | 'bottom' | 'left' | 'right';
-  exitDirection?: 'top' | 'bottom' | 'left' | 'right';
+  direction: 'top' | 'bottom' | 'left' | 'right' | 'center';
+  exitDirection?: 'top' | 'bottom' | 'left' | 'right' | 'center';
   keyId?: string | number;
   mode?: 'wait' | 'sync' | 'popLayout';
   className?: string;

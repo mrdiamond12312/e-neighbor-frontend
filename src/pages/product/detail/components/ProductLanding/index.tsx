@@ -31,6 +31,7 @@ export type TProductCharacteristicsProps = {
     to?: string;
   }[];
   hideAction?: boolean;
+  action?: React.ReactNode;
 };
 
 export const Characteristic: React.FC<TCharacteristic> = ({ characteristics }) => {
@@ -66,13 +67,14 @@ export const Characteristic: React.FC<TCharacteristic> = ({ characteristics }) =
 export const ProductLanding: React.FC<TProductCharacteristicsProps> = ({
   data,
   breadcrumbsItems,
+  action,
   hideAction = false,
 }) => {
   const { productId } = useParams();
   const actionClassname = classNames('flex-row gap-2', { hidden: hideAction });
 
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full px-2">
       <Breadcrumb className="font-sans text-heading-5" items={breadcrumbsItems} />
       <h1 className="text-heading-1 font-sans font-medium m-0 pb-4">{data?.name}</h1>
       <Flex className="flex-row gap-2 justify-start items-center text-heading-5 font-normal font-sans">
@@ -96,9 +98,10 @@ export const ProductLanding: React.FC<TProductCharacteristicsProps> = ({
         <Link to={urlcat(PATH_PRODUCTS_RENT, { productId })} className="w-full">
           <Button type="primary" btnSize="large" className="text-heading-5 w-full">
             <FormattedHTMLMessage id="store.preview.card.btn.rent" defaultMessage="Rent Now!" />
-          </Button>{' '}
+          </Button>
         </Link>
       </Flex>
+      {action}
       <Flex className="pt-3">
         <Characteristic characteristics={data?.characteristics} />
       </Flex>

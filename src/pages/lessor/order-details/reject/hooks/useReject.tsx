@@ -48,30 +48,31 @@ export const useReject = () => {
   });
 
   const handleReject = async (body: API.IPendingOrderLessorUpdateInfoBody) => {
-    await trigger();
-    mutate(body, {
-      onSuccess: () => {
-        notification.success({
-          message: formatMessage(
-            {
-              id: 'lessor.orders.reject.submit.success',
-              defaultMessage: 'Successfully reject order #{orderId}',
-            },
-            { orderId },
-          ),
-          duration: 0.5,
-          onClose: () => setIsOpen(false),
-        });
-      },
-      onError: (error) => {
-        notification.error({
-          message: [error.statusCode, error.error].join(' - '),
-          description: error.message,
-          duration: 0.5,
-          onClose: () => setIsOpen(false),
-        });
-      },
-    });
+    const isGoodToForward = await trigger();
+    if (isGoodToForward)
+      mutate(body, {
+        onSuccess: () => {
+          notification.success({
+            message: formatMessage(
+              {
+                id: 'lessor.orders.reject.submit.success',
+                defaultMessage: 'Successfully reject order #{orderId}',
+              },
+              { orderId },
+            ),
+            duration: 0.5,
+            onClose: () => setIsOpen(false),
+          });
+        },
+        onError: (error) => {
+          notification.error({
+            message: [error.statusCode, error.error].join(' - '),
+            description: error.message,
+            duration: 0.5,
+            onClose: () => setIsOpen(false),
+          });
+        },
+      });
   };
 
   const afterClose = () => {

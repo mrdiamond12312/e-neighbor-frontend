@@ -68,6 +68,7 @@ declare namespace API {
     page?: number;
     take?: number;
     isConfirmedByAdmin: boolean;
+    isRejected?: boolean;
     name?: string;
     categoryId?: number;
     isVehicle?: boolean;

@@ -4,13 +4,25 @@ import * as Path from '@/const/path';
 import { TLoginFormFields } from '@/pages/user/login/hooks/useLoginForm';
 import { TRegisterFormFields } from '@/pages/user/sign-up/hooks/useRegisterForm';
 import API_ENDPOINTS from '@/services/auth/api-path';
-import { getCurrentAuthInfo, login, register } from '@/services/auth/api-services';
+import { adminLogin, getCurrentAuthInfo, login, register } from '@/services/auth/api-services';
 import { removeStorageItem, setStorageItem } from '@/utils/local-storage';
 
 export const useServiceLogin = () => {
   return useMutation<API.TAuthResponse, TMeta, TLoginFormFields>(
     [API_ENDPOINTS.LOGIN],
     (body: TLoginFormFields) => login(body),
+    {
+      onSuccess: (loginResult: API.TAuthResponse) => {
+        setStorageItem('accessToken', loginResult?.accessToken);
+      },
+    },
+  );
+};
+
+export const useAdminLogin = () => {
+  return useMutation<API.TAuthResponse, TMeta, TLoginFormFields>(
+    [API_ENDPOINTS.ADMIN_LOGIN],
+    (body: TLoginFormFields) => adminLogin(body),
     {
       onSuccess: (loginResult: API.TAuthResponse) => {
         setStorageItem('accessToken', loginResult?.accessToken);

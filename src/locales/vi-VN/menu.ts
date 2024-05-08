@@ -29,4 +29,9 @@ export default {
   'menu.order-details.return-order': 'Hoàn trả đơn hàng',
   'menu.product-detail.rent': 'Thuê sản phẩm',
   'menu.orders.payment-thankyou': 'Cảm ơn!',
+  'menu.admin-login': 'Administrator',
+  'menu.admin-dashboard': 'Admin Dashboard',
+  'menu.admin-products': 'Quản lý Sản phẩm',
+  'menu.product-detail.approval-review': 'Duyệt sản phẩm',
+  'menu.avatar.dropdown.admin': 'Đến trang Quản trị',
 };

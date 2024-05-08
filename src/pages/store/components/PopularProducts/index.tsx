@@ -3,9 +3,10 @@ import React from 'react';
 import urlcat from 'urlcat';
 
 import FlushReveal from '@/components/AnimationKit/FlushReveal';
+import Button from '@/components/Button';
+import LoadingSkeleton from '@/components/LoadingSkeleton';
 import { PropertyCard } from '@/components/PropertyCard';
 import { PATH_PRODUCTS_DETAILS } from '@/const/path';
-import LoadingSkeleton from '@/pages/store/components/LoadingSkeleton';
 import { useMostRatedProducts, useMostViewedProducts } from '@/services/products/services';
 
 export interface IPopularProductsProps {
@@ -45,10 +46,14 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
             >
               <Link to={urlcat(PATH_PRODUCTS_DETAILS, { productId: item.id })}>
                 <PropertyCard
-                  ctaBtnFormattedMessage={formatMessage({
-                    id: 'store.preview.card.btn.rent',
-                    defaultMessage: 'Rent Now!',
-                  })}
+                  ctaNode={
+                    <Button className="w-full hidden bg-neutral-1 mix-blend-overlay text-teal-4 text-body-1-semibold border-none opacity-0 cta-btn z-10">
+                      <FormattedHTMLMessage
+                        id="store.preview.card.btn.rent"
+                        defaultMessage="Rent Now!"
+                      />
+                    </Button>
+                  }
                   imageSrc={item.image}
                   owner={item.lessorImage}
                   pricing={item.price}
@@ -85,10 +90,14 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
             >
               <Link to={urlcat(PATH_PRODUCTS_DETAILS, { productId: item.id })}>
                 <PropertyCard
-                  ctaBtnFormattedMessage={formatMessage({
-                    id: 'store.preview.card.btn.rent',
-                    defaultMessage: 'Rent Now!',
-                  })}
+                  ctaNode={
+                    <Button className="w-full hidden bg-neutral-1 mix-blend-overlay text-teal-4 text-body-1-semibold border-none opacity-0 cta-btn z-10">
+                      <FormattedHTMLMessage
+                        id="store.preview.card.btn.rent"
+                        defaultMessage="Rent Now!"
+                      />
+                    </Button>
+                  }
                   imageSrc={item.image}
                   owner={item.lessorImage}
                   pricing={item.price}

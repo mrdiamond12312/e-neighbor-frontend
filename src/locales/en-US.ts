@@ -1,4 +1,5 @@
 import aboutUs from '@/locales/en-US/aboutUs';
+import { adminLocales } from '@/locales/en-US/admin';
 import common from '@/locales/en-US/common';
 import { feedbackLocales } from '@/locales/en-US/feedbacks';
 import lessor from '@/locales/en-US/lessor';
@@ -31,4 +32,5 @@ export default {
   ...user,
   ...rentLocale,
   ...feedbackLocales,
+  ...adminLocales,
 };

@@ -1,4 +1,4 @@
-import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { LogoutOutlined, SettingOutlined, ShopOutlined, UserOutlined } from '@ant-design/icons';
 import { useEmotionCss } from '@ant-design/use-emotion-css';
 import { useIntl, useModel, history, useLocation } from '@umijs/max';
 import { Spin } from 'antd';
@@ -9,7 +9,7 @@ import { flushSync } from 'react-dom';
 import HeaderDropdown from '../HeaderDropdown';
 
 import Login from '@/components/RightContent/Login';
-import { PATH_LESSOR, PATH_USER_PROFILE_EDIT } from '@/const/path';
+import { PATH_ADMIN, PATH_LESSOR, PATH_USER_PROFILE_EDIT } from '@/const/path';
 import { handleLogout } from '@/services/auth/services';
 
 export type GlobalHeaderRightProps = {
@@ -20,7 +20,7 @@ export type GlobalHeaderRightProps = {
 export const AvatarName: React.FC = () => {
   const { initialState } = useModel('@@initialState');
   const { currentUser } = initialState || {};
-  return <span className="anticon">{currentUser?.fullName}</span>;
+  return <span className="anticon">{currentUser?.fullName ?? currentUser?.userName}</span>;
 };
 
 export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, children }) => {
@@ -61,6 +61,13 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
           return;
         }
 
+        case 'admin': {
+          history.replace({
+            pathname: PATH_ADMIN,
+          });
+          return;
+        }
+
         case 'lessor': {
           history.replace({
             pathname: PATH_LESSOR,
@@ -95,6 +102,18 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
   }
 
   const menuItems = [
+    ...(currentUser?.role === 'admin'
+      ? [
+          {
+            key: 'admin',
+            icon: <SettingOutlined />,
+            label: formatMessage({
+              id: 'menu.avatar.dropdown.admin',
+              defaultMessage: 'To Admin Page',
+            }),
+          },
+        ]
+      : []),
     ...(menu
       ? [
           {
@@ -106,18 +125,13 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu = 1, chi
             }),
           },
           {
-            key: 'settings',
-            icon: <SettingOutlined />,
-            label: '个人设置',
-          },
-          {
             key: 'lessor',
-            icon: <UserOutlined />,
+            icon: <ShopOutlined />,
             label: formatMessage({
               id: 'menu.avatar.dropdown.lessor.channel',
               defaultMessage: 'To Lessor Channel',
             }),
-            disabled: pathname.startsWith(PATH_LESSOR),
+            disabled: pathname.startsWith(PATH_LESSOR) || currentUser?.role === 'admin',
           },
           {
             type: 'divider' as const,

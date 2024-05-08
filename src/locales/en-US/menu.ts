@@ -30,4 +30,9 @@ export default {
   'menu.order-details.return-order': 'Return Order',
   'menu.product-detail.rent': 'Rent Product',
   'menu.orders.payment-thankyou': 'Thank you for renting!',
+  'menu.admin-login': 'Administrator',
+  'menu.admin-dashboard': 'Admin Dashboard',
+  'menu.admin-products': 'Platform Products',
+  'menu.product-detail.approval-review': 'Approve Product',
+  'menu.avatar.dropdown.admin': 'To Administrator Page',
 };

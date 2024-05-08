@@ -1,5 +1,6 @@
 import urlcat from 'urlcat';
 
+import { TProductApprovalFormFields } from '@/pages/admin/product/approve/hooks/useProductApproval';
 import {
   ADD_PRODUCT_FORM_KEY,
   INSURANCE_KEY,
@@ -74,5 +75,12 @@ export const postNewProduct = async (formFields: TProductFormField) => {
           formFields[ADD_PRODUCT_FORM_KEY.characteristics][key],
       })),
     },
+  });
+};
+
+export const approveProduct = async (approvalFormFields: TProductApprovalFormFields) => {
+  return request(API_ENDPOINTS.PRODUCT_ADMIN_APPROVE, {
+    method: 'PATCH',
+    data: approvalFormFields,
   });
 };

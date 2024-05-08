@@ -1,8 +1,10 @@
-import { useInfiniteQuery, useMutation, useQuery } from '@umijs/max';
+import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@umijs/max';
 
+import { TProductApprovalFormFields } from '@/pages/admin/product/approve/hooks/useProductApproval';
 import { TProductFormField } from '@/pages/lessor/products/add/helpers/addProductFormKeys';
 import API_ENDPOINTS from '@/services/products/api-path';
 import {
+  approveProduct,
   getMostRatedProducts,
   getMostViewedProducts,
   getProductDetails,
@@ -23,7 +25,7 @@ export const useProductDetails = (productId?: number | string) =>
 
 export const useProductPage = (pagination: API.IProductPaginationParams) => {
   return useQuery({
-    queryKey: [API_ENDPOINTS.PRODUCT_TREND_MOST_VIEWED, pagination],
+    queryKey: [API_ENDPOINTS.PRODUCTS, pagination],
     queryFn: () =>
       getProducts({
         ...pagination,
@@ -58,9 +60,50 @@ export const useMostRatedProducts = (pagination: IProductsPagination) => {
   });
 };
 
-export const useCreateNewProducts = () =>
-  useMutation(
+export const useCreateNewProducts = () => {
+  const queryClient = useQueryClient();
+  return useMutation(
     [API_ENDPOINTS.PRODUCTS],
     (formFields: TProductFormField) => postNewProduct(formFields),
-    {},
+    {
+      onSettled: () => {
+        queryClient.invalidateQueries({
+          queryKey: [API_ENDPOINTS.PRODUCT_TREND_MOST_VIEWED],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [API_ENDPOINTS.PRODUCT_TREND_MOST_RATED],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [API_ENDPOINTS.PRODUCTS],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [API_ENDPOINTS.PRODUCT_DETAILS],
+        });
+      },
+    },
   );
+};
+
+export const useReviewProductApproval = () => {
+  const queryClient = useQueryClient();
+  return useMutation<any, TMeta, TProductApprovalFormFields>(
+    [API_ENDPOINTS.PRODUCT_ADMIN_APPROVE],
+    (formFields: TProductApprovalFormFields) => approveProduct(formFields),
+    {
+      onSettled: () => {
+        queryClient.invalidateQueries({
+          queryKey: [API_ENDPOINTS.PRODUCT_TREND_MOST_VIEWED],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [API_ENDPOINTS.PRODUCT_TREND_MOST_RATED],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [API_ENDPOINTS.PRODUCTS],
+        });
+        queryClient.invalidateQueries({
+          queryKey: [API_ENDPOINTS.PRODUCT_DETAILS],
+        });
+      },
+    },
+  );
+};
