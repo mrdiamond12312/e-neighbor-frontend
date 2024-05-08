@@ -54,14 +54,14 @@ export const useProductsTable = () => {
     }
   };
 
-  const [searchParams, setEditMode] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const productType = searchParams.get('productType');
   const activeTab = PRODUCT_TYPE_SEARCHPARAM.hasOwnProperty(productType ?? '')
     ? PRODUCT_TYPE_SEARCHPARAM[productType as keyof typeof PRODUCT_TYPE_SEARCHPARAM]
     : PRODUCT_TYPE_TAB_LOCALE.isNotApproved;
 
   const handleTabChange = (tab: string) => {
-    setEditMode(
+    setSearchParams(
       new URLSearchParams({
         productType:
           Object.keys(PRODUCT_TYPE_TAB_LOCALE).find(
@@ -70,6 +70,7 @@ export const useProductsTable = () => {
       }),
     );
   };
+
   const tabsItem = [
     {
       key: PRODUCT_TYPE_TAB_LOCALE.isNotApproved,
@@ -97,7 +98,6 @@ export const useProductsTable = () => {
           <FormattedHTMLMessage id={PRODUCT_TYPE_TAB_LOCALE.isRejected} defaultMessage="Rejected" />
         </div>
       ),
-      disabled: true,
     },
   ];
 
@@ -224,6 +224,7 @@ export const useProductsTable = () => {
   const { data: productPage, isLoading: productPageLoading } = useProductPage({
     ...paginationParams,
     isConfirmedByAdmin: productType === 'isApproved',
+    isRejected: productType === 'isRejected',
   });
 
   return {

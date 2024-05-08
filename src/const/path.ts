@@ -43,3 +43,5 @@ export const PATH_ADMIN = '/admin';
 export const PATH_ADMIN_LOGIN = PATH_ADMIN + '/login';
 export const PATH_ADMIN_DASHBOARD = PATH_ADMIN + '/dashboard';
 export const PATH_ADMIN_PRODUCTS = PATH_ADMIN + '/products';
+export const PATH_ADMIN_PRODUCT_DETAIL = PATH_ADMIN_PRODUCTS + '/:productId';
+export const PATH_ADMIN_PRODUCT_REVIEW = PATH_ADMIN_PRODUCT_DETAIL + '/review';

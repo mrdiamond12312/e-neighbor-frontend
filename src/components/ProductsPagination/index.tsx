@@ -20,6 +20,7 @@ export interface IProductsPaginationProps {
   onlyPagination?: boolean;
   children?: React.ReactNode;
   containerClassName?: string;
+  paginationContainerClassName?: string;
 }
 
 export const ProductsPagination: React.FC<IProductsPaginationProps> = ({
@@ -35,6 +36,7 @@ export const ProductsPagination: React.FC<IProductsPaginationProps> = ({
   pageMeta,
   onlyPagination = false,
   containerClassName,
+  paginationContainerClassName,
   children,
 }) => {
   const sorterClassname = classNames('flex flex-col gap-2 py-2', {
@@ -42,12 +44,15 @@ export const ProductsPagination: React.FC<IProductsPaginationProps> = ({
   });
 
   const combinedContainerClassName = classNames('w-full pt-2', containerClassName);
-
+  const combinedPaginationContainerClassName = classNames(
+    'items-center bg-neutral-1 px-2 py-2 border-neutral-3 border',
+    paginationContainerClassName,
+  );
   return (
-    <div className="overflow-clip">
+    <div className="overflow-clip w-full">
       <section>
         <Row
-          className="items-center bg-neutral-1 px-2 py-2 border-neutral-3 border"
+          className={combinedPaginationContainerClassName}
           gutter={12}
           style={{ marginLeft: 0, marginRight: 0 }}
         >
@@ -102,7 +107,7 @@ export const ProductsPagination: React.FC<IProductsPaginationProps> = ({
           </Col>
         </Row>
       </section>
-      <section className={combinedContainerClassName}>{children}</section>
+      {children && <section className={combinedContainerClassName}>{children}</section>}
     </div>
   );
 };

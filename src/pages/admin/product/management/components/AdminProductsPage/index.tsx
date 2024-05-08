@@ -7,17 +7,17 @@ import FlushReveal from '@/components/AnimationKit/FlushReveal';
 import Button from '@/components/Button';
 import LoadingSkeleton from '@/components/LoadingSkeleton';
 import { PropertyCard } from '@/components/PropertyCard';
-import { PATH_PRODUCTS_DETAILS } from '@/const/path';
+import { PATH_ADMIN_PRODUCT_DETAIL } from '@/const/path';
 
 export interface IProductsPageProps {
   isLoading: boolean;
   products?: IPaginationResponse<API.IProductCard>;
 }
 
-const ProductsPage: React.FC<IProductsPageProps> = ({ isLoading, products }) => {
+const AdminProductsPage: React.FC<IProductsPageProps> = ({ isLoading, products }) => {
   const { formatMessage } = useIntl();
   return (
-    <section className="flex flex-col gap-4 w-full basis-0">
+    <section className="flex flex-col gap-4 w-full basis-0 bg-neutral-1 p-4 rounded-lg border border-neutral-3">
       <div className="flex flex-row flex-wrap gap-y-3 gap-x-2 w-full justify-center">
         {products?.data.length === 0 ? (
           <Empty
@@ -39,14 +39,15 @@ const ProductsPage: React.FC<IProductsPageProps> = ({ isLoading, products }) => 
                 keyId={product.id}
                 index={index * 6}
                 pointerClassName="bg-favicon bg-no-repeat bg-contain bg-center"
+                contentClassName="rounded overflow-clip border border-neutral-3"
               >
-                <Link to={urlcat(PATH_PRODUCTS_DETAILS, { productId: product.id })}>
+                <Link to={urlcat(PATH_ADMIN_PRODUCT_DETAIL, { productId: product.id })}>
                   <PropertyCard
                     ctaNode={
                       <Button className="w-full hidden bg-neutral-1 mix-blend-overlay text-teal-4 text-body-1-semibold border-none opacity-0 cta-btn z-10">
                         <FormattedHTMLMessage
-                          id="store.preview.card.btn.rent"
-                          defaultMessage="Rent Now!"
+                          id="admin.product.card.review"
+                          defaultMessage="Review"
                         />
                       </Button>
                     }
@@ -76,6 +77,7 @@ const ProductsPage: React.FC<IProductsPageProps> = ({ isLoading, products }) => 
                   keyId={`index ${index}`}
                   index={((products?.data.length ?? 0) + index) * 6}
                   pointerClassName="bg-favicon bg-no-repeat bg-contain bg-center"
+                  contentClassName="rounded overflow-clip border border-neutral-3"
                 >
                   <PropertyCard type="empty" />
                 </FlushReveal>
@@ -88,4 +90,4 @@ const ProductsPage: React.FC<IProductsPageProps> = ({ isLoading, products }) => 
   );
 };
 
-export default ProductsPage;
+export default AdminProductsPage;

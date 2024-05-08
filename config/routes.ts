@@ -91,6 +91,20 @@ export default [
       {
         path: 'products',
         name: 'admin-products',
+        component: '@/pages/admin/product/management',
+      },
+
+      {
+        path: 'products/:productId',
+        name: 'product-detail',
+        component: '@/pages/admin/product/detail',
+        routes: [
+          {
+            name: 'approval-review',
+            path: 'review',
+            component: '@/pages/admin/product/approve',
+          },
+        ],
       },
     ],
   },

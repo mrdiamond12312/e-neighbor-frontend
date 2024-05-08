@@ -11,10 +11,11 @@ import { useProductDetail } from '@/pages/product/detail/hooks/useProductDetail'
 import { useTabs } from '@/pages/product/detail/hooks/useTabs';
 
 export type TReusableProductDetailExtraProps = {
+  action?: React.ReactNode;
   extra?: React.ReactNode;
 };
 
-const ProductDetail: React.FC<TReusableProductDetailExtraProps> = ({ extra }) => {
+const ProductDetail: React.FC<TReusableProductDetailExtraProps> = ({ extra, action }) => {
   const { data, isLoading, breadcrumbsItems, formatMessage, productId } = useProductDetail();
   const { tabs } = useTabs(data);
 
@@ -50,7 +51,8 @@ const ProductDetail: React.FC<TReusableProductDetailExtraProps> = ({ extra }) =>
                 <ProductLanding
                   data={data}
                   breadcrumbsItems={breadcrumbsItems}
-                  hideAction={extra ? true : false}
+                  hideAction={extra || action ? true : false}
+                  action={action}
                 />
               </Col>
             </Row>

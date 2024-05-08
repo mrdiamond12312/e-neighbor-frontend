@@ -32,7 +32,7 @@ const Store: React.FC = () => {
     orderOptions,
     page,
     pageHandler,
-  } = usePagination({ initialCategory: 'furnitures' });
+  } = usePagination({ initialCategory: 'furnitures', initialAdminApproved: true });
 
   const { data: products, isLoading } = useProductPage(paginationParams);
 

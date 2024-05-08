@@ -1,4 +1,3 @@
-import { history } from '@umijs/max';
 import { notification } from 'antd';
 import type { ResponseError } from 'umi-request';
 import { extend } from 'umi-request';
@@ -132,7 +131,6 @@ const errorHandler = async (err: ResponseError) => {
     }
     if (statusCode === 401 && window.location.pathname !== Path.PATH_LOGIN) {
       removeStorageItem('accessToken');
-      return history.push(Path.PATH_LOGIN);
     }
     return Promise.reject({ statusCode, error, message });
   }
