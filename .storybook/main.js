@@ -6,6 +6,7 @@ import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 const config = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   staticDirs: ['../public'],
+
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -46,6 +47,15 @@ const config = {
       },
     },
   },
+  swc: (config, options) => ({
+    jsc: {
+      transform: {
+        react: {
+          runtime: 'automatic',
+        },
+      },
+    },
+  }),
   docs: {
     autodocs: 'tag',
   },
