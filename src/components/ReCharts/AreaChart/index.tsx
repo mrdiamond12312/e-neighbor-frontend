@@ -14,7 +14,7 @@ import { ContentType } from 'recharts/types/component/Tooltip';
 import { CurveType } from 'recharts/types/shape/Curve';
 
 export type TAreaChartProps<T> = {
-  data: T[];
+  data?: T[];
   dataKeys: string[];
   labelKey: string;
   containerClassName: string;
@@ -32,7 +32,7 @@ export const AreaChart: React.FC<TAreaChartProps<any>> = ({
   containerClassName,
   chartClassname,
   customTooltip,
-  curveType,
+  curveType = 'monotone',
 }) => {
   const colorKeys = dataKeys.map((key) => ['gradients', key].join('.'));
   console.log(colorKeys);

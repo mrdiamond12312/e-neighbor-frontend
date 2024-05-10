@@ -20,4 +20,46 @@ declare namespace API {
     thumbnailUrl: string;
     AITags: string;
   };
+
+  type TFeedbackStatisticData = {
+    averageStar: number;
+    totalFeedback: number;
+    time: string;
+  };
+  type TFeedbackStatistic = {
+    chartData: TFeedbackStatisticData[];
+    totalFeedback: number;
+    averageStar: number;
+    feedbackByRating: {
+      rating: number;
+      numberOfFeedback: number;
+    }[];
+  };
+
+  type TRevenueStatisticData = {
+    revenue: number;
+    time: string;
+  };
+  type TRevenueStatistic = {
+    chartData: TRevenueStatisticData[];
+    totalRevenue: number;
+  };
+
+  type TStatisticParams = {
+    lessorId?: number;
+    dayRange: number;
+    productId?: number;
+  };
+
+  type TOverallStatistic = {
+    orderByStatus: {
+      orderStatus: API.ORDER_STATUS;
+      numberOfOrder: number;
+    }[];
+    numberOfProductByCategory: {
+      numberOfProduct: number;
+      isVehicle: boolean;
+    }[];
+    totalAccessCount: number;
+  };
 }
