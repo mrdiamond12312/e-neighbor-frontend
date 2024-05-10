@@ -5,7 +5,7 @@ import { TLoginFormFields } from '@/pages/user/login/hooks/useLoginForm';
 import { TRegisterFormFields } from '@/pages/user/sign-up/hooks/useRegisterForm';
 import API_ENDPOINTS from '@/services/auth/api-path';
 import { adminLogin, getCurrentAuthInfo, login, register } from '@/services/auth/api-services';
-import { removeStorageItem, setStorageItem } from '@/utils/local-storage';
+import { getStorageItem, removeStorageItem, setStorageItem } from '@/utils/local-storage';
 
 export const useServiceLogin = () => {
   return useMutation<API.TAuthResponse, TMeta, TLoginFormFields>(
@@ -58,6 +58,7 @@ export const handleLogout = () => {
 };
 
 export const fetchAuthInfo = async (): Promise<API.TAuthProfile | undefined> => {
+  if (getStorageItem('accessToken', undefined) === undefined) return undefined;
   try {
     const userData = await getCurrentAuthInfo();
     return userData;

@@ -181,7 +181,7 @@ export default [
       {
         name: 'dashboard',
         path: 'dashboard',
-        alias: '/',
+        component: '@/pages/lessor/dashboard',
       },
     ],
   },

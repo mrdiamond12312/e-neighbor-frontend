@@ -1,4 +1,4 @@
-export const getStorageItem = (key: string, defaultValue: string): string => {
+export const getStorageItem = (key: string, defaultValue?: string): string | undefined => {
   return (localStorage.getItem(key) !== null && localStorage.getItem(key)) || defaultValue;
 };
 
