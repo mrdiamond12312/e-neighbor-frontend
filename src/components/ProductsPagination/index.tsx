@@ -99,7 +99,7 @@ export const ProductsPagination: React.FC<IProductsPaginationProps> = ({
                   showQuickJumper
                   current={page}
                   onChange={(page) => pageHandler(page)}
-                  pageSize={pageMeta?.take}
+                  pageSize={pageMeta?.take ?? 0}
                   total={pageMeta?.itemCount ?? 0}
                 />
               </Fragment>
