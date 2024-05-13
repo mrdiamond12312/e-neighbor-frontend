@@ -5,13 +5,19 @@ on:
         required: true
         type: string
     secrets:
-      NEXT_PUBLIC_SUPABASE_URL:
+      ENEIGHBOR_API:
         required: true
-      SUPABASE_ANON_KEY:
+      DB_TYPE:
         required: true
-      NEXT_PUBLIC_SUPABASE_ANON_KEY:
+      DB_HOST:
         required: true
-      SERVICE_ROLE_KEY:
+      DB_PORT:
+        required: true
+      DB_USERNAME:
+        required: true
+      DB_PASSWORD:
+        required: true
+      DB_DATABASE:
         required: true
 
 jobs:
@@ -41,10 +47,13 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         env:
-          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
-          SERVICE_ROLE_KEY: ${{ secrets.SERVICE_ROLE_KEY}}
+          ENEIGHBOR_API: ${{ secrets.ENEIGHBOR_API }}
+          DB_TYPE: ${{ secrets.DB_TYPE }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT}}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD}}
+          DB_DATABASE: ${{ secrets.DB_DATABASE}}
 
         with:
           start: npm run dev
