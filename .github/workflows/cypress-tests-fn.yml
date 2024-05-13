@@ -43,7 +43,8 @@ jobs:
 
       - name: Install Cypress
         run: npm i cypress@13.6.0
-
+      - name: generate .env.local
+        run : echo '${{ toJSON(secrets) }}' | jq -r 'keys[] as $k | "\($k)=\(.[$k])"' >> .env.local
       - name: Cypress run
         uses: cypress-io/github-action@v6
         env:
