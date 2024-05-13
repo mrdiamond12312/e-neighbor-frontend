@@ -80,8 +80,8 @@ export const LessorInfo: React.FC<Partial<TPropsFormInput>> = ({ control, errors
 
       <Item
         label={formatMessage({
-          id: 'add.product.form.timeUnit.label',
-          defaultMessage: 'Rental Time Unit',
+          id: 'onboarding.form.location.label',
+          defaultMessage: 'Biz Location',
         })}
         required
       >

@@ -1,11 +1,13 @@
-import { UseMutateFunction } from '@umijs/max';
 import { Upload, notification } from 'antd';
 import { UploadRequestOption } from 'rc-upload/lib/interface';
 
 import { LIMIT_FILE_SIZE, ACCEPT_FILE } from '@/const/upload';
+// import { uploadImage as uploadFile } from '@/services/imagekit/api-services';
+import { useImageUpload } from '@/services/imagekit/services';
 import { convertBytesToMegaByte } from '@/utils/upload-file';
 
 export const useUploadImage = (intl: any) => {
+  const { mutateAsync } = useImageUpload();
   const beforeUpload = (file: { type: string; name: string; size: number }) => {
     const isImage = ACCEPT_FILE.includes(file.type);
     if (!isImage) {
@@ -32,19 +34,12 @@ export const useUploadImage = (intl: any) => {
     return (isImage && isLimitFileSize) || Upload.LIST_IGNORE;
   };
 
-  const uploadImage = (
-    options: UploadRequestOption,
-    mutate: UseMutateFunction<API.TUploadResponse, unknown, API.TUploadFileMutationParam, unknown>,
-  ) => {
+  const uploadImage = async (options: UploadRequestOption) => {
     const { onSuccess, onError, file, onProgress } = options;
 
-    mutate(
-      { file: file, onProgress },
-      {
-        onSuccess: (event) => onSuccess(event),
-        onError: (event) => onError(event),
-      },
-    );
+    mutateAsync({ file: file, onProgress })
+      .then((response) => onSuccess?.(response))
+      .catch((error) => onError?.(error));
   };
 
   return {

@@ -24,6 +24,10 @@ export default [
         wrappers: ['@/wrappers/Auth', '@/layouts/User'],
         routes: [
           {
+            path: '',
+            redirect: 'edit',
+          },
+          {
             name: 'edit-profile',
             path: 'edit',
             component: '@/pages/user/edit-profile',

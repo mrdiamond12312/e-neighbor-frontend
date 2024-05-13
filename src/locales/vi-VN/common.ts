@@ -5,7 +5,7 @@ export default {
   'common.submit': 'Hoàn tất!',
   'common.upload.wait': 'Hãy chờ các ảnh được tải xong!',
   'pages.component.dragger.title': 'Kéo và thả vào đây',
-
+  'common.update': 'Cập nhật',
   'common.sort.options.createdAt': 'Ngày đăng',
   'common.order.options.asc': 'Tăng dần',
   'common.order.options.des': 'Giảm dần',
@@ -26,6 +26,7 @@ export default {
   'common.sort.options.rentDay': 'Ngày thuê',
   'common.sort.options.returnDay': 'Ngày hoàn trả',
   'common.sort.options.orderValue': 'Giá trị đơn hàng',
+  'common.role.user': 'Người dùng',
   'common.role.lessor': 'Người cho thuê',
 
   'common.sort.options.star': 'Đánh giá',

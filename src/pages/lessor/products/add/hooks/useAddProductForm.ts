@@ -99,6 +99,7 @@ export const useAddProductForm = () => {
 
   const { mutate, isLoading: isSubmitting } = useCreateNewProducts();
 
+  console.log(methods.watch());
   const handleSubmit = async (formFields: TProductFormField) => {
     const isGoodToForward = await checkValidate();
     if (isGoodToForward && isLastStep) {

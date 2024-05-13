@@ -15,6 +15,10 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands';
-import './auth-actions';
+import './actions/auth-actions';
+import './actions/profile-actions';
+import './actions/lessor-onboard-actions';
+import './actions/lessor-add-product-actions';
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

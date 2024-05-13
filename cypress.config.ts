@@ -1,4 +1,5 @@
 import { defineConfig } from 'cypress';
+import { Client } from 'pg';
 
 const path = require('path');
 
@@ -12,6 +13,21 @@ export default defineConfig({
         log(message) {
           console.log(message);
           return null;
+        },
+      });
+      on('task', {
+        async queryDb(queryString) {
+          const client = new Client({
+            user: envLocal.parsed.DB_USERNAME,
+            password: envLocal.parsed.DB_PASSWORD,
+            host: envLocal.parsed.DB_HOST,
+            database: envLocal.parsed.DB_TYPE,
+            port: envLocal.parsed.DB_PORT,
+          });
+          await client.connect();
+          const res = await client.query(queryString);
+          await client.end();
+          return res.rows;
         },
       });
     },

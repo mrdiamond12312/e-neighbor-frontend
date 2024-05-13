@@ -1,20 +1,28 @@
 describe('login', () => {
   const userInfo = {
-    willNavigate: false,
-    userName: 'testUser1',
-    password: '12345678',
+    willNavigate: true,
+    email: 'testUserLogin@123.com',
     fullName: 'Testing User',
+    password: '12345678',
+    passwordConfirm: '12345678',
+    userName: 'testUserLogin',
   };
-
-  it('should generate field error', () => {
+  before(() => {
+    cy.intercept('POST', Cypress.env('ENEIGHBOR_API') + '/auth/register').as('register');
+    cy.register(userInfo);
+    cy.wait('@register').its('response.statusCode').should('eq', 201);
+    cy.logout(userInfo.fullName);
+  });
+  beforeEach(() => {
     cy.visit('/');
+  });
+  it('should generate field error', () => {
     cy.contains('Sign in').should('exist').click();
     cy.getButton('Sign in').click();
     cy.get('p[class^="px-3 pt-2 text-red-500"]').should('have.length', 2);
   });
 
   it('should succesfully log in', () => {
-    cy.visit('/');
     cy.contains('Sign in').should('exist').click();
 
     cy.login(userInfo);
@@ -24,7 +32,6 @@ describe('login', () => {
   });
 
   it('should not log in', () => {
-    cy.visit('/');
     cy.contains('Sign in').should('exist').click();
 
     cy.login({ ...userInfo, password: '12344444' });

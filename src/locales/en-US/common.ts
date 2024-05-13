@@ -5,7 +5,7 @@ export default {
   'common.submit': 'Submit',
   'common.upload.wait': 'Please wait for the image to finish uploading!',
   'pages.component.dragger.title': 'Drag and Drop here!',
-
+  'common.update': 'Update',
   'common.sort.options.accessCount': 'Views',
   'common.sort.options.price': 'Price',
   'common.sort.options.createdAt': 'Create Date',
@@ -26,6 +26,7 @@ export default {
   'common.sort.options.rentDay': 'Rent Day',
   'common.sort.options.returnDay': 'Return Day',
   'common.sort.options.orderValue': 'Order Value',
+  'common.role.user': 'User',
   'common.role.lessor': 'Lessor',
 
   'common.sort.options.star': 'Rating',

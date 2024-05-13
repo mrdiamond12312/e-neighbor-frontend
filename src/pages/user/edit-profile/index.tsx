@@ -45,7 +45,7 @@ const ProfileEdit: React.FC = () => {
           onCancel={() => setIsSubmitModalOpen(false)}
           footer={
             <Button onClick={() => handleSubmit(getValues())} loading={isSubmitting}>
-              <FormattedHTMLMessage id="common.submit" />
+              <FormattedHTMLMessage id="common.update" />
             </Button>
           }
         >

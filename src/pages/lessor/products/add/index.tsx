@@ -64,9 +64,6 @@ const LessorAddProduct: React.FC = () => {
               </Button>
             ),
           ]}
-          styles={{
-            body: { display: 'flex', flexDirection: 'column', height: '100%', padding: 0 },
-          }}
         >
           <Steps currentStep={currentStep} stepItems={stepItems} className="!hidden xl:!flex" />
           <Divider className="!hidden xl:!flex" />

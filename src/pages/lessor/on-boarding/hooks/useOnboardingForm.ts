@@ -26,7 +26,7 @@ export type TOnboardingFormFields = {
   [ONBOARDING_FORM_KEY.address]: string;
   [ONBOARDING_FORM_KEY.citizenId]: string;
   [ONBOARDING_FORM_KEY.description]: string;
-  [ONBOARDING_FORM_KEY.dob]?: string | null;
+  [ONBOARDING_FORM_KEY.dob]: string | null;
   [ONBOARDING_FORM_KEY.email]: string;
   [ONBOARDING_FORM_KEY.fullName]: string;
   [ONBOARDING_FORM_KEY.phoneNumber]: string;
@@ -127,6 +127,7 @@ export const useOnboardingForm = () => {
           ONBOARDING_FORM_KEY.shopName,
           ONBOARDING_FORM_KEY.wareHouseAddress,
           ONBOARDING_FORM_KEY.description,
+          ONBOARDING_FORM_KEY.location,
         ]);
       }
       case 2: {

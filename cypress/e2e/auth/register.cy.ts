@@ -1,11 +1,11 @@
 describe('register', () => {
   const userInfo = {
     willNavigate: false,
-    email: 'test@123.com',
+    email: 'testUserRegister@123.com',
     fullName: 'Testing User',
     password: '12345678',
     passwordConfirm: '12345678',
-    userName: 'testUser1',
+    userName: 'testUserRegister',
   };
 
   it('should generate field error', () => {
@@ -32,8 +32,6 @@ describe('register', () => {
 
     cy.register(userInfo);
 
-    cy.register(userInfo);
-
-    cy.wait('@register').its('response.statusCode').should('eq', 201);
+    cy.wait('@register').its('response.statusCode').should('eq', 400);
   });
 });
