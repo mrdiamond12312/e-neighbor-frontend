@@ -1,0 +1,52 @@
+on:
+  workflow_call:
+    inputs:
+      spec:
+        required: true
+        type: string
+    secrets:
+      NEXT_PUBLIC_SUPABASE_URL:
+        required: true
+      SUPABASE_ANON_KEY:
+        required: true
+      NEXT_PUBLIC_SUPABASE_ANON_KEY:
+        required: true
+      SERVICE_ROLE_KEY:
+        required: true
+
+jobs:
+  cypress-e2e-testing:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Download build output
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: dist
+
+      - name: Show repo structure
+        run: |
+          ls -lad
+
+      - name: Install Cypress
+        run: npm i cypress@13.6.0
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+          SERVICE_ROLE_KEY: ${{ secrets.SERVICE_ROLE_KEY}}
+
+        with:
+          start: npm run dev
+          install: false
+          spec: ${{ inputs.spec }}
