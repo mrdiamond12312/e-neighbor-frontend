@@ -64,9 +64,9 @@ jobs:
           wait-on: 'http://localhost:8000'
           install: false
           spec: ${{ inputs.spec }}
-          
+
       - name: Upload screenshots
-        uses: actions/upload-artifact@latest
+        uses: actions/upload-artifact@v3
         if: failure()
         with:
             name: cypress-snapshots
