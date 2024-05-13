@@ -9,7 +9,6 @@ import { Control, Controller, FieldValues } from 'react-hook-form';
 import { useUploadImage } from './hooks/useUploadImage';
 
 import ValidateError from '@/components/Input/ValidateError';
-import { useImageUpload } from '@/services/imagekit/services';
 
 export type TPropsDragger = {
   control: Control<FieldValues> | any;
@@ -29,7 +28,6 @@ export const ImageDragger: React.FC<TPropsDragger & Partial<UploadListProps>> = 
   const intl = useIntl();
   const { beforeUpload, uploadImage } = useUploadImage(intl);
 
-  const { mutate } = useImageUpload();
   return (
     <Controller
       name={name}
@@ -51,10 +49,10 @@ export const ImageDragger: React.FC<TPropsDragger & Partial<UploadListProps>> = 
               beforeUpload={beforeUpload}
               listType="picture"
               {...field}
-              customRequest={(options) => uploadImage(options, mutate)}
+              customRequest={(options) => uploadImage(options)}
               fileList={field.value}
               onChange={(info) => {
-                field.onChange(info.fileList);
+                field.onChange(info.fileList.concat());
               }}
               {...settings}
             >

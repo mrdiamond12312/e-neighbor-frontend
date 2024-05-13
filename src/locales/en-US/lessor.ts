@@ -42,6 +42,7 @@ export default {
   'lessor.onboarding.name.null': 'Please enter your Full Name!',
   'lessor.onboarding.email.format': 'This is not an Email!',
   'lessor.onboarding.email.null': 'Please enter your Email!',
+  'lessor.addProduct.dob.null': 'Please provide us your Birthday!',
   'lessor.onboarding.description.null': 'Please enter the Shop Description!',
   'lessor.onboarding.wareHouseAddress.null': 'Please enter the Warehouse Address!',
   'lessor.onboarding.avatar.null': 'Please take an avatar for your shop',
@@ -63,6 +64,7 @@ export default {
   'onboarding.form.address.label': 'Address',
   'onboarding.form.shopName.label': 'Shop Name',
   'onboarding.form.wareHouse.label': 'Warehouse Address',
+  'onboarding.form.location.label': 'Business Location',
   'onboarding.form.description.label': 'Shop Description',
   'onboarding.form.citizenId.label': 'Citizen ID',
   'onboarding.form.citizenCardFront.label': 'Front of Citizen Card',
@@ -117,7 +119,7 @@ export default {
   'add.product.form.insuranceDetail.expiryDate.label': 'Expiration Date',
   'add.product.form.surcharges.add': 'Add additional surcharge',
   'add.product.form.surcharge.id.label': 'Surcharge Type',
-  'add.product.form.surcharge.price.label': 'Surcharge Amout',
+  'add.product.form.surcharge.price.label': 'Surcharge Amount',
   'add.product.form.surcharges.delete': 'Delete',
 
   // Add Product Form Step

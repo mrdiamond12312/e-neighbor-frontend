@@ -137,7 +137,12 @@ const useOnboardingResolver = () => {
           defaultMessage: '12 digits is required!',
         }),
       ),
-    [ONBOARDING_FORM_KEY.dob]: yup.string().nullable(),
+    [ONBOARDING_FORM_KEY.dob]: yup.string().required(
+      formatMessage({
+        id: 'lessor.onboarding.dob.null',
+        defaultMessage: 'Please input your Birthday!',
+      }),
+    ),
     [ONBOARDING_FORM_KEY.phoneNumber]: yup
       .string()
       .required(

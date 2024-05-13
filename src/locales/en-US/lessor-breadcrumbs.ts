@@ -5,4 +5,5 @@ export default {
   'lessor.breadcrumbs.lessor.dashboard': 'Dashboard',
   'lessor.breadcrumbs.lessor.orders': 'Orders',
   'lessor.breadcrumbs.lessor.products.manage': 'Manage',
+  'lessor.breadcrumbs.lessor.on-boarding': 'Onboarding',
 };

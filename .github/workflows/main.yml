@@ -22,6 +22,9 @@ jobs:
         run: |
           npm install
 
+      - name: Generate .env.local
+        run : echo '${{ toJSON(secrets) }}' | jq -r 'keys[] as $k | "\($k)=\(.[$k])"' >> .env.local
+
       - name: Building
         run: |
           npm run build
@@ -43,6 +46,9 @@ jobs:
           node-version: 18
           cache: 'npm'
 
+      - name: Generate .env.local
+        run : echo '${{ toJSON(secrets) }}' | jq -r 'keys[] as $k | "\($k)=\(.[$k])"' >> .env.local
+
       - name: Install dependencies
         run: npm install
 
@@ -57,3 +63,10 @@ jobs:
           npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
             "npx http-server storybook-static --port 6006 --silent" \
             "npx wait-on tcp:127.0.0.1:6006 && npm run test-storybook"
+
+  cypress-e2e-testing--auth:
+    needs: building
+    uses: ./.github/workflows/cypress-tests-fn.yml
+    with:
+      spec: cypress/e2e/auth
+    secrets: inherit

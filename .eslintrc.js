@@ -9,6 +9,7 @@ module.exports = {
     REACT_APP_ENV: true,
   },
   rules: {
+    '@typescript-eslint/no-namespace': 'off',
     'import/order': [
       2,
       {

@@ -3,7 +3,7 @@ import { notification, StepProps } from 'antd/lib';
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { PATH_LESSOR } from '@/const/path';
+import { PATH_LESSOR_PRODUCTS_MANAGE } from '@/const/path';
 import {
   ADD_PRODUCT_FORM_KEY,
   TProductFormField,
@@ -99,6 +99,7 @@ export const useAddProductForm = () => {
 
   const { mutate, isLoading: isSubmitting } = useCreateNewProducts();
 
+  console.log(methods.watch());
   const handleSubmit = async (formFields: TProductFormField) => {
     const isGoodToForward = await checkValidate();
     if (isGoodToForward && isLastStep) {
@@ -111,7 +112,7 @@ export const useAddProductForm = () => {
             }),
             duration: 1,
             onClose: () => {
-              history.push(PATH_LESSOR);
+              history.push(PATH_LESSOR_PRODUCTS_MANAGE);
             },
           });
         },
