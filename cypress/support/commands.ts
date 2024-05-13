@@ -36,13 +36,13 @@
 //   }
 // }
 before(() => {
-  cy.task(
-    'queryDb',
-    `DELETE FROM product_surcharge WHERE product_id IN (SELECT id FROM products WHERE name LIKE 'Test %');`,
-  );
-  cy.task('queryDb', "DELETE FROM public.products WHERE name LIKE 'Test %'");
-  cy.task('queryDb', "DELETE FROM public.lessors WHERE shop_name LIKE 'Test Lessor%'");
-  cy.task('queryDb', "DELETE FROM public.users WHERE user_name LIKE 'testUser%'");
+  // cy.task(
+  //   'queryDb',
+  //   `DELETE FROM product_surcharge WHERE product_id IN (SELECT id FROM products WHERE name LIKE 'Test %');`,
+  // );
+  cy.task('queryDb', "DELETE FROM products WHERE name LIKE 'Test %'");
+  cy.task('queryDb', "DELETE FROM lessors WHERE shop_name LIKE 'Test Lessor%'");
+  cy.task('queryDb', "DELETE FROM users WHERE user_name LIKE 'testUser%'");
   cy.intercept('GET', '/services/doctor/by-symptoms?+(ids=*&|)search=*').as('doctorBySymptoms');
   cy.intercept('POST', Cypress.env('ENEIGHBOR_API') + '/auth/register').as('register');
   cy.intercept('POST', Cypress.env('ENEIGHBOR_API') + '/auth/login').as('login');

@@ -4,7 +4,7 @@ import { Client } from 'pg';
 const path = require('path');
 
 const dotenv = require('dotenv');
-const envLocal = dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
+const envLocal = dotenv.config({ path: path.resolve(process.cwd(), '.env.test') });
 
 export default defineConfig({
   e2e: {
@@ -23,6 +23,7 @@ export default defineConfig({
             host: envLocal.parsed.DB_HOST,
             database: envLocal.parsed.DB_TYPE,
             port: envLocal.parsed.DB_PORT,
+            connectionString: envLocal.parsed.DB_CONN,
             ssl: true,
           });
           await client.connect();
