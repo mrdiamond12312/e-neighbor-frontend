@@ -60,7 +60,7 @@ jobs:
           DB_CONN: ${{ secrets.DB_CONN}}
 
         with:
-          start: npm run dev
+          start: npm run preview:run
           wait-on: 'http://localhost:8000'
           install: false
           spec: ${{ inputs.spec }}
