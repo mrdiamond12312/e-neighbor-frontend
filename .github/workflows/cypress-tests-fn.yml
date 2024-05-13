@@ -19,6 +19,8 @@ on:
         required: true
       DB_DATABASE:
         required: true
+      DB_CONN:
+        required: true
 
 jobs:
   cypress-e2e-testing:
@@ -55,6 +57,7 @@ jobs:
           DB_USERNAME: ${{ secrets.DB_USERNAME }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD}}
           DB_DATABASE: ${{ secrets.DB_DATABASE}}
+          DB_CONN: ${{ secrets.DB_CONN}}
 
         with:
           start: npm run dev
