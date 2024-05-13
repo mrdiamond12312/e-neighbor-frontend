@@ -38,12 +38,7 @@
 before(() => {
   cy.task(
     'queryDb',
-    `
-DELETE FROM public.product_surcharge
-WHERE product_id IN (
-  SELECT id FROM public.products WHERE name LIKE 'Test %'
-);
-`,
+    `DELETE FROM product_surcharge WHERE product_id IN (SELECT id FROM products WHERE name LIKE 'Test %');`,
   );
   cy.task('queryDb', "DELETE FROM public.products WHERE name LIKE 'Test %'");
   cy.task('queryDb', "DELETE FROM public.lessors WHERE shop_name LIKE 'Test Lessor%'");
