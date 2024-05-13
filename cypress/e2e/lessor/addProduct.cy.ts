@@ -107,8 +107,8 @@ describe('lessor-add-product', () => {
 
     cy.wait('@addProduct').its('response.statusCode').should('eq', 201);
 
-    cy.wait(1000);
-    cy.navigateToAllProducts();
+    cy.wait(2000);
+
     if (testProduct.name) cy.contains(testProduct.name).should('exist');
     if (testProduct.subCategory) cy.contains(testProduct.subCategory).should('exist');
     if (testProduct.timeUnit) cy.contains(testProduct.timeUnit).should('exist');
