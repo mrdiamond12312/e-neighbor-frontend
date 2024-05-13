@@ -8,7 +8,6 @@ describe('login', () => {
     userName: 'testUserLogin',
   };
   before(() => {
-    cy.intercept('POST', Cypress.env('ENEIGHBOR_API') + '/auth/register').as('register');
     cy.register(userInfo);
     cy.wait('@register').its('response.statusCode').should('eq', 201);
     cy.logout(userInfo.fullName);

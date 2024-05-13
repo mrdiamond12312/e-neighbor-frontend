@@ -45,8 +45,10 @@ jobs:
 
       - name: Install Cypress
         run: npm i cypress@13.6.0
-      - name: generate .env.local
-        run : echo '${{ toJSON(secrets) }}' | jq -r 'keys[] as $k | "\($k)=\(.[$k])"' >> .env.local
+
+      - name: Generate .env.local
+        run: echo '${{ toJSON(secrets) }}' | jq -r 'keys[] as $k | "\($k)=\(.[$k])"' >> .env.local
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         env:
@@ -69,5 +71,5 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-            name: cypress-screenshots
-            path: cypress/screenshots
+          name: cypress-screenshots
+          path: cypress/screenshots
