@@ -4,7 +4,7 @@ import { Client } from 'pg';
 const path = require('path');
 
 const dotenv = require('dotenv');
-const envLocal = dotenv.config({ path: path.resolve(process.cwd(), '.env.test') });
+const envLocal = dotenv.config({ path: path.resolve(process.cwd(), '.env.local') });
 
 export default defineConfig({
   e2e: {
