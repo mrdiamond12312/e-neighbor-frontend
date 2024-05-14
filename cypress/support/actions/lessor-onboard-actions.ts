@@ -38,7 +38,7 @@ Cypress.Commands.add('lessorFillStep1OfOnboardingForm', (generalInformation: TES
     cy.waitForNetworkIdle('@uploadImage', 1000);
   }
   cy.wait(200);
-  cy.getButton('Continue').scrollIntoView().click();
+  cy.contains('Continue').scrollIntoView().click();
 });
 
 Cypress.Commands.add('lessorFillStep2OfOnboardingForm', (lessorInfo: TEST.ILessorInfo) => {
@@ -64,7 +64,7 @@ Cypress.Commands.add('lessorFillStep2OfOnboardingForm', (lessorInfo: TEST.ILesso
       .clear({ force: true })
       .type(lessorInfo.shopDescription ?? '{backspace}');
 
-  cy.getButton('Continue').click({ force: true });
+  cy.contains('Continue').click({ force: true });
 });
 
 Cypress.Commands.add('lessorFillStep3OfOnboardingForm', (lessorInfo: TEST.ILessorInfo) => {
@@ -89,6 +89,6 @@ Cypress.Commands.add('lessorFillStep3OfOnboardingForm', (lessorInfo: TEST.ILesso
     cy.waitForNetworkIdle('@uploadImage', 1000);
   }
   cy.waitForNetworkIdle(1000);
-  cy.getButton('Submit').click({ force: true });
+  cy.contains('Submit').click({ force: true });
   cy.waitForNetworkIdle('@lessorOnboarding', 1500);
 });
