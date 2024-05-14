@@ -70,3 +70,31 @@ jobs:
     with:
       spec: cypress/e2e/auth
     secrets: inherit
+
+  cypress-e2e-testing--mainflow:
+    needs: building
+    uses: ./.github/workflows/cypress-tests-fn.yml
+    with:
+      spec: cypress/e2e/mainflow
+    secrets: inherit
+
+  cypress-e2e-testing--admin:
+    needs: building
+    uses: ./.github/workflows/cypress-tests-fn.yml
+    with:
+      spec: cypress/e2e/admin
+    secrets: inherit
+
+  cypress-e2e-testing--lessor:
+    needs: building
+    uses: ./.github/workflows/cypress-tests-fn.yml
+    with:
+      spec: cypress/e2e/lessor
+    secrets: inherit
+
+  cypress-e2e-testing--profile:
+    needs: building
+    uses: ./.github/workflows/cypress-tests-fn.yml
+    with:
+      spec: cypress/e2e/profile
+    secrets: inherit
