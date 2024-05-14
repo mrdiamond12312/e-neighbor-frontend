@@ -23,6 +23,7 @@ const AdminProductsManagement: React.FC = () => {
     segmentedOptions,
     activeSegment,
     handleSegments,
+    searchBoxHandler,
   } = useAdminProductsManagement();
 
   return (
@@ -50,6 +51,7 @@ const AdminProductsManagement: React.FC = () => {
                 id: 'common.search.placeholder',
                 defaultMessage: 'Search',
               })}
+              onPressEnter={searchBoxHandler}
             />
           </Flex>
           <ProductsPagination

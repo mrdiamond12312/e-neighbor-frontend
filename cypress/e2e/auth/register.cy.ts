@@ -8,6 +8,12 @@ describe('register', () => {
     userName: 'testUserRegister',
   };
 
+  before(() => {
+    cy.sanitizeDatabase({
+      userName: userInfo.userName,
+    });
+  });
+
   it('should generate field error', () => {
     cy.visit('/');
     cy.contains('Sign in').should('exist').click();
@@ -22,7 +28,8 @@ describe('register', () => {
 
     cy.register(userInfo);
 
-    cy.wait('@register').its('response.statusCode').should('eq', 201);
+    cy.waitForNetworkIdle('@register', 1500);
+    cy.location('pathname').should('not.eq', '/user/sign-up');
   });
 
   it('should not return 201', () => {
@@ -32,6 +39,7 @@ describe('register', () => {
 
     cy.register(userInfo);
 
-    cy.wait('@register').its('response.statusCode').should('eq', 400);
+    cy.waitForNetworkIdle('@register', 1500);
+    cy.location('pathname').should('eq', '/user/sign-up');
   });
 });

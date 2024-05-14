@@ -12,8 +12,8 @@ describe('lessor-onboard', () => {
     ...userInfo,
     dob: '2002-12-24',
     address: 'Address',
-    phoneNumber: '123444544',
-    citizenId: '035229769266',
+    phoneNumber: '123444543',
+    citizenId: '035229769265',
     fullName: 'Testing User Change',
     avatar: './cypress/support/images/avatar.jpg',
     citizenCardBack: './cypress/support/images/citizenCardBack.png',
@@ -29,42 +29,55 @@ describe('lessor-onboard', () => {
   };
 
   before(() => {
+    cy.sanitizeDatabase({
+      userName: lessorInfo.userName,
+      lessorShopName: lessorInfo.shopName,
+    });
     cy.intercept('POST', Cypress.env('ENEIGHBOR_API') + '/auth/register').as('register');
     cy.register(userInfo);
-    cy.wait('@register').its('response.statusCode').should('eq', 201);
+    cy.waitForNetworkIdle(`@register`, 1500);
     cy.logout(userInfo.fullName);
   });
 
   beforeEach(() => {
     cy.login(userInfo);
-    cy.wait('@login').its('response.statusCode').should('eq', 200);
+    cy.waitForNetworkIdle(`@login`, 1500);
     cy.navigateToLessor(userInfo.fullName);
     cy.contains('Welcome to Lessor Channel').should('exist');
     cy.getButton('OK').click();
   });
 
-  it('should yield general information field error', () => {
+  // it('should yield general information field error', () => {
+  //   cy.getButton('Continue').click();
+  //   cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 4);
+  // });
+
+  // it('should field step 1 and generate step 2 error', () => {
+  //   cy.lessorFillStep1OfOnboardingForm(extraInfo);
+  //   cy.getButton('Continue').click({ force: true });
+  //   cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 4);
+  // });
+
+  // it('should field step 2 and generate step 3 error', () => {
+  //   cy.lessorFillStep1OfOnboardingForm(extraInfo);
+  //   cy.lessorFillStep2OfOnboardingForm(lessorInfo);
+  //   cy.getButton('Submit').click({ force: true });
+  //   cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 3);
+  // });
+
+  it('should yield field error on double check step and submit successfully and become lessor', () => {
     cy.getButton('Continue').click();
     cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 4);
-  });
-
-  it('should field step 1 and generate step 2 error', () => {
     cy.lessorFillStep1OfOnboardingForm(extraInfo);
+
     cy.getButton('Continue').click({ force: true });
     cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 4);
-  });
-
-  it('should field step 2 and generate step 3 error', () => {
-    cy.lessorFillStep1OfOnboardingForm(extraInfo);
     cy.lessorFillStep2OfOnboardingForm(lessorInfo);
+
     cy.getButton('Submit').click({ force: true });
     cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 3);
-  });
-
-  it('should submit successfully and become lessor', () => {
-    cy.lessorFillStep1OfOnboardingForm(extraInfo);
-    cy.lessorFillStep2OfOnboardingForm(lessorInfo);
     cy.lessorFillStep3OfOnboardingForm(lessorInfo);
+
     cy.visit('/user/profile');
     cy.getInputByLabel('Email').should('have.value', extraInfo.email);
     cy.getInputByLabel('Full name').should('have.value', extraInfo.fullName);

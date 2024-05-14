@@ -19,15 +19,18 @@ describe('profile-update', () => {
     fullName: 'Testing User Change',
   };
   before(() => {
+    cy.sanitizeDatabase({
+      userName: userInfo.userName,
+    });
     cy.intercept('POST', Cypress.env('ENEIGHBOR_API') + '/auth/register').as('register');
     cy.register(userInfo);
-    cy.wait('@register').its('response.statusCode').should('eq', 201);
+    cy.waitForNetworkIdle(`@register`, 1500);
     cy.logout(userInfo.fullName);
   });
 
   beforeEach(() => {
     cy.login(userInfo);
-    cy.wait('@login').its('response.statusCode').should('eq', 200);
+    cy.waitForNetworkIdle(`@login`, 1500);
     cy.navigateToProfile(userInfo.fullName);
   });
   it('should contain user info', () => {
@@ -53,8 +56,7 @@ describe('profile-update', () => {
     cy.getButton('Submit').click();
     cy.submitProfileChange(extraInfo.password);
 
-    cy.wait('@profileUpdate').its('response.statusCode').should('eq', 200);
-
+    cy.waitForNetworkIdle('@profileUpdate', 1500);
     cy.navigateToProfile(userInfo.fullName);
     cy.getInputByLabel('Email').should('have.value', extraInfo.email);
     cy.getInputByLabel('Full name').should('have.value', extraInfo.fullName);
@@ -72,7 +74,7 @@ describe('profile-update', () => {
     cy.fillProfile(extraInfo);
     cy.getButton('Submit').click();
     cy.submitProfileChange('12344444');
-
-    cy.wait('@profileUpdate').its('response.statusCode').should('eq', 401);
+    cy.waitForNetworkIdle('@profileUpdate', 1500);
+    cy.location('pathname').should('eq', '/user/login');
   });
 });

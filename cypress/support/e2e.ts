@@ -19,6 +19,9 @@ import './actions/auth-actions';
 import './actions/profile-actions';
 import './actions/lessor-onboard-actions';
 import './actions/lessor-add-product-actions';
+import './actions/admin-actions';
+import './actions/mainflow-lessor-actions';
+import './actions/mainflow-user-actions';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

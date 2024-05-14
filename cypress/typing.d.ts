@@ -1,4 +1,9 @@
 declare namespace TEST {
+  interface IDBSanitize {
+    productName?: string;
+    lessorShopName?: string;
+    userName?: string;
+  }
   interface IRegisterInfo {
     userName?: string;
     fullName?: string;
@@ -63,5 +68,28 @@ declare namespace TEST {
     insuranceDesc?: string;
     insuranceIssuedDate?: string;
     insuranceExpDate?: string;
+  }
+
+  interface IProductApproval {
+    approval: 'Approved' | 'Rejected';
+    rejectReason?: string;
+  }
+
+  interface IRentalPaymentInfo {
+    deliveryAddress: string;
+    startDate: string;
+    endDate: string;
+
+    cardNumber: '9704198526191432198';
+    cardHolder: 'NGUYEN VAN A';
+    issueDate: '07/15';
+    otp: '123456';
+  }
+
+  interface IDeliveryPayload {
+    findString: string;
+    punctuation?: 'On time' | 'Late';
+    condition?: string;
+    evidence?: string;
   }
 }

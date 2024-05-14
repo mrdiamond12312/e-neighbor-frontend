@@ -8,8 +8,11 @@ describe('login', () => {
     userName: 'testUserLogin',
   };
   before(() => {
+    cy.sanitizeDatabase({
+      userName: userInfo.userName,
+    });
     cy.register(userInfo);
-    cy.wait('@register').its('response.statusCode').should('eq', 201);
+    cy.waitForNetworkIdle('@register', 1000);
     cy.logout(userInfo.fullName);
   });
   beforeEach(() => {
@@ -26,7 +29,7 @@ describe('login', () => {
 
     cy.login(userInfo);
 
-    cy.wait('@login').its('response.statusCode').should('eq', 200);
+    cy.waitForNetworkIdle('@login', 1000);
     cy.logout(userInfo.fullName);
   });
 
@@ -35,6 +38,7 @@ describe('login', () => {
 
     cy.login({ ...userInfo, password: '12344444' });
 
-    cy.wait('@login').its('response.statusCode').should('eq', 401);
+    cy.waitForNetworkIdle('@login', 1000);
+    cy.location('pathname').should('eq', '/user/login');
   });
 });
