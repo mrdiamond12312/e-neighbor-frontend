@@ -24,7 +24,7 @@ export default defineConfig({
             database: envLocal.parsed.DB_TYPE,
             port: envLocal.parsed.DB_PORT,
             connectionString: envLocal.parsed.DB_CONN,
-            ssl: true,
+            ssl: envLocal.parsed.DB_SSL === 'true',
           });
           await client.connect();
           const res = await client.query(queryString);

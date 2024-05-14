@@ -98,9 +98,6 @@ Cypress.Commands.add('lessorFillStep4OfAddProductForm', (productInfo: TEST.IProd
     if (productInfo.insuranceDesc)
       cy.getInputByLabel('Description').clear().type(productInfo.insuranceDesc);
 
-    if (productInfo.insuranceHolder)
-      cy.getInputByLabel('Insurance Holdername').clear().type(productInfo.insuranceHolder);
-
     if (productInfo.insurancePhoto) {
       cy.getInputByLabel('Insurance Photos').selectFile(productInfo.insurancePhoto, {
         force: true,
@@ -113,9 +110,11 @@ Cypress.Commands.add('lessorFillStep4OfAddProductForm', (productInfo: TEST.IProd
 
     if (productInfo.insuranceExpDate)
       cy.getInputByLabel('Expiration Date').click().type(productInfo.insuranceExpDate);
+
+    if (productInfo.insuranceHolder)
+      cy.getInputByLabel('Insurance Holdername').clear().type(productInfo.insuranceHolder);
   } else {
     cy.contains('Not have').click({ force: true });
   }
-  cy.scrollTo('bottom', { ensureScrollable: false });
-  cy.contains('Submit').click({ force: true });
+  cy.contains('Submit').scrollIntoView({ ensureScrollable: false }).trigger('click');
 });

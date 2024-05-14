@@ -37,7 +37,7 @@ Cypress.Commands.add('lessorFillStep1OfOnboardingForm', (generalInformation: TES
     cy.getButton('OK').click({ force: true });
     cy.wait('@uploadImage');
   }
-
+  cy.wait(200);
   cy.getButton('Continue').scrollIntoView().click({ force: true });
 });
 
@@ -88,7 +88,7 @@ Cypress.Commands.add('lessorFillStep3OfOnboardingForm', (lessorInfo: TEST.ILesso
     cy.getButton('OK').click();
     cy.wait('@uploadImage');
   }
-
+  cy.wait(1000);
   cy.getButton('Submit').click({ force: true });
   cy.wait('@lessorOnboarding');
   cy.wait(1500);

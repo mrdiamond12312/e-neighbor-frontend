@@ -49,7 +49,8 @@ export const useAdminProductsManagement = () => {
     };
   });
 
-  const handleSegments = (value: PRODUCT_CLASSIFY_SEGMENT) => {
+  const handleSegments = (value: string | number) => {
+    if (typeof value === 'number') return;
     setSearchParams(
       new URLSearchParams({
         classify: value,

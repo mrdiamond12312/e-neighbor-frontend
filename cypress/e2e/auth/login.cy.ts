@@ -8,6 +8,9 @@ describe('login', () => {
     userName: 'testUserLogin',
   };
   before(() => {
+    cy.sanitizeDatabase({
+      userName: userInfo.userName,
+    });
     cy.register(userInfo);
     cy.wait('@register').its('response.statusCode').should('eq', 201);
     cy.logout(userInfo.fullName);

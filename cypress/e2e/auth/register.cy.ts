@@ -8,6 +8,12 @@ describe('register', () => {
     userName: 'testUserRegister',
   };
 
+  before(() => {
+    cy.sanitizeDatabase({
+      userName: userInfo.userName,
+    });
+  });
+
   it('should generate field error', () => {
     cy.visit('/');
     cy.contains('Sign in').should('exist').click();

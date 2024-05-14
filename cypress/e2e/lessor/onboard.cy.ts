@@ -12,8 +12,8 @@ describe('lessor-onboard', () => {
     ...userInfo,
     dob: '2002-12-24',
     address: 'Address',
-    phoneNumber: '123444544',
-    citizenId: '035229769266',
+    phoneNumber: '123444543',
+    citizenId: '035229769265',
     fullName: 'Testing User Change',
     avatar: './cypress/support/images/avatar.jpg',
     citizenCardBack: './cypress/support/images/citizenCardBack.png',
@@ -29,6 +29,10 @@ describe('lessor-onboard', () => {
   };
 
   before(() => {
+    cy.sanitizeDatabase({
+      userName: lessorInfo.userName,
+      lessorShopName: lessorInfo.shopName,
+    });
     cy.intercept('POST', Cypress.env('ENEIGHBOR_API') + '/auth/register').as('register');
     cy.register(userInfo);
     cy.wait('@register').its('response.statusCode').should('eq', 201);

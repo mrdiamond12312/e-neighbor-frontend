@@ -8,8 +8,8 @@ describe('lessor-add-product', () => {
     userName: 'testUserLessorAddProduct',
     dob: '2002-12-24',
     address: 'Address',
-    phoneNumber: '123444544',
-    citizenId: '035229769266',
+    phoneNumber: '123444542',
+    citizenId: '035229769264',
     avatar: './cypress/support/images/avatar.jpg',
     citizenCardBack: './cypress/support/images/citizenCardBack.png',
     citizenCardFront: './cypress/support/images/citizenCardFront.jpg',
@@ -49,6 +49,11 @@ describe('lessor-add-product', () => {
   };
 
   before(() => {
+    cy.sanitizeDatabase({
+      productName: testProduct.name,
+      userName: lessorInfo.userName,
+      lessorShopName: lessorInfo.shopName,
+    });
     cy.intercept('POST', Cypress.env('ENEIGHBOR_API') + '/auth/register').as('register');
     cy.register(lessorInfo);
     cy.wait('@register').its('response.statusCode').should('eq', 201);
@@ -71,33 +76,33 @@ describe('lessor-add-product', () => {
     cy.navigateToAddProduct();
   });
 
-  // it('should yield step 1 basic info field error', () => {
-  //   cy.getButton('Continue').click();
-  //   cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 5);
-  // });
+  it('should yield step 1 basic info field error', () => {
+    cy.getButton('Continue').click();
+    cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 5);
+  });
 
-  // it('should fill basic info and yield field error of step 2', () => {
-  //   cy.lessorFillStep1OfAddProductForm(testProduct);
-  //   cy.getButton('Continue').click();
-  //   cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 1);
-  // });
+  it('should fill basic info and yield field error of step 2', () => {
+    cy.lessorFillStep1OfAddProductForm(testProduct);
+    cy.getButton('Continue').click();
+    cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 1);
+  });
 
-  // it('should fill detailed info and yield field error of step 3', () => {
-  //   cy.lessorFillStep1OfAddProductForm(testProduct);
-  //   cy.lessorFillStep2OfAddProductForm(testProduct);
+  it('should fill detailed info and yield field error of step 3', () => {
+    cy.lessorFillStep1OfAddProductForm(testProduct);
+    cy.lessorFillStep2OfAddProductForm(testProduct);
 
-  //   cy.contains('Continue').click({ force: true });
-  //   cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 3);
-  // });
+    cy.contains('Continue').click({ force: true });
+    cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 3);
+  });
 
-  // it('should fill rental info and yield field error of step 4', () => {
-  //   cy.lessorFillStep1OfAddProductForm(testProduct);
-  //   cy.lessorFillStep2OfAddProductForm(testProduct);
-  //   cy.lessorFillStep3OfAddProductForm(testProduct);
+  it('should fill rental info and yield field error of step 4', () => {
+    cy.lessorFillStep1OfAddProductForm(testProduct);
+    cy.lessorFillStep2OfAddProductForm(testProduct);
+    cy.lessorFillStep3OfAddProductForm(testProduct);
 
-  //   cy.contains('Submit').click({ force: true });
-  //   cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 1);
-  // });
+    cy.contains('Submit').click({ force: true });
+    cy.get('p[class^="px-3 pt-2 text-red-500"]:not(:empty)').should('have.length', 1);
+  });
 
   it('should generate a new product', () => {
     cy.lessorFillStep1OfAddProductForm(testProduct);
