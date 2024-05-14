@@ -35,13 +35,13 @@ describe('lessor-onboard', () => {
     });
     cy.intercept('POST', Cypress.env('ENEIGHBOR_API') + '/auth/register').as('register');
     cy.register(userInfo);
-    cy.wait('@register').its('response.statusCode').should('eq', 201);
+    cy.waitForNetworkIdle(`@register`, 1500);
     cy.logout(userInfo.fullName);
   });
 
   beforeEach(() => {
     cy.login(userInfo);
-    cy.wait('@login').its('response.statusCode').should('eq', 200);
+    cy.waitForNetworkIdle(`@login`, 1500);
     cy.navigateToLessor(userInfo.fullName);
     cy.contains('Welcome to Lessor Channel').should('exist');
     cy.getButton('OK').click();

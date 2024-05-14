@@ -35,10 +35,10 @@ Cypress.Commands.add('lessorFillStep1OfOnboardingForm', (generalInformation: TES
   if (generalInformation.avatar) {
     cy.getInputByLabel('Avatar').selectFile(generalInformation.avatar, { force: true });
     cy.getButton('OK').click({ force: true });
-    cy.wait('@uploadImage');
+    cy.waitForNetworkIdle('@uploadImage', 1000);
   }
   cy.wait(200);
-  cy.getButton('Continue').scrollIntoView().click({ force: true });
+  cy.getButton('Continue').scrollIntoView().click();
 });
 
 Cypress.Commands.add('lessorFillStep2OfOnboardingForm', (lessorInfo: TEST.ILessorInfo) => {
@@ -78,7 +78,7 @@ Cypress.Commands.add('lessorFillStep3OfOnboardingForm', (lessorInfo: TEST.ILesso
       force: true,
     });
     cy.getButton('OK').click();
-    cy.wait('@uploadImage');
+    cy.waitForNetworkIdle('@uploadImage', 1000);
   }
 
   if (lessorInfo.citizenCardBack) {
@@ -86,10 +86,9 @@ Cypress.Commands.add('lessorFillStep3OfOnboardingForm', (lessorInfo: TEST.ILesso
       force: true,
     });
     cy.getButton('OK').click();
-    cy.wait('@uploadImage');
+    cy.waitForNetworkIdle('@uploadImage', 1000);
   }
-  cy.wait(1000);
+  cy.waitForNetworkIdle(1000);
   cy.getButton('Submit').click({ force: true });
-  cy.wait('@lessorOnboarding');
-  cy.wait(1500);
+  cy.waitForNetworkIdle('@lessorOnboarding', 1500);
 });

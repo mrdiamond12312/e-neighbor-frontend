@@ -120,6 +120,7 @@
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "cypress": "^13.9.0",
+    "cypress-network-idle": "^1.14.2",
     "eslint": "^8.50.0",
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-node": "^11.1.0",

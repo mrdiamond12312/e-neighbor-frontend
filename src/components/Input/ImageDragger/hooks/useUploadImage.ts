@@ -36,7 +36,6 @@ export const useUploadImage = (intl: any) => {
 
   const uploadImage = async (options: UploadRequestOption) => {
     const { onSuccess, onError, file, onProgress } = options;
-
     mutateAsync({ file: file, onProgress })
       .then((response) => onSuccess?.(response))
       .catch((error) => onError?.(error));

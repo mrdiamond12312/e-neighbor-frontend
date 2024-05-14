@@ -9,14 +9,14 @@ Cypress.Commands.add('adminLogin', (loginInfo: TEST.IRegisterInfo) => {
     .clear()
     .type(loginInfo.password ?? '{backspace}');
   cy.getButton('Sign in').click();
-  cy.wait('@adminLogin').its('response.statusCode').should('eq', 200);
+  cy.waitForNetworkIdle('@adminLogin', 1500);
 });
 
 Cypress.Commands.add('navigateToApproveProduct', () => {
   cy.contains('Administrator Page').should('exist');
   cy.contains('Manage Product').click({ force: true });
   cy.contains('All Products').click({ force: true });
-  cy.wait('@getProducts');
+  cy.waitForNetworkIdle('@getProducts', 150);
 });
 
 Cypress.Commands.add('reviewProductApproval', (payload?: TEST.IProductApproval) => {

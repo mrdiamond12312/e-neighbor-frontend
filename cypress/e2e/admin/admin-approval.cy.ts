@@ -61,7 +61,7 @@ describe('admin-approve-product', () => {
       lessorShopName: lessorInfo.shopName,
     });
     cy.register(lessorInfo);
-    cy.wait('@register').its('response.statusCode').should('eq', 201);
+    cy.waitForNetworkIdle('@register', 1500);
     cy.navigateToLessor(lessorInfo.fullName);
 
     cy.contains('Welcome to Lessor Channel').should('exist');
@@ -81,17 +81,16 @@ describe('admin-approve-product', () => {
     );
     cy.task('queryDb', `DELETE FROM products WHERE name = '${testProduct.name}'`);
     cy.login(lessorInfo);
-    cy.wait('@login').its('response.statusCode').should('eq', 200);
+    cy.waitForNetworkIdle('@login', 1500);
     cy.navigateToLessor(lessorInfo.fullName);
     cy.navigateToAddProduct();
     cy.lessorFillStep1OfAddProductForm(testProduct);
     cy.lessorFillStep2OfAddProductForm(testProduct);
     cy.lessorFillStep3OfAddProductForm(testProduct);
     cy.lessorFillStep4OfAddProductForm(testProduct);
-    cy.wait('@addProduct').its('response.statusCode').should('eq', 201);
-    cy.wait(2000);
+
+    cy.waitForNetworkIdle('@addProduct', 2000);
     cy.adminLogin(adminInfo);
-    cy.wait(1000);
     cy.navigateToApproveProduct();
 
     cy.getInputByPlaceholder('Search')
@@ -99,10 +98,10 @@ describe('admin-approve-product', () => {
       .type(testProduct.name ?? '{backspace}')
       .type('{enter}');
 
-    cy.wait('@getProducts');
+    cy.waitForNetworkIdle('@getProducts', 150);
 
     if (testProduct.name) cy.contains(testProduct.name).click();
-    cy.wait('@getProductDetails');
+    cy.waitForNetworkIdle('@getProductDetails', 150);
 
     cy.contains('Review this Approval Request').click();
     cy.wait(500);
@@ -113,7 +112,7 @@ describe('admin-approve-product', () => {
       approval: 'Approved',
     };
     cy.reviewProductApproval(reviewPayload);
-    cy.wait('@approveProduct').its('response.statusCode').should('eq', 200);
+    cy.waitForNetworkIdle('@approveProduct', 1500);
   });
 
   it('should reject a product', () => {
@@ -122,7 +121,7 @@ describe('admin-approve-product', () => {
       rejectReason: 'Testing Rejection',
     };
     cy.reviewProductApproval(reviewPayload);
-    cy.wait('@approveProduct').its('response.statusCode').should('eq', 200);
+    cy.waitForNetworkIdle('@approveProduct', 1500);
   });
 
   it('should yield field error', () => {

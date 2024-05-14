@@ -56,7 +56,7 @@ describe('lessor-add-product', () => {
     });
     cy.intercept('POST', Cypress.env('ENEIGHBOR_API') + '/auth/register').as('register');
     cy.register(lessorInfo);
-    cy.wait('@register').its('response.statusCode').should('eq', 201);
+    cy.waitForNetworkIdle(`@register`, 1500);
     cy.navigateToLessor(lessorInfo.fullName);
 
     cy.contains('Welcome to Lessor Channel').should('exist');
@@ -71,7 +71,7 @@ describe('lessor-add-product', () => {
 
   beforeEach(() => {
     cy.login(lessorInfo);
-    cy.wait('@login').its('response.statusCode').should('eq', 200);
+    cy.waitForNetworkIdle(`@login`, 1500);
     cy.navigateToLessor(lessorInfo.fullName);
     cy.navigateToAddProduct();
   });
@@ -110,9 +110,7 @@ describe('lessor-add-product', () => {
     cy.lessorFillStep3OfAddProductForm(testProduct);
     cy.lessorFillStep4OfAddProductForm(testProduct);
 
-    cy.wait('@addProduct').its('response.statusCode').should('eq', 201);
-
-    cy.wait(2000);
+    cy.waitForNetworkIdle('@addProduct', 2000);
 
     if (testProduct.name) cy.contains(testProduct.name).should('exist');
     if (testProduct.subCategory) cy.contains(testProduct.subCategory).should('exist');

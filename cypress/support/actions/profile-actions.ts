@@ -5,6 +5,14 @@ Cypress.Commands.add('navigateToProfile', (fullName?: string) => {
   cy.get('.ant-dropdown-menu-title-content').contains('User Info').click({ force: true });
 });
 
+Cypress.Commands.add('navigateToProfileOrders', (fullName?: string) => {
+  cy.get('.ant-dropdown-trigger')
+    .contains(fullName ?? '')
+    .trigger('mouseover', { force: true });
+  cy.get('.ant-dropdown-menu-title-content').contains('User Info').click({ force: true });
+  cy.contains('Orders').click();
+});
+
 Cypress.Commands.add('fillProfile', (profileInfo: TEST.IProfileInfo) => {
   if (profileInfo.fullName)
     cy.getInputByLabel('Full name')

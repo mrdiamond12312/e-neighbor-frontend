@@ -85,4 +85,11 @@ declare namespace TEST {
     issueDate: '07/15';
     otp: '123456';
   }
+
+  interface IDeliveryPayload {
+    findString: string;
+    punctuation?: 'On time' | 'Late';
+    condition?: string;
+    evidence?: string;
+  }
 }

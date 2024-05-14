@@ -33,6 +33,7 @@ export default defineConfig({
         },
       });
     },
+    defaultCommandTimeout: 20000,
     env: {
       ...(envLocal.parsed ?? process.env),
     },

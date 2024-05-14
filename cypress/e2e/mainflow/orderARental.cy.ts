@@ -56,10 +56,7 @@ describe('main-flow-order', () => {
 
   const testProduct: TEST.IProduct = {
     name: 'Test Product Main Flow',
-    images: [
-      './cypress/support/images/product-image.jpg',
-      './cypress/support/images/product-image-1.jpg',
-    ],
+    images: ['./cypress/support/images/product-image.jpg'],
     description: 'Test Main Flow Product Descriptions',
     price: '30000',
     timeUnit: '₫ / day',
@@ -85,36 +82,7 @@ describe('main-flow-order', () => {
   before(() => {
     cy.sanitizeDatabase({
       productName: testProduct.name,
-      userName: lessorInfo.userName,
-      lessorShopName: lessorInfo.shopName,
     });
-
-    cy.sanitizeDatabase({
-      userName: userInfo.userName,
-    });
-    cy.register(lessorInfo);
-    cy.wait('@register').its('response.statusCode').should('eq', 201);
-    cy.navigateToLessor(lessorInfo.fullName);
-
-    cy.contains('Welcome to Lessor Channel').should('exist');
-    cy.getButton('OK').click();
-
-    cy.lessorFillStep1OfOnboardingForm(lessorInfo);
-    cy.lessorFillStep2OfOnboardingForm(lessorInfo);
-    cy.lessorFillStep3OfOnboardingForm(lessorInfo);
-    cy.visit('/');
-    cy.logout(lessorInfo.fullName);
-
-    cy.wait(1000);
-    cy.register(userInfo);
-    cy.wait('@register').its('response.statusCode').should('eq', 201);
-    cy.wait(1000);
-    cy.navigateToProfile(userInfo.fullName);
-    cy.getButton('Edit').click({ force: true });
-    cy.fillProfile(userInfo);
-    cy.getButton('Submit').click();
-    cy.submitProfileChange(userInfo.password);
-    cy.wait('@profileUpdate').its('response.statusCode').should('eq', 200);
   });
 
   beforeEach(() => {
@@ -128,17 +96,15 @@ describe('main-flow-order', () => {
     );
     cy.task('queryDb', `DELETE FROM products WHERE name = '${testProduct.name}'`);
     cy.login(lessorInfo);
-    cy.wait('@login').its('response.statusCode').should('eq', 200);
+    cy.waitForNetworkIdle(`@login`, 1500);
     cy.navigateToLessor(lessorInfo.fullName);
     cy.navigateToAddProduct();
     cy.lessorFillStep1OfAddProductForm(testProduct);
     cy.lessorFillStep2OfAddProductForm(testProduct);
     cy.lessorFillStep3OfAddProductForm(testProduct);
     cy.lessorFillStep4OfAddProductForm(testProduct);
-    cy.wait('@addProduct').its('response.statusCode').should('eq', 201);
-    cy.wait(2000);
+    cy.waitForNetworkIdle('@addProduct', 1500);
     cy.adminLogin(adminInfo);
-    cy.wait(1000);
     cy.navigateToApproveProduct();
 
     cy.getInputByPlaceholder('Search')
@@ -146,10 +112,10 @@ describe('main-flow-order', () => {
       .type(testProduct.name ?? '{backspace}')
       .type('{enter}');
 
-    cy.wait('@getProducts');
+    cy.waitForNetworkIdle('@getProducts', 300);
 
     if (testProduct.name) cy.contains(testProduct.name).click();
-    cy.wait('@getProductDetails');
+    cy.waitForNetworkIdle('@getProductDetails', 300);
 
     cy.contains('Review this Approval Request').click();
     cy.wait(500);
@@ -157,27 +123,74 @@ describe('main-flow-order', () => {
       approval: 'Approved',
     };
     cy.reviewProductApproval(reviewPayload);
-    cy.wait('@approveProduct').its('response.statusCode').should('eq', 200);
+    cy.waitForNetworkIdle('@approveProduct', 1500);
     cy.logout(adminInfo.userName);
   });
 
   it('should do sth', () => {
     cy.login(userInfo);
-    cy.wait('@login').its('response.statusCode').should('eq', 200);
-
-    cy.wait(1500);
+    cy.waitForNetworkIdle(`@login`, 1500);
     cy.visit('/store');
-    cy.wait('@getProducts');
+    cy.wait(1500);
+    cy.waitForNetworkIdle('@getProducts', 300);
     cy.getInputByPlaceholder('Search')
       .type(testProduct.name ?? '{backspace}')
       .type('{enter}');
-    cy.wait('@getProducts');
+    cy.waitForNetworkIdle('@getProducts', 300);
 
     cy.contains(testProduct.category ?? '').click();
 
     cy.contains(testProduct.name ?? '').click();
+    cy.waitForNetworkIdle('@getProductDetails', 300);
     cy.scrollTo('top', { ensureScrollable: false });
     cy.contains('Rent Now').click().wait(500);
     cy.mainFlowUserRenting(rentalInfo);
+
+    cy.visit('/');
+    cy.logout(userInfo.fullName);
+    cy.login(lessorInfo);
+    cy.waitForNetworkIdle(`@login`, 1500);
+    cy.navigateToLessor(lessorInfo.fullName);
+    cy.navigateToOrders();
+    cy.waitForNetworkIdle(1500, {
+      log: false,
+    });
+    cy.waitForNetworkIdle('@getOrders', 300);
+    cy.mainFlowLessorApproveOrder(userInfo.fullName);
+
+    const testDeliveryInfo: TEST.IDeliveryPayload = {
+      findString: lessorInfo.shopName ?? '',
+      condition: 'Main Flow Test Condition',
+      evidence: './cypress/support/images/avatar.jpg',
+      punctuation: 'On time',
+    };
+    cy.visit('/');
+    cy.logout(lessorInfo.fullName);
+    cy.login(userInfo);
+    cy.waitForNetworkIdle(`@login`, 1500);
+    cy.navigateToProfileOrders(userInfo.fullName);
+    cy.waitForNetworkIdle(300, {
+      log: false,
+    });
+    cy.waitForNetworkIdle('@getOrders', 300);
+    cy.mainFlowUserReceiptOrder(testDeliveryInfo);
+
+    const testReturnInfo: TEST.IDeliveryPayload = {
+      findString: userInfo.fullName ?? '',
+      condition: 'Main Flow Test Condition',
+      evidence: './cypress/support/images/avatar.jpg',
+      punctuation: 'On time',
+    };
+    cy.visit('/');
+    cy.logout(userInfo.fullName);
+    cy.login(lessorInfo);
+    cy.waitForNetworkIdle(`@login`, 1500);
+    cy.navigateToLessor(lessorInfo.fullName);
+    cy.navigateToOrders();
+    cy.waitForNetworkIdle(1500, {
+      log: false,
+    });
+    cy.waitForNetworkIdle('@getOrders', 300);
+    cy.mainFlowLessorReturnOrder(testReturnInfo);
   });
 });

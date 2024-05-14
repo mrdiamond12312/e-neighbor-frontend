@@ -4,6 +4,12 @@ Cypress.Commands.add('navigateToAddProduct', () => {
   cy.contains('Add a Product').click({ force: true });
 });
 
+Cypress.Commands.add('navigateToOrders', () => {
+  cy.contains("Lessor's Channel").should('exist');
+  cy.contains('Orders Management').click({ force: true });
+  cy.contains('All Orders').click({ force: true });
+});
+
 Cypress.Commands.add('navigateToAllProducts', () => {
   cy.contains("Lessor's Channel").should('exist');
   cy.contains('Products Management').click({ force: true });
@@ -18,7 +24,7 @@ Cypress.Commands.add('lessorFillStep1OfAddProductForm', (productInfo: TEST.IProd
 
   if (productInfo.images) {
     cy.getInputByLabel('Product photos (5)').selectFile(productInfo.images, { force: true });
-    productInfo.images?.forEach(() => cy.wait('@uploadImage'));
+    cy.waitForNetworkIdle('@uploadImage', 500);
   }
 
   if (productInfo.description)
@@ -45,9 +51,9 @@ Cypress.Commands.add('lessorFillStep2OfAddProductForm', (productInfo: TEST.IProd
   if (productInfo.category && productInfo.subCategory) {
     cy.getInputByLabel('Category').click({ force: true });
     cy.get('.ant-cascader-menu-item').contains(productInfo.category).click({ force: true });
-    cy.wait('@getCategories');
+    cy.waitForNetworkIdle('@getCategories', 200);
     cy.get('.ant-cascader-menu-item').contains(productInfo.subCategory).click({ force: true });
-    cy.wait('@getCategoryDetails');
+    cy.waitForNetworkIdle('@getCategoryDetails', 200);
   }
 
   if (productInfo.brand) {
@@ -102,7 +108,7 @@ Cypress.Commands.add('lessorFillStep4OfAddProductForm', (productInfo: TEST.IProd
       cy.getInputByLabel('Insurance Photos').selectFile(productInfo.insurancePhoto, {
         force: true,
       });
-      cy.wait('@uploadImage');
+      cy.waitForNetworkIdle('@uploadImage', 200);
     }
 
     if (productInfo.insuranceIssuedDate)
