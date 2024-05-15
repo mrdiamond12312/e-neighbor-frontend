@@ -36,7 +36,6 @@ jobs:
           path: ./dist
 
   unit-test:
-    needs: building
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
