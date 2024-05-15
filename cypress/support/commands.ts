@@ -332,7 +332,7 @@ declare global {
       mainFlowLessorApproveOrder(userFullName?: string): Chainable<void>;
       mainFlowLessorRejectOrder(userFullName?: string, reason?: string): Chainable<void>;
       mainFlowLessorReturnOrder(payload: TEST.IDeliveryPayload): Chainable<void>;
-
+      mainFlowUserFeedback(payload: TEST.IFeedbackPayload): Chainable<void>;
       nextStep(): Chainable<void>;
       prevStep(): Chainable<void>;
 

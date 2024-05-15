@@ -36,7 +36,9 @@ Cypress.Commands.add('mainFlowLessorReturnOrder', (payload: TEST.IDeliveryPayloa
     cy.getInputByLabel('Evidence').selectFile(payload.evidence, { force: true });
     cy.waitForNetworkIdle('@uploadImage', 1500);
   }
-  cy.waitForNetworkIdle(1500);
+  cy.waitForNetworkIdle(1500, {
+    log: false,
+  });
   cy.contains('Submit evidence and complete this order!').click();
   cy.waitForNetworkIdle('@lessorOrderReturn', 1500);
 });

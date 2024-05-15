@@ -37,7 +37,9 @@ Cypress.Commands.add('lessorFillStep1OfOnboardingForm', (generalInformation: TES
     cy.getButton('OK').click({ force: true });
     cy.waitForNetworkIdle('@uploadImage', 1000);
   }
-  cy.wait(200);
+  cy.waitForNetworkIdle(1500, {
+    log: false,
+  });
   cy.contains('Continue').scrollIntoView().click();
 });
 
@@ -88,7 +90,9 @@ Cypress.Commands.add('lessorFillStep3OfOnboardingForm', (lessorInfo: TEST.ILesso
     cy.getButton('OK').click();
     cy.waitForNetworkIdle('@uploadImage', 1000);
   }
-  cy.waitForNetworkIdle(1000);
+  cy.waitForNetworkIdle(1000, {
+    log: false,
+  });
   cy.contains('Submit').click({ force: true });
   cy.waitForNetworkIdle('@lessorOnboarding', 1500);
 });

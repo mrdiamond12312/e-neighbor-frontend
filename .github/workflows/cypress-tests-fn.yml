@@ -59,6 +59,8 @@ jobs:
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
         env:
           ENEIGHBOR_API: ${{ secrets.ENEIGHBOR_API }}
           DB_TYPE: ${{ secrets.DB_TYPE }}

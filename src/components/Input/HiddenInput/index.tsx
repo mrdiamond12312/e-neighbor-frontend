@@ -13,6 +13,7 @@ const HiddenInput: React.FC<TPropsFormInput> = ({
   placeholder,
   className,
   disabled,
+  ...restProps
 }) => {
   return (
     <Controller
@@ -29,6 +30,7 @@ const HiddenInput: React.FC<TPropsFormInput> = ({
               placeholder={placeholder}
               status={error ? 'error' : ''}
               className={classNames(error ? `error` : `focus hover`, className)}
+              {...restProps}
             />
             <ValidateError error={error} />
           </Fragment>

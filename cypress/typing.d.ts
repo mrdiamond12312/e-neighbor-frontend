@@ -92,4 +92,10 @@ declare namespace TEST {
     condition?: string;
     evidence?: string;
   }
+  interface IFeedbackPayload {
+    findString: string;
+    rating?: number;
+    comment?: string;
+    image?: string;
+  }
 }

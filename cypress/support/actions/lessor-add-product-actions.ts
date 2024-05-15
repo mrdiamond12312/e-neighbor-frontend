@@ -43,7 +43,9 @@ Cypress.Commands.add('lessorFillStep1OfAddProductForm', (productInfo: TEST.IProd
       .get('.ant-select-item-option-content')
       .contains(productInfo.timeUnit)
       .click({ force: true });
-  cy.waitForNetworkIdle(1500);
+  cy.waitForNetworkIdle(1500, {
+    log: false,
+  });
   cy.getButton('Continue').click();
 });
 
@@ -122,6 +124,8 @@ Cypress.Commands.add('lessorFillStep4OfAddProductForm', (productInfo: TEST.IProd
   } else {
     cy.contains('Not have').click({ force: true });
   }
-  cy.waitForNetworkIdle(1500);
+  cy.waitForNetworkIdle(1500, {
+    log: false,
+  });
   cy.contains('Submit').scrollIntoView({ ensureScrollable: false }).trigger('click');
 });

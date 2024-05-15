@@ -37,6 +37,8 @@ export default defineConfig({
     env: {
       ...(envLocal.parsed ?? process.env),
     },
+    numTestsKeptInMemory: 1,
+    experimentalMemoryManagement: true,
     baseUrl: 'http://localhost:8000',
     viewportHeight: 900,
     viewportWidth: 1600,

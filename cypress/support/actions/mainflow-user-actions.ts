@@ -6,6 +6,7 @@ Cypress.Commands.add('mainFlowUserRenting', (payload?: TEST.IRentalPaymentInfo) 
     cy.getInputByPlaceholder('Start date')
       .click()
       .type(payload.startDate)
+      .type('{enter}')
       .getInputByPlaceholder('End date')
       .click()
       .type(payload.endDate)
@@ -63,6 +64,40 @@ Cypress.Commands.add('mainFlowUserReceiptOrder', (payload: TEST.IDeliveryPayload
       .selectFile(payload.evidence, { force: true })
       .waitForNetworkIdle('@uploadImage', 1500);
   }
+  cy.waitForNetworkIdle(3000, {
+    log: false,
+  });
   cy.contains('Submit receipt!').click();
+  cy.waitForNetworkIdle('@userReceiptOrder', 1500);
+});
+
+Cypress.Commands.add('mainFlowUserFeedback', (payload: TEST.IFeedbackPayload) => {
+  cy.contains(payload.findString)
+    .parent()
+    .find('.ant-dropdown-trigger')
+    .trigger('mouseover', { force: true });
+
+  cy.contains('View Order Details').click({ force: true });
+  cy.waitForNetworkIdle('@getOrderDetails', 300);
+  cy.getButton('Leave a Feedback').click().wait(500);
+
+  if (payload.rating)
+    cy.contains('label', 'Rating')
+      .parent()
+      .parent()
+      .find(`div[aria-posinset="${payload.rating}"]`)
+      .click();
+
+  if (payload.comment) cy.getInputByLabel('Comment').type(payload.comment);
+
+  if (payload.image) {
+    cy.getInputByLabel('Photo')
+      .selectFile(payload.image, { force: true })
+      .waitForNetworkIdle('@uploadImage', 1500);
+  }
+  cy.waitForNetworkIdle(1500, {
+    log: false,
+  });
+  cy.contains('Submit Review!').click();
   cy.waitForNetworkIdle('@userReceiptOrder', 1500);
 });

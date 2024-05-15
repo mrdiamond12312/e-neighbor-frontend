@@ -22,7 +22,15 @@ export type TRadio = {
   direction?: 'vertical' | 'horizontal';
 };
 
-const Radio: React.FC<TRadio> = ({ control, name, options, className, disabled, direction }) => {
+const Radio: React.FC<TRadio> = ({
+  control,
+  name,
+  options,
+  className,
+  disabled,
+  direction,
+  ...restProps
+}) => {
   return (
     <Fragment>
       <Controller
@@ -36,6 +44,7 @@ const Radio: React.FC<TRadio> = ({ control, name, options, className, disabled, 
                 onChange={(e) => field.onChange(e.target.value)}
                 className={className}
                 disabled={disabled}
+                {...restProps}
               >
                 <Space direction={direction ?? 'horizontal'}>
                   {options?.map((item) => (

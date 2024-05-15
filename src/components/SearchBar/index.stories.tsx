@@ -26,7 +26,7 @@ type TButtonStory = StoryObj<typeof meta>;
 
 // Specific Stories
 export const Default: TButtonStory = {
-  args: { onPressEnter: searchBoxHandler, placeholder: 'Search...' },
+  args: { onPressEnter: searchBoxHandler, placeholder: 'Search...', className: 'h-10' },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const thisInput = canvas.getByPlaceholderText('Search...');
