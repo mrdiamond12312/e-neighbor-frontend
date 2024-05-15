@@ -59,8 +59,6 @@ jobs:
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
         env:
           ENEIGHBOR_API: ${{ secrets.ENEIGHBOR_API }}
           DB_TYPE: ${{ secrets.DB_TYPE }}
@@ -74,12 +72,12 @@ jobs:
           REACT_APP_IMAGEKIT_ENDPOINT_URL: ${{ secrets.REACT_APP_IMAGEKIT_ENDPOINT_URL}}
           REACT_APP_IMAGEKIT_PRIVATE_KEY: ${{ secrets.REACT_APP_IMAGEKIT_PRIVATE_KEY}}
           REACT_APP_IMAGEKIT_PUBLIC_KEY: ${{ secrets.REACT_APP_IMAGEKIT_PUBLIC_KEY}}
-
         with:
           start: npm run preview:run
           wait-on: 'http://localhost:8000'
           install: false
           spec: ${{ inputs.spec }}
+          browser: chrome
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v3
