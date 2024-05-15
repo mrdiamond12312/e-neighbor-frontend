@@ -105,8 +105,8 @@ export const Default: TCascaderStory = {
     const input = canvas.getByLabelText('Cascader', {
       selector: 'input',
     });
-    expect(input).toBeInTheDocument();
-    userEvent.click(input);
+    await expect(input).toBeInTheDocument();
+    await userEvent.click(input);
   },
 };
 

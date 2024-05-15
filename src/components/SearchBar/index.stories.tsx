@@ -22,10 +22,10 @@ const meta: Meta<typeof SearchBar> = {
 };
 
 // Make Type
-type TButtonStory = StoryObj<typeof meta>;
+type TSearchBarStory = StoryObj<typeof meta>;
 
 // Specific Stories
-export const Default: TButtonStory = {
+export const Default: TSearchBarStory = {
   args: { onPressEnter: searchBoxHandler, placeholder: 'Search...', className: 'h-10' },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);

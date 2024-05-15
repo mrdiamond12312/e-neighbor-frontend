@@ -4,12 +4,10 @@ import { userEvent, within } from '@storybook/testing-library';
 import { Flex, Form } from 'antd/lib';
 import { useForm } from 'react-hook-form';
 
-import { Rate } from '@/components/Input/Rate';
+import TextArea from '@/components/Input/TextArea';
 
 const args = {
   size: 'large',
-  direction: 'vertical',
-  className: 'h-10 content-center',
 };
 
 // Interactive Function, used for testing
@@ -26,11 +24,17 @@ const Wrapper: React.FC = (args) => {
     >
       <Item label={'Value'}>
         <Flex className="text-body-2-semibold h-10 items-center pl-3 font-sans">
-          {watch('rateTest') ?? 0}
+          {watch('textAreaTest')}
         </Flex>
       </Item>
-      <Item label={'Rate'}>
-        <Rate aria-label="Rate" control={control} name={'rateTest'} {...args} />
+      <Item label={'TextArea'}>
+        <TextArea
+          placement="top"
+          aria-label="TextArea"
+          control={control}
+          name={'textAreaTest'}
+          {...args}
+        />
       </Item>
     </Form>
   );
@@ -39,8 +43,8 @@ const Wrapper: React.FC = (args) => {
 // Storybook Declarations
 // General Information of Components (which components, name, and props)
 const meta: Meta<any> = {
-  title: 'Form/Rate',
-  component: Rate,
+  title: 'Form/Text Area',
+  component: TextArea,
   parameters: {
     layout: 'fullscreen',
   },
@@ -49,10 +53,10 @@ const meta: Meta<any> = {
 };
 
 // Make Type
-type TRateStory = StoryObj<typeof meta>;
+type TTextAreaStory = StoryObj<typeof meta>;
 
 // Specific Stories
-export const Default: TRateStory = {
+export const Default: TTextAreaStory = {
   args: {
     ...args,
   },
@@ -63,19 +67,13 @@ export const Default: TRateStory = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
-    const randNumber = Math.floor(Math.random() * 5);
-    const doubleClick = Math.floor(Math.random() * 2) === 1;
-
-    const starGazers = canvas.getAllByRole('radio', {
-      checked: false,
+    const input = canvas.getByLabelText('TextArea', {
+      selector: 'textarea',
     });
-    const selectedStar = starGazers[randNumber % 5];
-
-    await userEvent.click(selectedStar);
-    if (doubleClick) await userEvent.click(selectedStar);
-
-    await expect(canvas.getByText(doubleClick ? 0 : randNumber + 1)).toBeInTheDocument();
+    const textToType = 'A Public Information';
+    await userEvent.click(input);
+    await userEvent.type(input, textToType);
+    await expect(canvas.getAllByText(textToType).length).toEqual(2);
   },
 };
 

@@ -4,12 +4,23 @@ import { userEvent, within } from '@storybook/testing-library';
 import { Flex, Form } from 'antd/lib';
 import { useForm } from 'react-hook-form';
 
-import { Rate } from '@/components/Input/Rate';
+import Select from '@/components/Input/Select';
 
 const args = {
   size: 'large',
-  direction: 'vertical',
-  className: 'h-10 content-center',
+
+  options: [
+    {
+      value: 'Daimondo',
+      label: 'Daimondo',
+    },
+    {
+      value: 'Daiya',
+      label: 'Daiya',
+    },
+  ],
+  className: 'custom-cascader-select w-fit',
+  popupClassName: 'custom-select-panel',
 };
 
 // Interactive Function, used for testing
@@ -26,11 +37,17 @@ const Wrapper: React.FC = (args) => {
     >
       <Item label={'Value'}>
         <Flex className="text-body-2-semibold h-10 items-center pl-3 font-sans">
-          {watch('rateTest') ?? 0}
+          {watch('selectTest')}
         </Flex>
       </Item>
-      <Item label={'Rate'}>
-        <Rate aria-label="Rate" control={control} name={'rateTest'} {...args} />
+      <Item label={'Select'}>
+        <Select
+          aria-label="Select"
+          placeholder="Select Placeholder"
+          control={control}
+          name={'selectTest'}
+          {...args}
+        />
       </Item>
     </Form>
   );
@@ -39,8 +56,8 @@ const Wrapper: React.FC = (args) => {
 // Storybook Declarations
 // General Information of Components (which components, name, and props)
 const meta: Meta<any> = {
-  title: 'Form/Rate',
-  component: Rate,
+  title: 'Form/Select',
+  component: Select,
   parameters: {
     layout: 'fullscreen',
   },
@@ -49,10 +66,10 @@ const meta: Meta<any> = {
 };
 
 // Make Type
-type TRateStory = StoryObj<typeof meta>;
+type TSelectStory = StoryObj<typeof meta>;
 
 // Specific Stories
-export const Default: TRateStory = {
+export const Default: TSelectStory = {
   args: {
     ...args,
   },
@@ -63,19 +80,11 @@ export const Default: TRateStory = {
   ),
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-
-    const randNumber = Math.floor(Math.random() * 5);
-    const doubleClick = Math.floor(Math.random() * 2) === 1;
-
-    const starGazers = canvas.getAllByRole('radio', {
-      checked: false,
+    const input = canvas.getByLabelText('Select', {
+      selector: 'input',
     });
-    const selectedStar = starGazers[randNumber % 5];
-
-    await userEvent.click(selectedStar);
-    if (doubleClick) await userEvent.click(selectedStar);
-
-    await expect(canvas.getByText(doubleClick ? 0 : randNumber + 1)).toBeInTheDocument();
+    await expect(input).toBeInTheDocument();
+    await userEvent.click(input);
   },
 };
 
