@@ -21,6 +21,14 @@ on:
         required: true
       DB_CONN:
         required: true
+      DB_SSL:
+        required: true
+      REACT_APP_IMAGEKIT_PUBLIC_KEY:
+        required: true
+      REACT_APP_IMAGEKIT_PRIVATE_KEY:
+        required: true
+      REACT_APP_IMAGEKIT_ENDPOINT_URL:
+        required: true
 
 jobs:
   cypress-e2e-testing:
@@ -60,6 +68,10 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD}}
           DB_DATABASE: ${{ secrets.DB_DATABASE}}
           DB_CONN: ${{ secrets.DB_CONN}}
+          DB_SSL: ${{ secrets.DB_SSL}}
+          REACT_APP_IMAGEKIT_ENDPOINT_URL: ${{ secrets.REACT_APP_IMAGEKIT_ENDPOINT_URL}}
+          REACT_APP_IMAGEKIT_PRIVATE_KEY: ${{ secrets.REACT_APP_IMAGEKIT_PRIVATE_KEY}}
+          REACT_APP_IMAGEKIT_PUBLIC_KEY: ${{ secrets.REACT_APP_IMAGEKIT_PUBLIC_KEY}}
 
         with:
           start: npm run preview:run
