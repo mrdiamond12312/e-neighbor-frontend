@@ -23,6 +23,7 @@ const DatePicker: React.FC<TPropsDatePicker> = ({
   size,
   disabledDate,
   readOnly = false,
+  ...restProps
 }) => {
   return (
     <Controller
@@ -42,6 +43,7 @@ const DatePicker: React.FC<TPropsDatePicker> = ({
               }}
               disabledDate={disabledDate}
               status={error ? 'error' : ''}
+              {...restProps}
             />
             <ValidateError error={error} />
           </Fragment>

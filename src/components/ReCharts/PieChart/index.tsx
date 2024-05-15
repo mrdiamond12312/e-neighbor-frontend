@@ -37,7 +37,15 @@ const ActivePieShape: React.FC<TActiveShapeProps> = ({
   const textAnchor = cos >= 0 ? 'start' : 'end';
   return (
     <g>
-      <>{customCenterRender ? customCenterRender(payload?.[tagKey], cx, cy) : payload?.[tagKey]}</>
+      <>
+        {customCenterRender ? (
+          customCenterRender(payload?.[tagKey], cx, cy)
+        ) : (
+          <text x={cx} y={cy} dy={8} textAnchor="middle" fill={fill}>
+            {payload?.[tagKey]}
+          </text>
+        )}
+      </>
       <Sector
         cx={cx}
         cy={cy}

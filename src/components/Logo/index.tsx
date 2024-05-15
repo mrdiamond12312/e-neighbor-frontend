@@ -22,6 +22,10 @@ const Logo: React.FC<TLogo> = ({
   const combinedLogoTextClassName = classNames(
     'text-heading-4 text-teal-2 hidden sm:block',
     logoTextClassName,
+    {
+      '!text-teal-2': mode === 'teal',
+      '!text-neutral-1 ': mode === 'neutral',
+    },
   );
 
   const chosenLogo = classNames({
