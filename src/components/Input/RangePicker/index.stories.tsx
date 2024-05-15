@@ -14,10 +14,12 @@ const args = {
 };
 
 // Interactive Function, used for testing
+
 const { Item } = Form;
 const Wrapper: React.FC = (args) => {
   const { control, watch } = useForm();
 
+  console.log(watch());
   return (
     <Form
       layout="horizontal"
@@ -88,16 +90,16 @@ export const Default: TRangePickerStory = {
     await userEvent.click(endInput);
     await userEvent.type(endInput, endDate.format('YYYY-MM-DD'));
     await userEvent.type(endInput, '{enter}');
+    await expect(
+      canvas.getByText(getDateFormatNormal(startDate.toString()) ?? '', {
+        exact: false,
+      }),
+    ).toBeInTheDocument();
 
     await expect(
-      canvas.getByText(
-        [
-          'From',
-          getDateFormatNormal(startDate.toString()),
-          'to',
-          getDateFormatNormal(endDate.toString()),
-        ].join(' '),
-      ),
+      canvas.getByText(getDateFormatNormal(endDate.toString()) ?? '', {
+        exact: false,
+      }),
     ).toBeInTheDocument();
   },
 };

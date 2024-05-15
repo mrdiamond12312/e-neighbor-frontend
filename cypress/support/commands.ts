@@ -376,6 +376,10 @@ Cypress.Commands.add('sanitizeDatabase', (payload: TEST.IDBSanitize) => {
   if (payload.productName) {
     cy.task(
       'queryDb',
+      `UPDATE orders SET feedback_id = NULL WHERE product_id IN (SELECT id FROM products WHERE name = '${payload.productName}');`,
+    );
+    cy.task(
+      'queryDb',
       `DELETE FROM "feedbacks" WHERE order_id IN (SELECT id FROM orders WHERE product_id IN (SELECT id FROM products WHERE name = '${payload.productName}'));`,
     );
     cy.task(

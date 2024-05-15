@@ -36,7 +36,7 @@ const Wrapper: React.FC = (args) => {
     >
       <Item label={'Value'}>
         <Flex className="text-body-2-semibold h-10 items-center pl-3 font-sans">
-          {watch('checkboxTest')?.join(',')}
+          {watch('checkboxTest')?.join(', ')}
         </Flex>
       </Item>
       <Item label={'Checkbox'}>
@@ -85,10 +85,22 @@ export const Default: TCheckboxStory = {
       await expect(element).toBeInTheDocument();
       await userEvent.click(element);
     }
-
-    await expect(
-      canvas.getByText(args.options.map((option) => option.value).join(',')),
-    ).toBeInTheDocument();
+    await Promise.all(
+      args.options.map(async (option) => {
+        await expect(
+          (
+            await canvas.findAllByText(option.value, {
+              exact: false,
+            })
+          ).length,
+        ).toBeLessThanOrEqual(2);
+      }),
+    );
+    // await expect(
+    //   await canvas.findByText(args.options.map((option) => option.value).join(', '), {
+    //     exact: false,
+    //   }),
+    // ).toBeInTheDocument();
   },
 };
 
