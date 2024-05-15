@@ -85,11 +85,11 @@ export const Default: TRangePickerStory = {
 
     await userEvent.click(startInput);
     await userEvent.type(startInput, startDate.format('YYYY-MM-DD'));
-    await userEvent.type(startInput, '{enter}');
+    await userEvent.keyboard('{Enter}');
 
     await userEvent.click(endInput);
     await userEvent.type(endInput, endDate.format('YYYY-MM-DD'));
-    await userEvent.type(endInput, '{enter}');
+    await userEvent.keyboard('{Enter}');
     await expect(
       canvas.getByText(getDateFormatNormal(startDate.toString()) ?? '', {
         exact: false,
