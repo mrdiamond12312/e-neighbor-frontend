@@ -5,7 +5,6 @@ import { Flex, Form } from 'antd/lib';
 import dayjs from 'dayjs';
 import { useForm } from 'react-hook-form';
 
-import DatePicker from '@/components/Input/DatePicker';
 import RangePicker from '@/components/Input/RangePicker';
 import { getDateFormatNormal } from '@/utils/time-format/index';
 
@@ -53,7 +52,7 @@ const Wrapper: React.FC = (args) => {
 // General Information of Components (which components, name, and props)
 const meta: Meta<any> = {
   title: 'Form/Range Picker',
-  component: DatePicker,
+  component: RangePicker,
   parameters: {
     layout: 'fullscreen',
   },
