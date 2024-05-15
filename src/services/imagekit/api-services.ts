@@ -27,6 +27,7 @@ export const uploadImage = async (
     headers: {
       'Content-Type': 'multipart/form-data',
     },
+    timeout: 60000,
     onUploadProgress: (event) => {
       if (onProgress) onProgress({ percent: (event.loaded / event.total) * 100 });
     },
