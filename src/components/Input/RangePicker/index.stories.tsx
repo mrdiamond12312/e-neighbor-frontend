@@ -90,13 +90,13 @@ export const Default: TRangePickerStory = {
     await userEvent.type(endInput, endDate.format('YYYY-MM-DD'));
     await userEvent.keyboard('{Enter}');
     await expect(
-      canvas.getByText(getDateFormatNormal(startDate.toString()) ?? '', {
+      await canvas.findByText(getDateFormatNormal(startDate.toString()) ?? '', {
         exact: false,
       }),
     ).toBeInTheDocument();
 
     await expect(
-      canvas.getByText(getDateFormatNormal(endDate.toString()) ?? '', {
+      await canvas.findByText(getDateFormatNormal(endDate.toString()) ?? '', {
         exact: false,
       }),
     ).toBeInTheDocument();
