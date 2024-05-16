@@ -22,6 +22,7 @@ export type TAreaChartProps<T> = {
   colors?: string[];
   customTooltip?: ContentType<ValueType, NameType>;
   curveType?: CurveType;
+  yAxisWidth?: number;
 };
 
 export const AreaChart: React.FC<TAreaChartProps<any>> = ({
@@ -33,6 +34,7 @@ export const AreaChart: React.FC<TAreaChartProps<any>> = ({
   chartClassname,
   customTooltip,
   curveType = 'monotone',
+  yAxisWidth,
 }) => {
   const colorKeys = dataKeys.map((key) => ['gradients', key].join('.'));
   console.log(colorKeys);
@@ -46,7 +48,7 @@ export const AreaChart: React.FC<TAreaChartProps<any>> = ({
         margin={{
           top: 10,
           right: 30,
-          left: 0,
+          left: yAxisWidth ?? 30,
           bottom: 0,
         }}
       >
