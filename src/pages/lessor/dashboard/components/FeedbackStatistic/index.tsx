@@ -172,6 +172,7 @@ export const FeedbackStatistic: React.FC<TFeedbackStatisticProps> = ({
               chartClassname="font-sans"
               colors={[tailwindConfig.theme.colors.teal[300]]}
               customTooltip={<CustomFeedbackToolTip />}
+              yAxisWidth={0}
             />
           </Flex>
         </Spin>
