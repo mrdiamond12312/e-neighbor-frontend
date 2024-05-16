@@ -60,6 +60,7 @@ const ProductManagement: React.FC = () => {
               pageSize: take,
               showSizeChanger: true,
               showQuickJumper: true,
+              total: productPage?.meta.itemCount ?? 0,
               pageSizeOptions: [5, 10, 20],
               current: page,
             }}

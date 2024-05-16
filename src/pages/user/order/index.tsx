@@ -42,6 +42,7 @@ const LessorOrders: React.FC = () => {
               pageSize: take,
               showSizeChanger: true,
               showQuickJumper: true,
+              total: ordersData?.meta.itemCount ?? 0,
               pageSizeOptions: [6, 12],
               current: page,
             }}

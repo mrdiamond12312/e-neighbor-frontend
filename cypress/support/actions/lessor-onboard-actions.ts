@@ -35,7 +35,7 @@ Cypress.Commands.add('lessorFillStep1OfOnboardingForm', (generalInformation: TES
   if (generalInformation.avatar) {
     cy.getInputByLabel('Avatar').selectFile(generalInformation.avatar, { force: true });
     cy.getButton('OK').click({ force: true });
-    cy.waitForNetworkIdle('@uploadImage', 1000);
+    cy.waitForNetworkIdle('@uploadImage', 3000);
   }
   cy.waitForNetworkIdle(1500, {
     log: false,

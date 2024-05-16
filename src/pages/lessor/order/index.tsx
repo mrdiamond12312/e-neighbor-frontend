@@ -43,6 +43,7 @@ const UserOrders: React.FC = () => {
               showSizeChanger: true,
               showQuickJumper: true,
               pageSizeOptions: [6, 12],
+              total: ordersData?.meta.itemCount ?? 0,
               current: page,
             }}
           />
