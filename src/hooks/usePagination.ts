@@ -124,7 +124,7 @@ export const usePagination = (initialData?: TUsePaginationParams) => {
 
   useEffect(() => {
     setPage(1);
-  }, [paginationParams]);
+  }, [take, rating, status, keyword, location, watch(STORE_FILTER.min), watch(STORE_FILTER.max)]);
 
   return {
     control,

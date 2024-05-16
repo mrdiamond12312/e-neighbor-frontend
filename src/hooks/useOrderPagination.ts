@@ -115,7 +115,7 @@ export const useOrderPagination = (initialData?: TUseOrderPaginationParams) => {
 
   useEffect(() => {
     setPage(1);
-  }, [paginationParams]);
+  }, [take, productName, orderStatus, paymentStatus]);
 
   return {
     sortField,
