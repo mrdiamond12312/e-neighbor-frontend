@@ -14,7 +14,7 @@ export default {
   'menu.login': 'Login',
   'menu.signUp': 'Register',
   'menu.dashboard': 'Dashboard',
-  'menu.reminder': 'Kết nối người thuê và người cho thuê!',
+  'menu.reminder': 'Simplify the rental process for both renters and lessors',
   'menu.product-management': 'Products Management',
 
   'menu.thank-you': 'Thank You',

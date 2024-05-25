@@ -27,7 +27,9 @@ export default {
   'common.sort.options.returnDay': 'Ngày hoàn trả',
   'common.sort.options.orderValue': 'Giá trị đơn hàng',
   'common.role.user': 'Người dùng',
-  'common.role.lessor': 'Người cho thuê',
+  'common.role.lessor': 'Người cho Thuê',
+
+  'common.role.admin': 'Quản trị viên',
 
   'common.sort.options.star': 'Đánh giá',
 };

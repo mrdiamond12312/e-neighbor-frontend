@@ -2,6 +2,7 @@ import aboutUs from '@/locales/en-US/aboutUs';
 import { adminLocales } from '@/locales/en-US/admin';
 import common from '@/locales/en-US/common';
 import { feedbackLocales } from '@/locales/en-US/feedbacks';
+import { landing } from '@/locales/en-US/landing';
 import lessor from '@/locales/en-US/lessor';
 import lessorBreadCrumbs from '@/locales/en-US/lessor-breadcrumbs';
 import login from '@/locales/en-US/login';
@@ -26,6 +27,7 @@ export default {
   ...register,
   ...store,
   ...lessor,
+  ...landing,
   ...common,
   ...thankYou,
   ...order,
