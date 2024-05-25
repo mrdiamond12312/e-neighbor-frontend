@@ -11,4 +11,5 @@ export const adminLocales = {
   'admin.products.management.classifier.isRejected': 'Không được thông qua',
   'admin.product.card.review': 'Xét duyệt',
   'admin.product.detail.review': 'Xét duyệt Sản phẩm',
+  'admin.breadcrumbs.admin.login': 'Đăng nhập',
 };

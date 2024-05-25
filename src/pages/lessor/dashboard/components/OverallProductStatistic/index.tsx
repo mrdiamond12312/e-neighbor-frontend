@@ -35,7 +35,7 @@ export const OverallProductStatistic: React.FC<TOverallStatisticProps> = ({ data
                   />
                 </p>
               }
-              value={data?.totalAccessCount}
+              value={data?.totalAccessCount ?? 0}
             />
           </Card>
 

@@ -12,4 +12,5 @@ export const adminLocales = {
   'admin.product.card.review': 'Review',
 
   'admin.product.detail.review': 'Review this Approval Request',
+  'admin.breadcrumbs.admin.login': 'Sign in',
 };

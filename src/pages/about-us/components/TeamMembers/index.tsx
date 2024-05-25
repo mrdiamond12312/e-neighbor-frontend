@@ -27,6 +27,8 @@ const TeamMembers: React.FC = () => {
       expertise: 'Back End',
       job: 'Developer',
       acronym: 'MTHUAN',
+      image:
+        'https://ik.imagekit.io/AliaV14/414994054_2103249863341837_8802695447316455526_n-removebg-preview%20(1).png?updatedAt=1716661480038',
     },
   ];
 

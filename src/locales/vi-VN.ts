@@ -2,6 +2,7 @@ import aboutUs from '@/locales/vi-VN/aboutUs';
 import { adminLocales } from '@/locales/vi-VN/admin';
 import common from '@/locales/vi-VN/common';
 import { feedbackLocales } from '@/locales/vi-VN/feedbacks';
+import { landing } from '@/locales/vi-VN/landing';
 import lessor from '@/locales/vi-VN/lessor';
 import lessorBreadCrumbs from '@/locales/vi-VN/lessor-breadcrumbs';
 import login from '@/locales/vi-VN/login';
@@ -29,6 +30,7 @@ export default {
   ...common,
   ...thankYou,
   ...order,
+  ...landing,
   ...user,
   ...rentLocale,
   ...feedbackLocales,

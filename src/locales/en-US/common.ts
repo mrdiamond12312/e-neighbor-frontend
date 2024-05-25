@@ -29,5 +29,7 @@ export default {
   'common.role.user': 'User',
   'common.role.lessor': 'Lessor',
 
+  'common.role.admin': 'Administrator',
+
   'common.sort.options.star': 'Rating',
 };

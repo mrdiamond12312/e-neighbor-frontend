@@ -2,6 +2,7 @@ module.exports = {
   extends: [
     'plugin:import/errors',
     'plugin:import/typescript',
+    'plugin:@react-three/recommended',
     require.resolve('@umijs/lint/dist/config/eslint'),
   ],
   globals: {
@@ -10,6 +11,7 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/no-namespace': 'off',
+    'react/no-unknown-property': 'off',
     'import/order': [
       2,
       {
