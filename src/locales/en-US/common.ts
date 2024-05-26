@@ -32,4 +32,7 @@ export default {
   'common.role.admin': 'Administrator',
 
   'common.sort.options.star': 'Rating',
+
+  'common.dayrange.last.month': 'Last 30 days',
+  'common.dayrange.last.week': 'Last 7 days',
 };

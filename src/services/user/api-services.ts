@@ -4,7 +4,6 @@ import request from '@/services/interceptor';
 import API_ENDPOINTS from '@/services/user/api-path';
 
 export const patchUser = async (body: TEditProfileFields) => {
-  console.log(body[EDIT_PROFILE_KEYS.dob]);
   return request<API.TAuthResponse>(API_ENDPOINTS.USER_UPDATE, {
     method: 'PATCH',
     data: {

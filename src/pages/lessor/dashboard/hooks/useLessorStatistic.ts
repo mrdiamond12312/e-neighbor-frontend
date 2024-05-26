@@ -12,14 +12,14 @@ export const useLessorStatistic = () => {
   const { currentUser } = initialState || {};
   const { formatMessage } = useIntl();
 
-  const [revenueDayRange, setRevenueDayRange] = useState<number>(30);
+  const [revenueDayRange, setRevenueDayRange] = useState<number>(7);
 
   const { data: revenueStatisticData, isLoading: revenueStatisticLoading } = useRevenueStatistic({
     dayRange: revenueDayRange,
     lessorId: currentUser?.lessorId,
   });
 
-  const [feedbackDayRange, setFeedbackDayRange] = useState<number>(30);
+  const [feedbackDayRange, setFeedbackDayRange] = useState<number>(7);
 
   const { data: feedbackStatisticData, isLoading: feedbackStatisticLoading } = useFeedbackStatistic(
     {

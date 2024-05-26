@@ -36,7 +36,6 @@ export const useAdditionalInfo = () => {
         value: record.id,
         label: formatMessage({ id: record.name, defaultMessage: record.name }),
       }));
-  console.log(surchargesOptions);
 
   const insuranceOptions: TRadioOption[] = [
     {

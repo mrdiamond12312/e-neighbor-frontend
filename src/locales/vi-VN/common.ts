@@ -32,4 +32,7 @@ export default {
   'common.role.admin': 'Quản trị viên',
 
   'common.sort.options.star': 'Đánh giá',
+
+  'common.dayrange.last.month': '30 ngày qua',
+  'common.dayrange.last.week': '7 ngày qua',
 };
