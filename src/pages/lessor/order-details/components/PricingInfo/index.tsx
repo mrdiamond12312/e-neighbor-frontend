@@ -1,5 +1,5 @@
 import { Money } from '@phosphor-icons/react';
-import { FormattedHTMLMessage } from '@umijs/max';
+import { FormattedHTMLMessage, getLocale } from '@umijs/max';
 import { Col, Flex, Row } from 'antd/lib';
 import dayjs from 'dayjs';
 
@@ -64,7 +64,7 @@ export const PricingInfo: React.FC<TPricingInfoProps> = ({ data }) => {
             />
           </Col>
           <Col span={16} className="!font-sans text-body-1-regular flex flex-row gap-1">
-            {data?.rentPrice}
+            {data?.rentPrice.toLocaleString(getLocale())}
             <FormattedHTMLMessage id={data?.timeUnit} defaultMessage={data?.timeUnit} />
           </Col>
 
@@ -75,7 +75,7 @@ export const PricingInfo: React.FC<TPricingInfoProps> = ({ data }) => {
             span={16}
             className="!font-sans text-teal-3 text-heading-5 flex flex-row gap-1 border-t"
           >
-            {data?.orderValue} ₫
+            {data?.orderValue.toLocaleString(getLocale())} ₫
           </Col>
 
           <Col

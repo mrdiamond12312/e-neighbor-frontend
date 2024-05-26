@@ -1,4 +1,4 @@
-import { FormattedHTMLMessage } from '@umijs/max';
+import { FormattedHTMLMessage, getLocale } from '@umijs/max';
 import { Col, Row } from 'antd/lib';
 import React from 'react';
 
@@ -25,7 +25,9 @@ export const PaymentInfo: React.FC<TPaymentInfoProps> = ({ data }) => {
           <FormattedHTMLMessage id="thankYou.billingInfo.amount" defaultMessage="Amount:" />
         </Col>
         <Col span={12}>
-          <p className="text-body-1-semibold font-normal">{data[PAYMENT_INFO_FIELD.vnpAmount]}</p>
+          <p className="text-body-1-semibold font-normal">
+            {(Number(data[PAYMENT_INFO_FIELD.vnpAmount]) / 100).toLocaleString(getLocale())}
+          </p>
         </Col>
       </Row>
       <Row key="thankYou.billingInfo.bankCode" gutter={16}>
@@ -42,7 +44,7 @@ export const PaymentInfo: React.FC<TPaymentInfoProps> = ({ data }) => {
         </Col>
         <Col span={12}>
           <p className="text-body-1-semibold font-normal">
-            {Number(data[PAYMENT_INFO_FIELD.vnpOrderInfo]) / 100}
+            {data[PAYMENT_INFO_FIELD.vnpOrderInfo]}
           </p>
         </Col>
       </Row>

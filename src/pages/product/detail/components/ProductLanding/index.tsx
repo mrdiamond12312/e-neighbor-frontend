@@ -1,4 +1,4 @@
-import { FormattedHTMLMessage, Link, useParams } from '@umijs/max';
+import { FormattedHTMLMessage, getLocale, Link, useParams } from '@umijs/max';
 import { Breadcrumb, Col, Divider, Flex, Rate, Row } from 'antd/lib';
 import classNames from 'classnames';
 import React, { Fragment } from 'react';
@@ -88,7 +88,7 @@ export const ProductLanding: React.FC<TProductCharacteristicsProps> = ({
         />
       </Flex>
       <Flex className="flex-row gap-2 justify-start items-center text-heading-2 font-sans font-normal py-2">
-        <p className="text-teal-1">{data?.price}</p>
+        <p className="text-teal-1">{data?.price?.toLocaleString(getLocale())}</p>
         <FormattedHTMLMessage id={data?.timeUnit} />
       </Flex>
       <Flex className={actionClassname}>

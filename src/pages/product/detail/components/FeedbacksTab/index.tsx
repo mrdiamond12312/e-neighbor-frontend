@@ -30,7 +30,6 @@ export const FeedbacksTab: React.FC<TFeedbackTabProps> = ({ productData }) => {
     <Flex className="flex-col p-4 max-h-[calc(100vh-168px)] overflow-auto">
       <OverallRating
         avgRating={productData?.averageStar ?? 0}
-        feedbackCount={productData?.numberOfCompletedOrders ?? 0}
         accData={data?.pages[0].extra.statistic}
       />
       {data?.pages.map((page) =>

@@ -9,7 +9,6 @@ export type TOverallRating = {
     rating: number;
     count: number;
   }[];
-  feedbackCount: string | number;
 };
 
 export const CustomRatingToolTip: React.FC<TooltipProps<number, string>> = ({
@@ -32,12 +31,17 @@ export const CustomRatingToolTip: React.FC<TooltipProps<number, string>> = ({
   return null;
 };
 
-export const OverallRating: React.FC<TOverallRating> = ({ avgRating, accData, feedbackCount }) => {
+export const OverallRating: React.FC<TOverallRating> = ({ avgRating, accData }) => {
   const allRatings = [5, 4, 3, 2, 1]; // Array of all possible ratings
   const extendedData = allRatings.map((rating) => {
     const existingEntry = accData?.find((entry) => entry.rating === rating);
     return existingEntry || { rating, count: 0 };
   });
+
+  const feedbackCount = extendedData.reduce(
+    (accumulator, data) => accumulator + (Number(data.count) ?? 0),
+    0,
+  );
   return (
     <Flex className="flex-row w-full">
       <Flex className="flex-col pl-4 gap-1 font-sans text-body-2-semibold text-neutral-7 shrink-0 justify-center items-center">

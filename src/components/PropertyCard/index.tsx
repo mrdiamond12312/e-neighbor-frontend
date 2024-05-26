@@ -1,3 +1,4 @@
+import { getLocale } from '@umijs/max';
 import { Rate } from 'antd/lib';
 import React, { Fragment } from 'react';
 
@@ -64,7 +65,7 @@ export const PropertyCard: React.FC<ICardProps> = ({
 
             <Rate value={rating} disabled className="hidden card-rating" />
             <span className="text-teal-7 text-heading-5 card-price">
-              {pricing} {pricingCurrency}
+              {pricing?.toLocaleString(getLocale())} {pricingCurrency}
             </span>
           </section>
         </section>

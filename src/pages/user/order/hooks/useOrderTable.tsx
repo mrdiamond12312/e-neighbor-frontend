@@ -1,4 +1,4 @@
-import { useIntl, useModel } from '@umijs/max';
+import { getLocale, useIntl, useModel } from '@umijs/max';
 import { ColumnsType, TableProps } from 'antd/lib/table';
 import { SorterResult } from 'antd/lib/table/interface';
 
@@ -81,7 +81,7 @@ export const useOrderTable = () => {
       }),
       dataIndex: 'orderValue',
       sorter: true,
-      render: (value) => [value, '₫'].join(' '),
+      render: (value) => [value.toLocaleString(getLocale()), '₫'].join(' '),
     },
     {
       title: formatMessage({
