@@ -1,5 +1,5 @@
 import { LoadingOutlined } from '@ant-design/icons';
-import { FormattedHTMLMessage } from '@umijs/max';
+import { FormattedHTMLMessage, getLocale } from '@umijs/max';
 import { Col, Divider, Flex, Row, Select, Spin } from 'antd/lib';
 import React from 'react';
 import { TooltipProps } from 'recharts';
@@ -33,7 +33,7 @@ const CustomRevenueToolTip: React.FC<TooltipProps<number, string>> = ({ active, 
           id="lessor.dashboard.section.revenue.chart.tooltip.revenue"
           defaultMessage="Gained a total of <span class='text-teal-7 text-body-2-semibold'>{revenue}₫</span>"
           values={{
-            revenue: payload[0].value,
+            revenue: payload[0].value?.toLocaleString(getLocale()),
           }}
         />
       </Flex>
@@ -81,7 +81,7 @@ export const RevenueStatistic: React.FC<TRevenueStatisticProps> = ({
                 <FormattedHTMLMessage
                   id="lessor.dashboard.section.revenue.total"
                   defaultMessage="Total: <span class='text-teal-1 text-body-1-semibold'>{totalRevenue}</span> ₫"
-                  values={{ totalRevenue: data?.totalRevenue }}
+                  values={{ totalRevenue: data?.totalRevenue.toLocaleString(getLocale()) }}
                 />
               </Flex>
             </Flex>

@@ -1,5 +1,5 @@
 import { Star } from '@phosphor-icons/react';
-import { FormattedHTMLMessage, useIntl, useModel, useSearchParams } from '@umijs/max';
+import { FormattedHTMLMessage, getLocale, useIntl, useModel, useSearchParams } from '@umijs/max';
 import { Flex, Image, Typography } from 'antd/lib';
 import { ColumnsType, TableProps } from 'antd/lib/table';
 import { SorterResult } from 'antd/lib/table/interface';
@@ -170,7 +170,6 @@ export const useProductsTable = () => {
         defaultMessage: 'Finished Order',
       }),
       dataIndex: 'completedOrder',
-      sorter: true,
     },
 
     {
@@ -182,7 +181,8 @@ export const useProductsTable = () => {
       sorter: true,
       render: (value: number, record: API.IProductCard) => (
         <p>
-          {value} {formatMessage({ id: record.timeUnit, defaultMessage: record.timeUnit })}
+          {value.toLocaleString(getLocale())}{' '}
+          {formatMessage({ id: record.timeUnit, defaultMessage: record.timeUnit })}
         </p>
       ),
     },
@@ -193,7 +193,7 @@ export const useProductsTable = () => {
         defaultMessage: 'Value',
       }),
       dataIndex: 'value',
-      render: (value: number) => <p>{value} ₫</p>,
+      render: (value: number) => <p>{value.toLocaleString(getLocale())} ₫</p>,
     },
 
     {

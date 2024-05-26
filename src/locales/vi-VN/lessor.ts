@@ -162,4 +162,40 @@ export default {
   'lessor.order.management.table.col.action.view-detail': 'Xem chi tiết',
   'lessor.order.management.table.col.action.approve': 'Chấp nhận',
   'lessor.order.management.table.col.action.reject': 'Từ chối',
+
+  // Dashboard
+  'lessor.statistic.rate.1.desc': 'Không hài lòng',
+  'lessor.statistic.rate.2.desc': 'Không tốt',
+  'lessor.statistic.rate.3.desc': 'Ok!',
+  'lessor.statistic.rate.4.desc': 'Hài lòng',
+  'lessor.statistic.rate.5.desc': 'Rất hài lòng',
+
+  'lessor.dashboard.section.revenue.total':
+    "Tổng Doanh thu: <span class='text-teal-1 text-body-1-semibold'>{totalRevenue}</span> ₫",
+  'lessor.dashboard.loading': 'Đang xử lý Số liệu Thống kê...',
+
+  'lessor.dashboard.section.overall.section.order.title': 'Tổng quan Đơn hàng',
+  'lessor.dashboard.section.overall.section.product.title': 'Tổng quan Mặt hàng',
+  'lessor.dashboard.section.overall.accessCount.title': 'Số lượt Xem',
+  'lessor.dashboard.section.overall.products.vehicles.title': 'Số Phương tiện Đăng thuê',
+  'lessor.dashboard.section.overall.products.furnitures.title': 'Số Nội thất Đăng thuê',
+
+  'lessor.dashboard.section.revenue': 'Thống kê Doanh thu',
+  'lessor.dashboard.section.revenue.dayRange.label': 'Doanh thu trong',
+
+  'lessor.dashboard.section.feedback': 'Phản hồi của Người dùng',
+  'lessor.dashboard.section.feedback.overall.label': 'Tất cả Phản hồi tại Mọi Thời điểm',
+  'lessor.dashboard.section.feedback.dayRange.label': 'Phản hồi trong',
+
+  'lessor.dashboard.section.revenue.chart.tooltip.date':
+    "Ngày <span class='text-teal-7 text-body-2-semibold'>{date}</span>,",
+  'lessor.dashboard.section.revenue.chart.tooltip.revenue':
+    "Thu được Tổng cộng <span class='text-teal-7 text-body-2-semibold'>{revenue}₫</span>",
+
+  'lessor.dashboard.section.feedback.chart.tooltip.date':
+    "Ngày <span class='text-teal-7 text-body-2-semibold'>{date}</span>,",
+  'lessor.dashboard.section.feedback.chart.tooltip.avgRating':
+    "<span class='text-yellow-600 text-body-2-regular'>Đánh giá TB: <span class='text-yellow-500 text-body-2-semibold'>{averageStar}</span></span>",
+  'lessor.dashboard.section.feedback.chart.tooltip.numberOfFeedback':
+    "<span class='text-teal-7 text-body-2-regular'>Số lượt Đánh giá: <span class='text-teal-300 text-body-2-semibold'>{numberOfFeedback}</span></span>",
 };

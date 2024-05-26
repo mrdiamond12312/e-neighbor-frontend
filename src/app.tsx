@@ -7,7 +7,7 @@ import defaultSettings from '../config/defaultSettings';
 
 import { errorConfig } from './requestErrorConfig';
 
-import { Question, SelectLang, AvatarDropdown, AvatarName } from '@/components';
+import { SelectLang, AvatarDropdown, AvatarName } from '@/components';
 import { fetchAuthInfo } from '@/services/auth/services';
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -40,7 +40,7 @@ export async function getInitialState(): Promise<{
 // ProLayout 支持的api https://procomponents.ant.design/components/layout
 export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
   return {
-    actionsRender: () => [<Question key="doc" />, <SelectLang key="SelectLang" />],
+    actionsRender: () => [<SelectLang key="SelectLang" />],
     avatarProps: {
       src: initialState?.currentUser?.avatar,
       title: <AvatarName />,
@@ -50,13 +50,13 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     },
     waterMarkProps: undefined,
     footerRender: undefined,
-    onPageChange: () => {
-      const { location } = history;
-      // 如果没有登录，重定向到 login
-      if (!initialState?.currentUser && location.pathname !== loginPath) {
-        // history.push(loginPath);
-      }
-    },
+    // onPageChange: () => {
+    //   const { location } = history;
+    //   // 如果没有登录，重定向到 login
+    //   if (!initialState?.currentUser && location.pathname !== loginPath) {
+    //     // history.push(loginPath);
+    //   }
+    // },
     bgLayoutImgList: [],
     menuHeaderRender: undefined,
     // 自定义 403 页面

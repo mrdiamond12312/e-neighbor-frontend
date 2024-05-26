@@ -10,7 +10,7 @@ export interface ICardProps {
   owner?: string;
   rating?: number;
   tag?: string;
-  pricing?: number;
+  pricing?: number | string;
   pricingCurrency?: string;
   ctaBtnFormattedMessage?: string;
   ctaBtnFn?: () => void;

@@ -164,4 +164,41 @@ export default {
   'lessor.order.management.table.col.action.view-detail': 'View Detail',
   'lessor.order.management.table.col.action.approve': 'Approve',
   'lessor.order.management.table.col.action.reject': 'Reject',
+
+  // Dashboard
+  'lessor.statistic.rate.1.desc': 'Very Dissatisfied',
+  'lessor.statistic.rate.2.desc': 'Dissatisfied',
+  'lessor.statistic.rate.3.desc': 'Okay!',
+  'lessor.statistic.rate.4.desc': 'Satisfied',
+  'lessor.statistic.rate.5.desc': 'Very Satisfied',
+
+  'lessor.dashboard.section.revenue.total':
+    "Total: <span class='text-teal-1 text-body-1-semibold'>{totalRevenue}</span> ₫",
+  'lessor.dashboard.loading': 'Calculating Statistics...',
+
+  'lessor.dashboard.section.overall.section.order.title': 'Orders Overview',
+  'lessor.dashboard.section.overall.section.product.title': 'Products Overview',
+  'lessor.dashboard.section.overall.accessCount.title': 'Total View on Products',
+  'lessor.dashboard.section.overall.products.vehicles.title': 'Number of Vehicle Product for Rent',
+  'lessor.dashboard.section.overall.products.furnitures.title':
+    'Number of Furniture Product for Rent',
+
+  'lessor.dashboard.section.revenue': 'Revenue Statistics',
+  'lessor.dashboard.section.revenue.dayRange.label': 'Revenue Gained',
+
+  'lessor.dashboard.section.feedback': 'Feedback Statistics',
+  'lessor.dashboard.section.feedback.overall.label': 'Overall Rating of All times',
+  'lessor.dashboard.section.feedback.dayRange.label': 'Feedbacks Recieved',
+
+  'lessor.dashboard.section.revenue.chart.tooltip.date':
+    "On <span class='text-teal-7 text-body-2-semibold'>{date}</span>,",
+  'lessor.dashboard.section.revenue.chart.tooltip.revenue':
+    "Gained a total of <span class='text-teal-7 text-body-2-semibold'>{revenue}₫</span>",
+
+  'lessor.dashboard.section.feedback.chart.tooltip.date':
+    "On <span class='text-teal-7 text-body-2-semibold'>{date}</span>,",
+  'lessor.dashboard.section.feedback.chart.tooltip.avgRating':
+    "<span class='text-yellow-600 text-body-2-regular'>Average Rating: <span class='text-yellow-500 text-body-2-semibold'>{averageStar}</span></span>",
+  'lessor.dashboard.section.feedback.chart.tooltip.numberOfFeedback':
+    "<span class='text-teal-7 text-body-2-regular'>Feedbacks Recieved: <span class='text-teal-300 text-body-2-semibold'>{numberOfFeedback}</span></span>",
 };
