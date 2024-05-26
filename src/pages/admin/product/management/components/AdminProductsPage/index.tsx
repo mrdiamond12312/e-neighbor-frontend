@@ -1,4 +1,4 @@
-import { FormattedHTMLMessage, Link, useIntl } from '@umijs/max';
+import { FormattedHTMLMessage, getLocale, Link, useIntl } from '@umijs/max';
 import { Empty } from 'antd/lib';
 import React, { Fragment } from 'react';
 import urlcat from 'urlcat';
@@ -53,7 +53,7 @@ const AdminProductsPage: React.FC<IProductsPageProps> = ({ isLoading, products }
                     }
                     imageSrc={product.image}
                     owner={product.lessorImage}
-                    pricing={product.price}
+                    pricing={product.price.toLocaleString(getLocale())}
                     pricingCurrency={formatMessage({
                       id: product.timeUnit,
                       defaultMessage: '%Nan%',

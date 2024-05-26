@@ -1,4 +1,4 @@
-import { FormattedHTMLMessage, Link, useIntl } from '@umijs/max';
+import { FormattedHTMLMessage, getLocale, Link, useIntl } from '@umijs/max';
 import React from 'react';
 import urlcat from 'urlcat';
 
@@ -56,7 +56,7 @@ const PopularProducts: React.FC<IPopularProductsProps> = ({ isVehicle }) => {
                   }
                   imageSrc={item.image}
                   owner={item.lessorImage}
-                  pricing={item.price}
+                  pricing={item.price.toLocaleString(getLocale())}
                   pricingCurrency={formatMessage({ id: item.timeUnit, defaultMessage: '%Nan%' })}
                   rating={item.rating}
                   tag={formatMessage({
