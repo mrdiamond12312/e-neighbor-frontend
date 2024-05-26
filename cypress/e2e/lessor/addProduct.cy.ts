@@ -126,7 +126,9 @@ describe('lessor-add-product', () => {
     if (testProduct.name) cy.contains(testProduct.name).should('exist');
     if (testProduct.subCategory) cy.contains(testProduct.subCategory).should('exist');
     if (testProduct.timeUnit) cy.contains(testProduct.timeUnit).should('exist');
-    if (testProduct.value) cy.contains(testProduct.value).should('exist');
-    if (testProduct.price) cy.contains(testProduct.price).should('exist');
+    if (testProduct.value)
+      cy.contains(Number(testProduct.value).toLocaleString('en-US')).should('exist');
+    if (testProduct.price)
+      cy.contains(Number(testProduct.price).toLocaleString('en-US')).should('exist');
   });
 });
