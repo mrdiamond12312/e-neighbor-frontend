@@ -25,7 +25,7 @@ const Druid: React.FC<GroupProps> = (props: GroupProps) => {
   const group = useRef<THREE.Group>(null);
 
   const { nodes, materials, animations } = useGLTF(
-    'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/druid/model.gltf',
+    'https://web.archive.org/web/20250505150539/https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/pirate-captain/model.gltf',
   ) as unknown as GLTFResult;
 
   const { actions } = useAnimations(animations, group);
