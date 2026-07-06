@@ -20,7 +20,7 @@ type GLTFResult = GLTF & {
 const YoungKorigan: React.FC<GroupProps> = (props: GroupProps) => {
   const group = createRef<THREE.Group>();
   const { nodes, materials, animations } = useGLTF(
-    'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/young-korrigan/model.gltf',
+    'https://web.archive.org/web/20230328121047/https://market-assets.fra1.cdn.digitaloceanspaces.com/market-assets/models/pirate-officer/model.gltf',
   ) as unknown as GLTFResult;
   const { actions } = useAnimations(animations, group);
 
