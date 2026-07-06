@@ -34,7 +34,7 @@ type GLTFResult = GLTF & {
 const Bookshelf: React.FC<GroupProps> = (props: GroupProps) => {
   const group = createRef<THREE.Group>();
   const { nodes, materials } = useGLTF(
-    'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/bookcase-wide-broken/model.gltf',
+    'https://web.archive.org/web/20250126192100/https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/bookcase-wide-broken/model.gltf',
   ) as unknown as GLTFResult;
   return (
     <group ref={group} {...props} dispose={null}>
