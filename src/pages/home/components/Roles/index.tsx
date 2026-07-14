@@ -7,8 +7,8 @@ import React, { Suspense } from 'react';
 import { PATH_ADMIN, PATH_LESSOR, PATH_USER_PROFILE_EDIT } from '@/const/path';
 import { ROLE } from '@/const/roles';
 import Druid from '@/pages/home/components/Druid';
+import Korrigan from '@/pages/home/components/Korrigan';
 import OldKorrigan from '@/pages/home/components/OldKorrigan';
-import YoungKorigan from '@/pages/home/components/YoungKorrigan';
 
 const variants = {
   hidden: { opacity: 0 },
@@ -35,7 +35,7 @@ const Roles: React.FC<TLandingRolesSectionProps> = ({ setRoles }) => {
       <Suspense>
         <Environment preset="forest" environmentIntensity={1} blur={0.8} />
         <motion.group initial="hidden" animate="visible" variants={variants}>
-          <YoungKorigan
+          <Korrigan
             position={[0, 0, -1.5]}
             scale={3}
             rotation={[0, Math.PI / 6, 0]}
