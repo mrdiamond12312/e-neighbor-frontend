@@ -8,8 +8,8 @@ import { PATH_STORE } from '@/const/path';
 
 const Slogan: React.FC = () => {
   return (
-    <Flex className="absolute font-sans p-4 flex-col gap-4 top-0 left-0">
-      <Flex className="flex-col gap-1 pl-20 pt-24 font-sans text-heading-3 flex-shrink-0">
+    <Flex className="absolute w-full max-w-7xl font-sans px-[4%] flex-col gap-4 top-[16%] left-1/2 -translate-x-1/2">
+      <Flex className="flex-col gap-1 font-sans text-heading-3 flex-shrink-0">
         <article>
           <FormattedHTMLMessage
             id="landingpage.slogan.1"
@@ -23,7 +23,7 @@ const Slogan: React.FC = () => {
           />
         </article>
       </Flex>
-      <Flex className="flex-col gap-1 pl-20 font-sans text-heading-3 flex-shrink-0">
+      <Flex className="flex-col gap-1 font-sans text-heading-3 flex-shrink-0">
         <Link to={PATH_STORE}>
           <Button
             btnSize="large"

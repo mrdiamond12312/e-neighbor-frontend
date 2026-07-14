@@ -12,12 +12,12 @@ const MODEL = '/3d-models/car.gltf';
 
 type GLTFResult = GLTF & {
   nodes: {
-    body: THREE.Mesh;
-    body_1: THREE.Mesh;
-    body_2: THREE.Mesh;
-    body_3: THREE.Mesh;
-    body_4: THREE.Mesh;
-    body_5: THREE.Mesh;
+    interior003: THREE.Mesh;
+    interior003_1: THREE.Mesh;
+    interior003_2: THREE.Mesh;
+    interior003_3: THREE.Mesh;
+    interior003_4: THREE.Mesh;
+    interior003_5: THREE.Mesh;
     steer: THREE.Mesh;
     tires: THREE.Mesh;
   };
@@ -37,12 +37,20 @@ const Car: React.FC<GroupProps> = (props: GroupProps) => {
   const { nodes, materials } = useGLTF(MODEL) as unknown as GLTFResult;
   return (
     <group ref={group} {...props} castShadow>
-      <mesh geometry={nodes.body.geometry} material={materials['gray.002']} castShadow />
-      <mesh geometry={nodes.body_1.geometry} material={materials['light_f.002']} castShadow />
-      <mesh geometry={nodes.body_2.geometry} material={materials['body.002']} castShadow />
-      <mesh geometry={nodes.body_3.geometry} material={materials.glass_crack} castShadow />
-      <mesh geometry={nodes.body_4.geometry} material={materials['glassgray.002']} castShadow />
-      <mesh geometry={nodes.body_5.geometry} material={materials.Light} castShadow />
+      <mesh geometry={nodes.interior003.geometry} material={materials['gray.002']} castShadow />
+      <mesh
+        geometry={nodes.interior003_1.geometry}
+        material={materials['light_f.002']}
+        castShadow
+      />
+      <mesh geometry={nodes.interior003_2.geometry} material={materials['body.002']} castShadow />
+      <mesh geometry={nodes.interior003_3.geometry} material={materials.glass_crack} castShadow />
+      <mesh
+        geometry={nodes.interior003_4.geometry}
+        material={materials['glassgray.002']}
+        castShadow
+      />
+      <mesh geometry={nodes.interior003_5.geometry} material={materials.Light} castShadow />
       <mesh geometry={nodes.steer.geometry} material={materials['gray.002']} castShadow />
       <mesh geometry={nodes.tires.geometry} material={materials['rubber.002']} castShadow />
     </group>

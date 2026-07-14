@@ -27,7 +27,11 @@ const Roles: React.FC<TLandingRolesSectionProps> = ({ setRoles }) => {
       shadows="soft"
       camera={{ position: [(5 * Math.sqrt(3)) / 2, 5, -3.5], fov: 60 }}
     >
-      <OrbitControls target={[(5 * Math.sqrt(3)) / 6, 1, 1]} maxPolarAngle={Math.PI / 2} />
+      <OrbitControls
+        target={[(5 * Math.sqrt(3)) / 6, 1, 1]}
+        maxPolarAngle={Math.PI / 2}
+        enableZoom={false}
+      />
       <ambientLight intensity={0.4} />
       <directionalLight castShadow position={[2.5, 8, 5]} intensity={1.5} shadow-mapSize={1024}>
         <orthographicCamera attach="shadow-camera" args={[-10, 10, -10, 10, 0.1, 50]} />
@@ -77,6 +81,7 @@ const Roles: React.FC<TLandingRolesSectionProps> = ({ setRoles }) => {
             rotation={[0, (Math.PI * 5) / 6, 0]}
             onClick={() => history.push(PATH_ADMIN)}
             onPointerEnter={() => setRoles(ROLE.ADMIN)}
+            animationKey="Idle"
           />
           <Billboard position={[0, 2, 3.5]}>
             <Text

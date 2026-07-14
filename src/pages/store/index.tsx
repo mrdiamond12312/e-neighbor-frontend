@@ -45,7 +45,7 @@ const Store: React.FC = () => {
         },
       }}
     >
-      <PageContainer className="w-full max-w-7xl m-auto">
+      <PageContainer className="w-full m-auto">
         <FadeIn direction="top" exitDirection="top" keyId="main-page-container" className="w-full">
           <Row className="w-full py-4">
             <Col

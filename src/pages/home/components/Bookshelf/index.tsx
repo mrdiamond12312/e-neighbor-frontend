@@ -12,14 +12,14 @@ const MODEL = '/3d-models/bookshelf.gltf';
 
 type GLTFResult = GLTF & {
   nodes: {
-    bookcaseWideFilled_broken: THREE.Mesh;
-    bookcaseWideFilled_broken_1: THREE.Mesh;
-    bookcaseWideFilled_broken_2: THREE.Mesh;
-    bookcaseWideFilled_broken_3: THREE.Mesh;
-    bookcaseWideFilled_broken_4: THREE.Mesh;
-    bookcaseWideFilled_broken_5: THREE.Mesh;
-    bookcaseWideFilled_broken_6: THREE.Mesh;
-    bookcaseWideFilled_broken_7: THREE.Mesh;
+    Cube034: THREE.Mesh;
+    Cube034_1: THREE.Mesh;
+    Cube034_2: THREE.Mesh;
+    Cube034_3: THREE.Mesh;
+    Cube034_4: THREE.Mesh;
+    Cube034_5: THREE.Mesh;
+    Cube034_6: THREE.Mesh;
+    Cube034_7: THREE.Mesh;
   };
   materials: {
     ['BrownDark.050']: THREE.MeshStandardMaterial;
@@ -39,46 +39,22 @@ const Bookshelf: React.FC<GroupProps> = (props: GroupProps) => {
   return (
     <group ref={group} {...props} dispose={null}>
       <group rotation={[Math.PI / 2, 0, Math.PI / 2]} castShadow>
+        <mesh geometry={nodes.Cube034.geometry} material={materials['BrownDark.050']} castShadow />
         <mesh
-          geometry={nodes.bookcaseWideFilled_broken.geometry}
-          material={materials['BrownDark.050']}
-          castShadow
-        />
-        <mesh
-          geometry={nodes.bookcaseWideFilled_broken_1.geometry}
+          geometry={nodes.Cube034_1.geometry}
           material={materials['PurpleDark.004']}
           castShadow
         />
+        <mesh geometry={nodes.Cube034_2.geometry} material={materials['White.035']} castShadow />
+        <mesh geometry={nodes.Cube034_3.geometry} material={materials['Metal.081']} castShadow />
+        <mesh geometry={nodes.Cube034_4.geometry} material={materials['BlueDark.004']} castShadow />
         <mesh
-          geometry={nodes.bookcaseWideFilled_broken_2.geometry}
-          material={materials['White.035']}
-          castShadow
-        />
-        <mesh
-          geometry={nodes.bookcaseWideFilled_broken_3.geometry}
-          material={materials['Metal.081']}
-          castShadow
-        />
-        <mesh
-          geometry={nodes.bookcaseWideFilled_broken_4.geometry}
-          material={materials['BlueDark.004']}
-          castShadow
-        />
-        <mesh
-          geometry={nodes.bookcaseWideFilled_broken_5.geometry}
+          geometry={nodes.Cube034_5.geometry}
           material={materials['GreenDark.008']}
           castShadow
         />
-        <mesh
-          geometry={nodes.bookcaseWideFilled_broken_6.geometry}
-          material={materials['WoodDark.006']}
-          castShadow
-        />
-        <mesh
-          geometry={nodes.bookcaseWideFilled_broken_7.geometry}
-          material={materials['Black.031']}
-          castShadow
-        />
+        <mesh geometry={nodes.Cube034_6.geometry} material={materials['WoodDark.006']} castShadow />
+        <mesh geometry={nodes.Cube034_7.geometry} material={materials['Black.031']} castShadow />
       </group>
     </group>
   );

@@ -11,7 +11,7 @@ import { GLTF, SkeletonUtils } from 'three-stdlib';
 
 const MODEL = '/3d-models/druid.gltf';
 
-type ActionName = 'Idle' | 'Cast' | 'Wave';
+type ActionName = 'Idle' | 'Cast' | 'Wave' | 'Reach';
 
 interface GLTFAction extends THREE.AnimationClip {
   name: ActionName;
