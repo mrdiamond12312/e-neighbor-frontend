@@ -1,0 +1,10 @@
+allowBuilds:
+  '@swc/core': set this to true or false
+  core-js: set this to true or false
+  core-js-pure: set this to true or false
+  cypress: set this to true or false
+  es5-ext: set this to true or false
+  esbuild: set this to true or false
+  git-commit-msg-linter: set this to true or false
+  puppeteer-core: set this to true or false
+  unrs-resolver: set this to true or false

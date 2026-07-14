@@ -5,7 +5,7 @@ import React, { Suspense } from 'react';
 
 import Bookshelf from '@/pages/home/components/Bookshelf';
 import Car from '@/pages/home/components/Car';
-import Korrigan from '@/pages/home/components/Korrigan';
+import Druid from '@/pages/home/components/Druid';
 
 const variants = {
   hidden: { opacity: 0 },
@@ -30,7 +30,12 @@ const Scenary: React.FC = () => {
         <motion.group initial="hidden" animate="visible" variants={variants}>
           <Bookshelf position={[2, 0, 2.2]} scale={1.5} />
           <Car />
-          <Korrigan position={[0, 0, 3.5]} scale={3} rotation={[0, (Math.PI * 2) / 3, 0]} />
+          <Druid
+            position={[0, 0, 3.5]}
+            scale={1}
+            rotation={[0, (Math.PI * 2) / 3, 0]}
+            animationKey="Idle"
+          />
         </motion.group>
       </Suspense>
 

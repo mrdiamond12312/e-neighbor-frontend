@@ -7,8 +7,8 @@ import React, { Suspense } from 'react';
 import { PATH_ADMIN, PATH_LESSOR, PATH_USER_PROFILE_EDIT } from '@/const/path';
 import { ROLE } from '@/const/roles';
 import Druid from '@/pages/home/components/Druid';
+import Korrigan from '@/pages/home/components/Korrigan';
 import OldKorrigan from '@/pages/home/components/OldKorrigan';
-import YoungKorigan from '@/pages/home/components/YoungKorrigan';
 
 const variants = {
   hidden: { opacity: 0 },
@@ -27,7 +27,11 @@ const Roles: React.FC<TLandingRolesSectionProps> = ({ setRoles }) => {
       shadows="soft"
       camera={{ position: [(5 * Math.sqrt(3)) / 2, 5, -3.5], fov: 60 }}
     >
-      <OrbitControls target={[(5 * Math.sqrt(3)) / 6, 1, 1]} maxPolarAngle={Math.PI / 2} />
+      <OrbitControls
+        target={[(5 * Math.sqrt(3)) / 6, 1, 1]}
+        maxPolarAngle={Math.PI / 2}
+        enableZoom={false}
+      />
       <ambientLight intensity={0.4} />
       <directionalLight castShadow position={[2.5, 8, 5]} intensity={1.5} shadow-mapSize={1024}>
         <orthographicCamera attach="shadow-camera" args={[-10, 10, -10, 10, 0.1, 50]} />
@@ -35,7 +39,7 @@ const Roles: React.FC<TLandingRolesSectionProps> = ({ setRoles }) => {
       <Suspense>
         <Environment preset="forest" environmentIntensity={1} blur={0.8} />
         <motion.group initial="hidden" animate="visible" variants={variants}>
-          <YoungKorigan
+          <Korrigan
             position={[0, 0, -1.5]}
             scale={3}
             rotation={[0, Math.PI / 6, 0]}
@@ -77,6 +81,7 @@ const Roles: React.FC<TLandingRolesSectionProps> = ({ setRoles }) => {
             rotation={[0, (Math.PI * 5) / 6, 0]}
             onClick={() => history.push(PATH_ADMIN)}
             onPointerEnter={() => setRoles(ROLE.ADMIN)}
+            animationKey="Idle"
           />
           <Billboard position={[0, 2, 3.5]}>
             <Text

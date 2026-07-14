@@ -16,14 +16,14 @@ const Home: React.FC = () => {
 
   return (
     <ContactInfo>
-      <PageContainer className="max-h-[calc(100vh-56px)] xl:max-h-[calc(100vh-112px)] w-full  overflow-auto snap-mandatory snap-y snap-page-container">
-        <section className="max-w-7xl h-[calc(100vh-56px)] w-full xl:h-[calc(100vh-112px)] relative lg:snap-center">
+      <PageContainer className="max-h-[calc(100vh-56px)] xl:max-h-[calc(100vh-112px)] w-full  overflow-auto">
+        <section className="h-[calc(100vh-56px)] w-full xl:h-[calc(100vh-112px)] relative">
           <Scenary />
           <Slogan />
         </section>
-        <section className="max-w-7xl h-[calc(100vh-56px)] w-full xl:h-[calc(100vh-112px)] relative lg:snap-center">
+        <section className="h-[calc(100vh-56px)] w-full xl:h-[calc(100vh-112px)] relative">
           <Roles setRoles={setSelectedRole} />
-          <Flex className="absolute top-0 left-0 p-4 font-sans text-heading-3 bg-neutral-2/70 rounded-br-lg backdrop-blur">
+          <Flex className="absolute w-max max-w-[92%] text-center top-4 left-1/2 -translate-x-1/2 p-4 font-sans text-heading-3 bg-neutral-2/70 rounded-lg backdrop-blur">
             <FormattedHTMLMessage
               id="landingpage.role.title"
               defaultMessage="Currently, E-Neighbor has 3 roles:"
