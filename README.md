@@ -1,5 +1,5 @@
 # E-Neighbor
-
+All resouces is publicly available for reference here: https://drive.google.com/file/d/1126ZgsGfGDuikMkDkPIb_yKRhe7kqgAQ/view?usp=sharing
 A Web App connecting renters and owners of furniture and vehicles.
 
 # Ant Design Pro
